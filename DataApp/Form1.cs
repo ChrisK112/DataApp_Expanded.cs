@@ -50,12 +50,13 @@ namespace DataApp
             {
                 delimiter_f1 = Form2.delimiter_f2;
                 dt = FlatFileHandler.ToDataTable(sourcePath, delimiter_f1);
+                dt.Columns.Add("                -", typeof(string));
                 DataTable temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
 
                 //Comboboxes
                 string[] colNamesArray = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
                 string[] colNamesArrayWithBlank = new string[temp_dt.Columns.Count + 1];
-                colNamesArrayWithBlank[0] = "";/*Add an extra empty option to the list*/
+                colNamesArrayWithBlank[0] = "                -";/*Add an extra empty option to the list*/
                 for(int n = 1; n < temp_dt.Columns.Count; n++)
                 {
                     colNamesArrayWithBlank[n] = colNamesArray[n - 1];
@@ -91,7 +92,6 @@ namespace DataApp
                                     if (item.Name == "comboBox1_CG_ClientName")
                                     {
                                         comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
-                                        comboBox.DropDownStyle = ComboBoxStyle.DropDownList; /*No manual imput allowed*/
                                         comboBox.DataSource = new BindingSource(CharityNamesPairs, null);
                                         comboBox.DisplayMember = "Value";
                                         comboBox.ValueMember = "Key";
@@ -99,8 +99,8 @@ namespace DataApp
                                     else
                                     {
                                         comboBox.BindingContext = new BindingContext();
-                                        comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
                                         comboBox.DataSource = colNamesArrayWithBlank;
+                                        comboBox.SelectedIndex = 0;
                                     }
                                 }
                             }
@@ -154,7 +154,10 @@ namespace DataApp
                     select new
                     {
                         Primkey = textBox1_CG_Primkey.Text + textBox2_CG_Primkey.Text + row.Field<string>(comboBox1_CG_Primkey.Text) + textBox3_CG_Primkey.Text,
+
+                        
                         PersonRef = row.Field<string>(comboBox1_CG_PersonRef.Text),
+
                         ClientName = comboBox1_CG_ClientName.Text,
                         AddedBy = textBox1_CG_AddedBy.Text,
                         AddedDateTime = textBox1_CG_AddedDateTime.Text,
@@ -259,65 +262,8 @@ namespace DataApp
                         row.ClientData10
                         );
                 }
-
-                //foreach (DataRow row in dt.Rows)
-                //{
-                //    DataRow addrow = dt_target.NewRow();
-                //    addrow[label1_CG_Primkey.Text] = textBox1_CG_Primkey.Text.ToString() + textBox2_CG_Primkey.Text.ToString() + row.Field<string>(comboBox1_CG_Primkey.Text) + textBox3_CG_Primkey.Text.ToString();
-                //    addrow[label1_CG_PersonRef.Text] = row.Field<string>(comboBox1_CG_PersonRef.Text);
-                //    addrow[label1_CG_ClientName.Text] = comboBox1_CG_ClientName.Text;
-                //    addrow[label1_CG_AddedBy.Text] = textBox1_CG_AddedBy.Text;
-                //    addrow[label1_CG_AddedDateTime.Text] = textBox1_CG_AddedDateTime.Text;
-                //    addrow[label1_CG_Title.Text] = row.Field<string>(comboBox1_CG_Title.Text);
-                //    addrow[label1_CG_FirstName.Text] = row.Field<string>(comboBox1_CG_FirstName.Text);
-                //    addrow[label1_CG_MiddleName.Text] = row.Field<string>(comboBox1_CG_MiddleName.Text);
-                //    addrow[label1_CG_Surname.Text] = row.Field<string>(comboBox1_CG_Surname.Text);
-                //    addrow[label1_CG_Salutation.Text] = row.Field<string>(comboBox1_CG_Salutation.Text);
-                //    addrow[label1_CG_AddressLine1.Text] = row.Field<string>(comboBox1_CG_AddressLine1.Text);
-                //    addrow[label1_CG_AddressLine2.Text] = row.Field<string>(comboBox1_CG_AddressLine2.Text);
-                //    addrow[label1_CG_AddressLine3.Text] = row.Field<string>(comboBox1_CG_AddressLine3.Text);
-                //    addrow[label1_CG_TownCity.Text] = row.Field<string>(comboBox1_CG_TownCity.Text);
-                //    addrow[label1_CG_County.Text] = row.Field<string>(comboBox1_CG_County.Text);
-                //    addrow[label1_CG_Postcode.Text] = row.Field<string>(comboBox1_CG_Postcode.Text);
-                //    addrow[label1_CG_Country.Text] = row.Field<string>(comboBox1_CG_Country.Text);
-                //    addrow[label1_CG_OrganisationName.Text] = row.Field<string>(comboBox1_CG_OrganisationName.Text);
-                //    addrow[label1_CG_TelephoneNumber.Text] = row.Field<string>(comboBox1_CG_TelephoneNumber.Text);
-                //    addrow[label1_CG_MobileNumber.Text] = row.Field<string>(comboBox1_CG_MobileNumber.Text);
-                //    addrow[label1_CG_EmailAddress.Text] = row.Field<string>(comboBox1_CG_EmailAddress.Text);
-                //    addrow[label1_CG_AppealCode.Text] = textBox1_CG_AppealCode.Text;
-                //    addrow[label1_CG_PackageCode.Text] = row.Field<string>(comboBox1_CG_PackageCode.Text);
-                //    addrow[label1_CG_Deceased.Text] = row.Field<string>(comboBox1_CG_Deceased.Text);
-                //    addrow[label1_CG_Goneaway.Text] = row.Field<string>(comboBox1_CG_Goneaway.Text);
-                //    addrow[label1_CG_NoFurtherCommunication.Text] = row.Field<string>(comboBox1_CG_NoFurtherCommunication.Text);
-                //    addrow[label1_CG_PreloadedCAFNumber.Text] = row.Field<string>(comboBox1_CG_PreloadedCAFNumber.Text);
-                //    addrow[label1_CG_ColdURN.Text] = row.Field<string>(comboBox1_CG_ColdURN.Text);
-                //    addrow[label1_CG_ImportFile.Text] = textBox1_CG_ImportFile.Text;
-                //    addrow[label1_CG_RaffleStartNumber.Text] = row.Field<string>(comboBox1_CG_RaffleStartNumber.Text);
-                //    addrow[label1_CG_RaffleEndNumber.Text] = row.Field<string>(comboBox1_CG_RaffleEndNumber.Text);
-                //    addrow[label1_CG_RecordType.Text] = row.Field<string>(comboBox1_CG_RecordType.Text);
-                //    addrow[label1_CG_GiftAid.Text] = row.Field<string>(comboBox1_CG_GiftAid.Text);
-                //    addrow[label1_CG_Campaign.Text] = textBox1_CG_Campaign.Text;
-                //    addrow[label1_CG_PhonePreference.Text] = row.Field<string>(comboBox1_CG_PhonePreference.Text);
-                //    addrow[label1_CG_MailPreference.Text] = row.Field<string>(comboBox1_CG_MailPreference.Text);
-                //    addrow[label1_CG_EmailPreference.Text] = row.Field<string>(comboBox1_CG_EmailPreference.Text);
-                //    addrow[label1_CG_SMSPreference.Text] = row.Field<string>(comboBox1_CG_SMSPreference.Text);
-                //    addrow[label1_CG_ThirdPartyPreference.Text] = row.Field<string>(comboBox1_CG_ThirdPartyPreference.Text);
-                //    addrow[label1_CG_Barcode.Text] = row.Field<string>(comboBox1_CG_Barcode.Text) + row.Field<string>(comboBox2_CG_Barcode.Text) + row.Field<string>(comboBox3_CG_Barcode.Text);
-                //    addrow[label1_CG_ClientData1.Text] = row.Field<string>(comboBox1_CG_ClientData1.Text);
-                //    addrow[label1_CG_ClientData2.Text] = row.Field<string>(comboBox1_CG_ClientData2.Text);
-                //    addrow[label1_CG_ClientData3.Text] = row.Field<string>(comboBox1_CG_ClientData3.Text);
-                //    addrow[label1_CG_ClientData4.Text] = row.Field<string>(comboBox1_CG_ClientData4.Text);
-                //    addrow[label1_CG_ClientData5.Text] = row.Field<string>(comboBox1_CG_ClientData5.Text);
-                //    addrow[label1_CG_ClientData6.Text] = row.Field<string>(comboBox1_CG_ClientData6.Text);
-                //    addrow[label1_CG_ClientData7.Text] = row.Field<string>(comboBox1_CG_ClientData7.Text);
-                //    addrow[label1_CG_ClientData8.Text] = row.Field<string>(comboBox1_CG_ClientData8.Text);
-                //    addrow[label1_CG_ClientData9.Text] = row.Field<string>(comboBox1_CG_ClientData9.Text);
-                //    addrow[label1_CG_ClientData10.Text] = row.Field<string>(comboBox1_CG_ClientData10.Text);
-
-                //    dt_target.Rows.Add(addrow);
             }
-                dataGridView1.DataSource = dt_target;
-            
+                dataGridView1.DataSource = dt_target;            
         }
     }
 }

@@ -257,6 +257,7 @@
             // 
             // comboBox1_CG_ClientName
             // 
+            this.comboBox1_CG_ClientName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientName.FormattingEnabled = true;
             this.comboBox1_CG_ClientName.Location = new System.Drawing.Point(150, 26);
             this.comboBox1_CG_ClientName.Name = "comboBox1_CG_ClientName";
@@ -415,6 +416,7 @@
             // 
             // comboBox2_CG_Barcode
             // 
+            this.comboBox2_CG_Barcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2_CG_Barcode.FormattingEnabled = true;
             this.comboBox2_CG_Barcode.Location = new System.Drawing.Point(179, 56);
             this.comboBox2_CG_Barcode.Name = "comboBox2_CG_Barcode";
@@ -423,6 +425,7 @@
             // 
             // comboBox3_CG_Barcode
             // 
+            this.comboBox3_CG_Barcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3_CG_Barcode.FormattingEnabled = true;
             this.comboBox3_CG_Barcode.Location = new System.Drawing.Point(297, 56);
             this.comboBox3_CG_Barcode.Name = "comboBox3_CG_Barcode";
@@ -431,6 +434,7 @@
             // 
             // comboBox1_CG_Barcode
             // 
+            this.comboBox1_CG_Barcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Barcode.FormattingEnabled = true;
             this.comboBox1_CG_Barcode.Location = new System.Drawing.Point(61, 56);
             this.comboBox1_CG_Barcode.Name = "comboBox1_CG_Barcode";
@@ -459,6 +463,7 @@
             // 
             // comboBox1_CG_Primkey
             // 
+            this.comboBox1_CG_Primkey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Primkey.FormattingEnabled = true;
             this.comboBox1_CG_Primkey.Location = new System.Drawing.Point(297, 28);
             this.comboBox1_CG_Primkey.Name = "comboBox1_CG_Primkey";
@@ -519,6 +524,7 @@
             // 
             // comboBox1_CG_ClientData7
             // 
+            this.comboBox1_CG_ClientData7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData7.Location = new System.Drawing.Point(178, 413);
             this.comboBox1_CG_ClientData7.Name = "comboBox1_CG_ClientData7";
             this.comboBox1_CG_ClientData7.Size = new System.Drawing.Size(121, 21);
@@ -526,6 +532,7 @@
             // 
             // comboBox1_CG_ClientData10
             // 
+            this.comboBox1_CG_ClientData10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData10.Location = new System.Drawing.Point(178, 482);
             this.comboBox1_CG_ClientData10.Name = "comboBox1_CG_ClientData10";
             this.comboBox1_CG_ClientData10.Size = new System.Drawing.Size(121, 21);
@@ -543,6 +550,7 @@
             // 
             // comboBox1_CG_ClientData9
             // 
+            this.comboBox1_CG_ClientData9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData9.Location = new System.Drawing.Point(178, 459);
             this.comboBox1_CG_ClientData9.Name = "comboBox1_CG_ClientData9";
             this.comboBox1_CG_ClientData9.Size = new System.Drawing.Size(121, 21);
@@ -550,6 +558,7 @@
             // 
             // comboBox1_CG_PhonePreference
             // 
+            this.comboBox1_CG_PhonePreference.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_PhonePreference.FormattingEnabled = true;
             this.comboBox1_CG_PhonePreference.Location = new System.Drawing.Point(178, 160);
             this.comboBox1_CG_PhonePreference.Name = "comboBox1_CG_PhonePreference";
@@ -558,6 +567,7 @@
             // 
             // comboBox1_CG_ClientData8
             // 
+            this.comboBox1_CG_ClientData8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData8.Location = new System.Drawing.Point(178, 436);
             this.comboBox1_CG_ClientData8.Name = "comboBox1_CG_ClientData8";
             this.comboBox1_CG_ClientData8.Size = new System.Drawing.Size(121, 21);
@@ -615,6 +625,7 @@
             // 
             // comboBox1_CG_RecordType
             // 
+            this.comboBox1_CG_RecordType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_RecordType.FormattingEnabled = true;
             this.comboBox1_CG_RecordType.Location = new System.Drawing.Point(178, 114);
             this.comboBox1_CG_RecordType.Name = "comboBox1_CG_RecordType";
@@ -623,6 +634,7 @@
             // 
             // comboBox1_CG_GiftAid
             // 
+            this.comboBox1_CG_GiftAid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_GiftAid.FormattingEnabled = true;
             this.comboBox1_CG_GiftAid.Location = new System.Drawing.Point(178, 137);
             this.comboBox1_CG_GiftAid.Name = "comboBox1_CG_GiftAid";
@@ -651,6 +663,7 @@
             // 
             // comboBox1_CG_ClientData6
             // 
+            this.comboBox1_CG_ClientData6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData6.Location = new System.Drawing.Point(178, 390);
             this.comboBox1_CG_ClientData6.Name = "comboBox1_CG_ClientData6";
             this.comboBox1_CG_ClientData6.Size = new System.Drawing.Size(121, 21);
@@ -668,6 +681,7 @@
             // 
             // comboBox1_CG_ClientData5
             // 
+            this.comboBox1_CG_ClientData5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData5.Location = new System.Drawing.Point(178, 367);
             this.comboBox1_CG_ClientData5.Name = "comboBox1_CG_ClientData5";
             this.comboBox1_CG_ClientData5.Size = new System.Drawing.Size(121, 21);
@@ -675,6 +689,7 @@
             // 
             // comboBox1_CG_RaffleEndNumber
             // 
+            this.comboBox1_CG_RaffleEndNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_RaffleEndNumber.FormattingEnabled = true;
             this.comboBox1_CG_RaffleEndNumber.Location = new System.Drawing.Point(178, 91);
             this.comboBox1_CG_RaffleEndNumber.Name = "comboBox1_CG_RaffleEndNumber";
@@ -683,6 +698,7 @@
             // 
             // comboBox1_CG_ClientData4
             // 
+            this.comboBox1_CG_ClientData4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData4.Location = new System.Drawing.Point(178, 344);
             this.comboBox1_CG_ClientData4.Name = "comboBox1_CG_ClientData4";
             this.comboBox1_CG_ClientData4.Size = new System.Drawing.Size(121, 21);
@@ -690,6 +706,7 @@
             // 
             // comboBox1_CG_RaffleStartNumber
             // 
+            this.comboBox1_CG_RaffleStartNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_RaffleStartNumber.FormattingEnabled = true;
             this.comboBox1_CG_RaffleStartNumber.Location = new System.Drawing.Point(178, 68);
             this.comboBox1_CG_RaffleStartNumber.Name = "comboBox1_CG_RaffleStartNumber";
@@ -698,6 +715,7 @@
             // 
             // comboBox1_CG_ClientData3
             // 
+            this.comboBox1_CG_ClientData3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData3.Location = new System.Drawing.Point(178, 321);
             this.comboBox1_CG_ClientData3.Name = "comboBox1_CG_ClientData3";
             this.comboBox1_CG_ClientData3.Size = new System.Drawing.Size(121, 21);
@@ -705,6 +723,7 @@
             // 
             // comboBox1_CG_ColdURN
             // 
+            this.comboBox1_CG_ColdURN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ColdURN.FormattingEnabled = true;
             this.comboBox1_CG_ColdURN.Location = new System.Drawing.Point(178, 45);
             this.comboBox1_CG_ColdURN.Name = "comboBox1_CG_ColdURN";
@@ -713,6 +732,7 @@
             // 
             // comboBox1_CG_PreloadedCAFNumber
             // 
+            this.comboBox1_CG_PreloadedCAFNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_PreloadedCAFNumber.FormattingEnabled = true;
             this.comboBox1_CG_PreloadedCAFNumber.Location = new System.Drawing.Point(178, 22);
             this.comboBox1_CG_PreloadedCAFNumber.Name = "comboBox1_CG_PreloadedCAFNumber";
@@ -741,6 +761,7 @@
             // 
             // comboBox1_CG_ClientData2
             // 
+            this.comboBox1_CG_ClientData2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData2.Location = new System.Drawing.Point(178, 298);
             this.comboBox1_CG_ClientData2.Name = "comboBox1_CG_ClientData2";
             this.comboBox1_CG_ClientData2.Size = new System.Drawing.Size(121, 21);
@@ -758,6 +779,7 @@
             // 
             // comboBox1_CG_ClientData1
             // 
+            this.comboBox1_CG_ClientData1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ClientData1.Location = new System.Drawing.Point(178, 275);
             this.comboBox1_CG_ClientData1.Name = "comboBox1_CG_ClientData1";
             this.comboBox1_CG_ClientData1.Size = new System.Drawing.Size(121, 21);
@@ -765,6 +787,7 @@
             // 
             // comboBox1_CG_MailPreference
             // 
+            this.comboBox1_CG_MailPreference.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_MailPreference.FormattingEnabled = true;
             this.comboBox1_CG_MailPreference.Location = new System.Drawing.Point(178, 183);
             this.comboBox1_CG_MailPreference.Name = "comboBox1_CG_MailPreference";
@@ -863,6 +886,7 @@
             // 
             // comboBox1_CG_EmailPreference
             // 
+            this.comboBox1_CG_EmailPreference.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_EmailPreference.FormattingEnabled = true;
             this.comboBox1_CG_EmailPreference.Location = new System.Drawing.Point(178, 206);
             this.comboBox1_CG_EmailPreference.Name = "comboBox1_CG_EmailPreference";
@@ -871,6 +895,7 @@
             // 
             // comboBox1_CG_ThirdPartyPreference
             // 
+            this.comboBox1_CG_ThirdPartyPreference.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ThirdPartyPreference.FormattingEnabled = true;
             this.comboBox1_CG_ThirdPartyPreference.Location = new System.Drawing.Point(178, 252);
             this.comboBox1_CG_ThirdPartyPreference.Name = "comboBox1_CG_ThirdPartyPreference";
@@ -879,6 +904,7 @@
             // 
             // comboBox1_CG_SMSPreference
             // 
+            this.comboBox1_CG_SMSPreference.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_SMSPreference.FormattingEnabled = true;
             this.comboBox1_CG_SMSPreference.Location = new System.Drawing.Point(178, 229);
             this.comboBox1_CG_SMSPreference.Name = "comboBox1_CG_SMSPreference";
@@ -939,6 +965,7 @@
             // 
             // comboBox1_CG_NoFurtherCommunication
             // 
+            this.comboBox1_CG_NoFurtherCommunication.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_NoFurtherCommunication.FormattingEnabled = true;
             this.comboBox1_CG_NoFurtherCommunication.Location = new System.Drawing.Point(180, 482);
             this.comboBox1_CG_NoFurtherCommunication.Name = "comboBox1_CG_NoFurtherCommunication";
@@ -947,6 +974,7 @@
             // 
             // comboBox1_CG_OrganisationName
             // 
+            this.comboBox1_CG_OrganisationName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_OrganisationName.FormattingEnabled = true;
             this.comboBox1_CG_OrganisationName.Location = new System.Drawing.Point(180, 321);
             this.comboBox1_CG_OrganisationName.Name = "comboBox1_CG_OrganisationName";
@@ -965,6 +993,7 @@
             // 
             // comboBox1_CG_Goneaway
             // 
+            this.comboBox1_CG_Goneaway.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Goneaway.FormattingEnabled = true;
             this.comboBox1_CG_Goneaway.Location = new System.Drawing.Point(180, 459);
             this.comboBox1_CG_Goneaway.Name = "comboBox1_CG_Goneaway";
@@ -973,6 +1002,7 @@
             // 
             // comboBox1_CG_Country
             // 
+            this.comboBox1_CG_Country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Country.FormattingEnabled = true;
             this.comboBox1_CG_Country.Location = new System.Drawing.Point(180, 298);
             this.comboBox1_CG_Country.Name = "comboBox1_CG_Country";
@@ -1001,6 +1031,7 @@
             // 
             // comboBox1_CG_Deceased
             // 
+            this.comboBox1_CG_Deceased.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Deceased.FormattingEnabled = true;
             this.comboBox1_CG_Deceased.Location = new System.Drawing.Point(180, 436);
             this.comboBox1_CG_Deceased.Name = "comboBox1_CG_Deceased";
@@ -1009,6 +1040,7 @@
             // 
             // comboBox1_CG_Postcode
             // 
+            this.comboBox1_CG_Postcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Postcode.FormattingEnabled = true;
             this.comboBox1_CG_Postcode.Location = new System.Drawing.Point(180, 275);
             this.comboBox1_CG_Postcode.Name = "comboBox1_CG_Postcode";
@@ -1017,6 +1049,7 @@
             // 
             // comboBox1_CG_County
             // 
+            this.comboBox1_CG_County.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_County.FormattingEnabled = true;
             this.comboBox1_CG_County.Location = new System.Drawing.Point(180, 252);
             this.comboBox1_CG_County.Name = "comboBox1_CG_County";
@@ -1035,6 +1068,7 @@
             // 
             // comboBox1_CG_TownCity
             // 
+            this.comboBox1_CG_TownCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_TownCity.FormattingEnabled = true;
             this.comboBox1_CG_TownCity.Location = new System.Drawing.Point(180, 229);
             this.comboBox1_CG_TownCity.Name = "comboBox1_CG_TownCity";
@@ -1093,6 +1127,7 @@
             // 
             // comboBox1_CG_PackageCode
             // 
+            this.comboBox1_CG_PackageCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_PackageCode.FormattingEnabled = true;
             this.comboBox1_CG_PackageCode.Location = new System.Drawing.Point(180, 413);
             this.comboBox1_CG_PackageCode.Name = "comboBox1_CG_PackageCode";
@@ -1101,6 +1136,7 @@
             // 
             // comboBox1_CG_AddressLine2
             // 
+            this.comboBox1_CG_AddressLine2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_AddressLine2.FormattingEnabled = true;
             this.comboBox1_CG_AddressLine2.Location = new System.Drawing.Point(180, 183);
             this.comboBox1_CG_AddressLine2.Name = "comboBox1_CG_AddressLine2";
@@ -1119,6 +1155,7 @@
             // 
             // comboBox1_CG_EmailAddress
             // 
+            this.comboBox1_CG_EmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_EmailAddress.FormattingEnabled = true;
             this.comboBox1_CG_EmailAddress.Location = new System.Drawing.Point(180, 390);
             this.comboBox1_CG_EmailAddress.Name = "comboBox1_CG_EmailAddress";
@@ -1127,6 +1164,7 @@
             // 
             // comboBox1_CG_AddressLine3
             // 
+            this.comboBox1_CG_AddressLine3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_AddressLine3.FormattingEnabled = true;
             this.comboBox1_CG_AddressLine3.Location = new System.Drawing.Point(180, 206);
             this.comboBox1_CG_AddressLine3.Name = "comboBox1_CG_AddressLine3";
@@ -1145,6 +1183,7 @@
             // 
             // comboBox1_CG_AddressLine1
             // 
+            this.comboBox1_CG_AddressLine1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_AddressLine1.FormattingEnabled = true;
             this.comboBox1_CG_AddressLine1.Location = new System.Drawing.Point(180, 160);
             this.comboBox1_CG_AddressLine1.Name = "comboBox1_CG_AddressLine1";
@@ -1153,6 +1192,7 @@
             // 
             // comboBox1_CG_MobileNumber
             // 
+            this.comboBox1_CG_MobileNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_MobileNumber.FormattingEnabled = true;
             this.comboBox1_CG_MobileNumber.Location = new System.Drawing.Point(180, 367);
             this.comboBox1_CG_MobileNumber.Name = "comboBox1_CG_MobileNumber";
@@ -1171,6 +1211,7 @@
             // 
             // comboBox1_CG_Salutation
             // 
+            this.comboBox1_CG_Salutation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Salutation.FormattingEnabled = true;
             this.comboBox1_CG_Salutation.Location = new System.Drawing.Point(180, 137);
             this.comboBox1_CG_Salutation.Name = "comboBox1_CG_Salutation";
@@ -1179,6 +1220,7 @@
             // 
             // comboBox1_CG_TelephoneNumber
             // 
+            this.comboBox1_CG_TelephoneNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_TelephoneNumber.FormattingEnabled = true;
             this.comboBox1_CG_TelephoneNumber.Location = new System.Drawing.Point(180, 344);
             this.comboBox1_CG_TelephoneNumber.Name = "comboBox1_CG_TelephoneNumber";
@@ -1187,6 +1229,7 @@
             // 
             // comboBox1_CG_Surname
             // 
+            this.comboBox1_CG_Surname.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Surname.FormattingEnabled = true;
             this.comboBox1_CG_Surname.Location = new System.Drawing.Point(180, 114);
             this.comboBox1_CG_Surname.Name = "comboBox1_CG_Surname";
@@ -1205,6 +1248,7 @@
             // 
             // comboBox1_CG_MiddleName
             // 
+            this.comboBox1_CG_MiddleName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_MiddleName.FormattingEnabled = true;
             this.comboBox1_CG_MiddleName.Location = new System.Drawing.Point(180, 91);
             this.comboBox1_CG_MiddleName.Name = "comboBox1_CG_MiddleName";
@@ -1213,6 +1257,7 @@
             // 
             // comboBox1_CG_FirstName
             // 
+            this.comboBox1_CG_FirstName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_FirstName.FormattingEnabled = true;
             this.comboBox1_CG_FirstName.Location = new System.Drawing.Point(180, 68);
             this.comboBox1_CG_FirstName.Name = "comboBox1_CG_FirstName";
@@ -1221,6 +1266,7 @@
             // 
             // comboBox1_CG_Title
             // 
+            this.comboBox1_CG_Title.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Title.FormattingEnabled = true;
             this.comboBox1_CG_Title.Location = new System.Drawing.Point(180, 45);
             this.comboBox1_CG_Title.Name = "comboBox1_CG_Title";
@@ -1299,6 +1345,7 @@
             // 
             // comboBox1_CG_PersonRef
             // 
+            this.comboBox1_CG_PersonRef.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_PersonRef.FormattingEnabled = true;
             this.comboBox1_CG_PersonRef.Location = new System.Drawing.Point(180, 22);
             this.comboBox1_CG_PersonRef.Name = "comboBox1_CG_PersonRef";
