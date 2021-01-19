@@ -24,8 +24,10 @@ namespace DataApp
 
         //Global Variables
         OpenFileDialog ofd = new OpenFileDialog();
-        public static string sourcePath;
-        DataTable dt;
+        public static string sourceFile;
+        public static string fileName;
+        public DataTable dt;
+        public DataTable dt_target = new DataTable();
         char delimiter_f1;
         
 
@@ -35,10 +37,11 @@ namespace DataApp
             textBox1_Form1_filePath.Clear();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                sourcePath = ofd.FileName;
-                textBox1_Form1_filePath.Text = sourcePath;
+                sourceFile = ofd.FileName;
+                textBox1_Form1_filePath.Text = sourceFile;
                 Form2 form2 = new Form2();
                 form2.ShowDialog();
+                fileName = ofd.SafeFileName;
             }
             //Select delimiter
             
@@ -49,7 +52,7 @@ namespace DataApp
             try
             {
                 delimiter_f1 = Form2.delimiter_f2;
-                dt = FlatFileHandler.ToDataTable(sourcePath, delimiter_f1);
+                dt = DataHandler.FlatToDataTable(sourceFile, delimiter_f1);
                 dt.Columns.Add("                -", typeof(string));
                 DataTable temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
 
@@ -129,17 +132,7 @@ namespace DataApp
         private void comboBox1_CG_ClientName_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox1_CG_Primkey.Text = comboBox1_CG_ClientName.SelectedValue.ToString();
-        }
-
-        private void button1_Form1_save_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            if(sfd.ShowDialog() == DialogResult.OK)
-            {
-                string targetPath = sfd.FileName;
-            }
-
-        }
+        }        
 
         private void button1_Form1_load_Click(object sender, EventArgs e)
         {
@@ -264,6 +257,12 @@ namespace DataApp
                 }
             }
                 dataGridView1.DataSource = dt_target;            
+        }
+        private void button1_Form1_save_Click(object sender, EventArgs e)
+        {
+            string directoryPath = sourceFile.Replace(fileName, "");
+
+            DataHandler.DataTableToExcel(dt_target, "hola.xlsx", "C:\\Users\\Gregory\\Desktop\\hola.xlsx");
         }
     }
 }

@@ -153,6 +153,8 @@
             this.label1_Form1_loadPercent = new System.Windows.Forms.Label();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.button1_Form1_save = new System.Windows.Forms.Button();
+            this.radioButton1_Form1_excel = new System.Windows.Forms.RadioButton();
+            this.radioButton1_Form1_text = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
@@ -1416,12 +1418,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.radioButton1_Form1_text);
+            this.panel1.Controls.Add(this.radioButton1_Form1_excel);
             this.panel1.Controls.Add(this.label1_Form1_loadPercent);
             this.panel1.Controls.Add(this.button1_Form1_load);
             this.panel1.Controls.Add(this.button1_Form1_save);
-            this.panel1.Location = new System.Drawing.Point(809, 902);
+            this.panel1.Location = new System.Drawing.Point(711, 902);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(413, 47);
+            this.panel1.Size = new System.Drawing.Size(511, 47);
             this.panel1.TabIndex = 5;
             // 
             // label1_Form1_loadPercent
@@ -1435,7 +1439,7 @@
             // 
             // button1_Form1_load
             // 
-            this.button1_Form1_load.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button1_Form1_load.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button1_Form1_load.Location = new System.Drawing.Point(12, 12);
             this.button1_Form1_load.Name = "button1_Form1_load";
             this.button1_Form1_load.Size = new System.Drawing.Size(96, 22);
@@ -1447,13 +1451,35 @@
             // button1_Form1_save
             // 
             this.button1_Form1_save.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1_Form1_save.Location = new System.Drawing.Point(307, 12);
+            this.button1_Form1_save.Location = new System.Drawing.Point(405, 12);
             this.button1_Form1_save.Name = "button1_Form1_save";
             this.button1_Form1_save.Size = new System.Drawing.Size(96, 22);
             this.button1_Form1_save.TabIndex = 4;
             this.button1_Form1_save.Text = "SAVE";
             this.button1_Form1_save.UseVisualStyleBackColor = true;
             this.button1_Form1_save.Click += new System.EventHandler(this.button1_Form1_save_Click);
+            // 
+            // radioButton1_Form1_excel
+            // 
+            this.radioButton1_Form1_excel.AutoSize = true;
+            this.radioButton1_Form1_excel.Location = new System.Drawing.Point(165, 14);
+            this.radioButton1_Form1_excel.Name = "radioButton1_Form1_excel";
+            this.radioButton1_Form1_excel.Size = new System.Drawing.Size(59, 17);
+            this.radioButton1_Form1_excel.TabIndex = 40;
+            this.radioButton1_Form1_excel.TabStop = true;
+            this.radioButton1_Form1_excel.Text = "EXCEL";
+            this.radioButton1_Form1_excel.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1_Form1_text
+            // 
+            this.radioButton1_Form1_text.AutoSize = true;
+            this.radioButton1_Form1_text.Location = new System.Drawing.Point(288, 15);
+            this.radioButton1_Form1_text.Name = "radioButton1_Form1_text";
+            this.radioButton1_Form1_text.Size = new System.Drawing.Size(53, 17);
+            this.radioButton1_Form1_text.TabIndex = 41;
+            this.radioButton1_Form1_text.TabStop = true;
+            this.radioButton1_Form1_text.Text = "TEXT";
+            this.radioButton1_Form1_text.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1615,6 +1641,8 @@
         private System.Windows.Forms.Button button1_Form1_save;
         private System.Windows.Forms.Label label1_Form1_loadPercent;
         private System.Windows.Forms.Button button1_Form1_load;
+        private System.Windows.Forms.RadioButton radioButton1_Form1_text;
+        private System.Windows.Forms.RadioButton radioButton1_Form1_excel;
     }
 }
 
