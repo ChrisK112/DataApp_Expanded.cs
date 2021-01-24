@@ -57,12 +57,12 @@ namespace DataApp
                 DataTable temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
 
                 //Comboboxes
-                string[] colNamesArray = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
-                string[] colNamesArrayWithBlank = new string[temp_dt.Columns.Count + 1];
-                colNamesArrayWithBlank[0] = "                -";/*Add an extra empty option to the list*/
+                string[] colNames = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
+                string[] colNamesWithBlank = new string[temp_dt.Columns.Count + 1];
+                colNamesWithBlank[0] = "                -";/*Add an extra empty option to the list*/
                 for(int n = 1; n < temp_dt.Columns.Count; n++)
                 {
-                    colNamesArrayWithBlank[n] = colNamesArray[n - 1];
+                    colNamesWithBlank[n] = colNames[n - 1];
                 }
 
                 Dictionary<string, string> CharityNamesPairs = new Dictionary<string, string>();
@@ -102,7 +102,7 @@ namespace DataApp
                                     else
                                     {
                                         comboBox.BindingContext = new BindingContext();
-                                        comboBox.DataSource = colNamesArrayWithBlank;
+                                        comboBox.DataSource = colNamesWithBlank;
                                         comboBox.SelectedIndex = 0;
                                     }
                                 }
@@ -137,7 +137,6 @@ namespace DataApp
         private void button1_Form1_load_Click(object sender, EventArgs e)
         {
             TabPage tabPage = tabControl1.SelectedTab;
-            DataTable dt_target = new DataTable();
 
             if (tabControl1.SelectedTab == CG_tabPage1)
             {
@@ -258,11 +257,40 @@ namespace DataApp
             }
                 dataGridView1.DataSource = dt_target;            
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1_Form1_delimiter.Enabled = true;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1_Form1_filePath.Enabled = true;
+        }
+
         private void button1_Form1_save_Click(object sender, EventArgs e)
         {
-            string directoryPath = sourceFile.Replace(fileName, "");
+            string delimiter= "";
+            string qualifier = "";
+            string saveas = "";
+            string extention = "";
 
-            DataHandler.DataTableToExcel(dt_target, "hola.xlsx", "C:\\Users\\Gregory\\Desktop\\hola.xlsx");
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Text(Tab delimited) (*.txt) | *.txt | CSV (Comma delimited) (*.csv) | *.csv ";
+                sfd.InitialDirectory = Path.GetDirectoryName(sourceFile);
+                sfd.AddExtension = true;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    delimiter = textBox1_Form1_delimiter.Text;
+                    qualifier = textBox_Form1_qualifier.Text;
+                    saveas = sfd.FileName;
+                    extention = Path.GetExtension(sfd.FileName);  
+                }
+            }
+            DataHandler.DataTableToFlatFile(dt_target, saveas, extention, delimiter, qualifier);
         }
+
+        
     }
 }

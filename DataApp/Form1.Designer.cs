@@ -150,11 +150,13 @@
             this.panel1_Form1 = new System.Windows.Forms.Panel();
             this.label1_Form1_fileName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1_Form1_loadPercent = new System.Windows.Forms.Label();
-            this.button1_Form1_load = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox_Form1_qualifier = new System.Windows.Forms.TextBox();
+            this.textBox1_Form1_delimiter = new System.Windows.Forms.TextBox();
             this.button1_Form1_save = new System.Windows.Forms.Button();
-            this.radioButton1_Form1_excel = new System.Windows.Forms.RadioButton();
-            this.radioButton1_Form1_text = new System.Windows.Forms.RadioButton();
+            this.button1_Form1_load = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
@@ -164,6 +166,7 @@
             this.groupBox1.SuspendLayout();
             this.panel1_Form1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -181,7 +184,7 @@
             // button1_Form1_search
             // 
             this.button1_Form1_search.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1_Form1_search.Location = new System.Drawing.Point(514, 10);
+            this.button1_Form1_search.Location = new System.Drawing.Point(318, 13);
             this.button1_Form1_search.Name = "button1_Form1_search";
             this.button1_Form1_search.Size = new System.Drawing.Size(76, 22);
             this.button1_Form1_search.TabIndex = 1;
@@ -192,15 +195,15 @@
             // textBox1_Form1_filePath
             // 
             this.textBox1_Form1_filePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1_Form1_filePath.Location = new System.Drawing.Point(85, 12);
+            this.textBox1_Form1_filePath.Location = new System.Drawing.Point(85, 15);
             this.textBox1_Form1_filePath.Name = "textBox1_Form1_filePath";
-            this.textBox1_Form1_filePath.Size = new System.Drawing.Size(426, 20);
+            this.textBox1_Form1_filePath.Size = new System.Drawing.Size(230, 20);
             this.textBox1_Form1_filePath.TabIndex = 2;
             // 
             // button1_Form1_import
             // 
             this.button1_Form1_import.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1_Form1_import.Location = new System.Drawing.Point(593, 10);
+            this.button1_Form1_import.Location = new System.Drawing.Point(398, 13);
             this.button1_Form1_import.Name = "button1_Form1_import";
             this.button1_Form1_import.Size = new System.Drawing.Size(96, 22);
             this.button1_Form1_import.TabIndex = 3;
@@ -1403,14 +1406,14 @@
             this.panel1_Form1.Controls.Add(this.button1_Form1_import);
             this.panel1_Form1.Location = new System.Drawing.Point(12, 902);
             this.panel1_Form1.Name = "panel1_Form1";
-            this.panel1_Form1.Size = new System.Drawing.Size(693, 47);
+            this.panel1_Form1.Size = new System.Drawing.Size(497, 47);
             this.panel1_Form1.TabIndex = 0;
             // 
             // label1_Form1_fileName
             // 
             this.label1_Form1_fileName.AutoSize = true;
             this.label1_Form1_fileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_Form1_fileName.Location = new System.Drawing.Point(4, 13);
+            this.label1_Form1_fileName.Location = new System.Drawing.Point(4, 16);
             this.label1_Form1_fileName.Name = "label1_Form1_fileName";
             this.label1_Form1_fileName.Size = new System.Drawing.Size(75, 17);
             this.label1_Form1_fileName.TabIndex = 38;
@@ -1418,40 +1421,64 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.radioButton1_Form1_text);
-            this.panel1.Controls.Add(this.radioButton1_Form1_excel);
-            this.panel1.Controls.Add(this.label1_Form1_loadPercent);
-            this.panel1.Controls.Add(this.button1_Form1_load);
+            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.textBox_Form1_qualifier);
+            this.panel1.Controls.Add(this.textBox1_Form1_delimiter);
             this.panel1.Controls.Add(this.button1_Form1_save);
-            this.panel1.Location = new System.Drawing.Point(711, 902);
+            this.panel1.Location = new System.Drawing.Point(804, 902);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(511, 47);
+            this.panel1.Size = new System.Drawing.Size(418, 47);
             this.panel1.TabIndex = 5;
             // 
-            // label1_Form1_loadPercent
+            // checkBox2
             // 
-            this.label1_Form1_loadPercent.AutoSize = true;
-            this.label1_Form1_loadPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_Form1_loadPercent.Location = new System.Drawing.Point(114, 13);
-            this.label1_Form1_loadPercent.Name = "label1_Form1_loadPercent";
-            this.label1_Form1_loadPercent.Size = new System.Drawing.Size(0, 17);
-            this.label1_Form1_loadPercent.TabIndex = 39;
+            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(162, 13);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(84, 21);
+            this.checkBox2.TabIndex = 43;
+            this.checkBox2.Text = "Qualifier:";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // button1_Form1_load
+            // checkBox1
             // 
-            this.button1_Form1_load.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1_Form1_load.Location = new System.Drawing.Point(12, 12);
-            this.button1_Form1_load.Name = "button1_Form1_load";
-            this.button1_Form1_load.Size = new System.Drawing.Size(96, 22);
-            this.button1_Form1_load.TabIndex = 5;
-            this.button1_Form1_load.Text = "LOAD";
-            this.button1_Form1_load.UseVisualStyleBackColor = true;
-            this.button1_Form1_load.Click += new System.EventHandler(this.button1_Form1_load_Click);
+            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(14, 13);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(86, 21);
+            this.checkBox1.TabIndex = 42;
+            this.checkBox1.Text = "Delimiter:";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // textBox_Form1_qualifier
+            // 
+            this.textBox_Form1_qualifier.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox_Form1_qualifier.Enabled = false;
+            this.textBox_Form1_qualifier.Location = new System.Drawing.Point(252, 13);
+            this.textBox_Form1_qualifier.Name = "textBox_Form1_qualifier";
+            this.textBox_Form1_qualifier.Size = new System.Drawing.Size(34, 20);
+            this.textBox_Form1_qualifier.TabIndex = 40;
+            // 
+            // textBox1_Form1_delimiter
+            // 
+            this.textBox1_Form1_delimiter.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox1_Form1_delimiter.Enabled = false;
+            this.textBox1_Form1_delimiter.Location = new System.Drawing.Point(106, 13);
+            this.textBox1_Form1_delimiter.Name = "textBox1_Form1_delimiter";
+            this.textBox1_Form1_delimiter.Size = new System.Drawing.Size(34, 20);
+            this.textBox1_Form1_delimiter.TabIndex = 6;
             // 
             // button1_Form1_save
             // 
             this.button1_Form1_save.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1_Form1_save.Location = new System.Drawing.Point(405, 12);
+            this.button1_Form1_save.Location = new System.Drawing.Point(309, 13);
             this.button1_Form1_save.Name = "button1_Form1_save";
             this.button1_Form1_save.Size = new System.Drawing.Size(96, 22);
             this.button1_Form1_save.TabIndex = 4;
@@ -1459,27 +1486,24 @@
             this.button1_Form1_save.UseVisualStyleBackColor = true;
             this.button1_Form1_save.Click += new System.EventHandler(this.button1_Form1_save_Click);
             // 
-            // radioButton1_Form1_excel
+            // button1_Form1_load
             // 
-            this.radioButton1_Form1_excel.AutoSize = true;
-            this.radioButton1_Form1_excel.Location = new System.Drawing.Point(165, 14);
-            this.radioButton1_Form1_excel.Name = "radioButton1_Form1_excel";
-            this.radioButton1_Form1_excel.Size = new System.Drawing.Size(59, 17);
-            this.radioButton1_Form1_excel.TabIndex = 40;
-            this.radioButton1_Form1_excel.TabStop = true;
-            this.radioButton1_Form1_excel.Text = "EXCEL";
-            this.radioButton1_Form1_excel.UseVisualStyleBackColor = true;
+            this.button1_Form1_load.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1_Form1_load.Location = new System.Drawing.Point(30, 13);
+            this.button1_Form1_load.Name = "button1_Form1_load";
+            this.button1_Form1_load.Size = new System.Drawing.Size(96, 22);
+            this.button1_Form1_load.TabIndex = 5;
+            this.button1_Form1_load.Text = "LOAD";
+            this.button1_Form1_load.UseVisualStyleBackColor = true;
+            this.button1_Form1_load.Click += new System.EventHandler(this.button1_Form1_load_Click);
             // 
-            // radioButton1_Form1_text
+            // panel2
             // 
-            this.radioButton1_Form1_text.AutoSize = true;
-            this.radioButton1_Form1_text.Location = new System.Drawing.Point(288, 15);
-            this.radioButton1_Form1_text.Name = "radioButton1_Form1_text";
-            this.radioButton1_Form1_text.Size = new System.Drawing.Size(53, 17);
-            this.radioButton1_Form1_text.TabIndex = 41;
-            this.radioButton1_Form1_text.TabStop = true;
-            this.radioButton1_Form1_text.Text = "TEXT";
-            this.radioButton1_Form1_text.UseVisualStyleBackColor = true;
+            this.panel2.Controls.Add(this.button1_Form1_load);
+            this.panel2.Location = new System.Drawing.Point(572, 902);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(149, 47);
+            this.panel2.TabIndex = 6;
             // 
             // Form1
             // 
@@ -1487,6 +1511,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 951);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1_Form1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.dataGridView1);
@@ -1510,6 +1535,7 @@
             this.panel1_Form1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1639,10 +1665,12 @@
         private System.Windows.Forms.TextBox textBox1_CG_Primkey;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1_Form1_save;
-        private System.Windows.Forms.Label label1_Form1_loadPercent;
         private System.Windows.Forms.Button button1_Form1_load;
-        private System.Windows.Forms.RadioButton radioButton1_Form1_text;
-        private System.Windows.Forms.RadioButton radioButton1_Form1_excel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBox_Form1_qualifier;
+        private System.Windows.Forms.TextBox textBox1_Form1_delimiter;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
