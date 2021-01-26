@@ -35,41 +35,36 @@ namespace DataApp
             return dt;
 
         }
-
-        public static void DataTableToFlatFile(System.Data.DataTable dt, string dialogfilename, string extention, string delimiter, string qualifier)
+        
+        public static void DataTableToFlatFile(System.Data.DataTable dt, string dialogfilename, int extentionindex)
         {
-            MessageBox.Show(extention);
             var lines = new List<string>();
             string[] colNames = dt.Columns.Cast<DataColumn>().Select(col => col.ColumnName).ToArray();
-            
 
-            if (extention == ".csv")
+            switch(extentionindex)
             {
-                var header = string.Join(",", colNames.Select(name => $"\"{name}\""));
-                lines.Add(header);
+                //*.txt
+                case 1:
+                    var htxt = string.Join("|", colNames.Select(name => name));
+                    lines.Add(htxt);
 
-                var valuelines = dt.AsEnumerable().Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
-                lines.AddRange(valuelines);
+                    var valuelinestxt = dt.AsEnumerable().Select(row => string.Join("|", row.ItemArray.Select(val => val.ToString().Replace("\'","").Replace("|",""))));
+                    lines.AddRange(valuelinestxt);
 
-                File.WriteAllLines(dialogfilename, lines);
-                MessageBox.Show(Path.GetExtension(dialogfilename));
-            }
-            else if(extention == ".txt")
-            {
-                var header = string.Join(delimiter, colNames.Select(name => name));
-                lines.Add(header);
+                    File.WriteAllLines(dialogfilename + ".txt", lines);
+                    break;
 
-                var valuelines = dt.AsEnumerable().Select(row => string.Join(delimiter, row.ItemArray.Select(val => val.ToString())));
-                lines.AddRange(valuelines);
+                //*.csv
+                case 2:
+                    var hcsv = string.Join(",", colNames.Select(name => $"\"{name}\""));
+                    lines.Add(hcsv);
 
-                File.WriteAllLines(dialogfilename, lines);
-            }
-            else
-            {
-                MessageBox.Show($"No extention? {extention}");
-            }
-            
-            
+                    var valuelinescsv = dt.AsEnumerable().Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+                    lines.AddRange(valuelinescsv);
+
+                    File.WriteAllLines(dialogfilename + ".csv", lines);
+                    break;
+            }      
         }
     }
 }

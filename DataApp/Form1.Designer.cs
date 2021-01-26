@@ -150,13 +150,11 @@
             this.panel1_Form1 = new System.Windows.Forms.Panel();
             this.label1_Form1_fileName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox_Form1_qualifier = new System.Windows.Forms.TextBox();
-            this.textBox1_Form1_delimiter = new System.Windows.Forms.TextBox();
             this.button1_Form1_save = new System.Windows.Forms.Button();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1_CG_Barcode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
@@ -379,6 +377,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.textBox1_CG_Barcode);
+            this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.textBox3_CG_Primkey);
             this.groupBox4.Controls.Add(this.textBox2_CG_Primkey);
             this.groupBox4.Controls.Add(this.textBox1_CG_Primkey);
@@ -1421,64 +1421,16 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.textBox_Form1_qualifier);
-            this.panel1.Controls.Add(this.textBox1_Form1_delimiter);
             this.panel1.Controls.Add(this.button1_Form1_save);
-            this.panel1.Location = new System.Drawing.Point(804, 902);
+            this.panel1.Location = new System.Drawing.Point(1101, 902);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(418, 47);
+            this.panel1.Size = new System.Drawing.Size(121, 47);
             this.panel1.TabIndex = 5;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(162, 13);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(84, 21);
-            this.checkBox2.TabIndex = 43;
-            this.checkBox2.Text = "Qualifier:";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(14, 13);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 21);
-            this.checkBox1.TabIndex = 42;
-            this.checkBox1.Text = "Delimiter:";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // textBox_Form1_qualifier
-            // 
-            this.textBox_Form1_qualifier.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox_Form1_qualifier.Enabled = false;
-            this.textBox_Form1_qualifier.Location = new System.Drawing.Point(252, 13);
-            this.textBox_Form1_qualifier.Name = "textBox_Form1_qualifier";
-            this.textBox_Form1_qualifier.Size = new System.Drawing.Size(34, 20);
-            this.textBox_Form1_qualifier.TabIndex = 40;
-            // 
-            // textBox1_Form1_delimiter
-            // 
-            this.textBox1_Form1_delimiter.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1_Form1_delimiter.Enabled = false;
-            this.textBox1_Form1_delimiter.Location = new System.Drawing.Point(106, 13);
-            this.textBox1_Form1_delimiter.Name = "textBox1_Form1_delimiter";
-            this.textBox1_Form1_delimiter.Size = new System.Drawing.Size(34, 20);
-            this.textBox1_Form1_delimiter.TabIndex = 6;
             // 
             // button1_Form1_save
             // 
             this.button1_Form1_save.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1_Form1_save.Location = new System.Drawing.Point(309, 13);
+            this.button1_Form1_save.Location = new System.Drawing.Point(12, 13);
             this.button1_Form1_save.Name = "button1_Form1_save";
             this.button1_Form1_save.Size = new System.Drawing.Size(96, 22);
             this.button1_Form1_save.TabIndex = 4;
@@ -1504,6 +1456,23 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 47);
             this.panel2.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(415, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Divider:";
+            // 
+            // textBox1_CG_Barcode
+            // 
+            this.textBox1_CG_Barcode.Location = new System.Drawing.Point(477, 55);
+            this.textBox1_CG_Barcode.Name = "textBox1_CG_Barcode";
+            this.textBox1_CG_Barcode.Size = new System.Drawing.Size(36, 20);
+            this.textBox1_CG_Barcode.TabIndex = 40;
             // 
             // Form1
             // 
@@ -1534,7 +1503,6 @@
             this.panel1_Form1.ResumeLayout(false);
             this.panel1_Form1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1667,10 +1635,8 @@
         private System.Windows.Forms.Button button1_Form1_save;
         private System.Windows.Forms.Button button1_Form1_load;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox_Form1_qualifier;
-        private System.Windows.Forms.TextBox textBox1_Form1_delimiter;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1_CG_Barcode;
     }
 }
 

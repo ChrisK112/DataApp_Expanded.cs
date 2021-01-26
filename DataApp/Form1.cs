@@ -83,6 +83,7 @@ namespace DataApp
                 {
                     TabPage tabPage = (TabPage)tab;
 
+                    //Committed Giving
                     if (tabPage.Name == "CG_tabPage1")
                     {
                         foreach (Control group in tabPage.Controls)
@@ -138,6 +139,7 @@ namespace DataApp
         {
             TabPage tabPage = tabControl1.SelectedTab;
 
+            //Committed Giving
             if (tabControl1.SelectedTab == CG_tabPage1)
             {
                 dt_target = DataTableFactory.DtScheme(CG_tabPage1.Name);
@@ -146,10 +148,7 @@ namespace DataApp
                     select new
                     {
                         Primkey = textBox1_CG_Primkey.Text + textBox2_CG_Primkey.Text + row.Field<string>(comboBox1_CG_Primkey.Text) + textBox3_CG_Primkey.Text,
-
-                        
                         PersonRef = row.Field<string>(comboBox1_CG_PersonRef.Text),
-
                         ClientName = comboBox1_CG_ClientName.Text,
                         AddedBy = textBox1_CG_AddedBy.Text,
                         AddedDateTime = textBox1_CG_AddedDateTime.Text,
@@ -171,9 +170,9 @@ namespace DataApp
                         EmailAddress = row.Field<string>(comboBox1_CG_EmailAddress.Text),
                         AppealCode = textBox1_CG_AppealCode.Text,
                         PackageCode = row.Field<string>(comboBox1_CG_PackageCode.Text),
-                        Deceased = row.Field<string>(comboBox1_CG_Deceased.Text),
-                        Goneaway = row.Field<string>(comboBox1_CG_Goneaway.Text),
-                        NoFurtherCommunication = row.Field<string>(comboBox1_CG_NoFurtherCommunication.Text),
+                        //Deceased = row.Field<string>(comboBox1_CG_Deceased.Text),
+                        //Goneaway = row.Field<string>(comboBox1_CG_Goneaway.Text),
+                        //NoFurtherCommunication = row.Field<string>(comboBox1_CG_NoFurtherCommunication.Text),
                         PreloadedCAFNumber = row.Field<string>(comboBox1_CG_PreloadedCAFNumber.Text),
                         ColdURN = row.Field<string>(comboBox1_CG_ColdURN.Text),
                         ImportFile = textBox1_CG_ImportFile.Text,
@@ -182,12 +181,12 @@ namespace DataApp
                         RecordType = row.Field<string>(comboBox1_CG_RecordType.Text),
                         GiftAid = row.Field<string>(comboBox1_CG_GiftAid.Text),
                         Campaign = textBox1_CG_Campaign.Text,
-                        PhonePreference = row.Field<string>(comboBox1_CG_PhonePreference.Text),
-                        MailPreference = row.Field<string>(comboBox1_CG_MailPreference.Text),
-                        EmailPreference = row.Field<string>(comboBox1_CG_EmailPreference.Text),
-                        SMSPreference = row.Field<string>(comboBox1_CG_SMSPreference.Text),
-                        ThirdPartyPreference = row.Field<string>(comboBox1_CG_ThirdPartyPreference.Text),
-                        Barcode = row.Field<string>(comboBox1_CG_Barcode.Text) + row.Field<string>(comboBox2_CG_Barcode.Text) + row.Field<string>(comboBox3_CG_Barcode.Text),
+                        //PhonePreference = row.Field<string>(comboBox1_CG_PhonePreference.Text),
+                        //MailPreference = row.Field<string>(comboBox1_CG_MailPreference.Text),
+                        //EmailPreference = row.Field<string>(comboBox1_CG_EmailPreference.Text),
+                        //SMSPreference = row.Field<string>(comboBox1_CG_SMSPreference.Text),
+                        //ThirdPartyPreference = row.Field<string>(comboBox1_CG_ThirdPartyPreference.Text),
+                        Barcode = row.Field<string>(comboBox1_CG_Barcode.Text) + textBox1_CG_Barcode.Text + row.Field<string>(comboBox2_CG_Barcode.Text) + textBox1_CG_Barcode.Text + row.Field<string>(comboBox3_CG_Barcode.Text),
                         ClientData1 = row.Field<string>(comboBox1_CG_ClientData1.Text),
                         ClientData2 = row.Field<string>(comboBox1_CG_ClientData2.Text),
                         ClientData3 = row.Field<string>(comboBox1_CG_ClientData3.Text),
@@ -225,9 +224,9 @@ namespace DataApp
                         row.EmailAddress,
                         row.AppealCode,
                         row.PackageCode,
-                        row.Deceased,
-                        row.Goneaway,
-                        row.NoFurtherCommunication,
+                        /*row.Deceased*/ "0",
+                        /*row.Goneaway*/ "0",
+                        /*row.NoFurtherCommunication*/ "0",
                         row.PreloadedCAFNumber,
                         row.ColdURN,
                         row.ImportFile,
@@ -236,11 +235,11 @@ namespace DataApp
                         row.RecordType,
                         row.GiftAid,
                         row.Campaign,
-                        row.PhonePreference,
-                        row.MailPreference,
-                        row.EmailPreference,
-                        row.SMSPreference,
-                        row.ThirdPartyPreference,
+                        /*row.PhonePreference*/ "Unknown",
+                        /*row.MailPreference*/ "Unknown",
+                        /*row.EmailPreference*/ "Unknown",
+                        /*row.SMSPreference*/ "Unknown",
+                        /*row.ThirdPartyPreference*/ "Unknown",
                         row.Barcode,
                         row.ClientData1,
                         row.ClientData2,
@@ -258,37 +257,26 @@ namespace DataApp
                 dataGridView1.DataSource = dt_target;            
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            textBox1_Form1_delimiter.Enabled = true;
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             textBox1_Form1_filePath.Enabled = true;
         }
 
         private void button1_Form1_save_Click(object sender, EventArgs e)
-        {
-            string delimiter= "";
-            string qualifier = "";
-            string saveas = "";
-            string extention = "";
-
+        {            
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "Text(Tab delimited) (*.txt) | *.txt | CSV (Comma delimited) (*.csv) | *.csv ";
                 sfd.InitialDirectory = Path.GetDirectoryName(sourceFile);
-                sfd.AddExtension = true;
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    delimiter = textBox1_Form1_delimiter.Text;
-                    qualifier = textBox_Form1_qualifier.Text;
-                    saveas = sfd.FileName;
-                    extention = Path.GetExtension(sfd.FileName);  
+                    string saveas = sfd.FileName;
+                    int extentionindex = sfd.FilterIndex;
+
+                    DataHandler.DataTableToFlatFile(dt_target, saveas, extentionindex);
                 }
             }
-            DataHandler.DataTableToFlatFile(dt_target, saveas, extention, delimiter, qualifier);
+            
         }
 
         
