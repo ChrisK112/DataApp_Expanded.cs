@@ -15,11 +15,19 @@ namespace DataApp
     {
         public static char delimiter_f2;
         static string filepath = Form1.sourceFile;
-        public static DataTable temp_dt = DataHandler.FlatToDataTableFirst10(filepath);
+        public static DataTable temp_dt = DataHandler.FlatToDataTable(filepath, maxrownumber: 10);
         public Form2()
         {
             InitializeComponent();
-            dataGridView1_Form2.DataSource = temp_dt;
+            try
+            {
+                dataGridView1_Form2.DataSource = temp_dt;
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Please select a file");
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,21 +64,21 @@ namespace DataApp
         private void radioButton1_Form2_SemiColon_CheckedChanged(object sender, EventArgs e)
         {
             delimiter_f2 = ';';
-            temp_dt = DataHandler.FlatToDataTableFirst10(filepath, delimiter_f2);
+            temp_dt = DataHandler.FlatToDataTable(filepath, delimiter_f2);
             dataGridView1_Form2.DataSource = temp_dt;
         }
 
         private void radioButton1_Form2_Space_CheckedChanged(object sender, EventArgs e)
         {
             delimiter_f2 = ' ';
-            temp_dt = DataHandler.FlatToDataTableFirst10(filepath, delimiter_f2);
+            temp_dt = DataHandler.FlatToDataTable(filepath, delimiter_f2);
             dataGridView1_Form2.DataSource = temp_dt;
         }
 
         private void radioButton1_form2_Comma_CheckedChanged(object sender, EventArgs e)
         {
             delimiter_f2 = ',';
-            temp_dt = DataHandler.FlatToDataTableFirst10(filepath, delimiter_f2);
+            temp_dt = DataHandler.FlatToDataTable(filepath, delimiter_f2);
             dataGridView1_Form2.DataSource = temp_dt;
             dataGridView1_Form2.AutoSize = true;
         }
@@ -81,7 +89,7 @@ namespace DataApp
             if (textBox1_Form2_Other.Text.Length > 0)
             {
                 delimiter_f2 = Convert.ToChar(textBox1_Form2_Other.Text);
-                temp_dt = DataHandler.FlatToDataTableFirst10(Form1.sourceFile, delimiter_f2);
+                temp_dt = DataHandler.FlatToDataTable(Form1.sourceFile, delimiter_f2);
                 dataGridView1_Form2.DataSource = temp_dt;
             }
         }
@@ -98,7 +106,7 @@ namespace DataApp
             {
                 radioButton1_Form2_Other.Checked = true;
                 delimiter_f2 = Convert.ToChar(textBox1_Form2_Other.Text);
-                temp_dt = DataHandler.FlatToDataTableFirst10(Form1.sourceFile, delimiter_f2);
+                temp_dt = DataHandler.FlatToDataTable(Form1.sourceFile, delimiter_f2);
                 dataGridView1_Form2.DataSource = temp_dt;
             }
         }

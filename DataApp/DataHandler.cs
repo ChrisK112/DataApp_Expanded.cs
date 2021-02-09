@@ -13,24 +13,16 @@ namespace DataApp
 {
     class DataHandler
     {
-        public static System.Data.DataTable FlatToDataTable(string filepath, char delimiter = ',')
+        public static System.Data.DataTable FlatToDataTable(string filepath, char delimiter = ',', int maxrownumber = 0)
         {
             GenericParserAdapter parserAdapter = new GenericParserAdapter();
             parserAdapter.ColumnDelimiter = delimiter;
             parserAdapter.SetDataSource(filepath);
             parserAdapter.FirstRowHasHeader = true;
-            System.Data.DataTable dt = parserAdapter.GetDataTable();
-            return dt;
-
-        }
-
-        public static System.Data.DataTable FlatToDataTableFirst10(string filepath, char delimiter = ',')
-        {
-            GenericParserAdapter parserAdapter = new GenericParserAdapter();
-            parserAdapter.ColumnDelimiter = delimiter;
-            parserAdapter.SetDataSource(filepath);
-            parserAdapter.FirstRowHasHeader = true;
-            parserAdapter.MaxRows = 10;
+            if( maxrownumber != 0)
+            {
+                parserAdapter.MaxRows = maxrownumber;
+            }
             System.Data.DataTable dt = parserAdapter.GetDataTable();
             return dt;
 
@@ -48,7 +40,7 @@ namespace DataApp
                     var htxt = string.Join("|", colNames.Select(name => name));
                     lines.Add(htxt);
 
-                    var valuelinestxt = dt.AsEnumerable().Select(row => string.Join("|", row.ItemArray.Select(val => val.ToString().Replace("\'","").Replace("|",""))));
+                    var valuelinestxt = dt.AsEnumerable().Select(row => string.Join("|", row.ItemArray.Select(val => val.ToString().Replace("\'","").Replace("|","").Replace("   "," ").Replace("  "," "))));
                     lines.AddRange(valuelinestxt);
 
                     File.WriteAllLines(dialogfilename + ".txt", lines);

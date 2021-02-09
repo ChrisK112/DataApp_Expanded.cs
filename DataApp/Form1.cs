@@ -34,7 +34,7 @@ namespace DataApp
         //Browse File
         private void button1_Form1_search_Click(object sender, EventArgs e)
         {
-            textBox1_Form1_filePath.Clear();
+            ofd.Filter = "Text(Tab delimited) (*.txt) |*.txt| CSV (Comma delimited) (*.csv) |*.csv";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 sourceFile = ofd.FileName;
@@ -42,9 +42,7 @@ namespace DataApp
                 Form2 form2 = new Form2();
                 form2.ShowDialog();
                 fileName = ofd.SafeFileName;
-            }
-            //Select delimiter
-            
+            }            
         }
 
         private void button1_Form1_import_Click(object sender, EventArgs e)
@@ -56,72 +54,81 @@ namespace DataApp
                 dt.Columns.Add("                -", typeof(string));
                 DataTable temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
 
-                //Comboboxes
-                string[] colNames = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
-                string[] colNamesWithBlank = new string[temp_dt.Columns.Count + 1];
-                colNamesWithBlank[0] = "                -";/*Add an extra empty option to the list*/
-                for(int n = 1; n < temp_dt.Columns.Count; n++)
+                try
                 {
-                    colNamesWithBlank[n] = colNames[n - 1];
-                }
-
-                Dictionary<string, string> CharityNamesPairs = new Dictionary<string, string>();
-                foreach(string key in ConfigurationManager.AppSettings)
-                {
-                    CharityNamesPairs.Add(key.ToString(), ConfigurationManager.AppSettings[key].ToString());
-                }
-
-                //Add Data to Grid and ComboBoxes
-                dataGridView1.Columns.Clear();
-                dataGridView1.DataSource = temp_dt;
-                if (dataGridView1.Columns.Count < 13)
-                {
-                    dataGridView1.AutoSize = true;
-                }
-
-                foreach (Control tab in tabControl1.TabPages)
-                {
-                    TabPage tabPage = (TabPage)tab;
-
-                    //Committed Giving
-                    if (tabPage.Name == "CG_tabPage1")
+                    //Comboboxes
+                    string[] colNames = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
+                    string[] colNamesWithBlank = new string[temp_dt.Columns.Count + 1];
+                    colNamesWithBlank[0] = "                -";/*Add an extra empty option to the list*/
+                    for (int n = 1; n < temp_dt.Columns.Count; n++)
                     {
-                        foreach (Control group in tabPage.Controls)
+                        colNamesWithBlank[n] = colNames[n - 1];
+                    }
+
+                    Dictionary<string, string> CharityNamesPairs = new Dictionary<string, string>();
+                    foreach (string key in ConfigurationManager.AppSettings)
+                    {
+                        CharityNamesPairs.Add(key.ToString(), ConfigurationManager.AppSettings[key].ToString());
+                    }
+
+                    //Add Data to Grid and ComboBoxes
+                    dataGridView1.Columns.Clear();
+                    dataGridView1.DataSource = temp_dt;
+                    if (dataGridView1.Columns.Count < 13)
+                    {
+                        dataGridView1.AutoSize = true;
+                    }
+
+                    foreach (Control tab in tabControl1.TabPages)
+                    {
+                        TabPage tabPage = (TabPage)tab;
+
+                        //Committed Giving
+                        if (tabPage.Name == "CG_tabPage1")
                         {
-                            foreach (Control item in group.Controls)
+                            foreach (Control group in tabPage.Controls)
                             {
-                                if (item.GetType().Name == "ComboBox")
+                                foreach (Control item in group.Controls)
                                 {
-                                    ComboBox comboBox = (ComboBox)item;
-                                    if (item.Name == "comboBox1_CG_ClientName")
+                                    if (item.GetType().Name == "ComboBox")
                                     {
-                                        comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
-                                        comboBox.DataSource = new BindingSource(CharityNamesPairs, null);
-                                        comboBox.DisplayMember = "Value";
-                                        comboBox.ValueMember = "Key";
-                                    }
-                                    else
-                                    {
-                                        comboBox.BindingContext = new BindingContext();
-                                        comboBox.DataSource = colNamesWithBlank;
-                                        comboBox.SelectedIndex = 0;
+                                        ComboBox comboBox = (ComboBox)item;
+                                        if (item.Name == "comboBox1_CG_ClientName")
+                                        {
+                                            comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
+                                            comboBox.DataSource = new BindingSource(CharityNamesPairs, null);
+                                            comboBox.DisplayMember = "Value";
+                                            comboBox.ValueMember = "Key";
+                                        }
+                                        else
+                                        {
+                                            comboBox.BindingContext = new BindingContext();
+                                            comboBox.DataSource = colNamesWithBlank;
+                                            comboBox.SelectedIndex = 0;
+                                        }
                                     }
                                 }
                             }
                         }
+
                     }
-                    
+                    //Default TextBox values
+                    textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    textBox1_CG_AddedBy.Text = "Admin";
+                    textBox1_CG_Primkey.Text = "";
                 }
-                //Default TextBox values
-                textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                textBox1_CG_AddedBy.Text = "Admin";
-                textBox1_CG_Primkey.Text = "";
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch(Exception ex)
+            catch (System.InvalidOperationException)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("The file you try to import does not contain any row");
             }
+            
         }
 
         private void textBox1_CG_AppealCode_TextChanged(object sender, EventArgs e)
@@ -159,7 +166,7 @@ namespace DataApp
                         Salutation = row.Field<string>(comboBox1_CG_Salutation.Text),
                         AddressLine1 = row.Field<string>(comboBox1_CG_AddressLine1.Text),
                         AddressLine2 = row.Field<string>(comboBox1_CG_AddressLine2.Text),
-                        AddressLine3 = row.Field<string>(comboBox1_CG_AddressLine3.Text),
+                        AddressLine3 = row.Field<string>(comboBox1_CG_AddressLine3.Text) + " " + row.Field<string>(comboBox1_CG_AddressLine4.Text) + " " + row.Field<string>(comboBox1_CG_AddressLine5.Text),
                         TownCity = row.Field<string>(comboBox1_CG_TownCity.Text),
                         County = row.Field<string>(comboBox1_CG_County.Text),
                         Postcode = row.Field<string>(comboBox1_CG_Postcode.Text),
@@ -170,9 +177,6 @@ namespace DataApp
                         EmailAddress = row.Field<string>(comboBox1_CG_EmailAddress.Text),
                         AppealCode = textBox1_CG_AppealCode.Text,
                         PackageCode = row.Field<string>(comboBox1_CG_PackageCode.Text),
-                        //Deceased = row.Field<string>(comboBox1_CG_Deceased.Text),
-                        //Goneaway = row.Field<string>(comboBox1_CG_Goneaway.Text),
-                        //NoFurtherCommunication = row.Field<string>(comboBox1_CG_NoFurtherCommunication.Text),
                         PreloadedCAFNumber = row.Field<string>(comboBox1_CG_PreloadedCAFNumber.Text),
                         ColdURN = row.Field<string>(comboBox1_CG_ColdURN.Text),
                         ImportFile = textBox1_CG_ImportFile.Text,
@@ -181,11 +185,6 @@ namespace DataApp
                         RecordType = row.Field<string>(comboBox1_CG_RecordType.Text),
                         GiftAid = row.Field<string>(comboBox1_CG_GiftAid.Text),
                         Campaign = textBox1_CG_Campaign.Text,
-                        //PhonePreference = row.Field<string>(comboBox1_CG_PhonePreference.Text),
-                        //MailPreference = row.Field<string>(comboBox1_CG_MailPreference.Text),
-                        //EmailPreference = row.Field<string>(comboBox1_CG_EmailPreference.Text),
-                        //SMSPreference = row.Field<string>(comboBox1_CG_SMSPreference.Text),
-                        //ThirdPartyPreference = row.Field<string>(comboBox1_CG_ThirdPartyPreference.Text),
                         Barcode = row.Field<string>(comboBox1_CG_Barcode.Text) + textBox1_CG_Barcode.Text + row.Field<string>(comboBox2_CG_Barcode.Text) + textBox1_CG_Barcode.Text + row.Field<string>(comboBox3_CG_Barcode.Text),
                         ClientData1 = row.Field<string>(comboBox1_CG_ClientData1.Text),
                         ClientData2 = row.Field<string>(comboBox1_CG_ClientData2.Text),
@@ -266,7 +265,7 @@ namespace DataApp
         {            
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
-                sfd.Filter = "Text(Tab delimited) (*.txt) | *.txt | CSV (Comma delimited) (*.csv) | *.csv ";
+                sfd.Filter = "Text(Tab delimited) (*.txt) |*.txt| CSV (Comma delimited) (*.csv) |*.csv";
                 sfd.InitialDirectory = Path.GetDirectoryName(sourceFile);
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -278,7 +277,5 @@ namespace DataApp
             }
             
         }
-
-        
     }
 }
