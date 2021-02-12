@@ -40,7 +40,7 @@ namespace DataApp
                     var htxt = string.Join("|", colNames.Select(name => name));
                     lines.Add(htxt);
 
-                    var valuelinestxt = dt.AsEnumerable().Select(row => string.Join("|", row.ItemArray.Select(val => val.ToString().Replace("\'","").Replace("|","").Replace("   "," ").Replace("  "," "))));
+                    var valuelinestxt = dt.AsEnumerable().Select(row => string.Join("|", row.ItemArray.Select(val => val.ToString().Replace("\'","").Replace("|","").Replace("   "," ").Replace("  "," ").Replace("\"",""))));
                     lines.AddRange(valuelinestxt);
 
                     File.WriteAllLines(dialogfilename + ".txt", lines);
@@ -51,7 +51,7 @@ namespace DataApp
                     var hcsv = string.Join(",", colNames.Select(name => $"\"{name}\""));
                     lines.Add(hcsv);
 
-                    var valuelinescsv = dt.AsEnumerable().Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+                    var valuelinescsv = dt.AsEnumerable().Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val.ToString().Replace("\'", "").Replace("|", "").Replace("   ", " ").Replace("  ", " ").Replace("\"", "")}\"")));
                     lines.AddRange(valuelinescsv);
 
                     File.WriteAllLines(dialogfilename + ".csv", lines);

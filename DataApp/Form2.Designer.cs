@@ -63,7 +63,7 @@
             this.button1_Form2_OK.TabIndex = 49;
             this.button1_Form2_OK.Text = "OK";
             this.button1_Form2_OK.UseVisualStyleBackColor = true;
-            this.button1_Form2_OK.Click += new System.EventHandler(this.button1_Click);
+            this.button1_Form2_OK.Click += new System.EventHandler(this.button1_Form2_OK_Click);
             // 
             // radioButton1_Form2_Other
             // 

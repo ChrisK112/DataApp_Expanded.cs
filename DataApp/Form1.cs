@@ -39,96 +39,101 @@ namespace DataApp
             {
                 sourceFile = ofd.FileName;
                 textBox1_Form1_filePath.Text = sourceFile;
-                Form2 form2 = new Form2();
-                form2.ShowDialog();
                 fileName = ofd.SafeFileName;
+                Form2.filepath = sourceFile;
             }            
         }
 
         private void button1_Form1_import_Click(object sender, EventArgs e)
         {
+            DataTable temp_dt = new DataTable();
+
             try
             {
+                Form2 form2 = new Form2();
+                form2.ShowDialog();
                 delimiter_f1 = Form2.delimiter_f2;
                 dt = DataHandler.FlatToDataTable(sourceFile, delimiter_f1);
                 dt.Columns.Add("                -", typeof(string));
-                DataTable temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
-
-                try
-                {
-                    //Comboboxes
-                    string[] colNames = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
-                    string[] colNamesWithBlank = new string[temp_dt.Columns.Count + 1];
-                    colNamesWithBlank[0] = "                -";/*Add an extra empty option to the list*/
-                    for (int n = 1; n < temp_dt.Columns.Count; n++)
-                    {
-                        colNamesWithBlank[n] = colNames[n - 1];
-                    }
-
-                    Dictionary<string, string> CharityNamesPairs = new Dictionary<string, string>();
-                    foreach (string key in ConfigurationManager.AppSettings)
-                    {
-                        CharityNamesPairs.Add(key.ToString(), ConfigurationManager.AppSettings[key].ToString());
-                    }
-
-                    //Add Data to Grid and ComboBoxes
-                    dataGridView1.Columns.Clear();
-                    dataGridView1.DataSource = temp_dt;
-                    if (dataGridView1.Columns.Count < 13)
-                    {
-                        dataGridView1.AutoSize = true;
-                    }
-
-                    foreach (Control tab in tabControl1.TabPages)
-                    {
-                        TabPage tabPage = (TabPage)tab;
-
-                        //Committed Giving
-                        if (tabPage.Name == "CG_tabPage1")
-                        {
-                            foreach (Control group in tabPage.Controls)
-                            {
-                                foreach (Control item in group.Controls)
-                                {
-                                    if (item.GetType().Name == "ComboBox")
-                                    {
-                                        ComboBox comboBox = (ComboBox)item;
-                                        if (item.Name == "comboBox1_CG_ClientName")
-                                        {
-                                            comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
-                                            comboBox.DataSource = new BindingSource(CharityNamesPairs, null);
-                                            comboBox.DisplayMember = "Value";
-                                            comboBox.ValueMember = "Key";
-                                        }
-                                        else
-                                        {
-                                            comboBox.BindingContext = new BindingContext();
-                                            comboBox.DataSource = colNamesWithBlank;
-                                            comboBox.SelectedIndex = 0;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-                    //Default TextBox values
-                    textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                    textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                    textBox1_CG_AddedBy.Text = "Admin";
-                    textBox1_CG_Primkey.Text = "";
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+                temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
+                    
+            }
+            catch (System.ArgumentNullException)
+            {
+                MessageBox.Show("Please select a file");
             }
             catch (System.InvalidOperationException)
             {
                 MessageBox.Show("The file you try to import does not contain any row");
             }
-            
+
+            //DATA SOURCES
+            string[] colNames = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
+            string[] colNamesWithBlank = new string[temp_dt.Columns.Count + 1];
+            colNamesWithBlank[0] = "                -";/*Add an extra empty option to the list*/
+            for (int n = 1; n < temp_dt.Columns.Count; n++)
+            {
+                colNamesWithBlank[n] = colNames[n - 1];
+            }
+
+            Dictionary<string, string> CharityNamesPairs = new Dictionary<string, string>();
+            foreach (string key in ConfigurationManager.AppSettings)
+            {
+                CharityNamesPairs.Add(key.ToString(), ConfigurationManager.AppSettings[key].ToString());
+            }
+
+            //DATA SOURCES TO GRID AND COMBOBOXES
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = temp_dt;
+            if (dataGridView1.Columns.Count < 13)
+            {
+                dataGridView1.AutoSize = true;
+            }
+
+            foreach (Control tab in tabControl1.TabPages)
+            {
+                TabPage tabPage = (TabPage)tab;
+
+                //COMMITED GIVING
+                if (tabPage.Name == "CG_tabPage1")
+                {
+                    foreach (Control group in tabPage.Controls)
+                    {
+                        foreach (Control item in group.Controls)
+                        {
+                            if (item.GetType().Name == "ComboBox")
+                            {
+                                ComboBox comboBox = (ComboBox)item;
+                                if (item.Name == "comboBox1_CG_ClientName")
+                                {
+                                    comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
+                                    comboBox.DataSource = new BindingSource(CharityNamesPairs, null);
+                                    comboBox.DisplayMember = "Value";
+                                    comboBox.ValueMember = "Key";
+                                }
+                                else
+                                {
+                                    comboBox.BindingContext = new BindingContext();
+                                    comboBox.DataSource = colNamesWithBlank;
+                                    comboBox.SelectedIndex = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            //DEFAULT TEXTBOX VALUES
+            textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            textBox1_CG_AddedBy.Text = "Admin";
+            textBox1_CG_Primkey.Text = "";
+
+            //RESTORE DEFAULT VALUES
+            sourceFile = null;
+            fileName = null;
+            textBox1_Form1_filePath.Text = sourceFile;
+            Form2.filepath = null;
         }
 
         private void textBox1_CG_AppealCode_TextChanged(object sender, EventArgs e)
@@ -146,7 +151,7 @@ namespace DataApp
         {
             TabPage tabPage = tabControl1.SelectedTab;
 
-            //Committed Giving
+            //COMMITTED GIVING
             if (tabControl1.SelectedTab == CG_tabPage1)
             {
                 dt_target = DataTableFactory.DtScheme(CG_tabPage1.Name);

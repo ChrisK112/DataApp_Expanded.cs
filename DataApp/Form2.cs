@@ -14,23 +14,16 @@ namespace DataApp
     public partial class Form2 : Form
     {
         public static char delimiter_f2;
-        static string filepath = Form1.sourceFile;
-        public static DataTable temp_dt = DataHandler.FlatToDataTable(filepath, maxrownumber: 10);
+        public static string filepath = Form1.sourceFile;
+        public static DataTable temp_dt;
         public Form2()
         {
             InitializeComponent();
-            try
-            {
-                dataGridView1_Form2.DataSource = temp_dt;
-            }
-            catch(Exception)
-            {
-                MessageBox.Show("Please select a file");
-            }
-            
+            temp_dt = DataHandler.FlatToDataTable(filepath, maxrownumber: 10);
+            dataGridView1_Form2.DataSource = temp_dt;            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Form2_OK_Click(object sender, EventArgs e)
         {
             if (radioButton1_Form2_SemiColon.Checked)
             {
