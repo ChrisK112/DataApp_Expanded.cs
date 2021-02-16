@@ -20,7 +20,7 @@ namespace DataApp
         {
             InitializeComponent();
             temp_dt = DataHandler.FlatToDataTable(filepath, maxrownumber: 10);
-            dataGridView1_Form2.DataSource = temp_dt;            
+            dataGridView1_Form2.DataSource = temp_dt;
         }
 
         private void button1_Form2_OK_Click(object sender, EventArgs e)

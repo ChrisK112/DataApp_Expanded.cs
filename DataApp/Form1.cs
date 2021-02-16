@@ -22,7 +22,7 @@ namespace DataApp
             InitializeComponent();
         }
 
-        //Global Variables
+        //GLOBAL VARIABLES
         OpenFileDialog ofd = new OpenFileDialog();
         public static string sourceFile;
         public static string fileName;
@@ -31,7 +31,6 @@ namespace DataApp
         char delimiter_f1;
         
 
-        //Browse File
         private void button1_Form1_search_Click(object sender, EventArgs e)
         {
             ofd.Filter = "Text(Tab delimited) (*.txt) |*.txt| CSV (Comma delimited) (*.csv) |*.csv";
@@ -89,7 +88,7 @@ namespace DataApp
             {
                 dataGridView1.AutoSize = true;
             }
-
+            
             foreach (Control tab in tabControl1.TabPages)
             {
                 TabPage tabPage = (TabPage)tab;
@@ -123,13 +122,14 @@ namespace DataApp
                 }
 
             }
-            //DEFAULT TEXTBOX VALUES
+            //DEFAULT VALUES
             textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
             textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
             textBox1_CG_AddedBy.Text = "Admin";
             textBox1_CG_Primkey.Text = "";
+            label2_CG_NumberOfRecords.Text = dt.Rows.Count.ToString();
 
-            //RESTORE DEFAULT VALUES
+            //CLEAN GLOBAL VALUES
             sourceFile = null;
             fileName = null;
             textBox1_Form1_filePath.Text = sourceFile;
@@ -258,7 +258,18 @@ namespace DataApp
                         );
                 }
             }
-                dataGridView1.DataSource = dt_target;            
+
+            if(checkBox1_CG_duplicates.Checked)
+            {
+                DataTable dt_unique = dt_target.AsEnumerable().GroupBy(x => x.Field<string>("Primkey")).Select(y => y.First()).CopyToDataTable();
+                dataGridView1.DataSource = dt_unique;
+                label2_CG_NumberOfRecords.Text = dt_unique.Rows.Count.ToString();
+            }
+            else
+            {
+                dataGridView1.DataSource = dt_target;
+                label2_CG_NumberOfRecords.Text = dt_target.Rows.Count.ToString();
+            }                            
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)

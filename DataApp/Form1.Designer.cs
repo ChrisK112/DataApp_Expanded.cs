@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1_Form1_search = new System.Windows.Forms.Button();
             this.textBox1_Form1_filePath = new System.Windows.Forms.TextBox();
             this.button1_Form1_import = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.CG_tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox1_CG_duplicates = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.comboBox1_CG_ClientName = new System.Windows.Forms.ComboBox();
             this.textBox1_CG_Campaign = new System.Windows.Forms.TextBox();
@@ -48,6 +51,8 @@
             this.label1_CG_AddedBy = new System.Windows.Forms.Label();
             this.label1_CG_ClientName = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label2_CG_NumberOfRecords = new System.Windows.Forms.Label();
+            this.label1_CG_NumberOfRecords = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox1_CG_Barcode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -143,13 +148,17 @@
             this.button1_Form1_save = new System.Windows.Forms.Button();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.panel1_Form1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -212,6 +221,7 @@
             // 
             // CG_tabPage1
             // 
+            this.CG_tabPage1.Controls.Add(this.groupBox3);
             this.CG_tabPage1.Controls.Add(this.groupBox5);
             this.CG_tabPage1.Controls.Add(this.groupBox6);
             this.CG_tabPage1.Controls.Add(this.groupBox4);
@@ -224,6 +234,27 @@
             this.CG_tabPage1.TabIndex = 0;
             this.CG_tabPage1.Text = "Committed giving";
             this.CG_tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBox1_CG_duplicates);
+            this.groupBox3.Location = new System.Drawing.Point(314, 106);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(226, 240);
+            this.groupBox3.TabIndex = 43;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "groupBox3";
+            // 
+            // checkBox1_CG_duplicates
+            // 
+            this.checkBox1_CG_duplicates.AutoSize = true;
+            this.checkBox1_CG_duplicates.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1_CG_duplicates.Location = new System.Drawing.Point(14, 29);
+            this.checkBox1_CG_duplicates.Name = "checkBox1_CG_duplicates";
+            this.checkBox1_CG_duplicates.Size = new System.Drawing.Size(149, 21);
+            this.checkBox1_CG_duplicates.TabIndex = 12;
+            this.checkBox1_CG_duplicates.Text = "Remove Duplicates";
+            this.checkBox1_CG_duplicates.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -241,7 +272,7 @@
             this.groupBox5.Controls.Add(this.label1_CG_ClientName);
             this.groupBox5.Location = new System.Drawing.Point(6, 106);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(534, 241);
+            this.groupBox5.Size = new System.Drawing.Size(291, 241);
             this.groupBox5.TabIndex = 44;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
@@ -258,21 +289,21 @@
             // 
             // textBox1_CG_Campaign
             // 
-            this.textBox1_CG_Campaign.Location = new System.Drawing.Point(150, 169);
+            this.textBox1_CG_Campaign.Location = new System.Drawing.Point(150, 167);
             this.textBox1_CG_Campaign.Name = "textBox1_CG_Campaign";
             this.textBox1_CG_Campaign.Size = new System.Drawing.Size(112, 20);
             this.textBox1_CG_Campaign.TabIndex = 53;
             // 
             // textBox1_CG_ImportFile
             // 
-            this.textBox1_CG_ImportFile.Location = new System.Drawing.Point(150, 138);
+            this.textBox1_CG_ImportFile.Location = new System.Drawing.Point(150, 139);
             this.textBox1_CG_ImportFile.Name = "textBox1_CG_ImportFile";
             this.textBox1_CG_ImportFile.Size = new System.Drawing.Size(112, 20);
             this.textBox1_CG_ImportFile.TabIndex = 52;
             // 
             // textBox1_CG_AppealCode
             // 
-            this.textBox1_CG_AppealCode.Location = new System.Drawing.Point(150, 112);
+            this.textBox1_CG_AppealCode.Location = new System.Drawing.Point(150, 111);
             this.textBox1_CG_AppealCode.Name = "textBox1_CG_AppealCode";
             this.textBox1_CG_AppealCode.Size = new System.Drawing.Size(112, 20);
             this.textBox1_CG_AppealCode.TabIndex = 51;
@@ -281,7 +312,7 @@
             // textBox1_CG_AddedDateTime
             // 
             this.textBox1_CG_AddedDateTime.Enabled = false;
-            this.textBox1_CG_AddedDateTime.Location = new System.Drawing.Point(150, 86);
+            this.textBox1_CG_AddedDateTime.Location = new System.Drawing.Point(150, 83);
             this.textBox1_CG_AddedDateTime.Name = "textBox1_CG_AddedDateTime";
             this.textBox1_CG_AddedDateTime.Size = new System.Drawing.Size(112, 20);
             this.textBox1_CG_AddedDateTime.TabIndex = 50;
@@ -289,7 +320,7 @@
             // textBox1_CG_AddedBy
             // 
             this.textBox1_CG_AddedBy.Enabled = false;
-            this.textBox1_CG_AddedBy.Location = new System.Drawing.Point(150, 56);
+            this.textBox1_CG_AddedBy.Location = new System.Drawing.Point(150, 55);
             this.textBox1_CG_AddedBy.Name = "textBox1_CG_AddedBy";
             this.textBox1_CG_AddedBy.Size = new System.Drawing.Size(112, 20);
             this.textBox1_CG_AddedBy.TabIndex = 49;
@@ -298,7 +329,7 @@
             // 
             this.label1_CG_Campaign.AutoSize = true;
             this.label1_CG_Campaign.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_Campaign.Location = new System.Drawing.Point(9, 170);
+            this.label1_CG_Campaign.Location = new System.Drawing.Point(6, 168);
             this.label1_CG_Campaign.Name = "label1_CG_Campaign";
             this.label1_CG_Campaign.Size = new System.Drawing.Size(71, 17);
             this.label1_CG_Campaign.TabIndex = 47;
@@ -308,7 +339,7 @@
             // 
             this.label1_CG_AppealCode.AutoSize = true;
             this.label1_CG_AppealCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_AppealCode.Location = new System.Drawing.Point(9, 112);
+            this.label1_CG_AppealCode.Location = new System.Drawing.Point(6, 112);
             this.label1_CG_AppealCode.Name = "label1_CG_AppealCode";
             this.label1_CG_AppealCode.Size = new System.Drawing.Size(85, 17);
             this.label1_CG_AppealCode.TabIndex = 45;
@@ -318,7 +349,7 @@
             // 
             this.label1_CG_ImportFile.AutoSize = true;
             this.label1_CG_ImportFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ImportFile.Location = new System.Drawing.Point(9, 138);
+            this.label1_CG_ImportFile.Location = new System.Drawing.Point(6, 140);
             this.label1_CG_ImportFile.Name = "label1_CG_ImportFile";
             this.label1_CG_ImportFile.Size = new System.Drawing.Size(69, 17);
             this.label1_CG_ImportFile.TabIndex = 43;
@@ -328,7 +359,7 @@
             // 
             this.label1_CG_AddedDateTime.AutoSize = true;
             this.label1_CG_AddedDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_AddedDateTime.Location = new System.Drawing.Point(8, 86);
+            this.label1_CG_AddedDateTime.Location = new System.Drawing.Point(6, 84);
             this.label1_CG_AddedDateTime.Name = "label1_CG_AddedDateTime";
             this.label1_CG_AddedDateTime.Size = new System.Drawing.Size(110, 17);
             this.label1_CG_AddedDateTime.TabIndex = 20;
@@ -338,7 +369,7 @@
             // 
             this.label1_CG_AddedBy.AutoSize = true;
             this.label1_CG_AddedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_AddedBy.Location = new System.Drawing.Point(8, 59);
+            this.label1_CG_AddedBy.Location = new System.Drawing.Point(6, 56);
             this.label1_CG_AddedBy.Name = "label1_CG_AddedBy";
             this.label1_CG_AddedBy.Size = new System.Drawing.Size(65, 17);
             this.label1_CG_AddedBy.TabIndex = 19;
@@ -348,7 +379,7 @@
             // 
             this.label1_CG_ClientName.AutoSize = true;
             this.label1_CG_ClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientName.Location = new System.Drawing.Point(6, 30);
+            this.label1_CG_ClientName.Location = new System.Drawing.Point(6, 28);
             this.label1_CG_ClientName.Name = "label1_CG_ClientName";
             this.label1_CG_ClientName.Size = new System.Drawing.Size(80, 17);
             this.label1_CG_ClientName.TabIndex = 10;
@@ -356,12 +387,34 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label2_CG_NumberOfRecords);
+            this.groupBox6.Controls.Add(this.label1_CG_NumberOfRecords);
             this.groupBox6.Location = new System.Drawing.Point(6, 353);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(534, 166);
             this.groupBox6.TabIndex = 42;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "groupBox6";
+            // 
+            // label2_CG_NumberOfRecords
+            // 
+            this.label2_CG_NumberOfRecords.AutoSize = true;
+            this.label2_CG_NumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2_CG_NumberOfRecords.Location = new System.Drawing.Point(155, 28);
+            this.label2_CG_NumberOfRecords.Name = "label2_CG_NumberOfRecords";
+            this.label2_CG_NumberOfRecords.Size = new System.Drawing.Size(17, 17);
+            this.label2_CG_NumberOfRecords.TabIndex = 12;
+            this.label2_CG_NumberOfRecords.Text = "0";
+            // 
+            // label1_CG_NumberOfRecords
+            // 
+            this.label1_CG_NumberOfRecords.AutoSize = true;
+            this.label1_CG_NumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_NumberOfRecords.Location = new System.Drawing.Point(6, 28);
+            this.label1_CG_NumberOfRecords.Name = "label1_CG_NumberOfRecords";
+            this.label1_CG_NumberOfRecords.Size = new System.Drawing.Size(148, 17);
+            this.label1_CG_NumberOfRecords.TabIndex = 11;
+            this.label1_CG_NumberOfRecords.Text = "Number of records:";
             // 
             // groupBox4
             // 
@@ -1248,6 +1301,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -1336,6 +1390,15 @@
             this.panel2.Size = new System.Drawing.Size(149, 47);
             this.panel2.TabIndex = 6;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(133, 115);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "label2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1346,22 +1409,29 @@
             this.Controls.Add(this.panel1_Form1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1250, 990);
             this.MinimumSize = new System.Drawing.Size(1250, 990);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "DataApp";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.CG_tabPage1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.panel1_Form1.ResumeLayout(false);
             this.panel1_Form1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1487,6 +1557,11 @@
         private System.Windows.Forms.Label label1_CG_AddressLine5;
         private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine4;
         private System.Windows.Forms.Label label1_CG_AddressLine4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox checkBox1_CG_duplicates;
+        private System.Windows.Forms.Label label1_CG_NumberOfRecords;
+        private System.Windows.Forms.Label label2_CG_NumberOfRecords;
+        private System.Windows.Forms.Label label2;
     }
 }
 
