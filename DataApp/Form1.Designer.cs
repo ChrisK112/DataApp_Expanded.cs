@@ -51,6 +51,7 @@
             this.label1_CG_AddedBy = new System.Windows.Forms.Label();
             this.label1_CG_ClientName = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2_CG_NumberOfRecords = new System.Windows.Forms.Label();
             this.label1_CG_NumberOfRecords = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -140,6 +141,7 @@
             this.comboBox1_CG_PersonRef = new System.Windows.Forms.ComboBox();
             this.label1_CG_PersonRef = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel1_Form1 = new System.Windows.Forms.Panel();
@@ -148,7 +150,6 @@
             this.button1_Form1_save = new System.Windows.Forms.Button();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
@@ -387,6 +388,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.button1);
             this.groupBox6.Controls.Add(this.label2_CG_NumberOfRecords);
             this.groupBox6.Controls.Add(this.label1_CG_NumberOfRecords);
             this.groupBox6.Location = new System.Drawing.Point(6, 353);
@@ -395,6 +397,16 @@
             this.groupBox6.TabIndex = 42;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "groupBox6";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(179, 78);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2_CG_NumberOfRecords
             // 
@@ -1310,6 +1322,15 @@
             this.tabPage2.Text = "Fulfilment";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(133, 115);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "label2";
+            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -1389,15 +1410,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 47);
             this.panel2.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(133, 115);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
             // 
             // Form1
             // 
@@ -1562,6 +1574,7 @@
         private System.Windows.Forms.Label label1_CG_NumberOfRecords;
         private System.Windows.Forms.Label label2_CG_NumberOfRecords;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -7,7 +7,7 @@
     <ProjectGuid>{B8C612F8-8D46-4D96-87AE-985108701FC8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>DataAppInstaller</RootNamespace>
-    <AssemblyName>DataAppInstaller</AssemblyName>
+    <AssemblyName>DataApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Hopstarter-Soft-Scraps-Document-Gant-Chart.ico</ApplicationIcon>
+    <ApplicationIcon>Uribaani-Realm-Arrow-Up.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GenericParsing, Version=1.1.5.29274, Culture=neutral, processorArchitecture=MSIL">
@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WordHandler.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +121,15 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="VBIDE">
       <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>5</VersionMajor>
@@ -131,7 +141,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Hopstarter-Soft-Scraps-Document-Gant-Chart.ico" />
+    <Content Include="Uribaani-Realm-Arrow-Up.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
