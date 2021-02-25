@@ -4,7 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Data;
 using GenericParsing;
-using Microsoft.Office.Interop.Excel;
+using excel = Microsoft.Office.Interop.Excel;
 
 namespace DataApp
 {
@@ -16,13 +16,11 @@ namespace DataApp
             parserAdapter.ColumnDelimiter = delimiter;
             parserAdapter.SetDataSource(filepath);
             parserAdapter.FirstRowHasHeader = true;
-            if( maxrownumber != 0)
+            if(maxrownumber != 0)
             {
                 parserAdapter.MaxRows = maxrownumber;
             }
-            System.Data.DataTable dt = parserAdapter.GetDataTable();
-            return dt;
-
+            return parserAdapter.GetDataTable();
         }
         
         public static void DataTableToFlatFile(System.Data.DataTable dt, string dialogfilename, int extentionindex)
@@ -40,7 +38,7 @@ namespace DataApp
                     var valuelinestxt = dt.AsEnumerable().Select(row => string.Join("|", row.ItemArray.Select(val => val.ToString().Replace("\'","").Replace("|","").Replace("   "," ").Replace("  "," ").Replace("\"",""))));
                     lines.AddRange(valuelinestxt);
 
-                    File.WriteAllLines(dialogfilename + ".txt", lines);
+                    File.WriteAllLines(dialogfilename, lines);
                     break;
 
                 //*.csv
@@ -51,7 +49,7 @@ namespace DataApp
                     var valuelinescsv = dt.AsEnumerable().Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val.ToString().Replace("\'", "").Replace("|", "").Replace("   ", " ").Replace("  ", " ").Replace("\"", "")}\"")));
                     lines.AddRange(valuelinescsv);
 
-                    File.WriteAllLines(dialogfilename + ".csv", lines);
+                    File.WriteAllLines(dialogfilename, lines);
                     break;
             }      
         }

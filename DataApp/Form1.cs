@@ -22,11 +22,12 @@ namespace DataApp
         public DataTable dt;
         public DataTable dt_target = new DataTable();
         char delimiter_f1;
-        
+        bool dataloaded = false;
+
 
         private void button1_Form1_search_Click(object sender, EventArgs e)
         {
-            ofd.Filter = "Text(Tab delimited) (*.txt) |*.txt| CSV (Comma delimited) (*.csv) |*.csv";
+            ofd.Filter = "Text(Tab delimited) (*.txt) |*.txt|CSV (Comma delimited) (*.csv) |*.csv|Excel|*.xlsx";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 sourceFile = ofd.FileName;
@@ -47,8 +48,7 @@ namespace DataApp
                 delimiter_f1 = Form2.delimiter_f2;
                 dt = DataHandler.FlatToDataTable(sourceFile, delimiter_f1);
                 dt.Columns.Add("                -", typeof(string));
-                temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
-                    
+                temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();                
             }
             catch (System.ArgumentNullException)
             {
@@ -99,7 +99,7 @@ namespace DataApp
                                 if (item.Name == "comboBox1_CG_ClientName")
                                 {
                                     comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
-                                    comboBox.DataSource = new BindingSource(CharityNamesPairs, null);
+                                    comboBox.DataSource = new BindingSource(CharityNamesPairs.OrderBy(key => key.Value), null);
                                     comboBox.DisplayMember = "Value";
                                     comboBox.ValueMember = "Key";
                                 }
@@ -133,6 +133,7 @@ namespace DataApp
         {
             textBox1_CG_ImportFile.Text = textBox1_CG_AppealCode.Text;
             textBox2_CG_Primkey.Text = textBox1_CG_AppealCode.Text;
+            textBox1_CG_Barcode.Text = textBox1_CG_AppealCode.Text;
         }
 
         private void comboBox1_CG_ClientName_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,6 +143,7 @@ namespace DataApp
 
         private void button1_Form1_load_Click(object sender, EventArgs e)
         {
+            dataloaded = true;
             TabPage tabPage = tabControl1.SelectedTab;
 
             //COMMITTED GIVING
@@ -181,9 +183,8 @@ namespace DataApp
                         RaffleStartNumber = row.Field<string>(comboBox1_CG_RaffleStartNumber.Text),
                         RaffleEndNumber = row.Field<string>(comboBox1_CG_RaffleEndNumber.Text),
                         RecordType = row.Field<string>(comboBox1_CG_RecordType.Text),
-                        GiftAid = row.Field<string>(comboBox1_CG_GiftAid.Text),
                         Campaign = textBox1_CG_Campaign.Text,
-                        Barcode = row.Field<string>(comboBox1_CG_Barcode.Text) + textBox1_CG_Barcode.Text + row.Field<string>(comboBox2_CG_Barcode.Text) + textBox1_CG_Barcode.Text + row.Field<string>(comboBox3_CG_Barcode.Text),
+                        Barcode = row.Field<string>(textBox1_CG_Barcode.Text) + textBox2_CG_Barcode.Text + row.Field<string>(comboBox2_CG_Barcode.Text) + textBox2_CG_Barcode.Text + row.Field<string>(comboBox3_CG_Barcode.Text),
                         ClientData1 = row.Field<string>(comboBox1_CG_ClientData1.Text),
                         ClientData2 = row.Field<string>(comboBox1_CG_ClientData2.Text),
                         ClientData3 = row.Field<string>(comboBox1_CG_ClientData3.Text),
@@ -230,7 +231,7 @@ namespace DataApp
                         row.RaffleStartNumber,
                         row.RaffleEndNumber,
                         row.RecordType,
-                        row.GiftAid,
+                        /*row.GiftAid*/ "Unknown",
                         row.Campaign,
                         /*row.PhonePreference*/ "Unknown",
                         /*row.MailPreference*/ "Unknown",
@@ -281,7 +282,15 @@ namespace DataApp
                     string saveas = sfd.FileName;
                     int extentionindex = sfd.FilterIndex;
 
-                    DataHandler.DataTableToFlatFile(dt_target, saveas, extentionindex);
+                    if (dataloaded)
+                    {
+                        DataHandler.DataTableToFlatFile(dt_target, saveas, extentionindex);
+                    }
+                    else
+                    {
+                        DataHandler.DataTableToFlatFile(dt, saveas, extentionindex);
+                    }
+                    
                 }
             }
             

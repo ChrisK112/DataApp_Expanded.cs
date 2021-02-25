@@ -3,27 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using word = Microsoft.Office.Interop.Word;
 using System.Data;
+using word = Microsoft.Office.Interop.Word;
 
 namespace DataApp
 {
     class WordHandler
-    {        
+    {
         public static void wordtest(DataTable dt)
         {
             word.Application wordapp = new word.Application();
-            word.Document wordfile = new word.Document();
-
-            wordfile = wordapp.Documents.Add(Template: @"C:\Users\Gregory\Downloads\test.docx");
+            string path = @"C:\Users\Gregory\Desktop\test.docx";
+            word.Document worddoc = wordapp.Documents.Add(path);
+            wordapp.Visible = true;
             word.Selection selection = wordapp.Selection;
-            
-            for(int n = 1; n <= dt.Rows.Count; n++)
+
+            foreach(word.Field mergefield in worddoc.Fields)
             {
-                object breaktype = word.WdBreakType.wdPageBreak;
-                selection.InsertBreak(ref breaktype);
-                wordapp.Visible = true;
+                if(mergefield.Code.Text.Contains("MERGEFIELD ENVELOPESALUTATION"))
+                {
+                    mergefield.Select();
+                    wordapp.Selection.TypeText("izi pizi nub");
+                }
             }
+            word.Range range = worddoc.Content;
+            range.Copy();
+            worddoc.Words.Last.InsertBreak(word.WdBreakType.wdPageBreak);
+            
         }
     }
 }

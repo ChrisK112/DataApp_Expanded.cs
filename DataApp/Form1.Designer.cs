@@ -55,14 +55,13 @@
             this.label2_CG_NumberOfRecords = new System.Windows.Forms.Label();
             this.label1_CG_NumberOfRecords = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox1_CG_Barcode = new System.Windows.Forms.TextBox();
+            this.textBox2_CG_Barcode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3_CG_Primkey = new System.Windows.Forms.TextBox();
             this.textBox2_CG_Primkey = new System.Windows.Forms.TextBox();
             this.textBox1_CG_Primkey = new System.Windows.Forms.TextBox();
             this.comboBox2_CG_Barcode = new System.Windows.Forms.ComboBox();
             this.comboBox3_CG_Barcode = new System.Windows.Forms.ComboBox();
-            this.comboBox1_CG_Barcode = new System.Windows.Forms.ComboBox();
             this.label1_CG_Barcode = new System.Windows.Forms.Label();
             this.label1_CG_Primkey = new System.Windows.Forms.Label();
             this.comboBox1_CG_Primkey = new System.Windows.Forms.ComboBox();
@@ -150,6 +149,7 @@
             this.button1_Form1_save = new System.Windows.Forms.Button();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1_CG_Barcode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
@@ -431,13 +431,13 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.textBox1_CG_Barcode);
+            this.groupBox4.Controls.Add(this.textBox2_CG_Barcode);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.textBox3_CG_Primkey);
             this.groupBox4.Controls.Add(this.textBox2_CG_Primkey);
             this.groupBox4.Controls.Add(this.textBox1_CG_Primkey);
             this.groupBox4.Controls.Add(this.comboBox2_CG_Barcode);
             this.groupBox4.Controls.Add(this.comboBox3_CG_Barcode);
-            this.groupBox4.Controls.Add(this.comboBox1_CG_Barcode);
             this.groupBox4.Controls.Add(this.label1_CG_Barcode);
             this.groupBox4.Controls.Add(this.label1_CG_Primkey);
             this.groupBox4.Controls.Add(this.comboBox1_CG_Primkey);
@@ -448,12 +448,12 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
             // 
-            // textBox1_CG_Barcode
+            // textBox2_CG_Barcode
             // 
-            this.textBox1_CG_Barcode.Location = new System.Drawing.Point(477, 55);
-            this.textBox1_CG_Barcode.Name = "textBox1_CG_Barcode";
-            this.textBox1_CG_Barcode.Size = new System.Drawing.Size(36, 20);
-            this.textBox1_CG_Barcode.TabIndex = 40;
+            this.textBox2_CG_Barcode.Location = new System.Drawing.Point(477, 55);
+            this.textBox2_CG_Barcode.Name = "textBox2_CG_Barcode";
+            this.textBox2_CG_Barcode.Size = new System.Drawing.Size(36, 20);
+            this.textBox2_CG_Barcode.TabIndex = 40;
             // 
             // label1
             // 
@@ -506,15 +506,6 @@
             this.comboBox3_CG_Barcode.Name = "comboBox3_CG_Barcode";
             this.comboBox3_CG_Barcode.Size = new System.Drawing.Size(112, 21);
             this.comboBox3_CG_Barcode.TabIndex = 34;
-            // 
-            // comboBox1_CG_Barcode
-            // 
-            this.comboBox1_CG_Barcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_Barcode.FormattingEnabled = true;
-            this.comboBox1_CG_Barcode.Location = new System.Drawing.Point(61, 56);
-            this.comboBox1_CG_Barcode.Name = "comboBox1_CG_Barcode";
-            this.comboBox1_CG_Barcode.Size = new System.Drawing.Size(112, 21);
-            this.comboBox1_CG_Barcode.TabIndex = 31;
             // 
             // label1_CG_Barcode
             // 
@@ -1411,6 +1402,14 @@
             this.panel2.Size = new System.Drawing.Size(149, 47);
             this.panel2.TabIndex = 6;
             // 
+            // textBox1_CG_Barcode
+            // 
+            this.textBox1_CG_Barcode.Enabled = false;
+            this.textBox1_CG_Barcode.Location = new System.Drawing.Point(61, 57);
+            this.textBox1_CG_Barcode.Name = "textBox1_CG_Barcode";
+            this.textBox1_CG_Barcode.Size = new System.Drawing.Size(112, 20);
+            this.textBox1_CG_Barcode.TabIndex = 41;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1530,7 +1529,6 @@
         private System.Windows.Forms.Label label1_CG_ClientData3;
         private System.Windows.Forms.ComboBox comboBox3_CG_Barcode;
         private System.Windows.Forms.ComboBox comboBox2_CG_Barcode;
-        private System.Windows.Forms.ComboBox comboBox1_CG_Barcode;
         private System.Windows.Forms.Label label1_Form1_fileName;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label1_CG_Campaign;
@@ -1558,7 +1556,7 @@
         private System.Windows.Forms.Button button1_Form1_load;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1_CG_Barcode;
+        private System.Windows.Forms.TextBox textBox2_CG_Barcode;
         private System.Windows.Forms.ComboBox comboBox1_CG_PackageCode;
         private System.Windows.Forms.Label label1_CG_EmailAddress;
         private System.Windows.Forms.ComboBox comboBox1_CG_EmailAddress;
@@ -1575,6 +1573,7 @@
         private System.Windows.Forms.Label label2_CG_NumberOfRecords;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1_CG_Barcode;
     }
 }
 
