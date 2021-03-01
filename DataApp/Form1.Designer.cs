@@ -38,6 +38,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox1_CG_duplicates = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.radioButton2_RecordTypeCold = new System.Windows.Forms.RadioButton();
+            this.label1_CG_RecordType = new System.Windows.Forms.Label();
+            this.radioButton1_CG_RecordTypeWarm = new System.Windows.Forms.RadioButton();
             this.comboBox1_CG_ClientName = new System.Windows.Forms.ComboBox();
             this.textBox1_CG_Campaign = new System.Windows.Forms.TextBox();
             this.textBox1_CG_ImportFile = new System.Windows.Forms.TextBox();
@@ -51,10 +54,15 @@
             this.label1_CG_AddedBy = new System.Windows.Forms.Label();
             this.label1_CG_ClientName = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label2_CG_RowsDeleted = new System.Windows.Forms.Label();
+            this.label1_CG_RowsDeleted = new System.Windows.Forms.Label();
+            this.label2_CG_RowsLoaded = new System.Windows.Forms.Label();
+            this.label1_CG_RowsLoaded = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label2_CG_NumberOfRecords = new System.Windows.Forms.Label();
-            this.label1_CG_NumberOfRecords = new System.Windows.Forms.Label();
+            this.label2_CG_RowsImported = new System.Windows.Forms.Label();
+            this.label1_CG_RowsImported = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox1_CG_Barcode = new System.Windows.Forms.TextBox();
             this.textBox2_CG_Barcode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3_CG_Primkey = new System.Windows.Forms.TextBox();
@@ -79,10 +87,6 @@
             this.label1_CG_ClientData8 = new System.Windows.Forms.Label();
             this.label1_CG_ClientData1 = new System.Windows.Forms.Label();
             this.label1_CG_ClientData9 = new System.Windows.Forms.Label();
-            this.comboBox1_CG_RecordType = new System.Windows.Forms.ComboBox();
-            this.comboBox1_CG_GiftAid = new System.Windows.Forms.ComboBox();
-            this.label1_CG_RecordType = new System.Windows.Forms.Label();
-            this.label1_CG_GiftAid = new System.Windows.Forms.Label();
             this.comboBox1_CG_ClientData6 = new System.Windows.Forms.ComboBox();
             this.label1_CG_RaffleEndNumber = new System.Windows.Forms.Label();
             this.comboBox1_CG_ClientData5 = new System.Windows.Forms.ComboBox();
@@ -103,8 +107,6 @@
             this.label1_CG_ClientData2 = new System.Windows.Forms.Label();
             this.label1_CG_ClientData3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1_CG_MobileNumber = new System.Windows.Forms.ComboBox();
-            this.label1_CG_MobileNumber = new System.Windows.Forms.Label();
             this.comboBox1_CG_AddressLine5 = new System.Windows.Forms.ComboBox();
             this.label1_CG_AddressLine5 = new System.Windows.Forms.Label();
             this.comboBox1_CG_AddressLine4 = new System.Windows.Forms.ComboBox();
@@ -149,7 +151,8 @@
             this.button1_Form1_save = new System.Windows.Forms.Button();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1_CG_Barcode = new System.Windows.Forms.TextBox();
+            this.comboBox1_CG_MobileNumber = new System.Windows.Forms.ComboBox();
+            this.label1_CG_MobileNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
@@ -259,6 +262,9 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.radioButton2_RecordTypeCold);
+            this.groupBox5.Controls.Add(this.label1_CG_RecordType);
+            this.groupBox5.Controls.Add(this.radioButton1_CG_RecordTypeWarm);
             this.groupBox5.Controls.Add(this.comboBox1_CG_ClientName);
             this.groupBox5.Controls.Add(this.textBox1_CG_Campaign);
             this.groupBox5.Controls.Add(this.textBox1_CG_ImportFile);
@@ -277,6 +283,38 @@
             this.groupBox5.TabIndex = 44;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
+            // 
+            // radioButton2_RecordTypeCold
+            // 
+            this.radioButton2_RecordTypeCold.AutoSize = true;
+            this.radioButton2_RecordTypeCold.Location = new System.Drawing.Point(218, 196);
+            this.radioButton2_RecordTypeCold.Name = "radioButton2_RecordTypeCold";
+            this.radioButton2_RecordTypeCold.Size = new System.Drawing.Size(46, 17);
+            this.radioButton2_RecordTypeCold.TabIndex = 14;
+            this.radioButton2_RecordTypeCold.TabStop = true;
+            this.radioButton2_RecordTypeCold.Text = "Cold";
+            this.radioButton2_RecordTypeCold.UseVisualStyleBackColor = true;
+            // 
+            // label1_CG_RecordType
+            // 
+            this.label1_CG_RecordType.AutoSize = true;
+            this.label1_CG_RecordType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_RecordType.Location = new System.Drawing.Point(6, 196);
+            this.label1_CG_RecordType.Name = "label1_CG_RecordType";
+            this.label1_CG_RecordType.Size = new System.Drawing.Size(86, 17);
+            this.label1_CG_RecordType.TabIndex = 54;
+            this.label1_CG_RecordType.Text = "RecordType";
+            // 
+            // radioButton1_CG_RecordTypeWarm
+            // 
+            this.radioButton1_CG_RecordTypeWarm.AutoSize = true;
+            this.radioButton1_CG_RecordTypeWarm.Location = new System.Drawing.Point(150, 196);
+            this.radioButton1_CG_RecordTypeWarm.Name = "radioButton1_CG_RecordTypeWarm";
+            this.radioButton1_CG_RecordTypeWarm.Size = new System.Drawing.Size(53, 17);
+            this.radioButton1_CG_RecordTypeWarm.TabIndex = 13;
+            this.radioButton1_CG_RecordTypeWarm.TabStop = true;
+            this.radioButton1_CG_RecordTypeWarm.Text = "Warm";
+            this.radioButton1_CG_RecordTypeWarm.UseVisualStyleBackColor = true;
             // 
             // comboBox1_CG_ClientName
             // 
@@ -388,9 +426,13 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label2_CG_RowsDeleted);
+            this.groupBox6.Controls.Add(this.label1_CG_RowsDeleted);
+            this.groupBox6.Controls.Add(this.label2_CG_RowsLoaded);
+            this.groupBox6.Controls.Add(this.label1_CG_RowsLoaded);
             this.groupBox6.Controls.Add(this.button1);
-            this.groupBox6.Controls.Add(this.label2_CG_NumberOfRecords);
-            this.groupBox6.Controls.Add(this.label1_CG_NumberOfRecords);
+            this.groupBox6.Controls.Add(this.label2_CG_RowsImported);
+            this.groupBox6.Controls.Add(this.label1_CG_RowsImported);
             this.groupBox6.Location = new System.Drawing.Point(6, 353);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(534, 166);
@@ -398,9 +440,49 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "groupBox6";
             // 
+            // label2_CG_RowsDeleted
+            // 
+            this.label2_CG_RowsDeleted.AutoSize = true;
+            this.label2_CG_RowsDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2_CG_RowsDeleted.Location = new System.Drawing.Point(121, 97);
+            this.label2_CG_RowsDeleted.Name = "label2_CG_RowsDeleted";
+            this.label2_CG_RowsDeleted.Size = new System.Drawing.Size(17, 17);
+            this.label2_CG_RowsDeleted.TabIndex = 17;
+            this.label2_CG_RowsDeleted.Text = "0";
+            // 
+            // label1_CG_RowsDeleted
+            // 
+            this.label1_CG_RowsDeleted.AutoSize = true;
+            this.label1_CG_RowsDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_RowsDeleted.Location = new System.Drawing.Point(6, 96);
+            this.label1_CG_RowsDeleted.Name = "label1_CG_RowsDeleted";
+            this.label1_CG_RowsDeleted.Size = new System.Drawing.Size(110, 17);
+            this.label1_CG_RowsDeleted.TabIndex = 16;
+            this.label1_CG_RowsDeleted.Text = "Rows deleted:";
+            // 
+            // label2_CG_RowsLoaded
+            // 
+            this.label2_CG_RowsLoaded.AutoSize = true;
+            this.label2_CG_RowsLoaded.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2_CG_RowsLoaded.Location = new System.Drawing.Point(121, 63);
+            this.label2_CG_RowsLoaded.Name = "label2_CG_RowsLoaded";
+            this.label2_CG_RowsLoaded.Size = new System.Drawing.Size(17, 17);
+            this.label2_CG_RowsLoaded.TabIndex = 15;
+            this.label2_CG_RowsLoaded.Text = "0";
+            // 
+            // label1_CG_RowsLoaded
+            // 
+            this.label1_CG_RowsLoaded.AutoSize = true;
+            this.label1_CG_RowsLoaded.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_RowsLoaded.Location = new System.Drawing.Point(6, 62);
+            this.label1_CG_RowsLoaded.Name = "label1_CG_RowsLoaded";
+            this.label1_CG_RowsLoaded.Size = new System.Drawing.Size(105, 17);
+            this.label1_CG_RowsLoaded.TabIndex = 14;
+            this.label1_CG_RowsLoaded.Text = "Rows loaded:";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(179, 78);
+            this.button1.Location = new System.Drawing.Point(438, 134);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -408,25 +490,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label2_CG_NumberOfRecords
+            // label2_CG_RowsImported
             // 
-            this.label2_CG_NumberOfRecords.AutoSize = true;
-            this.label2_CG_NumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2_CG_NumberOfRecords.Location = new System.Drawing.Point(155, 28);
-            this.label2_CG_NumberOfRecords.Name = "label2_CG_NumberOfRecords";
-            this.label2_CG_NumberOfRecords.Size = new System.Drawing.Size(17, 17);
-            this.label2_CG_NumberOfRecords.TabIndex = 12;
-            this.label2_CG_NumberOfRecords.Text = "0";
+            this.label2_CG_RowsImported.AutoSize = true;
+            this.label2_CG_RowsImported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2_CG_RowsImported.Location = new System.Drawing.Point(121, 29);
+            this.label2_CG_RowsImported.Name = "label2_CG_RowsImported";
+            this.label2_CG_RowsImported.Size = new System.Drawing.Size(17, 17);
+            this.label2_CG_RowsImported.TabIndex = 12;
+            this.label2_CG_RowsImported.Text = "0";
             // 
-            // label1_CG_NumberOfRecords
+            // label1_CG_RowsImported
             // 
-            this.label1_CG_NumberOfRecords.AutoSize = true;
-            this.label1_CG_NumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_NumberOfRecords.Location = new System.Drawing.Point(6, 28);
-            this.label1_CG_NumberOfRecords.Name = "label1_CG_NumberOfRecords";
-            this.label1_CG_NumberOfRecords.Size = new System.Drawing.Size(148, 17);
-            this.label1_CG_NumberOfRecords.TabIndex = 11;
-            this.label1_CG_NumberOfRecords.Text = "Number of records:";
+            this.label1_CG_RowsImported.AutoSize = true;
+            this.label1_CG_RowsImported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_RowsImported.Location = new System.Drawing.Point(6, 28);
+            this.label1_CG_RowsImported.Name = "label1_CG_RowsImported";
+            this.label1_CG_RowsImported.Size = new System.Drawing.Size(111, 17);
+            this.label1_CG_RowsImported.TabIndex = 11;
+            this.label1_CG_RowsImported.Text = "Row Imported:";
             // 
             // groupBox4
             // 
@@ -447,6 +529,14 @@
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
+            // 
+            // textBox1_CG_Barcode
+            // 
+            this.textBox1_CG_Barcode.Enabled = false;
+            this.textBox1_CG_Barcode.Location = new System.Drawing.Point(61, 57);
+            this.textBox1_CG_Barcode.Name = "textBox1_CG_Barcode";
+            this.textBox1_CG_Barcode.Size = new System.Drawing.Size(112, 20);
+            this.textBox1_CG_Barcode.TabIndex = 41;
             // 
             // textBox2_CG_Barcode
             // 
@@ -539,6 +629,8 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.Controls.Add(this.comboBox1_CG_MobileNumber);
+            this.groupBox2.Controls.Add(this.label1_CG_MobileNumber);
             this.groupBox2.Controls.Add(this.comboBox1_CG_PackageCode);
             this.groupBox2.Controls.Add(this.label1_CG_EmailAddress);
             this.groupBox2.Controls.Add(this.comboBox1_CG_EmailAddress);
@@ -552,10 +644,6 @@
             this.groupBox2.Controls.Add(this.label1_CG_ClientData8);
             this.groupBox2.Controls.Add(this.label1_CG_ClientData1);
             this.groupBox2.Controls.Add(this.label1_CG_ClientData9);
-            this.groupBox2.Controls.Add(this.comboBox1_CG_RecordType);
-            this.groupBox2.Controls.Add(this.comboBox1_CG_GiftAid);
-            this.groupBox2.Controls.Add(this.label1_CG_RecordType);
-            this.groupBox2.Controls.Add(this.label1_CG_GiftAid);
             this.groupBox2.Controls.Add(this.comboBox1_CG_ClientData6);
             this.groupBox2.Controls.Add(this.label1_CG_RaffleEndNumber);
             this.groupBox2.Controls.Add(this.comboBox1_CG_ClientData5);
@@ -586,7 +674,7 @@
             // 
             this.comboBox1_CG_PackageCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_PackageCode.FormattingEnabled = true;
-            this.comboBox1_CG_PackageCode.Location = new System.Drawing.Point(176, 47);
+            this.comboBox1_CG_PackageCode.Location = new System.Drawing.Point(176, 86);
             this.comboBox1_CG_PackageCode.Name = "comboBox1_CG_PackageCode";
             this.comboBox1_CG_PackageCode.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_PackageCode.TabIndex = 55;
@@ -595,7 +683,7 @@
             // 
             this.label1_CG_EmailAddress.AutoSize = true;
             this.label1_CG_EmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_EmailAddress.Location = new System.Drawing.Point(23, 22);
+            this.label1_CG_EmailAddress.Location = new System.Drawing.Point(23, 61);
             this.label1_CG_EmailAddress.Name = "label1_CG_EmailAddress";
             this.label1_CG_EmailAddress.Size = new System.Drawing.Size(94, 17);
             this.label1_CG_EmailAddress.TabIndex = 52;
@@ -605,7 +693,7 @@
             // 
             this.comboBox1_CG_EmailAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_EmailAddress.FormattingEnabled = true;
-            this.comboBox1_CG_EmailAddress.Location = new System.Drawing.Point(176, 20);
+            this.comboBox1_CG_EmailAddress.Location = new System.Drawing.Point(176, 59);
             this.comboBox1_CG_EmailAddress.Name = "comboBox1_CG_EmailAddress";
             this.comboBox1_CG_EmailAddress.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_EmailAddress.TabIndex = 53;
@@ -614,7 +702,7 @@
             // 
             this.label1_CG_PackageCode.AutoSize = true;
             this.label1_CG_PackageCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_PackageCode.Location = new System.Drawing.Point(23, 49);
+            this.label1_CG_PackageCode.Location = new System.Drawing.Point(23, 88);
             this.label1_CG_PackageCode.Name = "label1_CG_PackageCode";
             this.label1_CG_PackageCode.Size = new System.Drawing.Size(96, 17);
             this.label1_CG_PackageCode.TabIndex = 54;
@@ -623,7 +711,7 @@
             // comboBox1_CG_ClientData7
             // 
             this.comboBox1_CG_ClientData7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData7.Location = new System.Drawing.Point(176, 398);
+            this.comboBox1_CG_ClientData7.Location = new System.Drawing.Point(176, 383);
             this.comboBox1_CG_ClientData7.Name = "comboBox1_CG_ClientData7";
             this.comboBox1_CG_ClientData7.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData7.TabIndex = 6;
@@ -631,7 +719,7 @@
             // comboBox1_CG_ClientData10
             // 
             this.comboBox1_CG_ClientData10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData10.Location = new System.Drawing.Point(176, 479);
+            this.comboBox1_CG_ClientData10.Location = new System.Drawing.Point(176, 464);
             this.comboBox1_CG_ClientData10.Name = "comboBox1_CG_ClientData10";
             this.comboBox1_CG_ClientData10.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData10.TabIndex = 16;
@@ -640,7 +728,7 @@
             // 
             this.label1_CG_ClientData10.AutoSize = true;
             this.label1_CG_ClientData10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData10.Location = new System.Drawing.Point(23, 481);
+            this.label1_CG_ClientData10.Location = new System.Drawing.Point(23, 466);
             this.label1_CG_ClientData10.Name = "label1_CG_ClientData10";
             this.label1_CG_ClientData10.Size = new System.Drawing.Size(89, 17);
             this.label1_CG_ClientData10.TabIndex = 44;
@@ -649,7 +737,7 @@
             // comboBox1_CG_ClientData9
             // 
             this.comboBox1_CG_ClientData9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData9.Location = new System.Drawing.Point(176, 452);
+            this.comboBox1_CG_ClientData9.Location = new System.Drawing.Point(176, 437);
             this.comboBox1_CG_ClientData9.Name = "comboBox1_CG_ClientData9";
             this.comboBox1_CG_ClientData9.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData9.TabIndex = 15;
@@ -657,7 +745,7 @@
             // comboBox1_CG_ClientData8
             // 
             this.comboBox1_CG_ClientData8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData8.Location = new System.Drawing.Point(176, 425);
+            this.comboBox1_CG_ClientData8.Location = new System.Drawing.Point(176, 410);
             this.comboBox1_CG_ClientData8.Name = "comboBox1_CG_ClientData8";
             this.comboBox1_CG_ClientData8.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData8.TabIndex = 14;
@@ -666,7 +754,7 @@
             // 
             this.label1_CG_ClientData7.AutoSize = true;
             this.label1_CG_ClientData7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData7.Location = new System.Drawing.Point(23, 400);
+            this.label1_CG_ClientData7.Location = new System.Drawing.Point(23, 385);
             this.label1_CG_ClientData7.Name = "label1_CG_ClientData7";
             this.label1_CG_ClientData7.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData7.TabIndex = 42;
@@ -676,7 +764,7 @@
             // 
             this.label1_CG_ClientData8.AutoSize = true;
             this.label1_CG_ClientData8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData8.Location = new System.Drawing.Point(23, 427);
+            this.label1_CG_ClientData8.Location = new System.Drawing.Point(23, 412);
             this.label1_CG_ClientData8.Name = "label1_CG_ClientData8";
             this.label1_CG_ClientData8.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData8.TabIndex = 41;
@@ -686,7 +774,7 @@
             // 
             this.label1_CG_ClientData1.AutoSize = true;
             this.label1_CG_ClientData1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData1.Location = new System.Drawing.Point(23, 238);
+            this.label1_CG_ClientData1.Location = new System.Drawing.Point(23, 223);
             this.label1_CG_ClientData1.Name = "label1_CG_ClientData1";
             this.label1_CG_ClientData1.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData1.TabIndex = 43;
@@ -696,54 +784,16 @@
             // 
             this.label1_CG_ClientData9.AutoSize = true;
             this.label1_CG_ClientData9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData9.Location = new System.Drawing.Point(23, 454);
+            this.label1_CG_ClientData9.Location = new System.Drawing.Point(23, 439);
             this.label1_CG_ClientData9.Name = "label1_CG_ClientData9";
             this.label1_CG_ClientData9.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData9.TabIndex = 40;
             this.label1_CG_ClientData9.Text = "ClientData9";
             // 
-            // comboBox1_CG_RecordType
-            // 
-            this.comboBox1_CG_RecordType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_RecordType.FormattingEnabled = true;
-            this.comboBox1_CG_RecordType.Location = new System.Drawing.Point(176, 182);
-            this.comboBox1_CG_RecordType.Name = "comboBox1_CG_RecordType";
-            this.comboBox1_CG_RecordType.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1_CG_RecordType.TabIndex = 47;
-            // 
-            // comboBox1_CG_GiftAid
-            // 
-            this.comboBox1_CG_GiftAid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_GiftAid.FormattingEnabled = true;
-            this.comboBox1_CG_GiftAid.Location = new System.Drawing.Point(176, 209);
-            this.comboBox1_CG_GiftAid.Name = "comboBox1_CG_GiftAid";
-            this.comboBox1_CG_GiftAid.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1_CG_GiftAid.TabIndex = 49;
-            // 
-            // label1_CG_RecordType
-            // 
-            this.label1_CG_RecordType.AutoSize = true;
-            this.label1_CG_RecordType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RecordType.Location = new System.Drawing.Point(23, 184);
-            this.label1_CG_RecordType.Name = "label1_CG_RecordType";
-            this.label1_CG_RecordType.Size = new System.Drawing.Size(86, 17);
-            this.label1_CG_RecordType.TabIndex = 46;
-            this.label1_CG_RecordType.Text = "RecordType";
-            // 
-            // label1_CG_GiftAid
-            // 
-            this.label1_CG_GiftAid.AutoSize = true;
-            this.label1_CG_GiftAid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_GiftAid.Location = new System.Drawing.Point(23, 211);
-            this.label1_CG_GiftAid.Name = "label1_CG_GiftAid";
-            this.label1_CG_GiftAid.Size = new System.Drawing.Size(50, 17);
-            this.label1_CG_GiftAid.TabIndex = 48;
-            this.label1_CG_GiftAid.Text = "GiftAid";
-            // 
             // comboBox1_CG_ClientData6
             // 
             this.comboBox1_CG_ClientData6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData6.Location = new System.Drawing.Point(176, 371);
+            this.comboBox1_CG_ClientData6.Location = new System.Drawing.Point(176, 356);
             this.comboBox1_CG_ClientData6.Name = "comboBox1_CG_ClientData6";
             this.comboBox1_CG_ClientData6.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData6.TabIndex = 5;
@@ -752,7 +802,7 @@
             // 
             this.label1_CG_RaffleEndNumber.AutoSize = true;
             this.label1_CG_RaffleEndNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RaffleEndNumber.Location = new System.Drawing.Point(23, 157);
+            this.label1_CG_RaffleEndNumber.Location = new System.Drawing.Point(23, 196);
             this.label1_CG_RaffleEndNumber.Name = "label1_CG_RaffleEndNumber";
             this.label1_CG_RaffleEndNumber.Size = new System.Drawing.Size(120, 17);
             this.label1_CG_RaffleEndNumber.TabIndex = 44;
@@ -761,7 +811,7 @@
             // comboBox1_CG_ClientData5
             // 
             this.comboBox1_CG_ClientData5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData5.Location = new System.Drawing.Point(176, 344);
+            this.comboBox1_CG_ClientData5.Location = new System.Drawing.Point(176, 329);
             this.comboBox1_CG_ClientData5.Name = "comboBox1_CG_ClientData5";
             this.comboBox1_CG_ClientData5.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData5.TabIndex = 4;
@@ -770,7 +820,7 @@
             // 
             this.comboBox1_CG_RaffleEndNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_RaffleEndNumber.FormattingEnabled = true;
-            this.comboBox1_CG_RaffleEndNumber.Location = new System.Drawing.Point(176, 155);
+            this.comboBox1_CG_RaffleEndNumber.Location = new System.Drawing.Point(176, 194);
             this.comboBox1_CG_RaffleEndNumber.Name = "comboBox1_CG_RaffleEndNumber";
             this.comboBox1_CG_RaffleEndNumber.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_RaffleEndNumber.TabIndex = 45;
@@ -778,7 +828,7 @@
             // comboBox1_CG_ClientData4
             // 
             this.comboBox1_CG_ClientData4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData4.Location = new System.Drawing.Point(176, 317);
+            this.comboBox1_CG_ClientData4.Location = new System.Drawing.Point(176, 302);
             this.comboBox1_CG_ClientData4.Name = "comboBox1_CG_ClientData4";
             this.comboBox1_CG_ClientData4.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData4.TabIndex = 3;
@@ -787,7 +837,7 @@
             // 
             this.comboBox1_CG_RaffleStartNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_RaffleStartNumber.FormattingEnabled = true;
-            this.comboBox1_CG_RaffleStartNumber.Location = new System.Drawing.Point(176, 128);
+            this.comboBox1_CG_RaffleStartNumber.Location = new System.Drawing.Point(176, 167);
             this.comboBox1_CG_RaffleStartNumber.Name = "comboBox1_CG_RaffleStartNumber";
             this.comboBox1_CG_RaffleStartNumber.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_RaffleStartNumber.TabIndex = 43;
@@ -795,7 +845,7 @@
             // comboBox1_CG_ClientData3
             // 
             this.comboBox1_CG_ClientData3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData3.Location = new System.Drawing.Point(176, 290);
+            this.comboBox1_CG_ClientData3.Location = new System.Drawing.Point(176, 275);
             this.comboBox1_CG_ClientData3.Name = "comboBox1_CG_ClientData3";
             this.comboBox1_CG_ClientData3.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData3.TabIndex = 2;
@@ -804,7 +854,7 @@
             // 
             this.comboBox1_CG_ColdURN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_ColdURN.FormattingEnabled = true;
-            this.comboBox1_CG_ColdURN.Location = new System.Drawing.Point(176, 101);
+            this.comboBox1_CG_ColdURN.Location = new System.Drawing.Point(176, 140);
             this.comboBox1_CG_ColdURN.Name = "comboBox1_CG_ColdURN";
             this.comboBox1_CG_ColdURN.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ColdURN.TabIndex = 41;
@@ -813,7 +863,7 @@
             // 
             this.comboBox1_CG_PreloadedCAFNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_PreloadedCAFNumber.FormattingEnabled = true;
-            this.comboBox1_CG_PreloadedCAFNumber.Location = new System.Drawing.Point(176, 74);
+            this.comboBox1_CG_PreloadedCAFNumber.Location = new System.Drawing.Point(176, 113);
             this.comboBox1_CG_PreloadedCAFNumber.Name = "comboBox1_CG_PreloadedCAFNumber";
             this.comboBox1_CG_PreloadedCAFNumber.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_PreloadedCAFNumber.TabIndex = 40;
@@ -822,7 +872,7 @@
             // 
             this.label1_CG_RaffleStartNumber.AutoSize = true;
             this.label1_CG_RaffleStartNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RaffleStartNumber.Location = new System.Drawing.Point(23, 130);
+            this.label1_CG_RaffleStartNumber.Location = new System.Drawing.Point(23, 169);
             this.label1_CG_RaffleStartNumber.Name = "label1_CG_RaffleStartNumber";
             this.label1_CG_RaffleStartNumber.Size = new System.Drawing.Size(125, 17);
             this.label1_CG_RaffleStartNumber.TabIndex = 36;
@@ -832,7 +882,7 @@
             // 
             this.label1_CG_ColdURN.AutoSize = true;
             this.label1_CG_ColdURN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ColdURN.Location = new System.Drawing.Point(23, 103);
+            this.label1_CG_ColdURN.Location = new System.Drawing.Point(23, 142);
             this.label1_CG_ColdURN.Name = "label1_CG_ColdURN";
             this.label1_CG_ColdURN.Size = new System.Drawing.Size(66, 17);
             this.label1_CG_ColdURN.TabIndex = 34;
@@ -841,7 +891,7 @@
             // comboBox1_CG_ClientData2
             // 
             this.comboBox1_CG_ClientData2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData2.Location = new System.Drawing.Point(176, 263);
+            this.comboBox1_CG_ClientData2.Location = new System.Drawing.Point(176, 248);
             this.comboBox1_CG_ClientData2.Name = "comboBox1_CG_ClientData2";
             this.comboBox1_CG_ClientData2.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData2.TabIndex = 1;
@@ -850,7 +900,7 @@
             // 
             this.label1_CG_PreloadedCAFNumber.AutoSize = true;
             this.label1_CG_PreloadedCAFNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_PreloadedCAFNumber.Location = new System.Drawing.Point(23, 76);
+            this.label1_CG_PreloadedCAFNumber.Location = new System.Drawing.Point(23, 115);
             this.label1_CG_PreloadedCAFNumber.Name = "label1_CG_PreloadedCAFNumber";
             this.label1_CG_PreloadedCAFNumber.Size = new System.Drawing.Size(149, 17);
             this.label1_CG_PreloadedCAFNumber.TabIndex = 33;
@@ -859,7 +909,7 @@
             // comboBox1_CG_ClientData1
             // 
             this.comboBox1_CG_ClientData1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_ClientData1.Location = new System.Drawing.Point(176, 236);
+            this.comboBox1_CG_ClientData1.Location = new System.Drawing.Point(176, 221);
             this.comboBox1_CG_ClientData1.Name = "comboBox1_CG_ClientData1";
             this.comboBox1_CG_ClientData1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_ClientData1.TabIndex = 0;
@@ -868,7 +918,7 @@
             // 
             this.label1_CG_ClientData6.AutoSize = true;
             this.label1_CG_ClientData6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData6.Location = new System.Drawing.Point(23, 373);
+            this.label1_CG_ClientData6.Location = new System.Drawing.Point(23, 358);
             this.label1_CG_ClientData6.Name = "label1_CG_ClientData6";
             this.label1_CG_ClientData6.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData6.TabIndex = 39;
@@ -878,7 +928,7 @@
             // 
             this.label1_CG_ClientData5.AutoSize = true;
             this.label1_CG_ClientData5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData5.Location = new System.Drawing.Point(23, 346);
+            this.label1_CG_ClientData5.Location = new System.Drawing.Point(23, 331);
             this.label1_CG_ClientData5.Name = "label1_CG_ClientData5";
             this.label1_CG_ClientData5.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData5.TabIndex = 38;
@@ -888,7 +938,7 @@
             // 
             this.label1_CG_ClientData4.AutoSize = true;
             this.label1_CG_ClientData4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData4.Location = new System.Drawing.Point(23, 319);
+            this.label1_CG_ClientData4.Location = new System.Drawing.Point(23, 304);
             this.label1_CG_ClientData4.Name = "label1_CG_ClientData4";
             this.label1_CG_ClientData4.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData4.TabIndex = 37;
@@ -898,7 +948,7 @@
             // 
             this.label1_CG_ClientData2.AutoSize = true;
             this.label1_CG_ClientData2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData2.Location = new System.Drawing.Point(23, 265);
+            this.label1_CG_ClientData2.Location = new System.Drawing.Point(23, 250);
             this.label1_CG_ClientData2.Name = "label1_CG_ClientData2";
             this.label1_CG_ClientData2.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData2.TabIndex = 35;
@@ -908,7 +958,7 @@
             // 
             this.label1_CG_ClientData3.AutoSize = true;
             this.label1_CG_ClientData3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_ClientData3.Location = new System.Drawing.Point(23, 292);
+            this.label1_CG_ClientData3.Location = new System.Drawing.Point(23, 277);
             this.label1_CG_ClientData3.Name = "label1_CG_ClientData3";
             this.label1_CG_ClientData3.Size = new System.Drawing.Size(81, 17);
             this.label1_CG_ClientData3.TabIndex = 36;
@@ -917,8 +967,6 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.Controls.Add(this.comboBox1_CG_MobileNumber);
-            this.groupBox1.Controls.Add(this.label1_CG_MobileNumber);
             this.groupBox1.Controls.Add(this.comboBox1_CG_AddressLine5);
             this.groupBox1.Controls.Add(this.label1_CG_AddressLine5);
             this.groupBox1.Controls.Add(this.comboBox1_CG_AddressLine4);
@@ -960,30 +1008,11 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // comboBox1_CG_MobileNumber
-            // 
-            this.comboBox1_CG_MobileNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_MobileNumber.FormattingEnabled = true;
-            this.comboBox1_CG_MobileNumber.Location = new System.Drawing.Point(172, 481);
-            this.comboBox1_CG_MobileNumber.Name = "comboBox1_CG_MobileNumber";
-            this.comboBox1_CG_MobileNumber.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1_CG_MobileNumber.TabIndex = 53;
-            // 
-            // label1_CG_MobileNumber
-            // 
-            this.label1_CG_MobileNumber.AutoSize = true;
-            this.label1_CG_MobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_MobileNumber.Location = new System.Drawing.Point(20, 483);
-            this.label1_CG_MobileNumber.Name = "label1_CG_MobileNumber";
-            this.label1_CG_MobileNumber.Size = new System.Drawing.Size(99, 17);
-            this.label1_CG_MobileNumber.TabIndex = 52;
-            this.label1_CG_MobileNumber.Text = "MobileNumber";
-            // 
             // comboBox1_CG_AddressLine5
             // 
             this.comboBox1_CG_AddressLine5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_AddressLine5.FormattingEnabled = true;
-            this.comboBox1_CG_AddressLine5.Location = new System.Drawing.Point(172, 292);
+            this.comboBox1_CG_AddressLine5.Location = new System.Drawing.Point(172, 303);
             this.comboBox1_CG_AddressLine5.Name = "comboBox1_CG_AddressLine5";
             this.comboBox1_CG_AddressLine5.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_AddressLine5.TabIndex = 46;
@@ -992,7 +1021,7 @@
             // 
             this.label1_CG_AddressLine5.AutoSize = true;
             this.label1_CG_AddressLine5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_AddressLine5.Location = new System.Drawing.Point(18, 294);
+            this.label1_CG_AddressLine5.Location = new System.Drawing.Point(18, 305);
             this.label1_CG_AddressLine5.Name = "label1_CG_AddressLine5";
             this.label1_CG_AddressLine5.Size = new System.Drawing.Size(95, 17);
             this.label1_CG_AddressLine5.TabIndex = 45;
@@ -1002,7 +1031,7 @@
             // 
             this.comboBox1_CG_AddressLine4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_AddressLine4.FormattingEnabled = true;
-            this.comboBox1_CG_AddressLine4.Location = new System.Drawing.Point(172, 265);
+            this.comboBox1_CG_AddressLine4.Location = new System.Drawing.Point(172, 276);
             this.comboBox1_CG_AddressLine4.Name = "comboBox1_CG_AddressLine4";
             this.comboBox1_CG_AddressLine4.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_AddressLine4.TabIndex = 44;
@@ -1011,7 +1040,7 @@
             // 
             this.label1_CG_AddressLine4.AutoSize = true;
             this.label1_CG_AddressLine4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_AddressLine4.Location = new System.Drawing.Point(18, 267);
+            this.label1_CG_AddressLine4.Location = new System.Drawing.Point(18, 278);
             this.label1_CG_AddressLine4.Name = "label1_CG_AddressLine4";
             this.label1_CG_AddressLine4.Size = new System.Drawing.Size(95, 17);
             this.label1_CG_AddressLine4.TabIndex = 43;
@@ -1021,7 +1050,7 @@
             // 
             this.comboBox1_CG_OrganisationName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_OrganisationName.FormattingEnabled = true;
-            this.comboBox1_CG_OrganisationName.Location = new System.Drawing.Point(172, 427);
+            this.comboBox1_CG_OrganisationName.Location = new System.Drawing.Point(172, 438);
             this.comboBox1_CG_OrganisationName.Name = "comboBox1_CG_OrganisationName";
             this.comboBox1_CG_OrganisationName.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_OrganisationName.TabIndex = 39;
@@ -1030,7 +1059,7 @@
             // 
             this.label1_CG_OrganisationName.AutoSize = true;
             this.label1_CG_OrganisationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_OrganisationName.Location = new System.Drawing.Point(19, 429);
+            this.label1_CG_OrganisationName.Location = new System.Drawing.Point(19, 440);
             this.label1_CG_OrganisationName.Name = "label1_CG_OrganisationName";
             this.label1_CG_OrganisationName.Size = new System.Drawing.Size(126, 17);
             this.label1_CG_OrganisationName.TabIndex = 38;
@@ -1040,7 +1069,7 @@
             // 
             this.comboBox1_CG_Country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Country.FormattingEnabled = true;
-            this.comboBox1_CG_Country.Location = new System.Drawing.Point(172, 400);
+            this.comboBox1_CG_Country.Location = new System.Drawing.Point(172, 411);
             this.comboBox1_CG_Country.Name = "comboBox1_CG_Country";
             this.comboBox1_CG_Country.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_Country.TabIndex = 37;
@@ -1049,7 +1078,7 @@
             // 
             this.label1_CG_Country.AutoSize = true;
             this.label1_CG_Country.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_Country.Location = new System.Drawing.Point(20, 402);
+            this.label1_CG_Country.Location = new System.Drawing.Point(20, 413);
             this.label1_CG_Country.Name = "label1_CG_Country";
             this.label1_CG_Country.Size = new System.Drawing.Size(57, 17);
             this.label1_CG_Country.TabIndex = 36;
@@ -1059,7 +1088,7 @@
             // 
             this.comboBox1_CG_Postcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Postcode.FormattingEnabled = true;
-            this.comboBox1_CG_Postcode.Location = new System.Drawing.Point(172, 373);
+            this.comboBox1_CG_Postcode.Location = new System.Drawing.Point(172, 384);
             this.comboBox1_CG_Postcode.Name = "comboBox1_CG_Postcode";
             this.comboBox1_CG_Postcode.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_Postcode.TabIndex = 35;
@@ -1068,7 +1097,7 @@
             // 
             this.comboBox1_CG_County.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_County.FormattingEnabled = true;
-            this.comboBox1_CG_County.Location = new System.Drawing.Point(172, 346);
+            this.comboBox1_CG_County.Location = new System.Drawing.Point(172, 357);
             this.comboBox1_CG_County.Name = "comboBox1_CG_County";
             this.comboBox1_CG_County.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_County.TabIndex = 34;
@@ -1077,7 +1106,7 @@
             // 
             this.comboBox1_CG_TownCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_TownCity.FormattingEnabled = true;
-            this.comboBox1_CG_TownCity.Location = new System.Drawing.Point(172, 319);
+            this.comboBox1_CG_TownCity.Location = new System.Drawing.Point(172, 330);
             this.comboBox1_CG_TownCity.Name = "comboBox1_CG_TownCity";
             this.comboBox1_CG_TownCity.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_TownCity.TabIndex = 33;
@@ -1086,7 +1115,7 @@
             // 
             this.label1_CG_Postcode.AutoSize = true;
             this.label1_CG_Postcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_Postcode.Location = new System.Drawing.Point(19, 375);
+            this.label1_CG_Postcode.Location = new System.Drawing.Point(19, 386);
             this.label1_CG_Postcode.Name = "label1_CG_Postcode";
             this.label1_CG_Postcode.Size = new System.Drawing.Size(67, 17);
             this.label1_CG_Postcode.TabIndex = 32;
@@ -1096,7 +1125,7 @@
             // 
             this.label1_CG_County.AutoSize = true;
             this.label1_CG_County.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_County.Location = new System.Drawing.Point(20, 348);
+            this.label1_CG_County.Location = new System.Drawing.Point(20, 359);
             this.label1_CG_County.Name = "label1_CG_County";
             this.label1_CG_County.Size = new System.Drawing.Size(52, 17);
             this.label1_CG_County.TabIndex = 31;
@@ -1106,7 +1135,7 @@
             // 
             this.label1_CG_TownCity.AutoSize = true;
             this.label1_CG_TownCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_TownCity.Location = new System.Drawing.Point(18, 321);
+            this.label1_CG_TownCity.Location = new System.Drawing.Point(18, 332);
             this.label1_CG_TownCity.Name = "label1_CG_TownCity";
             this.label1_CG_TownCity.Size = new System.Drawing.Size(65, 17);
             this.label1_CG_TownCity.TabIndex = 30;
@@ -1116,7 +1145,7 @@
             // 
             this.label1_CG_AddressLine1.AutoSize = true;
             this.label1_CG_AddressLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_AddressLine1.Location = new System.Drawing.Point(18, 186);
+            this.label1_CG_AddressLine1.Location = new System.Drawing.Point(18, 197);
             this.label1_CG_AddressLine1.Name = "label1_CG_AddressLine1";
             this.label1_CG_AddressLine1.Size = new System.Drawing.Size(95, 17);
             this.label1_CG_AddressLine1.TabIndex = 24;
@@ -1126,7 +1155,7 @@
             // 
             this.comboBox1_CG_AddressLine2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_AddressLine2.FormattingEnabled = true;
-            this.comboBox1_CG_AddressLine2.Location = new System.Drawing.Point(172, 211);
+            this.comboBox1_CG_AddressLine2.Location = new System.Drawing.Point(172, 222);
             this.comboBox1_CG_AddressLine2.Name = "comboBox1_CG_AddressLine2";
             this.comboBox1_CG_AddressLine2.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_AddressLine2.TabIndex = 27;
@@ -1135,7 +1164,7 @@
             // 
             this.comboBox1_CG_AddressLine3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_AddressLine3.FormattingEnabled = true;
-            this.comboBox1_CG_AddressLine3.Location = new System.Drawing.Point(172, 238);
+            this.comboBox1_CG_AddressLine3.Location = new System.Drawing.Point(172, 249);
             this.comboBox1_CG_AddressLine3.Name = "comboBox1_CG_AddressLine3";
             this.comboBox1_CG_AddressLine3.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_AddressLine3.TabIndex = 29;
@@ -1144,7 +1173,7 @@
             // 
             this.label1_CG_AddressLine2.AutoSize = true;
             this.label1_CG_AddressLine2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_AddressLine2.Location = new System.Drawing.Point(18, 213);
+            this.label1_CG_AddressLine2.Location = new System.Drawing.Point(18, 224);
             this.label1_CG_AddressLine2.Name = "label1_CG_AddressLine2";
             this.label1_CG_AddressLine2.Size = new System.Drawing.Size(95, 17);
             this.label1_CG_AddressLine2.TabIndex = 26;
@@ -1154,7 +1183,7 @@
             // 
             this.comboBox1_CG_AddressLine1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_AddressLine1.FormattingEnabled = true;
-            this.comboBox1_CG_AddressLine1.Location = new System.Drawing.Point(172, 184);
+            this.comboBox1_CG_AddressLine1.Location = new System.Drawing.Point(172, 195);
             this.comboBox1_CG_AddressLine1.Name = "comboBox1_CG_AddressLine1";
             this.comboBox1_CG_AddressLine1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_AddressLine1.TabIndex = 25;
@@ -1163,7 +1192,7 @@
             // 
             this.label1_CG_AddressLine3.AutoSize = true;
             this.label1_CG_AddressLine3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_AddressLine3.Location = new System.Drawing.Point(18, 240);
+            this.label1_CG_AddressLine3.Location = new System.Drawing.Point(18, 251);
             this.label1_CG_AddressLine3.Name = "label1_CG_AddressLine3";
             this.label1_CG_AddressLine3.Size = new System.Drawing.Size(95, 17);
             this.label1_CG_AddressLine3.TabIndex = 28;
@@ -1173,7 +1202,7 @@
             // 
             this.comboBox1_CG_Salutation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Salutation.FormattingEnabled = true;
-            this.comboBox1_CG_Salutation.Location = new System.Drawing.Point(172, 157);
+            this.comboBox1_CG_Salutation.Location = new System.Drawing.Point(172, 168);
             this.comboBox1_CG_Salutation.Name = "comboBox1_CG_Salutation";
             this.comboBox1_CG_Salutation.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_Salutation.TabIndex = 23;
@@ -1182,7 +1211,7 @@
             // 
             this.comboBox1_CG_TelephoneNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_TelephoneNumber.FormattingEnabled = true;
-            this.comboBox1_CG_TelephoneNumber.Location = new System.Drawing.Point(172, 454);
+            this.comboBox1_CG_TelephoneNumber.Location = new System.Drawing.Point(172, 465);
             this.comboBox1_CG_TelephoneNumber.Name = "comboBox1_CG_TelephoneNumber";
             this.comboBox1_CG_TelephoneNumber.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_TelephoneNumber.TabIndex = 42;
@@ -1191,7 +1220,7 @@
             // 
             this.comboBox1_CG_Surname.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Surname.FormattingEnabled = true;
-            this.comboBox1_CG_Surname.Location = new System.Drawing.Point(172, 130);
+            this.comboBox1_CG_Surname.Location = new System.Drawing.Point(172, 141);
             this.comboBox1_CG_Surname.Name = "comboBox1_CG_Surname";
             this.comboBox1_CG_Surname.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_Surname.TabIndex = 22;
@@ -1200,7 +1229,7 @@
             // 
             this.comboBox1_CG_MiddleName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_MiddleName.FormattingEnabled = true;
-            this.comboBox1_CG_MiddleName.Location = new System.Drawing.Point(172, 103);
+            this.comboBox1_CG_MiddleName.Location = new System.Drawing.Point(172, 114);
             this.comboBox1_CG_MiddleName.Name = "comboBox1_CG_MiddleName";
             this.comboBox1_CG_MiddleName.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_MiddleName.TabIndex = 21;
@@ -1209,7 +1238,7 @@
             // 
             this.comboBox1_CG_FirstName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_FirstName.FormattingEnabled = true;
-            this.comboBox1_CG_FirstName.Location = new System.Drawing.Point(172, 76);
+            this.comboBox1_CG_FirstName.Location = new System.Drawing.Point(172, 87);
             this.comboBox1_CG_FirstName.Name = "comboBox1_CG_FirstName";
             this.comboBox1_CG_FirstName.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_FirstName.TabIndex = 20;
@@ -1218,7 +1247,7 @@
             // 
             this.comboBox1_CG_Title.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_Title.FormattingEnabled = true;
-            this.comboBox1_CG_Title.Location = new System.Drawing.Point(172, 49);
+            this.comboBox1_CG_Title.Location = new System.Drawing.Point(172, 60);
             this.comboBox1_CG_Title.Name = "comboBox1_CG_Title";
             this.comboBox1_CG_Title.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_Title.TabIndex = 19;
@@ -1227,7 +1256,7 @@
             // 
             this.label1_CG_Salutation.AutoSize = true;
             this.label1_CG_Salutation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_Salutation.Location = new System.Drawing.Point(18, 159);
+            this.label1_CG_Salutation.Location = new System.Drawing.Point(18, 170);
             this.label1_CG_Salutation.Name = "label1_CG_Salutation";
             this.label1_CG_Salutation.Size = new System.Drawing.Size(71, 17);
             this.label1_CG_Salutation.TabIndex = 16;
@@ -1237,7 +1266,7 @@
             // 
             this.label1_CG_Surname.AutoSize = true;
             this.label1_CG_Surname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_Surname.Location = new System.Drawing.Point(19, 132);
+            this.label1_CG_Surname.Location = new System.Drawing.Point(19, 143);
             this.label1_CG_Surname.Name = "label1_CG_Surname";
             this.label1_CG_Surname.Size = new System.Drawing.Size(65, 17);
             this.label1_CG_Surname.TabIndex = 15;
@@ -1247,7 +1276,7 @@
             // 
             this.label1_CG_MiddleName.AutoSize = true;
             this.label1_CG_MiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_MiddleName.Location = new System.Drawing.Point(18, 105);
+            this.label1_CG_MiddleName.Location = new System.Drawing.Point(18, 116);
             this.label1_CG_MiddleName.Name = "label1_CG_MiddleName";
             this.label1_CG_MiddleName.Size = new System.Drawing.Size(86, 17);
             this.label1_CG_MiddleName.TabIndex = 14;
@@ -1257,7 +1286,7 @@
             // 
             this.label1_CG_FirstName.AutoSize = true;
             this.label1_CG_FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_FirstName.Location = new System.Drawing.Point(20, 78);
+            this.label1_CG_FirstName.Location = new System.Drawing.Point(20, 89);
             this.label1_CG_FirstName.Name = "label1_CG_FirstName";
             this.label1_CG_FirstName.Size = new System.Drawing.Size(72, 17);
             this.label1_CG_FirstName.TabIndex = 13;
@@ -1267,7 +1296,7 @@
             // 
             this.label1_CG_TelephoneNumber.AutoSize = true;
             this.label1_CG_TelephoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_TelephoneNumber.Location = new System.Drawing.Point(18, 456);
+            this.label1_CG_TelephoneNumber.Location = new System.Drawing.Point(18, 467);
             this.label1_CG_TelephoneNumber.Name = "label1_CG_TelephoneNumber";
             this.label1_CG_TelephoneNumber.Size = new System.Drawing.Size(126, 17);
             this.label1_CG_TelephoneNumber.TabIndex = 40;
@@ -1277,7 +1306,7 @@
             // 
             this.label1_CG_Title.AutoSize = true;
             this.label1_CG_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_Title.Location = new System.Drawing.Point(20, 51);
+            this.label1_CG_Title.Location = new System.Drawing.Point(20, 61);
             this.label1_CG_Title.Name = "label1_CG_Title";
             this.label1_CG_Title.Size = new System.Drawing.Size(35, 17);
             this.label1_CG_Title.TabIndex = 12;
@@ -1287,7 +1316,7 @@
             // 
             this.comboBox1_CG_PersonRef.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1_CG_PersonRef.FormattingEnabled = true;
-            this.comboBox1_CG_PersonRef.Location = new System.Drawing.Point(172, 22);
+            this.comboBox1_CG_PersonRef.Location = new System.Drawing.Point(172, 33);
             this.comboBox1_CG_PersonRef.Name = "comboBox1_CG_PersonRef";
             this.comboBox1_CG_PersonRef.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_CG_PersonRef.TabIndex = 3;
@@ -1296,7 +1325,7 @@
             // 
             this.label1_CG_PersonRef.AutoSize = true;
             this.label1_CG_PersonRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_PersonRef.Location = new System.Drawing.Point(20, 24);
+            this.label1_CG_PersonRef.Location = new System.Drawing.Point(20, 35);
             this.label1_CG_PersonRef.Name = "label1_CG_PersonRef";
             this.label1_CG_PersonRef.Size = new System.Drawing.Size(75, 17);
             this.label1_CG_PersonRef.TabIndex = 2;
@@ -1402,13 +1431,24 @@
             this.panel2.Size = new System.Drawing.Size(149, 47);
             this.panel2.TabIndex = 6;
             // 
-            // textBox1_CG_Barcode
+            // comboBox1_CG_MobileNumber
             // 
-            this.textBox1_CG_Barcode.Enabled = false;
-            this.textBox1_CG_Barcode.Location = new System.Drawing.Point(61, 57);
-            this.textBox1_CG_Barcode.Name = "textBox1_CG_Barcode";
-            this.textBox1_CG_Barcode.Size = new System.Drawing.Size(112, 20);
-            this.textBox1_CG_Barcode.TabIndex = 41;
+            this.comboBox1_CG_MobileNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1_CG_MobileNumber.FormattingEnabled = true;
+            this.comboBox1_CG_MobileNumber.Location = new System.Drawing.Point(176, 32);
+            this.comboBox1_CG_MobileNumber.Name = "comboBox1_CG_MobileNumber";
+            this.comboBox1_CG_MobileNumber.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1_CG_MobileNumber.TabIndex = 57;
+            // 
+            // label1_CG_MobileNumber
+            // 
+            this.label1_CG_MobileNumber.AutoSize = true;
+            this.label1_CG_MobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_MobileNumber.Location = new System.Drawing.Point(24, 34);
+            this.label1_CG_MobileNumber.Name = "label1_CG_MobileNumber";
+            this.label1_CG_MobileNumber.Size = new System.Drawing.Size(99, 17);
+            this.label1_CG_MobileNumber.TabIndex = 56;
+            this.label1_CG_MobileNumber.Text = "MobileNumber";
             // 
             // Form1
             // 
@@ -1513,10 +1553,6 @@
         private System.Windows.Forms.ComboBox comboBox1_CG_RaffleEndNumber;
         private System.Windows.Forms.ComboBox comboBox1_CG_Country;
         private System.Windows.Forms.Label label1_CG_Country;
-        private System.Windows.Forms.ComboBox comboBox1_CG_RecordType;
-        private System.Windows.Forms.ComboBox comboBox1_CG_GiftAid;
-        private System.Windows.Forms.Label label1_CG_RecordType;
-        private System.Windows.Forms.Label label1_CG_GiftAid;
         private System.Windows.Forms.Label label1_CG_ClientData10;
         private System.Windows.Forms.Label label1_CG_ClientData1;
         private System.Windows.Forms.Label label1_CG_ClientData7;
@@ -1561,19 +1597,26 @@
         private System.Windows.Forms.Label label1_CG_EmailAddress;
         private System.Windows.Forms.ComboBox comboBox1_CG_EmailAddress;
         private System.Windows.Forms.Label label1_CG_PackageCode;
-        private System.Windows.Forms.ComboBox comboBox1_CG_MobileNumber;
-        private System.Windows.Forms.Label label1_CG_MobileNumber;
         private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine5;
         private System.Windows.Forms.Label label1_CG_AddressLine5;
         private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine4;
         private System.Windows.Forms.Label label1_CG_AddressLine4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox checkBox1_CG_duplicates;
-        private System.Windows.Forms.Label label1_CG_NumberOfRecords;
-        private System.Windows.Forms.Label label2_CG_NumberOfRecords;
+        private System.Windows.Forms.Label label1_CG_RowsImported;
+        private System.Windows.Forms.Label label2_CG_RowsImported;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1_CG_Barcode;
+        private System.Windows.Forms.Label label2_CG_RowsDeleted;
+        private System.Windows.Forms.Label label1_CG_RowsDeleted;
+        private System.Windows.Forms.Label label2_CG_RowsLoaded;
+        private System.Windows.Forms.Label label1_CG_RowsLoaded;
+        private System.Windows.Forms.RadioButton radioButton2_RecordTypeCold;
+        private System.Windows.Forms.RadioButton radioButton1_CG_RecordTypeWarm;
+        private System.Windows.Forms.Label label1_CG_RecordType;
+        private System.Windows.Forms.ComboBox comboBox1_CG_MobileNumber;
+        private System.Windows.Forms.Label label1_CG_MobileNumber;
     }
 }
 

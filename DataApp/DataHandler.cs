@@ -14,13 +14,15 @@ namespace DataApp
         {
             GenericParserAdapter parserAdapter = new GenericParserAdapter();
             parserAdapter.ColumnDelimiter = delimiter;
+            parserAdapter.SkipEmptyRows = true;
             parserAdapter.SetDataSource(filepath);
             parserAdapter.FirstRowHasHeader = true;
-            if(maxrownumber != 0)
+            if (maxrownumber != 0)
             {
                 parserAdapter.MaxRows = maxrownumber;
             }
             return parserAdapter.GetDataTable();
+
         }
         
         public static void DataTableToFlatFile(System.Data.DataTable dt, string dialogfilename, int extentionindex)

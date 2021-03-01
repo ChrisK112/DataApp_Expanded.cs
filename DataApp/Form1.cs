@@ -27,7 +27,7 @@ namespace DataApp
 
         private void button1_Form1_search_Click(object sender, EventArgs e)
         {
-            ofd.Filter = "Text(Tab delimited) (*.txt) |*.txt|CSV (Comma delimited) (*.csv) |*.csv|Excel|*.xlsx";
+            ofd.Filter = "Text(Tab delimited) (*.txt) |*.txt|CSV (Comma delimited) (*.csv) |*.csv";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 sourceFile = ofd.FileName;
@@ -48,8 +48,79 @@ namespace DataApp
                 delimiter_f1 = Form2.delimiter_f2;
                 dt = DataHandler.FlatToDataTable(sourceFile, delimiter_f1);
                 dt.Columns.Add("                -", typeof(string));
-                temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();                
+                temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
+
+                //DATA SOURCES
+                string[] colNames = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
+                string[] colNamesWithBlank = new string[temp_dt.Columns.Count + 1];
+                colNamesWithBlank[0] = "                -";/*Add an extra empty option to the list*/
+                for (int n = 1; n < temp_dt.Columns.Count; n++)
+                {
+                    colNamesWithBlank[n] = colNames[n - 1];
+                }
+
+                Dictionary<string, string> CharityNamesPairs = new Dictionary<string, string>();
+                foreach (string key in ConfigurationManager.AppSettings)
+                {
+                    CharityNamesPairs.Add(key.ToString(), ConfigurationManager.AppSettings[key].ToString());
+                }
+
+                //DATA SOURCES TO GRID AND COMBOBOXES
+                dataGridView1.Columns.Clear();
+                dataGridView1.DataSource = temp_dt;
+                if (dataGridView1.Columns.Count < 13)
+                {
+                    dataGridView1.AutoSize = true;
+                }
+
+                foreach (Control tab in tabControl1.TabPages)
+                {
+                    TabPage tabPage = (TabPage)tab;
+
+                    //COMMITED GIVING
+                    if (tabPage.Name == "CG_tabPage1")
+                    {
+                        foreach (Control group in tabPage.Controls)
+                        {
+                            foreach (Control item in group.Controls)
+                            {
+                                if (item.GetType().Name == "ComboBox")
+                                {
+                                    ComboBox comboBox = (ComboBox)item;
+                                    if (item.Name == "comboBox1_CG_ClientName")
+                                    {
+                                        comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
+                                        comboBox.DataSource = new BindingSource(CharityNamesPairs.OrderBy(key => key.Value), null);
+                                        comboBox.DisplayMember = "Value";
+                                        comboBox.ValueMember = "Key";
+                                    }
+                                    else
+                                    {
+                                        comboBox.BindingContext = new BindingContext();
+                                        comboBox.DataSource = colNamesWithBlank;
+                                        comboBox.SelectedIndex = 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+                //DEFAULT VALUES
+                textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                textBox1_CG_AddedBy.Text = "Admin";
+                textBox1_CG_Primkey.Text = "";
+                label2_CG_RowsImported.Text = dt.Rows.Count.ToString();
+                radioButton1_CG_RecordTypeWarm.Checked = true;
+
+                //CLEAN GLOBAL VALUES
+                sourceFile = null;
+                fileName = null;
+                textBox1_Form1_filePath.Text = sourceFile;
+                Form2.filepath = null;
             }
+
             catch (System.ArgumentNullException)
             {
                 MessageBox.Show("Please select a file");
@@ -58,75 +129,11 @@ namespace DataApp
             {
                 MessageBox.Show("The file you try to import does not contain any row");
             }
-
-            //DATA SOURCES
-            string[] colNames = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
-            string[] colNamesWithBlank = new string[temp_dt.Columns.Count + 1];
-            colNamesWithBlank[0] = "                -";/*Add an extra empty option to the list*/
-            for (int n = 1; n < temp_dt.Columns.Count; n++)
+            catch(Exception)
             {
-                colNamesWithBlank[n] = colNames[n - 1];
-            }
-
-            Dictionary<string, string> CharityNamesPairs = new Dictionary<string, string>();
-            foreach (string key in ConfigurationManager.AppSettings)
-            {
-                CharityNamesPairs.Add(key.ToString(), ConfigurationManager.AppSettings[key].ToString());
-            }
-
-            //DATA SOURCES TO GRID AND COMBOBOXES
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = temp_dt;
-            if (dataGridView1.Columns.Count < 13)
-            {
-                dataGridView1.AutoSize = true;
+                MessageBox.Show("There is an issue with your file");
             }
             
-            foreach (Control tab in tabControl1.TabPages)
-            {
-                TabPage tabPage = (TabPage)tab;
-
-                //COMMITED GIVING
-                if (tabPage.Name == "CG_tabPage1")
-                {
-                    foreach (Control group in tabPage.Controls)
-                    {
-                        foreach (Control item in group.Controls)
-                        {
-                            if (item.GetType().Name == "ComboBox")
-                            {
-                                ComboBox comboBox = (ComboBox)item;
-                                if (item.Name == "comboBox1_CG_ClientName")
-                                {
-                                    comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
-                                    comboBox.DataSource = new BindingSource(CharityNamesPairs.OrderBy(key => key.Value), null);
-                                    comboBox.DisplayMember = "Value";
-                                    comboBox.ValueMember = "Key";
-                                }
-                                else
-                                {
-                                    comboBox.BindingContext = new BindingContext();
-                                    comboBox.DataSource = colNamesWithBlank;
-                                    comboBox.SelectedIndex = 0;
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-            //DEFAULT VALUES
-            textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            textBox1_CG_AddedBy.Text = "Admin";
-            textBox1_CG_Primkey.Text = "";
-            label2_CG_NumberOfRecords.Text = dt.Rows.Count.ToString();
-
-            //CLEAN GLOBAL VALUES
-            sourceFile = null;
-            fileName = null;
-            textBox1_Form1_filePath.Text = sourceFile;
-            Form2.filepath = null;
         }
 
         private void textBox1_CG_AppealCode_TextChanged(object sender, EventArgs e)
@@ -149,6 +156,16 @@ namespace DataApp
             //COMMITTED GIVING
             if (tabControl1.SelectedTab == CG_tabPage1)
             {
+                string recordtype;
+                if (radioButton1_CG_RecordTypeWarm.Checked)
+                {
+                    recordtype = radioButton1_CG_RecordTypeWarm.Text;
+                }
+                else
+                {
+                    recordtype = radioButton2_RecordTypeCold.Text;
+                }
+
                 dt_target = DataTableFactory.DtScheme(CG_tabPage1.Name);
                 var query =
                     from row in dt.AsEnumerable()
@@ -182,9 +199,9 @@ namespace DataApp
                         ImportFile = textBox1_CG_ImportFile.Text,
                         RaffleStartNumber = row.Field<string>(comboBox1_CG_RaffleStartNumber.Text),
                         RaffleEndNumber = row.Field<string>(comboBox1_CG_RaffleEndNumber.Text),
-                        RecordType = row.Field<string>(comboBox1_CG_RecordType.Text),
+                        RecordType = recordtype,
                         Campaign = textBox1_CG_Campaign.Text,
-                        Barcode = row.Field<string>(textBox1_CG_Barcode.Text) + textBox2_CG_Barcode.Text + row.Field<string>(comboBox2_CG_Barcode.Text) + textBox2_CG_Barcode.Text + row.Field<string>(comboBox3_CG_Barcode.Text),
+                        Barcode = textBox1_CG_Barcode.Text + textBox2_CG_Barcode.Text + row.Field<string>(comboBox2_CG_Barcode.Text) + textBox2_CG_Barcode.Text + row.Field<string>(comboBox3_CG_Barcode.Text),
                         ClientData1 = row.Field<string>(comboBox1_CG_ClientData1.Text),
                         ClientData2 = row.Field<string>(comboBox1_CG_ClientData2.Text),
                         ClientData3 = row.Field<string>(comboBox1_CG_ClientData3.Text),
@@ -252,18 +269,25 @@ namespace DataApp
                         );
                 }
             }
-
-            if(checkBox1_CG_duplicates.Checked)
+            DataTable dt_unique = new DataTable();
+            if (checkBox1_CG_duplicates.Checked)
             {
-                DataTable dt_unique = dt_target.AsEnumerable().GroupBy(x => x.Field<string>("Primkey")).Select(y => y.First()).CopyToDataTable();
+                dt_unique = dt_target.AsEnumerable().GroupBy(x => x.Field<string>("Primkey")).Select(y => y.First()).CopyToDataTable();
                 dataGridView1.DataSource = dt_unique;
-                label2_CG_NumberOfRecords.Text = dt_unique.Rows.Count.ToString();
+
+                if(dt_unique.Rows.Count < dt_target.Rows.Count)
+                {
+                    label2_CG_RowsDeleted.Text = (dt_target.Rows.Count - dt_unique.Rows.Count).ToString();
+                    label2_CG_RowsLoaded.Text = dt_unique.Rows.Count.ToString();
+                }
             }
             else
             {
                 dataGridView1.DataSource = dt_target;
-                label2_CG_NumberOfRecords.Text = dt_target.Rows.Count.ToString();
-            }                            
+                label2_CG_RowsLoaded.Text = dt.Rows.Count.ToString();
+                label2_CG_RowsDeleted.Text = "0";
+            }           
+            
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -300,5 +324,6 @@ namespace DataApp
         {
             WordHandler.wordtest(dt);
         }
+
     }
 }
