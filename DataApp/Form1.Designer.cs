@@ -74,6 +74,8 @@
             this.label1_CG_Primkey = new System.Windows.Forms.Label();
             this.comboBox1_CG_Primkey = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1_CG_MobileNumber = new System.Windows.Forms.ComboBox();
+            this.label1_CG_MobileNumber = new System.Windows.Forms.Label();
             this.comboBox1_CG_PackageCode = new System.Windows.Forms.ComboBox();
             this.label1_CG_EmailAddress = new System.Windows.Forms.Label();
             this.comboBox1_CG_EmailAddress = new System.Windows.Forms.ComboBox();
@@ -151,8 +153,18 @@
             this.button1_Form1_save = new System.Windows.Forms.Button();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1_CG_MobileNumber = new System.Windows.Forms.ComboBox();
-            this.label1_CG_MobileNumber = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBox1_CG_lineFeed = new System.Windows.Forms.CheckBox();
+            this.checkBox1_CG_quotations = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.checkBox1_CG_sameValueEnabler = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
@@ -166,6 +178,8 @@
             this.panel1_Form1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -225,7 +239,9 @@
             // 
             // CG_tabPage1
             // 
+            this.CG_tabPage1.Controls.Add(this.groupBox7);
             this.CG_tabPage1.Controls.Add(this.groupBox3);
+            this.CG_tabPage1.Controls.Add(this.groupBox9);
             this.CG_tabPage1.Controls.Add(this.groupBox5);
             this.CG_tabPage1.Controls.Add(this.groupBox6);
             this.CG_tabPage1.Controls.Add(this.groupBox4);
@@ -241,19 +257,22 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox2);
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.checkBox1_CG_quotations);
+            this.groupBox3.Controls.Add(this.checkBox1_CG_lineFeed);
             this.groupBox3.Controls.Add(this.checkBox1_CG_duplicates);
-            this.groupBox3.Location = new System.Drawing.Point(314, 106);
+            this.groupBox3.Location = new System.Drawing.Point(290, 101);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(226, 240);
+            this.groupBox3.Size = new System.Drawing.Size(250, 148);
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
             // 
             // checkBox1_CG_duplicates
             // 
             this.checkBox1_CG_duplicates.AutoSize = true;
             this.checkBox1_CG_duplicates.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1_CG_duplicates.Location = new System.Drawing.Point(14, 29);
+            this.checkBox1_CG_duplicates.Location = new System.Drawing.Point(15, 12);
             this.checkBox1_CG_duplicates.Name = "checkBox1_CG_duplicates";
             this.checkBox1_CG_duplicates.Size = new System.Drawing.Size(149, 21);
             this.checkBox1_CG_duplicates.TabIndex = 12;
@@ -277,12 +296,11 @@
             this.groupBox5.Controls.Add(this.label1_CG_AddedDateTime);
             this.groupBox5.Controls.Add(this.label1_CG_AddedBy);
             this.groupBox5.Controls.Add(this.label1_CG_ClientName);
-            this.groupBox5.Location = new System.Drawing.Point(6, 106);
+            this.groupBox5.Location = new System.Drawing.Point(6, 101);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(291, 241);
+            this.groupBox5.Size = new System.Drawing.Size(278, 277);
             this.groupBox5.TabIndex = 44;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox5";
             // 
             // radioButton2_RecordTypeCold
             // 
@@ -433,18 +451,17 @@
             this.groupBox6.Controls.Add(this.button1);
             this.groupBox6.Controls.Add(this.label2_CG_RowsImported);
             this.groupBox6.Controls.Add(this.label1_CG_RowsImported);
-            this.groupBox6.Location = new System.Drawing.Point(6, 353);
+            this.groupBox6.Location = new System.Drawing.Point(6, 379);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(534, 166);
+            this.groupBox6.Size = new System.Drawing.Size(534, 139);
             this.groupBox6.TabIndex = 42;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "groupBox6";
             // 
             // label2_CG_RowsDeleted
             // 
             this.label2_CG_RowsDeleted.AutoSize = true;
             this.label2_CG_RowsDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2_CG_RowsDeleted.Location = new System.Drawing.Point(121, 97);
+            this.label2_CG_RowsDeleted.Location = new System.Drawing.Point(121, 106);
             this.label2_CG_RowsDeleted.Name = "label2_CG_RowsDeleted";
             this.label2_CG_RowsDeleted.Size = new System.Drawing.Size(17, 17);
             this.label2_CG_RowsDeleted.TabIndex = 17;
@@ -454,7 +471,7 @@
             // 
             this.label1_CG_RowsDeleted.AutoSize = true;
             this.label1_CG_RowsDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RowsDeleted.Location = new System.Drawing.Point(6, 96);
+            this.label1_CG_RowsDeleted.Location = new System.Drawing.Point(6, 105);
             this.label1_CG_RowsDeleted.Name = "label1_CG_RowsDeleted";
             this.label1_CG_RowsDeleted.Size = new System.Drawing.Size(110, 17);
             this.label1_CG_RowsDeleted.TabIndex = 16;
@@ -464,7 +481,7 @@
             // 
             this.label2_CG_RowsLoaded.AutoSize = true;
             this.label2_CG_RowsLoaded.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2_CG_RowsLoaded.Location = new System.Drawing.Point(121, 63);
+            this.label2_CG_RowsLoaded.Location = new System.Drawing.Point(121, 72);
             this.label2_CG_RowsLoaded.Name = "label2_CG_RowsLoaded";
             this.label2_CG_RowsLoaded.Size = new System.Drawing.Size(17, 17);
             this.label2_CG_RowsLoaded.TabIndex = 15;
@@ -474,7 +491,7 @@
             // 
             this.label1_CG_RowsLoaded.AutoSize = true;
             this.label1_CG_RowsLoaded.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RowsLoaded.Location = new System.Drawing.Point(6, 62);
+            this.label1_CG_RowsLoaded.Location = new System.Drawing.Point(6, 71);
             this.label1_CG_RowsLoaded.Name = "label1_CG_RowsLoaded";
             this.label1_CG_RowsLoaded.Size = new System.Drawing.Size(105, 17);
             this.label1_CG_RowsLoaded.TabIndex = 14;
@@ -482,7 +499,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(438, 134);
+            this.button1.Location = new System.Drawing.Point(438, 72);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -494,7 +511,7 @@
             // 
             this.label2_CG_RowsImported.AutoSize = true;
             this.label2_CG_RowsImported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2_CG_RowsImported.Location = new System.Drawing.Point(121, 29);
+            this.label2_CG_RowsImported.Location = new System.Drawing.Point(121, 38);
             this.label2_CG_RowsImported.Name = "label2_CG_RowsImported";
             this.label2_CG_RowsImported.Size = new System.Drawing.Size(17, 17);
             this.label2_CG_RowsImported.TabIndex = 12;
@@ -504,7 +521,7 @@
             // 
             this.label1_CG_RowsImported.AutoSize = true;
             this.label1_CG_RowsImported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RowsImported.Location = new System.Drawing.Point(6, 28);
+            this.label1_CG_RowsImported.Location = new System.Drawing.Point(6, 37);
             this.label1_CG_RowsImported.Name = "label1_CG_RowsImported";
             this.label1_CG_RowsImported.Size = new System.Drawing.Size(111, 17);
             this.label1_CG_RowsImported.TabIndex = 11;
@@ -528,11 +545,9 @@
             this.groupBox4.Size = new System.Drawing.Size(534, 94);
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
             // 
             // textBox1_CG_Barcode
             // 
-            this.textBox1_CG_Barcode.Enabled = false;
             this.textBox1_CG_Barcode.Location = new System.Drawing.Point(61, 57);
             this.textBox1_CG_Barcode.Name = "textBox1_CG_Barcode";
             this.textBox1_CG_Barcode.Size = new System.Drawing.Size(112, 20);
@@ -668,7 +683,25 @@
             this.groupBox2.Size = new System.Drawing.Size(317, 513);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            // 
+            // comboBox1_CG_MobileNumber
+            // 
+            this.comboBox1_CG_MobileNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1_CG_MobileNumber.FormattingEnabled = true;
+            this.comboBox1_CG_MobileNumber.Location = new System.Drawing.Point(176, 32);
+            this.comboBox1_CG_MobileNumber.Name = "comboBox1_CG_MobileNumber";
+            this.comboBox1_CG_MobileNumber.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1_CG_MobileNumber.TabIndex = 57;
+            // 
+            // label1_CG_MobileNumber
+            // 
+            this.label1_CG_MobileNumber.AutoSize = true;
+            this.label1_CG_MobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_MobileNumber.Location = new System.Drawing.Point(24, 34);
+            this.label1_CG_MobileNumber.Name = "label1_CG_MobileNumber";
+            this.label1_CG_MobileNumber.Size = new System.Drawing.Size(99, 17);
+            this.label1_CG_MobileNumber.TabIndex = 56;
+            this.label1_CG_MobileNumber.Text = "MobileNumber";
             // 
             // comboBox1_CG_PackageCode
             // 
@@ -1006,7 +1039,6 @@
             this.groupBox1.Size = new System.Drawing.Size(317, 513);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // comboBox1_CG_AddressLine5
             // 
@@ -1431,24 +1463,123 @@
             this.panel2.Size = new System.Drawing.Size(149, 47);
             this.panel2.TabIndex = 6;
             // 
-            // comboBox1_CG_MobileNumber
+            // comboBox1
             // 
-            this.comboBox1_CG_MobileNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_CG_MobileNumber.FormattingEnabled = true;
-            this.comboBox1_CG_MobileNumber.Location = new System.Drawing.Point(176, 32);
-            this.comboBox1_CG_MobileNumber.Name = "comboBox1_CG_MobileNumber";
-            this.comboBox1_CG_MobileNumber.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1_CG_MobileNumber.TabIndex = 57;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 14);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(112, 21);
+            this.comboBox1.TabIndex = 56;
             // 
-            // label1_CG_MobileNumber
+            // label3
             // 
-            this.label1_CG_MobileNumber.AutoSize = true;
-            this.label1_CG_MobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_MobileNumber.Location = new System.Drawing.Point(24, 34);
-            this.label1_CG_MobileNumber.Name = "label1_CG_MobileNumber";
-            this.label1_CG_MobileNumber.Size = new System.Drawing.Size(99, 17);
-            this.label1_CG_MobileNumber.TabIndex = 56;
-            this.label1_CG_MobileNumber.Text = "MobileNumber";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(38, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(166, 17);
+            this.label3.TabIndex = 55;
+            this.label3.Text = "Same Value For All Rows";
+            // 
+            // checkBox1_CG_lineFeed
+            // 
+            this.checkBox1_CG_lineFeed.AutoSize = true;
+            this.checkBox1_CG_lineFeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1_CG_lineFeed.Location = new System.Drawing.Point(15, 38);
+            this.checkBox1_CG_lineFeed.Name = "checkBox1_CG_lineFeed";
+            this.checkBox1_CG_lineFeed.Size = new System.Drawing.Size(168, 21);
+            this.checkBox1_CG_lineFeed.TabIndex = 13;
+            this.checkBox1_CG_lineFeed.Text = "Remove LineFeed (\\n)";
+            this.checkBox1_CG_lineFeed.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1_CG_quotations
+            // 
+            this.checkBox1_CG_quotations.AutoSize = true;
+            this.checkBox1_CG_quotations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1_CG_quotations.Location = new System.Drawing.Point(15, 64);
+            this.checkBox1_CG_quotations.Name = "checkBox1_CG_quotations";
+            this.checkBox1_CG_quotations.Size = new System.Drawing.Size(169, 21);
+            this.checkBox1_CG_quotations.TabIndex = 14;
+            this.checkBox1_CG_quotations.Text = "Remove Quotations (\')";
+            this.checkBox1_CG_quotations.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(15, 90);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(220, 21);
+            this.checkBox1.TabIndex = 15;
+            this.checkBox1.Text = "Remove Double Quotations (\")";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(15, 116);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(122, 21);
+            this.checkBox2.TabIndex = 16;
+            this.checkBox2.Text = "Remove Bar (|)";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textBox2);
+            this.groupBox7.Controls.Add(this.comboBox2);
+            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.comboBox1);
+            this.groupBox7.Enabled = false;
+            this.groupBox7.Location = new System.Drawing.Point(296, 285);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(238, 76);
+            this.groupBox7.TabIndex = 44;
+            this.groupBox7.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(121, 14);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(112, 20);
+            this.textBox1.TabIndex = 58;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(121, 46);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(112, 20);
+            this.textBox2.TabIndex = 60;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(6, 46);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(112, 21);
+            this.comboBox2.TabIndex = 59;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.checkBox1_CG_sameValueEnabler);
+            this.groupBox9.Controls.Add(this.label3);
+            this.groupBox9.Location = new System.Drawing.Point(290, 244);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(250, 134);
+            this.groupBox9.TabIndex = 61;
+            this.groupBox9.TabStop = false;
+            // 
+            // checkBox1_CG_sameValueEnabler
+            // 
+            this.checkBox1_CG_sameValueEnabler.AutoSize = true;
+            this.checkBox1_CG_sameValueEnabler.Location = new System.Drawing.Point(17, 20);
+            this.checkBox1_CG_sameValueEnabler.Name = "checkBox1_CG_sameValueEnabler";
+            this.checkBox1_CG_sameValueEnabler.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1_CG_sameValueEnabler.TabIndex = 56;
+            this.checkBox1_CG_sameValueEnabler.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1487,6 +1618,10 @@
             this.panel1_Form1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1617,6 +1752,18 @@
         private System.Windows.Forms.Label label1_CG_RecordType;
         private System.Windows.Forms.ComboBox comboBox1_CG_MobileNumber;
         private System.Windows.Forms.Label label1_CG_MobileNumber;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox1_CG_quotations;
+        private System.Windows.Forms.CheckBox checkBox1_CG_lineFeed;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.CheckBox checkBox1_CG_sameValueEnabler;
     }
 }
 

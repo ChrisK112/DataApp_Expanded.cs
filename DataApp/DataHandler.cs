@@ -4,7 +4,9 @@ using System.Linq;
 using System.IO;
 using System.Data;
 using GenericParsing;
+using System.Configuration;
 using excel = Microsoft.Office.Interop.Excel;
+using System.Windows.Forms;
 
 namespace DataApp
 {
@@ -24,7 +26,55 @@ namespace DataApp
             return parserAdapter.GetDataTable();
 
         }
-        
+
+        public static System.Linq.IOrderedEnumerable<System.Collections.Generic.KeyValuePair<string, string>> CharityNamesPairs()
+        {
+            Dictionary<string, string> CharityNamesDic = new Dictionary<string, string>();
+            foreach (string key in ConfigurationManager.AppSettings)
+            {
+                CharityNamesDic.Add(key.ToString(), ConfigurationManager.AppSettings[key].ToString());
+            }
+            return CharityNamesDic.OrderBy(key => key.Value);
+        }
+
+        public static string[] columnNamesWithExtraEmptyRow(DataTable dt)
+        {
+            string[] colNames = dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();            
+            return addEmptyElementToArray(colNames);
+        }
+
+        private static string[] addEmptyElementToArray(string[] list)
+        {
+            string[] colNamesWithBlank = new string[list.Count() + 1];
+            colNamesWithBlank[0] = "                -";
+            for (int n = 1; n < list.Count(); n++)
+            {
+                colNamesWithBlank[n] = list[n - 1];
+            }
+            return colNamesWithBlank;
+        }
+
+        public static void addOrDeleteEmptyColumn(ref DataTable dt)
+        {
+            bool exist = false;
+            foreach(DataColumn col in dt.Columns)
+            {
+                if(col.ColumnName == "                -")
+                {
+                    exist = true;
+                }
+            }
+            if (exist)
+            {
+                dt.Columns.Remove("                -");
+            }
+            else
+            {
+                dt.Columns.Add("                -");
+            }
+        }
+
+
         public static void DataTableToFlatFile(System.Data.DataTable dt, string dialogfilename, int extentionindex)
         {
             var lines = new List<string>();

@@ -20,9 +20,12 @@ namespace DataApp
         public static string sourceFile;
         public static string fileName;
         public DataTable dt;
-        public DataTable dt_target = new DataTable();
-        char delimiter_f1;
-        bool dataloaded = false;
+        DataTable dtTarget = new DataTable();
+        DataTable dtUniqueValues;
+        char delimiterF1;
+        bool dataLoaded, dataUnique = false;
+
+        
 
 
         private void button1_Form1_search_Click(object sender, EventArgs e)
@@ -34,40 +37,23 @@ namespace DataApp
                 textBox1_Form1_filePath.Text = sourceFile;
                 fileName = ofd.SafeFileName;
                 Form2.filepath = sourceFile;
-            }            
+            }
         }
 
         private void button1_Form1_import_Click(object sender, EventArgs e)
         {
-            DataTable temp_dt = new DataTable();
-
             try
             {
                 Form2 form2 = new Form2();
                 form2.ShowDialog();
-                delimiter_f1 = Form2.delimiter_f2;
-                dt = DataHandler.FlatToDataTable(sourceFile, delimiter_f1);
-                dt.Columns.Add("                -", typeof(string));
-                temp_dt = dt.AsEnumerable().Take(20).CopyToDataTable();
-
-                //DATA SOURCES
-                string[] colNames = temp_dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
-                string[] colNamesWithBlank = new string[temp_dt.Columns.Count + 1];
-                colNamesWithBlank[0] = "                -";/*Add an extra empty option to the list*/
-                for (int n = 1; n < temp_dt.Columns.Count; n++)
-                {
-                    colNamesWithBlank[n] = colNames[n - 1];
-                }
-
-                Dictionary<string, string> CharityNamesPairs = new Dictionary<string, string>();
-                foreach (string key in ConfigurationManager.AppSettings)
-                {
-                    CharityNamesPairs.Add(key.ToString(), ConfigurationManager.AppSettings[key].ToString());
-                }
-
+                delimiterF1 = Form2.delimiter_f2;
+                dt = DataHandler.FlatToDataTable(sourceFile, delimiterF1);
+                DataHandler.addOrDeleteEmptyColumn(ref dt);
+                DataTable dtFirst20 = dt.AsEnumerable().Take(20).CopyToDataTable();
+                
                 //DATA SOURCES TO GRID AND COMBOBOXES
                 dataGridView1.Columns.Clear();
-                dataGridView1.DataSource = temp_dt;
+                dataGridView1.DataSource = dtFirst20;
                 if (dataGridView1.Columns.Count < 13)
                 {
                     dataGridView1.AutoSize = true;
@@ -89,15 +75,15 @@ namespace DataApp
                                     ComboBox comboBox = (ComboBox)item;
                                     if (item.Name == "comboBox1_CG_ClientName")
                                     {
-                                        comboBox.BindingContext = new BindingContext(); /*This prevents those from changing together*/
-                                        comboBox.DataSource = new BindingSource(CharityNamesPairs.OrderBy(key => key.Value), null);
+                                        comboBox.BindingContext = new BindingContext();
+                                        comboBox.DataSource = new BindingSource(DataHandler.CharityNamesPairs(), null);
                                         comboBox.DisplayMember = "Value";
                                         comboBox.ValueMember = "Key";
                                     }
                                     else
                                     {
                                         comboBox.BindingContext = new BindingContext();
-                                        comboBox.DataSource = colNamesWithBlank;
+                                        comboBox.DataSource = DataHandler.columnNamesWithExtraEmptyRow(dtFirst20);
                                         comboBox.SelectedIndex = 0;
                                     }
                                 }
@@ -106,6 +92,7 @@ namespace DataApp
                     }
 
                 }
+
                 //DEFAULT VALUES
                 textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -118,7 +105,7 @@ namespace DataApp
                 sourceFile = null;
                 fileName = null;
                 textBox1_Form1_filePath.Text = sourceFile;
-                Form2.filepath = null;
+                Form2.filepath = null;                
             }
 
             catch (System.ArgumentNullException)
@@ -150,7 +137,7 @@ namespace DataApp
 
         private void button1_Form1_load_Click(object sender, EventArgs e)
         {
-            dataloaded = true;
+            dataLoaded = true;
             TabPage tabPage = tabControl1.SelectedTab;
 
             //COMMITTED GIVING
@@ -166,7 +153,8 @@ namespace DataApp
                     recordtype = radioButton2_RecordTypeCold.Text;
                 }
 
-                dt_target = DataTableFactory.DtScheme(CG_tabPage1.Name);
+
+                dtTarget = DataTableFactory.DtScheme(CG_tabPage1.Name);
                 var query =
                     from row in dt.AsEnumerable()
                     select new
@@ -194,13 +182,22 @@ namespace DataApp
                         EmailAddress = row.Field<string>(comboBox1_CG_EmailAddress.Text),
                         AppealCode = textBox1_CG_AppealCode.Text,
                         PackageCode = row.Field<string>(comboBox1_CG_PackageCode.Text),
+                        Deceased = 0,
+                        Goneaway = 0,
+                        NoFurtherCommunication = 0,
                         PreloadedCAFNumber = row.Field<string>(comboBox1_CG_PreloadedCAFNumber.Text),
                         ColdURN = row.Field<string>(comboBox1_CG_ColdURN.Text),
                         ImportFile = textBox1_CG_ImportFile.Text,
                         RaffleStartNumber = row.Field<string>(comboBox1_CG_RaffleStartNumber.Text),
                         RaffleEndNumber = row.Field<string>(comboBox1_CG_RaffleEndNumber.Text),
                         RecordType = recordtype,
+                        GiftAid = "Unknown",
                         Campaign = textBox1_CG_Campaign.Text,
+                        PhonePreference = "Unknown",
+                        MailPreference = "Unknown",
+                        EmailPreference = "Unknown",
+                        SMSPreference = "Unknown",
+                        ThirdPartyPreference = "Unknown",
                         Barcode = textBox1_CG_Barcode.Text + textBox2_CG_Barcode.Text + row.Field<string>(comboBox2_CG_Barcode.Text) + textBox2_CG_Barcode.Text + row.Field<string>(comboBox3_CG_Barcode.Text),
                         ClientData1 = row.Field<string>(comboBox1_CG_ClientData1.Text),
                         ClientData2 = row.Field<string>(comboBox1_CG_ClientData2.Text),
@@ -215,7 +212,7 @@ namespace DataApp
                     };
                 foreach (var row in query)
                 {
-                    dt_target.Rows.Add(
+                    dtTarget.Rows.Add(
                         row.Primkey,
                         row.PersonRef,
                         row.ClientName,
@@ -239,22 +236,22 @@ namespace DataApp
                         row.EmailAddress,
                         row.AppealCode,
                         row.PackageCode,
-                        /*row.Deceased*/ "0",
-                        /*row.Goneaway*/ "0",
-                        /*row.NoFurtherCommunication*/ "0",
+                        row.Deceased,
+                        row.Goneaway,
+                        row.NoFurtherCommunication,
                         row.PreloadedCAFNumber,
                         row.ColdURN,
                         row.ImportFile,
                         row.RaffleStartNumber,
                         row.RaffleEndNumber,
                         row.RecordType,
-                        /*row.GiftAid*/ "Unknown",
+                        row.GiftAid,
                         row.Campaign,
-                        /*row.PhonePreference*/ "Unknown",
-                        /*row.MailPreference*/ "Unknown",
-                        /*row.EmailPreference*/ "Unknown",
-                        /*row.SMSPreference*/ "Unknown",
-                        /*row.ThirdPartyPreference*/ "Unknown",
+                        row.PhonePreference,
+                        row.MailPreference,
+                        row.EmailPreference,
+                        row.SMSPreference,
+                        row.ThirdPartyPreference,
                         row.Barcode,
                         row.ClientData1,
                         row.ClientData2,
@@ -269,23 +266,13 @@ namespace DataApp
                         );
                 }
             }
-            DataTable dt_unique = new DataTable();
+            
+            dtUniqueValues = new DataTable();
+
             if (checkBox1_CG_duplicates.Checked)
             {
-                dt_unique = dt_target.AsEnumerable().GroupBy(x => x.Field<string>("Primkey")).Select(y => y.First()).CopyToDataTable();
-                dataGridView1.DataSource = dt_unique;
-
-                if(dt_unique.Rows.Count < dt_target.Rows.Count)
-                {
-                    label2_CG_RowsDeleted.Text = (dt_target.Rows.Count - dt_unique.Rows.Count).ToString();
-                    label2_CG_RowsLoaded.Text = dt_unique.Rows.Count.ToString();
-                }
-            }
-            else
-            {
-                dataGridView1.DataSource = dt_target;
-                label2_CG_RowsLoaded.Text = dt.Rows.Count.ToString();
-                label2_CG_RowsDeleted.Text = "0";
+                dtUniqueValues = dtTarget.AsEnumerable().GroupBy(x => x.Field<string>("Primkey")).Select(y => y.First()).CopyToDataTable();
+                dataGridView1.DataSource = dtUniqueValues;
             }           
             
         }
@@ -306,12 +293,17 @@ namespace DataApp
                     string saveas = sfd.FileName;
                     int extentionindex = sfd.FilterIndex;
 
-                    if (dataloaded)
+                    if (dataLoaded && dataUnique)
                     {
-                        DataHandler.DataTableToFlatFile(dt_target, saveas, extentionindex);
+                        DataHandler.DataTableToFlatFile(dtUniqueValues, saveas, extentionindex);
+                    }
+                    if (dataLoaded)
+                    {
+                        DataHandler.DataTableToFlatFile(dtTarget, saveas, extentionindex);
                     }
                     else
                     {
+                        DataHandler.addOrDeleteEmptyColumn(ref dt);
                         DataHandler.DataTableToFlatFile(dt, saveas, extentionindex);
                     }
                     
