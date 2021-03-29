@@ -12,23 +12,22 @@ namespace DataApp
 {
     class DataHandler
     {
-        public static System.Data.DataTable FlatToDataTable(string filepath, char delimiter = ',', int maxrownumber = 0)
+        public static System.Data.DataTable FlatToDt(string filepath, char delimiter = ',', int maxrownumber = 0)
         {
+            //READS FLAT FILES INTO DATATABLE
             GenericParserAdapter parserAdapter = new GenericParserAdapter();
             parserAdapter.ColumnDelimiter = delimiter;
             parserAdapter.SkipEmptyRows = true;
             parserAdapter.SetDataSource(filepath);
             parserAdapter.FirstRowHasHeader = true;
-            if (maxrownumber != 0)
-            {
-                parserAdapter.MaxRows = maxrownumber;
-            }
+            parserAdapter.MaxRows = maxrownumber > 0 ? maxrownumber : 1000000;
             return parserAdapter.GetDataTable();
 
         }
 
         public static System.Linq.IOrderedEnumerable<System.Collections.Generic.KeyValuePair<string, string>> CharityNamesPairs()
         {
+            //CREATES KEYVALUE PAIRS FROM APPSETTINGS
             Dictionary<string, string> CharityNamesDic = new Dictionary<string, string>();
             foreach (string key in ConfigurationManager.AppSettings)
             {
@@ -37,16 +36,18 @@ namespace DataApp
             return CharityNamesDic.OrderBy(key => key.Value);
         }
 
-        public static string[] columnNamesWithExtraEmptyRow(DataTable dt)
+        public static string[] colNamesArray(DataTable dt, bool emptyVal = false)
         {
-            string[] colNames = dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();            
-            return addEmptyElementToArray(colNames);
+            //CREATES ARRAY CONTAINING COLUMN NAMES
+            string[] colNames = dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
+            return emptyVal ? addEmptyElementToArray(colNames) : colNames;
         }
 
         private static string[] addEmptyElementToArray(string[] list)
         {
+            //ADDS AN EMPTY VALUE TO ARRAY
             string[] colNamesWithBlank = new string[list.Count() + 1];
-            colNamesWithBlank[0] = "                -";
+            colNamesWithBlank[0] = "";
             for (int n = 1; n < list.Count(); n++)
             {
                 colNamesWithBlank[n] = list[n - 1];
@@ -54,56 +55,32 @@ namespace DataApp
             return colNamesWithBlank;
         }
 
-        public static void addOrDeleteEmptyColumn(ref DataTable dt)
+        public static void DtToFlat(System.Data.DataTable dt, string dialogfilename, int extentionindex, string qualifier = "", char delimiter = ',')
         {
-            bool exist = false;
-            foreach(DataColumn col in dt.Columns)
-            {
-                if(col.ColumnName == "                -")
-                {
-                    exist = true;
-                }
-            }
-            if (exist)
-            {
-                dt.Columns.Remove("                -");
-            }
-            else
-            {
-                dt.Columns.Add("                -");
-            }
+            //CONVERTS DATATABLE TO FLAT FILE
+            File.WriteAllLines(dialogfilename, dtToListStr(dt, delimiter, qualifier));
         }
 
-
-        public static void DataTableToFlatFile(System.Data.DataTable dt, string dialogfilename, int extentionindex)
+        private static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier)
         {
-            var lines = new List<string>();
-            string[] colNames = dt.Columns.Cast<DataColumn>().Select(col => col.ColumnName).ToArray();
+            //CONVERTS DATATABLE INTO A LIST<STRING>
+            List<string> lines = new List<string>();
+            string[] arrayColNames = dt.Columns.Cast<DataColumn>().Select(col => col.ColumnName).ToArray();
 
-            switch(extentionindex)
-            {
-                //*.txt
-                case 1:
-                    var htxt = string.Join("|", colNames.Select(name => name));
-                    lines.Add(htxt);
+            string strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(name => name));
+            lines.Add(strColNames);
 
-                    var valuelinestxt = dt.AsEnumerable().Select(row => string.Join("|", row.ItemArray.Select(val => val.ToString().Replace("\'","").Replace("|","").Replace("   "," ").Replace("  "," ").Replace("\"",""))));
-                    lines.AddRange(valuelinestxt);
+            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString().Replace(qualifier,"")}{qualifier}")));
+            lines.AddRange(strData);
 
-                    File.WriteAllLines(dialogfilename, lines);
-                    break;
-
-                //*.csv
-                case 2:
-                    var hcsv = string.Join(",", colNames.Select(name => $"\"{name}\""));
-                    lines.Add(hcsv);
-
-                    var valuelinescsv = dt.AsEnumerable().Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val.ToString().Replace("\'", "").Replace("|", "").Replace("   ", " ").Replace("  ", " ").Replace("\"", "")}\"")));
-                    lines.AddRange(valuelinescsv);
-
-                    File.WriteAllLines(dialogfilename, lines);
-                    break;
-            }      
+            return lines;
         }
+
+        public static void dtRemoveDuplicateRows(ref DataTable dt, string colName)
+        {
+            //REMOVE DUPLICATE ROWS BASED ON 1 COLUMN
+            dt = dt.AsEnumerable().GroupBy(x => x.Field<string>(colName)).Select(y => y.First()).CopyToDataTable();
+        }
+
     }
 }
