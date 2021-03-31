@@ -41,11 +41,23 @@
             this.checkBox1_CG_quotations = new System.Windows.Forms.CheckBox();
             this.checkBox1_CG_lineFeed = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label1_CG_RowsImported = new System.Windows.Forms.Label();
+            this.label2_CG_RowsImported = new System.Windows.Forms.Label();
+            this.label2_CG_RowsDeleted = new System.Windows.Forms.Label();
+            this.label1_CG_RowsLoaded = new System.Windows.Forms.Label();
+            this.label2_CG_RowsLoaded = new System.Windows.Forms.Label();
+            this.label1_CG_RowsDeleted = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox1_CG_uniqueCountry = new System.Windows.Forms.CheckBox();
+            this.textBox1_CG_uniqueCountry = new System.Windows.Forms.TextBox();
+            this.checkBox1_CG_uniquePackcode = new System.Windows.Forms.CheckBox();
+            this.checkBox1_CG_includePackcode = new System.Windows.Forms.CheckBox();
+            this.checkBox1_CG_includeAppeal = new System.Windows.Forms.CheckBox();
             this.comboBox1_CG_duplicates = new System.Windows.Forms.ComboBox();
             this.radioButton2_RecordTypeCold = new System.Windows.Forms.RadioButton();
             this.label1_CG_RecordType = new System.Windows.Forms.Label();
             this.radioButton1_CG_RecordTypeWarm = new System.Windows.Forms.RadioButton();
+            this.textBox1_CG_uniquePackcode = new System.Windows.Forms.TextBox();
             this.comboBox1_CG_ClientName = new System.Windows.Forms.ComboBox();
             this.checkBox1_CG_duplicates = new System.Windows.Forms.CheckBox();
             this.textBox1_CG_Campaign = new System.Windows.Forms.TextBox();
@@ -59,12 +71,6 @@
             this.label1_CG_AddedDateTime = new System.Windows.Forms.Label();
             this.label1_CG_AddedBy = new System.Windows.Forms.Label();
             this.label1_CG_ClientName = new System.Windows.Forms.Label();
-            this.label2_CG_RowsDeleted = new System.Windows.Forms.Label();
-            this.label1_CG_RowsDeleted = new System.Windows.Forms.Label();
-            this.label2_CG_RowsLoaded = new System.Windows.Forms.Label();
-            this.label1_CG_RowsLoaded = new System.Windows.Forms.Label();
-            this.label2_CG_RowsImported = new System.Windows.Forms.Label();
-            this.label1_CG_RowsImported = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.comboBox1_CG_Barcode = new System.Windows.Forms.ComboBox();
             this.textBox1_CG_Barcode = new System.Windows.Forms.TextBox();
@@ -156,12 +162,6 @@
             this.button1_Form1_save = new System.Windows.Forms.Button();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1_CG_uniquePackcode = new System.Windows.Forms.TextBox();
-            this.checkBox1_CG_includeAppeal = new System.Windows.Forms.CheckBox();
-            this.checkBox1_CG_includePackcode = new System.Windows.Forms.CheckBox();
-            this.checkBox1_CG_uniquePackcode = new System.Windows.Forms.CheckBox();
-            this.checkBox1_CG_uniqueCountry = new System.Windows.Forms.CheckBox();
-            this.textBox1_CG_uniqueCountry = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
@@ -181,6 +181,7 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 597);
             this.dataGridView1.MinimumSize = new System.Drawing.Size(1210, 299);
@@ -319,6 +320,66 @@
             this.groupBox9.TabIndex = 61;
             this.groupBox9.TabStop = false;
             // 
+            // label1_CG_RowsImported
+            // 
+            this.label1_CG_RowsImported.AutoSize = true;
+            this.label1_CG_RowsImported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_RowsImported.Location = new System.Drawing.Point(12, 22);
+            this.label1_CG_RowsImported.Name = "label1_CG_RowsImported";
+            this.label1_CG_RowsImported.Size = new System.Drawing.Size(111, 17);
+            this.label1_CG_RowsImported.TabIndex = 11;
+            this.label1_CG_RowsImported.Text = "Row Imported:";
+            // 
+            // label2_CG_RowsImported
+            // 
+            this.label2_CG_RowsImported.AutoSize = true;
+            this.label2_CG_RowsImported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2_CG_RowsImported.Location = new System.Drawing.Point(127, 23);
+            this.label2_CG_RowsImported.Name = "label2_CG_RowsImported";
+            this.label2_CG_RowsImported.Size = new System.Drawing.Size(17, 17);
+            this.label2_CG_RowsImported.TabIndex = 12;
+            this.label2_CG_RowsImported.Text = "0";
+            // 
+            // label2_CG_RowsDeleted
+            // 
+            this.label2_CG_RowsDeleted.AutoSize = true;
+            this.label2_CG_RowsDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2_CG_RowsDeleted.Location = new System.Drawing.Point(127, 91);
+            this.label2_CG_RowsDeleted.Name = "label2_CG_RowsDeleted";
+            this.label2_CG_RowsDeleted.Size = new System.Drawing.Size(17, 17);
+            this.label2_CG_RowsDeleted.TabIndex = 17;
+            this.label2_CG_RowsDeleted.Text = "0";
+            // 
+            // label1_CG_RowsLoaded
+            // 
+            this.label1_CG_RowsLoaded.AutoSize = true;
+            this.label1_CG_RowsLoaded.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_RowsLoaded.Location = new System.Drawing.Point(12, 56);
+            this.label1_CG_RowsLoaded.Name = "label1_CG_RowsLoaded";
+            this.label1_CG_RowsLoaded.Size = new System.Drawing.Size(105, 17);
+            this.label1_CG_RowsLoaded.TabIndex = 14;
+            this.label1_CG_RowsLoaded.Text = "Rows loaded:";
+            // 
+            // label2_CG_RowsLoaded
+            // 
+            this.label2_CG_RowsLoaded.AutoSize = true;
+            this.label2_CG_RowsLoaded.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2_CG_RowsLoaded.Location = new System.Drawing.Point(127, 57);
+            this.label2_CG_RowsLoaded.Name = "label2_CG_RowsLoaded";
+            this.label2_CG_RowsLoaded.Size = new System.Drawing.Size(17, 17);
+            this.label2_CG_RowsLoaded.TabIndex = 15;
+            this.label2_CG_RowsLoaded.Text = "0";
+            // 
+            // label1_CG_RowsDeleted
+            // 
+            this.label1_CG_RowsDeleted.AutoSize = true;
+            this.label1_CG_RowsDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_CG_RowsDeleted.Location = new System.Drawing.Point(12, 90);
+            this.label1_CG_RowsDeleted.Name = "label1_CG_RowsDeleted";
+            this.label1_CG_RowsDeleted.Size = new System.Drawing.Size(110, 17);
+            this.label1_CG_RowsDeleted.TabIndex = 16;
+            this.label1_CG_RowsDeleted.Text = "Rows deleted:";
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.checkBox1_CG_uniqueCountry);
@@ -349,6 +410,62 @@
             this.groupBox5.Size = new System.Drawing.Size(290, 418);
             this.groupBox5.TabIndex = 44;
             this.groupBox5.TabStop = false;
+            // 
+            // checkBox1_CG_uniqueCountry
+            // 
+            this.checkBox1_CG_uniqueCountry.AutoSize = true;
+            this.checkBox1_CG_uniqueCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1_CG_uniqueCountry.Location = new System.Drawing.Point(12, 224);
+            this.checkBox1_CG_uniqueCountry.Name = "checkBox1_CG_uniqueCountry";
+            this.checkBox1_CG_uniqueCountry.Size = new System.Drawing.Size(125, 21);
+            this.checkBox1_CG_uniqueCountry.TabIndex = 68;
+            this.checkBox1_CG_uniqueCountry.Text = "Unique Country";
+            this.checkBox1_CG_uniqueCountry.UseVisualStyleBackColor = true;
+            this.checkBox1_CG_uniqueCountry.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // textBox1_CG_uniqueCountry
+            // 
+            this.textBox1_CG_uniqueCountry.Enabled = false;
+            this.textBox1_CG_uniqueCountry.Location = new System.Drawing.Point(163, 224);
+            this.textBox1_CG_uniqueCountry.Name = "textBox1_CG_uniqueCountry";
+            this.textBox1_CG_uniqueCountry.Size = new System.Drawing.Size(112, 20);
+            this.textBox1_CG_uniqueCountry.TabIndex = 67;
+            // 
+            // checkBox1_CG_uniquePackcode
+            // 
+            this.checkBox1_CG_uniquePackcode.AutoSize = true;
+            this.checkBox1_CG_uniquePackcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1_CG_uniquePackcode.Location = new System.Drawing.Point(12, 254);
+            this.checkBox1_CG_uniquePackcode.Name = "checkBox1_CG_uniquePackcode";
+            this.checkBox1_CG_uniquePackcode.Size = new System.Drawing.Size(138, 21);
+            this.checkBox1_CG_uniquePackcode.TabIndex = 66;
+            this.checkBox1_CG_uniquePackcode.Text = "Unique Packcode";
+            this.checkBox1_CG_uniquePackcode.UseVisualStyleBackColor = true;
+            this.checkBox1_CG_uniquePackcode.CheckedChanged += new System.EventHandler(this.checkBox1_CG_uniquePackcode_CheckedChanged);
+            // 
+            // checkBox1_CG_includePackcode
+            // 
+            this.checkBox1_CG_includePackcode.AutoSize = true;
+            this.checkBox1_CG_includePackcode.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1_CG_includePackcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1_CG_includePackcode.Location = new System.Drawing.Point(162, 277);
+            this.checkBox1_CG_includePackcode.Name = "checkBox1_CG_includePackcode";
+            this.checkBox1_CG_includePackcode.Size = new System.Drawing.Size(113, 17);
+            this.checkBox1_CG_includePackcode.TabIndex = 65;
+            this.checkBox1_CG_includePackcode.Text = "Include in Barcode";
+            this.checkBox1_CG_includePackcode.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1_CG_includeAppeal
+            // 
+            this.checkBox1_CG_includeAppeal.AutoSize = true;
+            this.checkBox1_CG_includeAppeal.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1_CG_includeAppeal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1_CG_includeAppeal.Location = new System.Drawing.Point(162, 137);
+            this.checkBox1_CG_includeAppeal.Name = "checkBox1_CG_includeAppeal";
+            this.checkBox1_CG_includeAppeal.Size = new System.Drawing.Size(113, 17);
+            this.checkBox1_CG_includeAppeal.TabIndex = 64;
+            this.checkBox1_CG_includeAppeal.Text = "Include in Barcode";
+            this.checkBox1_CG_includeAppeal.UseVisualStyleBackColor = true;
             // 
             // comboBox1_CG_duplicates
             // 
@@ -391,6 +508,14 @@
             this.radioButton1_CG_RecordTypeWarm.TabStop = true;
             this.radioButton1_CG_RecordTypeWarm.Text = "Warm";
             this.radioButton1_CG_RecordTypeWarm.UseVisualStyleBackColor = true;
+            // 
+            // textBox1_CG_uniquePackcode
+            // 
+            this.textBox1_CG_uniquePackcode.Enabled = false;
+            this.textBox1_CG_uniquePackcode.Location = new System.Drawing.Point(163, 254);
+            this.textBox1_CG_uniquePackcode.Name = "textBox1_CG_uniquePackcode";
+            this.textBox1_CG_uniquePackcode.Size = new System.Drawing.Size(112, 20);
+            this.textBox1_CG_uniquePackcode.TabIndex = 58;
             // 
             // comboBox1_CG_ClientName
             // 
@@ -511,66 +636,6 @@
             this.label1_CG_ClientName.Size = new System.Drawing.Size(80, 17);
             this.label1_CG_ClientName.TabIndex = 10;
             this.label1_CG_ClientName.Text = "ClientName";
-            // 
-            // label2_CG_RowsDeleted
-            // 
-            this.label2_CG_RowsDeleted.AutoSize = true;
-            this.label2_CG_RowsDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2_CG_RowsDeleted.Location = new System.Drawing.Point(127, 91);
-            this.label2_CG_RowsDeleted.Name = "label2_CG_RowsDeleted";
-            this.label2_CG_RowsDeleted.Size = new System.Drawing.Size(17, 17);
-            this.label2_CG_RowsDeleted.TabIndex = 17;
-            this.label2_CG_RowsDeleted.Text = "0";
-            // 
-            // label1_CG_RowsDeleted
-            // 
-            this.label1_CG_RowsDeleted.AutoSize = true;
-            this.label1_CG_RowsDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RowsDeleted.Location = new System.Drawing.Point(12, 90);
-            this.label1_CG_RowsDeleted.Name = "label1_CG_RowsDeleted";
-            this.label1_CG_RowsDeleted.Size = new System.Drawing.Size(110, 17);
-            this.label1_CG_RowsDeleted.TabIndex = 16;
-            this.label1_CG_RowsDeleted.Text = "Rows deleted:";
-            // 
-            // label2_CG_RowsLoaded
-            // 
-            this.label2_CG_RowsLoaded.AutoSize = true;
-            this.label2_CG_RowsLoaded.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2_CG_RowsLoaded.Location = new System.Drawing.Point(127, 57);
-            this.label2_CG_RowsLoaded.Name = "label2_CG_RowsLoaded";
-            this.label2_CG_RowsLoaded.Size = new System.Drawing.Size(17, 17);
-            this.label2_CG_RowsLoaded.TabIndex = 15;
-            this.label2_CG_RowsLoaded.Text = "0";
-            // 
-            // label1_CG_RowsLoaded
-            // 
-            this.label1_CG_RowsLoaded.AutoSize = true;
-            this.label1_CG_RowsLoaded.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RowsLoaded.Location = new System.Drawing.Point(12, 56);
-            this.label1_CG_RowsLoaded.Name = "label1_CG_RowsLoaded";
-            this.label1_CG_RowsLoaded.Size = new System.Drawing.Size(105, 17);
-            this.label1_CG_RowsLoaded.TabIndex = 14;
-            this.label1_CG_RowsLoaded.Text = "Rows loaded:";
-            // 
-            // label2_CG_RowsImported
-            // 
-            this.label2_CG_RowsImported.AutoSize = true;
-            this.label2_CG_RowsImported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2_CG_RowsImported.Location = new System.Drawing.Point(127, 23);
-            this.label2_CG_RowsImported.Name = "label2_CG_RowsImported";
-            this.label2_CG_RowsImported.Size = new System.Drawing.Size(17, 17);
-            this.label2_CG_RowsImported.TabIndex = 12;
-            this.label2_CG_RowsImported.Text = "0";
-            // 
-            // label1_CG_RowsImported
-            // 
-            this.label1_CG_RowsImported.AutoSize = true;
-            this.label1_CG_RowsImported.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_CG_RowsImported.Location = new System.Drawing.Point(12, 22);
-            this.label1_CG_RowsImported.Name = "label1_CG_RowsImported";
-            this.label1_CG_RowsImported.Size = new System.Drawing.Size(111, 17);
-            this.label1_CG_RowsImported.TabIndex = 11;
-            this.label1_CG_RowsImported.Text = "Row Imported:";
             // 
             // groupBox4
             // 
@@ -1500,70 +1565,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 47);
             this.panel2.TabIndex = 6;
-            // 
-            // textBox1_CG_uniquePackcode
-            // 
-            this.textBox1_CG_uniquePackcode.Enabled = false;
-            this.textBox1_CG_uniquePackcode.Location = new System.Drawing.Point(163, 254);
-            this.textBox1_CG_uniquePackcode.Name = "textBox1_CG_uniquePackcode";
-            this.textBox1_CG_uniquePackcode.Size = new System.Drawing.Size(112, 20);
-            this.textBox1_CG_uniquePackcode.TabIndex = 58;
-            // 
-            // checkBox1_CG_includeAppeal
-            // 
-            this.checkBox1_CG_includeAppeal.AutoSize = true;
-            this.checkBox1_CG_includeAppeal.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1_CG_includeAppeal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1_CG_includeAppeal.Location = new System.Drawing.Point(162, 137);
-            this.checkBox1_CG_includeAppeal.Name = "checkBox1_CG_includeAppeal";
-            this.checkBox1_CG_includeAppeal.Size = new System.Drawing.Size(113, 17);
-            this.checkBox1_CG_includeAppeal.TabIndex = 64;
-            this.checkBox1_CG_includeAppeal.Text = "Include in Barcode";
-            this.checkBox1_CG_includeAppeal.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1_CG_includePackcode
-            // 
-            this.checkBox1_CG_includePackcode.AutoSize = true;
-            this.checkBox1_CG_includePackcode.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1_CG_includePackcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1_CG_includePackcode.Location = new System.Drawing.Point(162, 277);
-            this.checkBox1_CG_includePackcode.Name = "checkBox1_CG_includePackcode";
-            this.checkBox1_CG_includePackcode.Size = new System.Drawing.Size(113, 17);
-            this.checkBox1_CG_includePackcode.TabIndex = 65;
-            this.checkBox1_CG_includePackcode.Text = "Include in Barcode";
-            this.checkBox1_CG_includePackcode.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1_CG_uniquePackcode
-            // 
-            this.checkBox1_CG_uniquePackcode.AutoSize = true;
-            this.checkBox1_CG_uniquePackcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1_CG_uniquePackcode.Location = new System.Drawing.Point(12, 254);
-            this.checkBox1_CG_uniquePackcode.Name = "checkBox1_CG_uniquePackcode";
-            this.checkBox1_CG_uniquePackcode.Size = new System.Drawing.Size(138, 21);
-            this.checkBox1_CG_uniquePackcode.TabIndex = 66;
-            this.checkBox1_CG_uniquePackcode.Text = "Unique Packcode";
-            this.checkBox1_CG_uniquePackcode.UseVisualStyleBackColor = true;
-            this.checkBox1_CG_uniquePackcode.CheckedChanged += new System.EventHandler(this.checkBox1_CG_uniquePackcode_CheckedChanged);
-            // 
-            // checkBox1_CG_uniqueCountry
-            // 
-            this.checkBox1_CG_uniqueCountry.AutoSize = true;
-            this.checkBox1_CG_uniqueCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1_CG_uniqueCountry.Location = new System.Drawing.Point(12, 224);
-            this.checkBox1_CG_uniqueCountry.Name = "checkBox1_CG_uniqueCountry";
-            this.checkBox1_CG_uniqueCountry.Size = new System.Drawing.Size(125, 21);
-            this.checkBox1_CG_uniqueCountry.TabIndex = 68;
-            this.checkBox1_CG_uniqueCountry.Text = "Unique Country";
-            this.checkBox1_CG_uniqueCountry.UseVisualStyleBackColor = true;
-            this.checkBox1_CG_uniqueCountry.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // textBox1_CG_uniqueCountry
-            // 
-            this.textBox1_CG_uniqueCountry.Enabled = false;
-            this.textBox1_CG_uniqueCountry.Location = new System.Drawing.Point(163, 224);
-            this.textBox1_CG_uniqueCountry.Name = "textBox1_CG_uniqueCountry";
-            this.textBox1_CG_uniqueCountry.Size = new System.Drawing.Size(112, 20);
-            this.textBox1_CG_uniqueCountry.TabIndex = 67;
             // 
             // Form1
             // 

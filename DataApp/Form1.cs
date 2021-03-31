@@ -22,7 +22,8 @@ namespace DataApp
         public DataTable dt;
         DataTable dtTarget = new DataTable();
         char delimiterF1;
-        bool dataLoaded = false;            
+        bool dataLoaded = false;
+        Form2 form2 = new Form2();
 
         private void button1_Form1_search_Click(object sender, EventArgs e)
         {
@@ -40,67 +41,68 @@ namespace DataApp
         {
             try
             {
-                Form2 form2 = new Form2();
                 form2.ShowDialog();
-                delimiterF1 = Form2.delimiter_f2;
-                dt = DataHandler.FlatToDt(sourceFile, delimiterF1);
-                DataTable dtFirst50 = dt.AsEnumerable().Take(50).CopyToDataTable();
-                
-                //DATA SOURCES TO GRID AND COMBOBOXES
-                dataGridView1.Columns.Clear();
-                dataGridView1.DataSource = dtFirst50;
-                if (dataGridView1.Columns.Count < 13)
-                {
-                    dataGridView1.AutoSize = true;
-                }
 
-                foreach (Control tab in tabControl1.TabPages)
+                if(Form2.dataOk)
                 {
-                    TabPage tabPage = (TabPage)tab;
+                    delimiterF1 = Form2.delimiter_f2;
+                    dt = DataHandler.FlatToDt(sourceFile, delimiterF1);
+                    DataTable dtFirst50 = dt.AsEnumerable().Take(50).CopyToDataTable();
 
-                    //COMMITED GIVING
-                    if (tabPage.Name == "CG_tabPage1")
+                    //DATA SOURCES TO GRID AND COMBOBOXES
+                    dataGridView1.Columns.Clear();
+                    dataGridView1.DataSource = dtFirst50;
+
+                    foreach (Control tab in tabControl1.TabPages)
                     {
-                        foreach (Control group in tabPage.Controls)
+                        TabPage tabPage = (TabPage)tab;
+
+                        //COMMITED GIVING
+                        if (tabPage.Name == "CG_tabPage1")
                         {
-                            foreach (Control item in group.Controls)
+                            foreach (Control group in tabPage.Controls)
                             {
-                                if (item.GetType().Name == "ComboBox")
+                                foreach (Control item in group.Controls)
                                 {
-                                    ComboBox comboBox = (ComboBox)item;
-                                    if (item.Name == "comboBox1_CG_ClientName")
+                                    if (item.GetType().Name == "ComboBox")
                                     {
-                                        comboBox.BindingContext = new BindingContext();
-                                        comboBox.DataSource = new BindingSource(DataHandler.CharityNamesPairs(), null);
-                                        comboBox.DisplayMember = "Value";
-                                        comboBox.ValueMember = "Key";
-                                    }
-                                    else
-                                    {
-                                        comboBox.BindingContext = new BindingContext();
-                                        comboBox.DataSource = DataHandler.colNamesArray(dtFirst50, true);
+                                        ComboBox comboBox = (ComboBox)item;
+                                        if (item.Name == "comboBox1_CG_ClientName")
+                                        {
+                                            comboBox.BindingContext = new BindingContext();
+                                            comboBox.DataSource = new BindingSource(DataHandler.CharityNamesPairs(), null);
+                                            comboBox.DisplayMember = "Value";
+                                            comboBox.ValueMember = "Key";
+                                        }
+                                        else
+                                        {
+                                            comboBox.BindingContext = new BindingContext();
+                                            comboBox.DataSource = DataHandler.colNamesArray(dtFirst50, true);
+                                        }
                                     }
                                 }
                             }
                         }
+
                     }
 
+                    //DEFAULT VALUES
+                    textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    textBox1_CG_AddedBy.Text = "Admin";
+                    textBox1_CG_Primkey.Text = "";
+                    label2_CG_RowsImported.Text = dt.Rows.Count.ToString();
+                    radioButton1_CG_RecordTypeWarm.Checked = true;
+
+                    //CLEAN GLOBAL VALUES
+                    sourceFile = null;
+                    fileName = null;
+                    textBox1_Form1_filePath.Text = sourceFile;
+                    Form2.filepath = null;
+                    dataLoaded = false;
+                    Form2.dataOk = false;
                 }
-
-                //DEFAULT VALUES
-                textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                textBox1_CG_AddedBy.Text = "Admin";
-                textBox1_CG_Primkey.Text = "";
-                label2_CG_RowsImported.Text = dt.Rows.Count.ToString();
-                radioButton1_CG_RecordTypeWarm.Checked = true;
-
-                //CLEAN GLOBAL VALUES
-                sourceFile = null;
-                fileName = null;
-                textBox1_Form1_filePath.Text = sourceFile;
-                Form2.filepath = null;
-                dataLoaded = false;
+                
             }
 
             catch (System.ArgumentNullException)

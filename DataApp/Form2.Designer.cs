@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox2_Form2_qualifier = new System.Windows.Forms.TextBox();
+            this.checkBox1_Form2_qualifier = new System.Windows.Forms.CheckBox();
             this.button1_Form2_OK = new System.Windows.Forms.Button();
             this.radioButton1_Form2_Other = new System.Windows.Forms.RadioButton();
             this.textBox1_Form2_Other = new System.Windows.Forms.TextBox();
@@ -42,6 +44,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.textBox2_Form2_qualifier);
+            this.groupBox5.Controls.Add(this.checkBox1_Form2_qualifier);
             this.groupBox5.Controls.Add(this.button1_Form2_OK);
             this.groupBox5.Controls.Add(this.radioButton1_Form2_Other);
             this.groupBox5.Controls.Add(this.textBox1_Form2_Other);
@@ -50,10 +54,29 @@
             this.groupBox5.Controls.Add(this.radioButton1_Form2_SemiColon);
             this.groupBox5.Location = new System.Drawing.Point(12, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(534, 52);
+            this.groupBox5.Size = new System.Drawing.Size(534, 91);
             this.groupBox5.TabIndex = 39;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox5";
+            // 
+            // textBox2_Form2_qualifier
+            // 
+            this.textBox2_Form2_qualifier.Enabled = false;
+            this.textBox2_Form2_qualifier.Location = new System.Drawing.Point(488, 56);
+            this.textBox2_Form2_qualifier.MaxLength = 1;
+            this.textBox2_Form2_qualifier.Name = "textBox2_Form2_qualifier";
+            this.textBox2_Form2_qualifier.Size = new System.Drawing.Size(35, 20);
+            this.textBox2_Form2_qualifier.TabIndex = 51;
+            // 
+            // checkBox1_Form2_qualifier
+            // 
+            this.checkBox1_Form2_qualifier.AutoSize = true;
+            this.checkBox1_Form2_qualifier.Location = new System.Drawing.Point(355, 59);
+            this.checkBox1_Form2_qualifier.Name = "checkBox1_Form2_qualifier";
+            this.checkBox1_Form2_qualifier.Size = new System.Drawing.Size(127, 17);
+            this.checkBox1_Form2_qualifier.TabIndex = 50;
+            this.checkBox1_Form2_qualifier.Text = "Qualifier (Export Only)";
+            this.checkBox1_Form2_qualifier.UseVisualStyleBackColor = true;
+            this.checkBox1_Form2_qualifier.CheckedChanged += new System.EventHandler(this.checkBox1_Form2_qualifier_CheckedChanged);
             // 
             // button1_Form2_OK
             // 
@@ -124,8 +147,9 @@
             // dataGridView1_Form2
             // 
             this.dataGridView1_Form2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataGridView1_Form2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1_Form2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1_Form2.Location = new System.Drawing.Point(12, 70);
+            this.dataGridView1_Form2.Location = new System.Drawing.Point(12, 109);
             this.dataGridView1_Form2.MaximumSize = new System.Drawing.Size(534, 240);
             this.dataGridView1_Form2.MinimumSize = new System.Drawing.Size(534, 240);
             this.dataGridView1_Form2.Name = "dataGridView1_Form2";
@@ -136,10 +160,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 322);
+            this.ClientSize = new System.Drawing.Size(558, 361);
             this.Controls.Add(this.dataGridView1_Form2);
             this.Controls.Add(this.groupBox5);
-            this.MaximumSize = new System.Drawing.Size(574, 361);
             this.MinimumSize = new System.Drawing.Size(574, 361);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -161,5 +184,7 @@
         private System.Windows.Forms.RadioButton radioButton1_Form2_SemiColon;
         private System.Windows.Forms.DataGridView dataGridView1_Form2;
         private System.Windows.Forms.Button button1_Form2_OK;
+        private System.Windows.Forms.TextBox textBox2_Form2_qualifier;
+        private System.Windows.Forms.CheckBox checkBox1_Form2_qualifier;
     }
 }
