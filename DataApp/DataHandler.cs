@@ -5,8 +5,6 @@ using System.IO;
 using System.Data;
 using GenericParsing;
 using System.Configuration;
-using excel = Microsoft.Office.Interop.Excel;
-using System.Windows.Forms;
 
 namespace DataApp
 {
@@ -61,16 +59,16 @@ namespace DataApp
             File.WriteAllLines(dialogfilename, dtToListStr(dt, delimiter, qualifier));
         }
 
-        private static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier)
+        public static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier)
         {
             //CONVERTS DATATABLE INTO A LIST<STRING>
             List<string> lines = new List<string>();
             string[] arrayColNames = dt.Columns.Cast<DataColumn>().Select(col => col.ColumnName).ToArray();
 
-            string strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(name => name));
+            string strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().Replace(qualifier == "" ? "*" : qualifier, "")}{qualifier}"));
             lines.Add(strColNames);
 
-            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString().Replace(qualifier,"")}{qualifier}")));
+            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString().Replace(qualifier == "" ? "*" : qualifier,"")}{qualifier}")));
             lines.AddRange(strData);
 
             return lines;
@@ -82,5 +80,19 @@ namespace DataApp
             dt = dt.AsEnumerable().GroupBy(x => x.Field<string>(colName)).Select(y => y.First()).CopyToDataTable();
         }
 
+        public static List<string> lstStrData (bool dataloaded, DataTable dt1, DataTable dt2, char delimiter, string qualifier)
+        {
+            //DECIDES WHAT DATATABLE TO USE DEPENDING ON BOOLEAN AND RETURNS IT AS A LIST
+            if (dataloaded)
+            {
+                return DataHandler.dtToListStr(dt1, delimiter, qualifier);
+            }
+            else
+            {
+                return DataHandler.dtToListStr(dt2, delimiter, qualifier);
+            }             
+        }
+
     }
+
 }

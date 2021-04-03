@@ -66,6 +66,7 @@
             this.textBox2_Form2_qualifier.Name = "textBox2_Form2_qualifier";
             this.textBox2_Form2_qualifier.Size = new System.Drawing.Size(35, 20);
             this.textBox2_Form2_qualifier.TabIndex = 51;
+            this.textBox2_Form2_qualifier.TextChanged += new System.EventHandler(this.textBox2_Form2_qualifier_TextChanged);
             // 
             // checkBox1_Form2_qualifier
             // 

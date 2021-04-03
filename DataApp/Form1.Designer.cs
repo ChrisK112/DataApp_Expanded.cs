@@ -28,12 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1_Form1_search = new System.Windows.Forms.Button();
             this.textBox1_Form1_filePath = new System.Windows.Forms.TextBox();
             this.button1_Form1_import = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.panel1_Form1 = new System.Windows.Forms.Panel();
+            this.label1_Form1_fileName = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1_Form1_save = new System.Windows.Forms.Button();
+            this.button1_Form1_load = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.CG_tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox1_CG_bar = new System.Windows.Forms.CheckBox();
@@ -153,17 +159,14 @@
             this.label1_CG_Title = new System.Windows.Forms.Label();
             this.comboBox1_CG_PersonRef = new System.Windows.Forms.ComboBox();
             this.label1_CG_PersonRef = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.panel1_Form1 = new System.Windows.Forms.Panel();
-            this.label1_Form1_fileName = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1_Form1_save = new System.Windows.Forms.Button();
-            this.button1_Form1_load = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.panel1_Form1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.CG_tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -171,9 +174,9 @@
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1_Form1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -183,17 +186,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 597);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 573);
             this.dataGridView1.MinimumSize = new System.Drawing.Size(1210, 299);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridView1.Size = new System.Drawing.Size(1210, 299);
+            this.dataGridView1.Size = new System.Drawing.Size(1210, 323);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1_Form1_search
             // 
             this.button1_Form1_search.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1_Form1_search.Location = new System.Drawing.Point(318, 13);
+            this.button1_Form1_search.Location = new System.Drawing.Point(448, 13);
             this.button1_Form1_search.Name = "button1_Form1_search";
             this.button1_Form1_search.Size = new System.Drawing.Size(76, 22);
             this.button1_Form1_search.TabIndex = 1;
@@ -204,15 +207,16 @@
             // textBox1_Form1_filePath
             // 
             this.textBox1_Form1_filePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1_Form1_filePath.Enabled = false;
             this.textBox1_Form1_filePath.Location = new System.Drawing.Point(85, 15);
             this.textBox1_Form1_filePath.Name = "textBox1_Form1_filePath";
-            this.textBox1_Form1_filePath.Size = new System.Drawing.Size(230, 20);
+            this.textBox1_Form1_filePath.Size = new System.Drawing.Size(360, 20);
             this.textBox1_Form1_filePath.TabIndex = 2;
             // 
             // button1_Form1_import
             // 
             this.button1_Form1_import.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1_Form1_import.Location = new System.Drawing.Point(398, 13);
+            this.button1_Form1_import.Location = new System.Drawing.Point(528, 13);
             this.button1_Form1_import.Name = "button1_Form1_import";
             this.button1_Form1_import.Size = new System.Drawing.Size(96, 22);
             this.button1_Form1_import.TabIndex = 3;
@@ -220,22 +224,72 @@
             this.button1_Form1_import.UseVisualStyleBackColor = true;
             this.button1_Form1_import.Click += new System.EventHandler(this.button1_Form1_import_Click);
             // 
-            // tabControl1
+            // panel1_Form1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.CG_tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(12, 40);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1210, 551);
-            this.tabControl1.TabIndex = 4;
+            this.panel1_Form1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1_Form1.Controls.Add(this.label1_Form1_fileName);
+            this.panel1_Form1.Controls.Add(this.textBox1_Form1_filePath);
+            this.panel1_Form1.Controls.Add(this.button1_Form1_search);
+            this.panel1_Form1.Controls.Add(this.button1_Form1_import);
+            this.panel1_Form1.Location = new System.Drawing.Point(12, 902);
+            this.panel1_Form1.Name = "panel1_Form1";
+            this.panel1_Form1.Size = new System.Drawing.Size(627, 47);
+            this.panel1_Form1.TabIndex = 0;
+            // 
+            // label1_Form1_fileName
+            // 
+            this.label1_Form1_fileName.AutoSize = true;
+            this.label1_Form1_fileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_Form1_fileName.Location = new System.Drawing.Point(4, 16);
+            this.label1_Form1_fileName.Name = "label1_Form1_fileName";
+            this.label1_Form1_fileName.Size = new System.Drawing.Size(75, 17);
+            this.label1_Form1_fileName.TabIndex = 38;
+            this.label1_Form1_fileName.Text = "File Name:";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.button1_Form1_save);
+            this.panel1.Location = new System.Drawing.Point(1101, 902);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(121, 47);
+            this.panel1.TabIndex = 5;
+            // 
+            // button1_Form1_save
+            // 
+            this.button1_Form1_save.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button1_Form1_save.Location = new System.Drawing.Point(12, 13);
+            this.button1_Form1_save.Name = "button1_Form1_save";
+            this.button1_Form1_save.Size = new System.Drawing.Size(96, 22);
+            this.button1_Form1_save.TabIndex = 4;
+            this.button1_Form1_save.Text = "SAVE";
+            this.button1_Form1_save.UseVisualStyleBackColor = true;
+            this.button1_Form1_save.Click += new System.EventHandler(this.button1_Form1_save_Click);
+            // 
+            // button1_Form1_load
+            // 
+            this.button1_Form1_load.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1_Form1_load.Location = new System.Drawing.Point(30, 13);
+            this.button1_Form1_load.Name = "button1_Form1_load";
+            this.button1_Form1_load.Size = new System.Drawing.Size(96, 22);
+            this.button1_Form1_load.TabIndex = 5;
+            this.button1_Form1_load.Text = "LOAD";
+            this.button1_Form1_load.UseVisualStyleBackColor = true;
+            this.button1_Form1_load.Click += new System.EventHandler(this.button1_Form1_load_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel2.Controls.Add(this.button1_Form1_load);
+            this.panel2.Location = new System.Drawing.Point(674, 902);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(149, 47);
+            this.panel2.TabIndex = 6;
             // 
             // CG_tabPage1
             // 
+            this.CG_tabPage1.Controls.Add(this.pictureBox2);
+            this.CG_tabPage1.Controls.Add(this.pictureBox1);
             this.CG_tabPage1.Controls.Add(this.groupBox3);
             this.CG_tabPage1.Controls.Add(this.groupBox9);
             this.CG_tabPage1.Controls.Add(this.groupBox5);
@@ -316,7 +370,7 @@
             this.groupBox9.Controls.Add(this.label1_CG_RowsDeleted);
             this.groupBox9.Location = new System.Drawing.Point(303, 249);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(237, 270);
+            this.groupBox9.Size = new System.Drawing.Size(237, 126);
             this.groupBox9.TabIndex = 61;
             this.groupBox9.TabStop = false;
             // 
@@ -1474,97 +1528,42 @@
             this.label1_CG_PersonRef.TabIndex = 2;
             this.label1_CG_PersonRef.Text = "PersonRef";
             // 
-            // tabPage2
+            // tabControl1
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1202, 525);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Fulfilment";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.CG_tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(12, 16);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1210, 551);
+            this.tabControl1.TabIndex = 4;
             // 
-            // tabPage3
+            // pictureBox1
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1202, 525);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "MiScan";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(333, 381);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(181, 58);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 62;
+            this.pictureBox1.TabStop = false;
             // 
-            // tabPage4
+            // imageList1
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1202, 525);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Appeal Setup";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // panel1_Form1
+            // pictureBox2
             // 
-            this.panel1_Form1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1_Form1.Controls.Add(this.label1_Form1_fileName);
-            this.panel1_Form1.Controls.Add(this.textBox1_Form1_filePath);
-            this.panel1_Form1.Controls.Add(this.button1_Form1_search);
-            this.panel1_Form1.Controls.Add(this.button1_Form1_import);
-            this.panel1_Form1.Location = new System.Drawing.Point(12, 902);
-            this.panel1_Form1.Name = "panel1_Form1";
-            this.panel1_Form1.Size = new System.Drawing.Size(497, 47);
-            this.panel1_Form1.TabIndex = 0;
-            // 
-            // label1_Form1_fileName
-            // 
-            this.label1_Form1_fileName.AutoSize = true;
-            this.label1_Form1_fileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1_Form1_fileName.Location = new System.Drawing.Point(4, 16);
-            this.label1_Form1_fileName.Name = "label1_Form1_fileName";
-            this.label1_Form1_fileName.Size = new System.Drawing.Size(75, 17);
-            this.label1_Form1_fileName.TabIndex = 38;
-            this.label1_Form1_fileName.Text = "File Name:";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.button1_Form1_save);
-            this.panel1.Location = new System.Drawing.Point(1101, 902);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(121, 47);
-            this.panel1.TabIndex = 5;
-            // 
-            // button1_Form1_save
-            // 
-            this.button1_Form1_save.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1_Form1_save.Location = new System.Drawing.Point(12, 13);
-            this.button1_Form1_save.Name = "button1_Form1_save";
-            this.button1_Form1_save.Size = new System.Drawing.Size(96, 22);
-            this.button1_Form1_save.TabIndex = 4;
-            this.button1_Form1_save.Text = "SAVE";
-            this.button1_Form1_save.UseVisualStyleBackColor = true;
-            this.button1_Form1_save.Click += new System.EventHandler(this.button1_Form1_save_Click);
-            // 
-            // button1_Form1_load
-            // 
-            this.button1_Form1_load.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1_Form1_load.Location = new System.Drawing.Point(30, 13);
-            this.button1_Form1_load.Name = "button1_Form1_load";
-            this.button1_Form1_load.Size = new System.Drawing.Size(96, 22);
-            this.button1_Form1_load.TabIndex = 5;
-            this.button1_Form1_load.Text = "LOAD";
-            this.button1_Form1_load.UseVisualStyleBackColor = true;
-            this.button1_Form1_load.Click += new System.EventHandler(this.button1_Form1_load_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.panel2.Controls.Add(this.button1_Form1_load);
-            this.panel2.Location = new System.Drawing.Point(572, 902);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(149, 47);
-            this.panel2.TabIndex = 6;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(339, 445);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(170, 63);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 63;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
@@ -1582,7 +1581,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataApp";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.panel1_Form1.ResumeLayout(false);
+            this.panel1_Form1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.CG_tabPage1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1596,10 +1598,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1_Form1.ResumeLayout(false);
-            this.panel1_Form1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1610,19 +1611,119 @@
         private System.Windows.Forms.Button button1_Form1_search;
         private System.Windows.Forms.TextBox textBox1_Form1_filePath;
         private System.Windows.Forms.Button button1_Form1_import;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage CG_tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel1_Form1;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label label1_CG_PersonRef;
-        private System.Windows.Forms.ComboBox comboBox1_CG_PersonRef;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1_CG_FirstName;
-        private System.Windows.Forms.Label label1_CG_Title;
+        private System.Windows.Forms.Label label1_Form1_fileName;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1_Form1_save;
+        private System.Windows.Forms.Button button1_Form1_load;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TabPage CG_tabPage1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox checkBox1_CG_bar;
+        private System.Windows.Forms.CheckBox checkBox1_CG_doubleQuotations;
+        private System.Windows.Forms.CheckBox checkBox1_CG_quotations;
+        private System.Windows.Forms.CheckBox checkBox1_CG_lineFeed;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label1_CG_RowsImported;
+        private System.Windows.Forms.Label label2_CG_RowsImported;
+        private System.Windows.Forms.Label label2_CG_RowsDeleted;
+        private System.Windows.Forms.Label label1_CG_RowsLoaded;
+        private System.Windows.Forms.Label label2_CG_RowsLoaded;
+        private System.Windows.Forms.Label label1_CG_RowsDeleted;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox checkBox1_CG_uniqueCountry;
+        private System.Windows.Forms.TextBox textBox1_CG_uniqueCountry;
+        private System.Windows.Forms.CheckBox checkBox1_CG_uniquePackcode;
+        private System.Windows.Forms.CheckBox checkBox1_CG_includePackcode;
+        private System.Windows.Forms.CheckBox checkBox1_CG_includeAppeal;
+        private System.Windows.Forms.ComboBox comboBox1_CG_duplicates;
+        private System.Windows.Forms.RadioButton radioButton2_RecordTypeCold;
+        private System.Windows.Forms.Label label1_CG_RecordType;
+        private System.Windows.Forms.RadioButton radioButton1_CG_RecordTypeWarm;
+        private System.Windows.Forms.TextBox textBox1_CG_uniquePackcode;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientName;
+        private System.Windows.Forms.CheckBox checkBox1_CG_duplicates;
+        private System.Windows.Forms.TextBox textBox1_CG_Campaign;
+        private System.Windows.Forms.TextBox textBox1_CG_ImportFile;
+        private System.Windows.Forms.TextBox textBox1_CG_AppealCode;
+        private System.Windows.Forms.TextBox textBox1_CG_AddedDateTime;
+        private System.Windows.Forms.TextBox textBox1_CG_AddedBy;
+        private System.Windows.Forms.Label label1_CG_Campaign;
+        private System.Windows.Forms.Label label1_CG_AppealCode;
+        private System.Windows.Forms.Label label1_CG_ImportFile;
+        private System.Windows.Forms.Label label1_CG_AddedDateTime;
+        private System.Windows.Forms.Label label1_CG_AddedBy;
+        private System.Windows.Forms.Label label1_CG_ClientName;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox comboBox1_CG_Barcode;
+        private System.Windows.Forms.TextBox textBox1_CG_Barcode;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox3_CG_Primkey;
+        private System.Windows.Forms.TextBox textBox2_CG_Primkey;
+        private System.Windows.Forms.TextBox textBox1_CG_Primkey;
+        private System.Windows.Forms.ComboBox comboBox2_CG_Barcode;
+        private System.Windows.Forms.ComboBox comboBox3_CG_Barcode;
+        private System.Windows.Forms.Label label1_CG_Barcode;
+        private System.Windows.Forms.Label label1_CG_Primkey;
+        private System.Windows.Forms.ComboBox comboBox1_CG_Primkey;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox comboBox1_CG_MobileNumber;
+        private System.Windows.Forms.Label label1_CG_MobileNumber;
+        private System.Windows.Forms.ComboBox comboBox1_CG_PackageCode;
+        private System.Windows.Forms.Label label1_CG_EmailAddress;
+        private System.Windows.Forms.ComboBox comboBox1_CG_EmailAddress;
+        private System.Windows.Forms.Label label1_CG_PackageCode;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData7;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData10;
+        private System.Windows.Forms.Label label1_CG_ClientData10;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData9;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData8;
+        private System.Windows.Forms.Label label1_CG_ClientData7;
+        private System.Windows.Forms.Label label1_CG_ClientData8;
+        private System.Windows.Forms.Label label1_CG_ClientData1;
+        private System.Windows.Forms.Label label1_CG_ClientData9;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData6;
+        private System.Windows.Forms.Label label1_CG_RaffleEndNumber;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData5;
+        private System.Windows.Forms.ComboBox comboBox1_CG_RaffleEndNumber;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData4;
+        private System.Windows.Forms.ComboBox comboBox1_CG_RaffleStartNumber;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData3;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ColdURN;
+        private System.Windows.Forms.ComboBox comboBox1_CG_PreloadedCAFNumber;
+        private System.Windows.Forms.Label label1_CG_RaffleStartNumber;
+        private System.Windows.Forms.Label label1_CG_ColdURN;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData2;
+        private System.Windows.Forms.Label label1_CG_PreloadedCAFNumber;
+        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData1;
+        private System.Windows.Forms.Label label1_CG_ClientData6;
+        private System.Windows.Forms.Label label1_CG_ClientData5;
+        private System.Windows.Forms.Label label1_CG_ClientData4;
+        private System.Windows.Forms.Label label1_CG_ClientData2;
+        private System.Windows.Forms.Label label1_CG_ClientData3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine5;
+        private System.Windows.Forms.Label label1_CG_AddressLine5;
+        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine4;
+        private System.Windows.Forms.Label label1_CG_AddressLine4;
+        private System.Windows.Forms.ComboBox comboBox1_CG_OrganisationName;
+        private System.Windows.Forms.Label label1_CG_OrganisationName;
+        private System.Windows.Forms.ComboBox comboBox1_CG_Country;
+        private System.Windows.Forms.Label label1_CG_Country;
+        private System.Windows.Forms.ComboBox comboBox1_CG_Postcode;
+        private System.Windows.Forms.ComboBox comboBox1_CG_County;
+        private System.Windows.Forms.ComboBox comboBox1_CG_TownCity;
+        private System.Windows.Forms.Label label1_CG_Postcode;
+        private System.Windows.Forms.Label label1_CG_County;
+        private System.Windows.Forms.Label label1_CG_TownCity;
+        private System.Windows.Forms.Label label1_CG_AddressLine1;
+        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine2;
+        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine3;
+        private System.Windows.Forms.Label label1_CG_AddressLine2;
+        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine1;
+        private System.Windows.Forms.Label label1_CG_AddressLine3;
         private System.Windows.Forms.ComboBox comboBox1_CG_Salutation;
+        private System.Windows.Forms.ComboBox comboBox1_CG_TelephoneNumber;
         private System.Windows.Forms.ComboBox comboBox1_CG_Surname;
         private System.Windows.Forms.ComboBox comboBox1_CG_MiddleName;
         private System.Windows.Forms.ComboBox comboBox1_CG_FirstName;
@@ -1630,115 +1731,15 @@
         private System.Windows.Forms.Label label1_CG_Salutation;
         private System.Windows.Forms.Label label1_CG_Surname;
         private System.Windows.Forms.Label label1_CG_MiddleName;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData1;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData2;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData3;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData4;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData5;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData6;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData7;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData8;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData9;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientData10;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label1_CG_Barcode;
-        private System.Windows.Forms.Label label1_CG_Primkey;
-        private System.Windows.Forms.ComboBox comboBox1_CG_Primkey;
-        private System.Windows.Forms.Label label1_CG_AddressLine1;
-        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine2;
-        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine3;
-        private System.Windows.Forms.Label label1_CG_AddressLine2;
-        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine1;
-        private System.Windows.Forms.Label label1_CG_AddressLine3;
-        private System.Windows.Forms.ComboBox comboBox1_CG_Postcode;
-        private System.Windows.Forms.ComboBox comboBox1_CG_County;
-        private System.Windows.Forms.ComboBox comboBox1_CG_TownCity;
-        private System.Windows.Forms.Label label1_CG_Postcode;
-        private System.Windows.Forms.Label label1_CG_County;
-        private System.Windows.Forms.Label label1_CG_TownCity;
-        private System.Windows.Forms.ComboBox comboBox1_CG_RaffleStartNumber;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ColdURN;
-        private System.Windows.Forms.ComboBox comboBox1_CG_PreloadedCAFNumber;
-        private System.Windows.Forms.Label label1_CG_RaffleStartNumber;
-        private System.Windows.Forms.Label label1_CG_ColdURN;
-        private System.Windows.Forms.Label label1_CG_PreloadedCAFNumber;
-        private System.Windows.Forms.Label label1_CG_RaffleEndNumber;
-        private System.Windows.Forms.ComboBox comboBox1_CG_RaffleEndNumber;
-        private System.Windows.Forms.ComboBox comboBox1_CG_Country;
-        private System.Windows.Forms.Label label1_CG_Country;
-        private System.Windows.Forms.Label label1_CG_ClientData10;
-        private System.Windows.Forms.Label label1_CG_ClientData1;
-        private System.Windows.Forms.Label label1_CG_ClientData7;
-        private System.Windows.Forms.Label label1_CG_ClientData8;
-        private System.Windows.Forms.Label label1_CG_ClientData9;
-        private System.Windows.Forms.Label label1_CG_ClientData6;
-        private System.Windows.Forms.Label label1_CG_ClientData5;
-        private System.Windows.Forms.Label label1_CG_ClientData4;
-        private System.Windows.Forms.Label label1_CG_ClientData2;
-        private System.Windows.Forms.Label label1_CG_ClientData3;
-        private System.Windows.Forms.ComboBox comboBox3_CG_Barcode;
-        private System.Windows.Forms.ComboBox comboBox2_CG_Barcode;
-        private System.Windows.Forms.Label label1_Form1_fileName;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label1_CG_Campaign;
-        private System.Windows.Forms.Label label1_CG_AppealCode;
-        private System.Windows.Forms.Label label1_CG_ImportFile;
-        private System.Windows.Forms.Label label1_CG_AddedDateTime;
-        private System.Windows.Forms.Label label1_CG_AddedBy;
-        private System.Windows.Forms.Label label1_CG_ClientName;
-        private System.Windows.Forms.ComboBox comboBox1_CG_OrganisationName;
-        private System.Windows.Forms.Label label1_CG_OrganisationName;
-        private System.Windows.Forms.ComboBox comboBox1_CG_TelephoneNumber;
+        private System.Windows.Forms.Label label1_CG_FirstName;
         private System.Windows.Forms.Label label1_CG_TelephoneNumber;
-        private System.Windows.Forms.TextBox textBox1_CG_Campaign;
-        private System.Windows.Forms.TextBox textBox1_CG_ImportFile;
-        private System.Windows.Forms.TextBox textBox1_CG_AppealCode;
-        private System.Windows.Forms.TextBox textBox1_CG_AddedDateTime;
-        private System.Windows.Forms.TextBox textBox1_CG_AddedBy;
-        private System.Windows.Forms.ComboBox comboBox1_CG_ClientName;
-        private System.Windows.Forms.TextBox textBox3_CG_Primkey;
-        private System.Windows.Forms.TextBox textBox2_CG_Primkey;
-        private System.Windows.Forms.TextBox textBox1_CG_Primkey;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1_Form1_save;
-        private System.Windows.Forms.Button button1_Form1_load;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1_CG_Barcode;
-        private System.Windows.Forms.ComboBox comboBox1_CG_PackageCode;
-        private System.Windows.Forms.Label label1_CG_EmailAddress;
-        private System.Windows.Forms.ComboBox comboBox1_CG_EmailAddress;
-        private System.Windows.Forms.Label label1_CG_PackageCode;
-        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine5;
-        private System.Windows.Forms.Label label1_CG_AddressLine5;
-        private System.Windows.Forms.ComboBox comboBox1_CG_AddressLine4;
-        private System.Windows.Forms.Label label1_CG_AddressLine4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox checkBox1_CG_duplicates;
-        private System.Windows.Forms.Label label1_CG_RowsImported;
-        private System.Windows.Forms.Label label2_CG_RowsImported;
-        private System.Windows.Forms.Label label2_CG_RowsDeleted;
-        private System.Windows.Forms.Label label1_CG_RowsDeleted;
-        private System.Windows.Forms.Label label2_CG_RowsLoaded;
-        private System.Windows.Forms.Label label1_CG_RowsLoaded;
-        private System.Windows.Forms.RadioButton radioButton2_RecordTypeCold;
-        private System.Windows.Forms.RadioButton radioButton1_CG_RecordTypeWarm;
-        private System.Windows.Forms.Label label1_CG_RecordType;
-        private System.Windows.Forms.ComboBox comboBox1_CG_MobileNumber;
-        private System.Windows.Forms.Label label1_CG_MobileNumber;
-        private System.Windows.Forms.CheckBox checkBox1_CG_bar;
-        private System.Windows.Forms.CheckBox checkBox1_CG_doubleQuotations;
-        private System.Windows.Forms.CheckBox checkBox1_CG_quotations;
-        private System.Windows.Forms.CheckBox checkBox1_CG_lineFeed;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.ComboBox comboBox1_CG_Barcode;
-        private System.Windows.Forms.ComboBox comboBox1_CG_duplicates;
-        private System.Windows.Forms.CheckBox checkBox1_CG_includePackcode;
-        private System.Windows.Forms.CheckBox checkBox1_CG_includeAppeal;
-        private System.Windows.Forms.TextBox textBox1_CG_uniquePackcode;
-        private System.Windows.Forms.CheckBox checkBox1_CG_uniquePackcode;
-        private System.Windows.Forms.CheckBox checkBox1_CG_uniqueCountry;
-        private System.Windows.Forms.TextBox textBox1_CG_uniqueCountry;
+        private System.Windows.Forms.Label label1_CG_Title;
+        private System.Windows.Forms.ComboBox comboBox1_CG_PersonRef;
+        private System.Windows.Forms.Label label1_CG_PersonRef;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

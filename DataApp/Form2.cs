@@ -13,73 +13,90 @@ namespace DataApp
 {
     public partial class Form2 : Form
     {
-        public static char delimiter_f2;
-        public static string qualifier_f2;
-        public static string filepath = Form1.sourceFile;
+        public static char delimiterF2;
+        public static string qualifierR2;
+        public static string fileWithPathF2 = Form1.fileWithPath;
         public static DataTable temp_dt;
         int numberOfRows = 50;
         public static bool dataOk = false;
         public Form2()
         {
             InitializeComponent();
-            temp_dt = DataHandler.FlatToDt(filepath, maxrownumber: numberOfRows);
-            dataGridView1_Form2.DataSource = temp_dt;
         }
 
         private void button1_Form2_OK_Click(object sender, EventArgs e)
         {
-            qualifier_f2 = textBox2_Form2_qualifier.Text;
+
+            qualifierR2 = textBox2_Form2_qualifier.Text;
 
             if (radioButton1_Form2_SemiColon.Checked)
             {
-                delimiter_f2 = ';';
-                this.Close();
+                delimiterF2 = ';';
             }
             else if (radioButton1_Form2_Space.Checked)
             {
-                delimiter_f2 = ' ';
-                this.Close();
+                delimiterF2 = ' ';
             }
             else if (radioButton1_form2_Comma.Checked)
             {
-                delimiter_f2 = ',';
-                this.Close();
+                delimiterF2 = ',';
             }
             else if (radioButton1_Form2_Other.Checked)
             {
-                if(textBox1_Form2_Other.Text.Length <1)
-                {
-                    MessageBox.Show("Please introduce a delimiter or select one");
+                if(textBox1_Form2_Other.Text.Length >0)
+                {                    
+                    delimiterF2 = Convert.ToChar(textBox1_Form2_Other.Text);
                 }
                 else
                 {
-                    delimiter_f2 = Convert.ToChar(textBox1_Form2_Other.Text);
-                    this.Close();
+                    MessageBox.Show("Please introduce a delimiter or select one");
                 }               
             }
+
+            this.Close();
             dataOk = true;
         }
 
         private void radioButton1_Form2_SemiColon_CheckedChanged(object sender, EventArgs e)
         {
-            delimiter_f2 = ';';
-            temp_dt = DataHandler.FlatToDt(filepath, delimiter_f2, numberOfRows);
-            dataGridView1_Form2.DataSource = temp_dt;
+            delimiterF2 = ';';
+            if (Form1.dataExport)
+            {                
+                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+            }
+            else
+            {
+                temp_dt = DataHandler.FlatToDt(fileWithPathF2, delimiterF2, numberOfRows);
+                dataGridView1_Form2.DataSource = temp_dt;
+            }
         }
 
         private void radioButton1_Form2_Space_CheckedChanged(object sender, EventArgs e)
         {
-            delimiter_f2 = ' ';
-            temp_dt = DataHandler.FlatToDt(filepath, delimiter_f2, numberOfRows);
-            dataGridView1_Form2.DataSource = temp_dt;
+            delimiterF2 = ' ';
+            if (Form1.dataExport)
+            {
+                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+            }
+            else
+            {
+                temp_dt = DataHandler.FlatToDt(fileWithPathF2, delimiterF2, numberOfRows);
+                dataGridView1_Form2.DataSource = temp_dt;
+            }
         }
 
         private void radioButton1_form2_Comma_CheckedChanged(object sender, EventArgs e)
         {
-            delimiter_f2 = ',';
-            temp_dt = DataHandler.FlatToDt(filepath, delimiter_f2, numberOfRows);
-            dataGridView1_Form2.DataSource = temp_dt;
-            dataGridView1_Form2.AutoSize = true;
+            delimiterF2 = ',';
+            if (Form1.dataExport)
+            {
+                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+            }
+            else
+            {
+                temp_dt = DataHandler.FlatToDt(fileWithPathF2, delimiterF2, numberOfRows);
+                dataGridView1_Form2.DataSource = temp_dt;
+            }
         }
 
         private void radioButton1_Form2_Other_CheckedChanged(object sender, EventArgs e)
@@ -87,9 +104,16 @@ namespace DataApp
             textBox1_Form2_Other.Select();
             if (textBox1_Form2_Other.Text.Length > 0)
             {
-                delimiter_f2 = Convert.ToChar(textBox1_Form2_Other.Text);
-                temp_dt = DataHandler.FlatToDt(Form1.sourceFile, delimiter_f2, numberOfRows);
-                dataGridView1_Form2.DataSource = temp_dt;
+                delimiterF2 = Convert.ToChar(textBox1_Form2_Other.Text);
+                if (Form1.dataExport)
+                {
+                    dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+                }
+                else
+                {
+                    temp_dt = DataHandler.FlatToDt(fileWithPathF2, delimiterF2, numberOfRows);
+                    dataGridView1_Form2.DataSource = temp_dt;
+                }
             }
         }
 
@@ -104,15 +128,31 @@ namespace DataApp
             if (textBox1_Form2_Other.Text.Length > 0)
             {
                 radioButton1_Form2_Other.Checked = true;
-                delimiter_f2 = Convert.ToChar(textBox1_Form2_Other.Text);
-                temp_dt = DataHandler.FlatToDt(Form1.sourceFile, delimiter_f2, numberOfRows);
-                dataGridView1_Form2.DataSource = temp_dt;
+                delimiterF2 = Convert.ToChar(textBox1_Form2_Other.Text);
+                if (Form1.dataExport)
+                {
+                    dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+                }
+                else
+                {
+                    temp_dt = DataHandler.FlatToDt(fileWithPathF2, delimiterF2, numberOfRows);
+                    dataGridView1_Form2.DataSource = temp_dt;
+                }
             }
         }
 
         private void checkBox1_Form2_qualifier_CheckedChanged(object sender, EventArgs e)
         {
             textBox2_Form2_qualifier.Enabled = checkBox1_Form2_qualifier.Checked == true ? true : false;
+        }
+
+        private void textBox2_Form2_qualifier_TextChanged(object sender, EventArgs e)
+        {
+            qualifierR2 = checkBox1_Form2_qualifier.Checked == true ? textBox2_Form2_qualifier.Text : "";
+            if (Form1.dataExport)
+            {
+                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+            }
         }
     }
 }
