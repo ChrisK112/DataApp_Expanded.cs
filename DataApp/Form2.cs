@@ -17,7 +17,7 @@ namespace DataApp
         public static string qualifierR2;
         public static string fileWithPathF2 = Form1.fileWithPath;
         public static DataTable temp_dt;
-        int numberOfRows = 50;
+        int numberOfRows = 30;
         public static bool dataOk = false;
         public Form2()
         {
@@ -62,7 +62,7 @@ namespace DataApp
             delimiterF2 = ';';
             if (Form1.dataExport)
             {                
-                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x }).Take(numberOfRows);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace DataApp
             delimiterF2 = ' ';
             if (Form1.dataExport)
             {
-                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x }).Take(numberOfRows);
             }
             else
             {
@@ -90,7 +90,7 @@ namespace DataApp
             delimiterF2 = ',';
             if (Form1.dataExport)
             {
-                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x }).Take(numberOfRows);
             }
             else
             {
@@ -107,7 +107,7 @@ namespace DataApp
                 delimiterF2 = Convert.ToChar(textBox1_Form2_Other.Text);
                 if (Form1.dataExport)
                 {
-                    dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+                    dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x }).Take(numberOfRows);
                 }
                 else
                 {
@@ -131,7 +131,7 @@ namespace DataApp
                 delimiterF2 = Convert.ToChar(textBox1_Form2_Other.Text);
                 if (Form1.dataExport)
                 {
-                    dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+                    dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x }).Take(numberOfRows);
                 }
                 else
                 {
@@ -151,7 +151,7 @@ namespace DataApp
             qualifierR2 = checkBox1_Form2_qualifier.Checked == true ? textBox2_Form2_qualifier.Text : "";
             if (Form1.dataExport)
             {
-                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x });
+                dataGridView1_Form2.DataSource = DataHandler.lstStrData(Form1.dataLoaded, Form1.dtTarget, Form1.dt, delimiterF2, qualifierR2).ConvertAll(x => new { Value = x }).Take(numberOfRows);
             }
         }
     }

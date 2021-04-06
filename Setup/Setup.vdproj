@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Setup"
+"ProjectName" = "8:DataAppInstaller"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -15,32 +15,32 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_7895DC143C80403DA8578E891E91BF83"
+        "MsmKey" = "8:_1BD8324A61394238BC60349BC5C81865"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_21A32244DF864FAEA0FEE58C4B3E1E12"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_886D570418250A54D845B66EDC45D733"
-        "OwnerKey" = "8:_9E2FDC5E7D05492E8D6E313C0D3611E9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9E2FDC5E7D05492E8D6E313C0D3611E9"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1BD8324A61394238BC60349BC5C81865"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B5CCCD8539AB55FBB09345E3E5129416"
-        "OwnerKey" = "8:_9E2FDC5E7D05492E8D6E313C0D3611E9"
+        "OwnerKey" = "8:_1BD8324A61394238BC60349BC5C81865"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_CAE78DCF02157186041A98629DDB96B6"
-        "OwnerKey" = "8:_9E2FDC5E7D05492E8D6E313C0D3611E9"
+        "OwnerKey" = "8:_1BD8324A61394238BC60349BC5C81865"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,7 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9E2FDC5E7D05492E8D6E313C0D3611E9"
+        "OwnerKey" = "8:_1BD8324A61394238BC60349BC5C81865"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -85,6 +85,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -101,6 +117,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -130,7 +154,7 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7895DC143C80403DA8578E891E91BF83"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_21A32244DF864FAEA0FEE58C4B3E1E12"
             {
             "SourcePath" = "8:..\\..\\..\\Downloads\\Logo.ico"
             "TargetName" = "8:Logo.ico"
@@ -311,7 +335,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup"
         "ProductCode" = "8:{0AE18894-3230-4389-A867-A084E0FE3E19}"
-        "PackageCode" = "8:{9E116F9D-274D-4EFF-B795-7BAAE2822E77}"
+        "PackageCode" = "8:{08600A25-E906-44E1-9541-09E73AE405BF}"
         "UpgradeCode" = "8:{119358B4-4ED7-47E9-B8BD-FAAAC25D6C0F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -431,7 +455,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_DA681DF09FBD46188BA42218DD7D5273"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4A9BD99ECDBA4707AC3CD207E0C9205E"
             {
             "Name" = "8:DataApp"
             "Arguments" = "8:"
@@ -439,24 +463,24 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_9E2FDC5E7D05492E8D6E313C0D3611E9"
-            "Folder" = "8:_CBAC834FF8D349AFA35B6D0532C4F540"
-            "WorkingFolder" = "8:_3832CB032E974F7089B419B101581A16"
-            "Icon" = "8:_7895DC143C80403DA8578E891E91BF83"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F90F2FF9A76745E5AF0868E78DE34C1D"
-            {
-            "Name" = "8:DataApp"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_9E2FDC5E7D05492E8D6E313C0D3611E9"
+            "Target" = "8:_1BD8324A61394238BC60349BC5C81865"
             "Folder" = "8:_7BDC8E7CB2AC47E99C1430767934E622"
             "WorkingFolder" = "8:_3832CB032E974F7089B419B101581A16"
-            "Icon" = "8:_7895DC143C80403DA8578E891E91BF83"
+            "Icon" = "8:_21A32244DF864FAEA0FEE58C4B3E1E12"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_694C51E1DACB48C08C82BCD594716C23"
+            {
+            "Name" = "8:DataApp"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_1BD8324A61394238BC60349BC5C81865"
+            "Folder" = "8:_CBAC834FF8D349AFA35B6D0532C4F540"
+            "WorkingFolder" = "8:_3832CB032E974F7089B419B101581A16"
+            "Icon" = "8:_21A32244DF864FAEA0FEE58C4B3E1E12"
             "Feature" = "8:"
             }
         }
@@ -858,7 +882,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9E2FDC5E7D05492E8D6E313C0D3611E9"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1BD8324A61394238BC60349BC5C81865"
             {
             "SourcePath" = "8:..\\DataApp\\obj\\Debug\\DataApp.exe"
             "TargetName" = "8:"

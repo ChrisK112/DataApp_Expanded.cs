@@ -94,7 +94,6 @@ C:\Users\Gregory Vasquez\Desktop\DataApp.cs\DataApp\obj\Debug\DataApp.csproj.Cop
 C:\Users\Gregory Vasquez\Desktop\DataApp.cs\DataApp\obj\Debug\DataApp.exe
 C:\Users\Gregory Vasquez\Desktop\DataApp.cs\DataApp\obj\Debug\DataApp.pdb
 C:\Users\Gregory\Desktop\DataApp.cs\DataApp\obj\Debug\DataAppInstaller.Properties.Resources.resources
-C:\Users\Gregory\Desktop\DataApp.cs\DataApp\obj\Debug\DataApp.csprojAssemblyReference.cache
 C:\Users\Gregory\Desktop\DataApp.cs\DataApp\bin\Debug\DataApp.exe.config
 C:\Users\Gregory\Desktop\DataApp.cs\DataApp\bin\Debug\DataApp.exe
 C:\Users\Gregory\Desktop\DataApp.cs\DataApp\bin\Debug\DataApp.pdb

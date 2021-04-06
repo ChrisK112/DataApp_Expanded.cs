@@ -88,6 +88,7 @@ namespace DataApp
                                     }
                                 }
                             }
+                            comboBox1_CG_duplicates.DataSource = DataHandler.colNamesArray(DataTableFactory.DtScheme(tabPage.Name), true);
                         }
 
                     }
@@ -99,6 +100,7 @@ namespace DataApp
                     textBox1_CG_Primkey.Text = "";
                     label2_CG_RowsImported.Text = dt.Rows.Count.ToString();
                     radioButton1_CG_RecordTypeWarm.Checked = true;
+                    
 
                     //GLOBAL VALUES
                     fileWithPath = null;
