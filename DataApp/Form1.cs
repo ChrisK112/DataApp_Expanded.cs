@@ -191,7 +191,7 @@ namespace DataApp
                                         EmailPreference = "Unknown",
                                         SMSPreference = "Unknown",
                                         ThirdPartyPreference = "Unknown",
-                                        Barcode = (((checkBox1_CG_includeAppeal.Checked == true ? textBox1_CG_AppealCode.Text : (comboBox1_CG_Barcode.Text == "" ? "" : row.Field<string>(comboBox1_CG_Barcode.Text))) + textBox1_CG_Barcode.Text + (checkBox1_CG_includePackcode.Checked == true ? textBox1_CG_uniquePackcode.Text : (comboBox2_CG_Barcode.Text == "" ? "" : row.Field<string>(comboBox2_CG_Barcode.Text))) + textBox1_CG_Barcode.Text + (comboBox3_CG_Barcode.Text == "" ? "" : row.Field<string>(comboBox3_CG_Barcode.Text))).TrimStart(Convert.ToChar(textBox1_CG_Barcode.Text == "" ? " " : textBox1_CG_Barcode.Text)).TrimEnd(Convert.ToChar(textBox1_CG_Barcode.Text == "" ? " " : textBox1_CG_Barcode.Text))).Replace(val1, valblank).Replace(val2, valblank).Replace(val3, valblank).Replace(val4, valblank),
+                                        Barcode = (((checkBox1_CG_includeAppeal.Checked == true ? textBox1_CG_AppealCode.Text : (comboBox1_CG_Barcode.Text == "" ? "" : row.Field<string>(comboBox1_CG_Barcode.Text))) + textBox1_CG_Barcode.Text + (checkBox1_CG_includePackcode.Checked == true ? textBox1_CG_uniquePackcode.Text : (comboBox2_CG_Barcode.Text == "" ? "" : row.Field<string>(comboBox2_CG_Barcode.Text))) + textBox1_CG_Barcode.Text + (comboBox3_CG_Barcode.Text == "" ? "" : row.Field<string>(comboBox3_CG_Barcode.Text))).TrimStart(Convert.ToChar(textBox1_CG_Barcode.Text == "" ? " " : textBox1_CG_Barcode.Text)).TrimEnd(Convert.ToChar(textBox1_CG_Barcode.Text == "" ? " " : textBox1_CG_Barcode.Text))).Replace(textBox1_CG_Barcode.Text == "" ? "  " : (textBox1_CG_Barcode.Text + textBox1_CG_Barcode.Text), textBox1_CG_Barcode.Text).Replace(val1, valblank).Replace(val2, valblank).Replace(val3, valblank).Replace(val4, valblank),
                                         ClientData1 = (comboBox1_CG_ClientData1.Text == "" ? "" : row.Field<string>(comboBox1_CG_ClientData1.Text)).Replace(val1, valblank).Replace(val2, valblank).Replace(val3, valblank).Replace(val4, valblank),
                                         ClientData2 = (comboBox1_CG_ClientData2.Text == "" ? "" : row.Field<string>(comboBox1_CG_ClientData2.Text)).Replace(val1, valblank).Replace(val2, valblank).Replace(val3, valblank).Replace(val4, valblank),
                                         ClientData3 = (comboBox1_CG_ClientData3.Text == "" ? "" : row.Field<string>(comboBox1_CG_ClientData3.Text)).Replace(val1, valblank).Replace(val2, valblank).Replace(val3, valblank).Replace(val4, valblank),
@@ -214,6 +214,18 @@ namespace DataApp
                                 row.ClientData3, row.ClientData4, row.ClientData5, row.ClientData6, row.ClientData7, row.ClientData8, row.ClientData9, row.ClientData10);
                         }
 
+                        if (checkBox1_CG_duplicates.Checked)
+                        {
+                            string colName = comboBox1_CG_duplicates.Text == "" ? "Primkey" : comboBox1_CG_duplicates.Text;
+                            DataHandler.dtRemoveDuplicateRows(ref dtTarget, colName);
+                            rowsDeleted = dt.Rows.Count - dtTarget.Rows.Count;
+                        }
+
+                        //GLOBAL VARIABLES
+                        dataGridView1.DataSource = dtTarget.AsEnumerable().Take(50).CopyToDataTable();
+                        dataLoaded = true;
+                        label2_CG_RowsLoaded.Text = checkBox1_CG_duplicates.Checked == true ? (rowsDeleted > 0 ? (dt.Rows.Count - rowsDeleted) : dtTarget.Rows.Count).ToString() : dtTarget.Rows.Count.ToString();
+                        label2_CG_RowsDeleted.Text = rowsDeleted.ToString();
                     }
                     else
                     {
@@ -226,20 +238,9 @@ namespace DataApp
                     MessageBox.Show($"{ex}");
                 }
                 
-                if (checkBox1_CG_duplicates.Checked)
-                {
-                    string colName = comboBox1_CG_duplicates.Text == "" ? "Primkey" : comboBox1_CG_duplicates.Text;
-                    DataHandler.dtRemoveDuplicateRows(ref dtTarget, colName);
-                    rowsDeleted = dt.Rows.Count - dtTarget.Rows.Count;
-                }
+                
 
-            }
-
-            //GLOBAL VARIABLES
-            dataGridView1.DataSource = dtTarget;
-            dataLoaded = true;
-            label2_CG_RowsLoaded.Text = checkBox1_CG_duplicates.Checked == true ? (rowsDeleted > 0 ? (dt.Rows.Count - rowsDeleted) : dtTarget.Rows.Count).ToString() : dtTarget.Rows.Count.ToString();
-            label2_CG_RowsDeleted.Text = rowsDeleted.ToString();
+            }           
 
         }
 
@@ -260,16 +261,16 @@ namespace DataApp
                         //IF SAVED AS TEXT, SELECT DELIMITER AND QUALIFIER TO USE
                         form2.ShowDialog(); 
                     }
-
+                    
                     if (Form2.dataOk)
                     {
                         if (dataLoaded)
                         {
-                            DataHandler.DtToFlat(dtTarget, saveas, extentionindex, Form2.qualifierR2, Convert.ToChar(Form2.delimiterF2));
+                            DataHandler.DtToFlat(dtTarget, saveas, extentionindex, Form2.qualifierF2, Convert.ToChar(Form2.delimiterF2));
                         }
                         else
                         {
-                            DataHandler.DtToFlat(dt, saveas, extentionindex, Form2.qualifierR2, Convert.ToChar(Form2.delimiterF2));
+                            DataHandler.DtToFlat(dt, saveas, extentionindex, Form2.qualifierF2, Convert.ToChar(Form2.delimiterF2));
                         }
                     }
 

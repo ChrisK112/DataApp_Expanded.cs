@@ -46,7 +46,7 @@ namespace DataApp
             //ADDS AN EMPTY VALUE TO ARRAY
             string[] colNamesWithBlank = new string[list.Count() + 1];
             colNamesWithBlank[0] = "";
-            for (int n = 1; n < list.Count(); n++)
+            for (int n = 1; n <= list.Count(); n++)
             {
                 colNamesWithBlank[n] = list[n - 1];
             }
@@ -56,7 +56,15 @@ namespace DataApp
         public static void DtToFlat(System.Data.DataTable dt, string dialogfilename, int extentionindex, string qualifier = "", char delimiter = ',')
         {
             //CONVERTS DATATABLE TO FLAT FILE
-            File.WriteAllLines(dialogfilename, dtToListStr(dt, delimiter, qualifier));
+            if(extentionindex == 1)
+            {
+                File.WriteAllLines(dialogfilename, dtToListStr(dt, delimiter, qualifier));
+            }
+            else if(extentionindex == 2)
+            {
+                File.WriteAllLines(dialogfilename, dtToListStr(dt, ',', "\""));
+            }
+            
         }
 
         public static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier)
@@ -68,7 +76,7 @@ namespace DataApp
             string strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().Replace(qualifier == "" ? "*" : qualifier, "")}{qualifier}"));
             lines.Add(strColNames);
 
-            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString().Replace(qualifier == "" ? "*" : qualifier,"")}{qualifier}")));
+            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString()}{qualifier}")));
             lines.AddRange(strData);
 
             return lines;
