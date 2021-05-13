@@ -99,3 +99,4 @@ C:\Users\Gregory\Desktop\DataApp.cs\DataApp\bin\Debug\DataApp.exe
 C:\Users\Gregory\Desktop\DataApp.cs\DataApp\bin\Debug\DataApp.pdb
 C:\Users\Gregory\Desktop\DataApp.cs\DataApp\obj\Debug\DataApp.exe
 C:\Users\Gregory\Desktop\DataApp.cs\DataApp\obj\Debug\DataApp.pdb
+C:\Users\Gregory\Desktop\DataApp.cs\DataApp\obj\Debug\DataApp.csprojAssemblyReference.cache

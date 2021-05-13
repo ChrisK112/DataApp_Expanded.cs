@@ -40,6 +40,8 @@
             this.button1_Form1_save = new System.Windows.Forms.Button();
             this.button1_Form1_load = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1_Form1_percentage = new System.Windows.Forms.Label();
+            this.progressBar1_Form1_loaded = new System.Windows.Forms.ProgressBar();
             this.CG_tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -280,11 +282,30 @@
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel2.Controls.Add(this.label1_Form1_percentage);
+            this.panel2.Controls.Add(this.progressBar1_Form1_loaded);
             this.panel2.Controls.Add(this.button1_Form1_load);
             this.panel2.Location = new System.Drawing.Point(674, 902);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(149, 47);
+            this.panel2.Size = new System.Drawing.Size(354, 47);
             this.panel2.TabIndex = 6;
+            // 
+            // label1_Form1_percentage
+            // 
+            this.label1_Form1_percentage.AutoSize = true;
+            this.label1_Form1_percentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1_Form1_percentage.Location = new System.Drawing.Point(326, 15);
+            this.label1_Form1_percentage.Name = "label1_Form1_percentage";
+            this.label1_Form1_percentage.Size = new System.Drawing.Size(20, 17);
+            this.label1_Form1_percentage.TabIndex = 20;
+            this.label1_Form1_percentage.Text = "%";
+            // 
+            // progressBar1_Form1_loaded
+            // 
+            this.progressBar1_Form1_loaded.Location = new System.Drawing.Point(132, 12);
+            this.progressBar1_Form1_loaded.Name = "progressBar1_Form1_loaded";
+            this.progressBar1_Form1_loaded.Size = new System.Drawing.Size(158, 23);
+            this.progressBar1_Form1_loaded.TabIndex = 6;
             // 
             // CG_tabPage1
             // 
@@ -1585,6 +1606,7 @@
             this.panel1_Form1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.CG_tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1740,6 +1762,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label label1_Form1_percentage;
+        private System.Windows.Forms.ProgressBar progressBar1_Form1_loaded;
     }
 }
 

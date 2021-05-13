@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace DataApp
 {
@@ -94,7 +95,7 @@ namespace DataApp
                     }
 
                     //DEFAULT VALUES
-                    textBox3_CG_Primkey.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    textBox3_CG_Primkey.Text = DateTime.Now.ToString("ddMMyyyy");
                     textBox1_CG_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
                     textBox1_CG_AddedBy.Text = "Admin";
                     textBox1_CG_Primkey.Text = "";
@@ -203,9 +204,8 @@ namespace DataApp
                                         ClientData9 = (comboBox1_CG_ClientData9.Text == "" ? "" : row.Field<string>(comboBox1_CG_ClientData9.Text)).Replace(val1, valblank).Replace(val2, valblank).Replace(val3, valblank).Replace(val4, valblank),
                                         ClientData10 = (comboBox1_CG_ClientData10.Text == "" ? "" : row.Field<string>(comboBox1_CG_ClientData10.Text)).Replace(val1, valblank).Replace(val2, valblank).Replace(val3, valblank).Replace(val4, valblank),
                                     };
-
                         foreach (var row in query)
-                        {
+                        {                            
                             dtTarget.Rows.Add(row.Primkey, row.PersonRef, row.ClientName, row.AddedBy, row.AddedDateTime, row.Title, row.FirstName, row.MiddleName, row.Surname,
                                 row.Salutation, row.AddressLine1, row.AddressLine2, row.AddressLine3, row.TownCity, row.County, row.Postcode, row.Country, row.OrganisationName,
                                 row.TelephoneNumber, row.MobileNumber, row.EmailAddress, row.AppealCode, row.PackageCode, row.Deceased, row.Goneaway, row.NoFurtherCommunication,
@@ -301,7 +301,7 @@ namespace DataApp
         private void checkBox1_CG_uniquePackcode_CheckedChanged(object sender, EventArgs e)
         {
             textBox1_CG_uniquePackcode.Enabled = checkBox1_CG_uniquePackcode.Checked == true ? true : false;
-        }
+        }        
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
