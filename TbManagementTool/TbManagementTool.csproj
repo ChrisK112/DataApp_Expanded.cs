@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <Reference Include="GenericParsing">
-      <HintPath>..\..\..\Downloads\GenericParsing_bin\GenericParsing.dll</HintPath>
+      <HintPath>..\Dependencies\GenericParsing_bin\GenericParsing.dll</HintPath>
     </Reference>
   </ItemGroup>
 

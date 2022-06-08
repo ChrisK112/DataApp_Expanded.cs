@@ -32,6 +32,7 @@ namespace TbManagementTool
             this.tabControl_Main = new System.Windows.Forms.TabControl();
             this.tabPage_DataMapper = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.listView_DataMapper = new System.Windows.Forms.ListView();
             this.button_DataMapper_FileSave = new System.Windows.Forms.Button();
             this.button_DataMapper_FileLoad = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -156,7 +157,6 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -193,7 +193,7 @@ namespace TbManagementTool
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.listView1);
+            this.groupBox5.Controls.Add(this.listView_DataMapper);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileSave);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileLoad);
             this.groupBox5.Location = new System.Drawing.Point(1039, 6);
@@ -202,6 +202,15 @@ namespace TbManagementTool
             this.groupBox5.TabIndex = 24;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
+            // 
+            // listView_DataMapper
+            // 
+            this.listView_DataMapper.HideSelection = false;
+            this.listView_DataMapper.Location = new System.Drawing.Point(6, 527);
+            this.listView_DataMapper.Name = "listView_DataMapper";
+            this.listView_DataMapper.Size = new System.Drawing.Size(322, 159);
+            this.listView_DataMapper.TabIndex = 9;
+            this.listView_DataMapper.UseCompatibleStateImageBehavior = false;
             // 
             // button_DataMapper_FileSave
             // 
@@ -1516,15 +1525,6 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(6, 527);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(322, 159);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1683,7 +1683,7 @@ namespace TbManagementTool
         private System.Windows.Forms.Label label_DataMapper_RaffleStartNumber;
         private System.Windows.Forms.Label label_DataMapper_RaffleEndNumber;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listView_DataMapper;
     }
 }
 

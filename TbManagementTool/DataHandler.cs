@@ -9,7 +9,7 @@ using System.Configuration;
 using System.Windows.Forms;
 using System.Data;
 using System.IO;
-using excel = Microsoft.Office.Interop.Excel;
+using System.Data.OleDb;
 
 namespace TbManagementTool
 {
@@ -17,60 +17,65 @@ namespace TbManagementTool
     {
         public static DataTable excelToDt(string fileName)
         {
-            excel.Application excel;
-            excel.Workbook excelworkBook;
-            excel.Worksheet excelSheet;
-            excel.Range range;
-            DataTable dt = new DataTable();
+            //excel.Application excel;
+            //excel.Workbook excelworkBook;
+            //excel.Worksheet excelSheet;
+            //excel.Range range;
+            //DataTable dt = new DataTable();
 
-            try
-            {
-                // Get Application object.
-                excel = new excel.Application();
-                excel.Visible = false;
-                excel.DisplayAlerts = false;
-                // Creation a new Workbook
-                excelworkBook = excel.Workbooks.Open(fileName);
-                // Work sheet
-                excelSheet = excelworkBook.Sheets[1];
-                range = excelSheet.UsedRange;
-                int cl = range.Columns.Count;
-                // loop through each row and add values to our sheet
-                int rowcount = range.Rows.Count; ;
-                //create the header of table
-                for (int n = 1; n <= cl; n++)
-                {
-                    dt.Columns.Add(Convert.ToString(range.Cells[1, n].Value2), typeof(string));
-                }
-                //filling the table from  excel file                
-                for (int i = 1 + 1; i <= rowcount; i++)
-                {
-                    DataRow dr = dt.NewRow();
-                    for (int n = 1; n <= cl; n++)
-                    {
+            //try
+            //{
+            //    // Get Application object.
+            //    excel = new excel.Application();
+            //    excel.Visible = false;
+            //    excel.DisplayAlerts = false;
+            //    // Creation a new Workbook
+            //    excelworkBook = excel.Workbooks.Open(fileName);
+            //    // Work sheet
+            //    excelSheet = excelworkBook.Sheets[1];
+            //    range = excelSheet.UsedRange;
+            //    int cl = range.Columns.Count;
+            //    // loop through each row and add values to our sheet
+            //    int rowcount = range.Rows.Count; ;
+            //    //create the header of table
+            //    for (int n = 1; n <= cl; n++)
+            //    {
+            //        dt.Columns.Add(Convert.ToString(range.Cells[1, n].Value2), typeof(string));
+            //    }
+            //    //filling the table from  excel file                
+            //    for (int i = 1 + 1; i <= rowcount; i++)
+            //    {
+            //        DataRow dr = dt.NewRow();
+            //        for (int n = 1; n <= cl; n++)
+            //        {
 
-                        dr[n - 1] = Convert.ToString(range.Cells[i, n].Value2);
-                    }
+            //            dr[n - 1] = Convert.ToString(range.Cells[i, n].Value2);
+            //        }
 
-                    dt.Rows.InsertAt(dr, dt.Rows.Count + 1);
-                }
+            //        dt.Rows.InsertAt(dr, dt.Rows.Count + 1);
+            //    }
 
-                //now close the workbook and make the function return the data table
+            //    //now close the workbook and make the function return the data table
 
-                excelworkBook.Close();
-                excel.Quit();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                excelSheet = null;
-                range = null;
-                excelworkBook = null;
-            }
+            //    excelworkBook.Close();
+            //    excel.Quit();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    return null;
+            //}
+            //finally
+            //{
+            //    excelSheet = null;
+            //    range = null;
+            //    excelworkBook = null;
+            //}
+            
+
+
+
+
             return dt;
         }
 

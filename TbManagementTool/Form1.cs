@@ -33,7 +33,7 @@ namespace TbManagementTool
                 fileName = fileSearch.FileName;
                 fileExtention = Path.GetExtension(fileName);
                 textBox1_DataMapper_FileName.Text = fileName;
-            }                       
+            }   
         }
 
         private void button_DataMapper_Import_Click(object sender, EventArgs e)
@@ -46,6 +46,7 @@ namespace TbManagementTool
                     {
                         dt_import = DataHandler.fileToDt(fileName);
                         string[] colNames_import = DataHandler.colNamesArray(dt_import, true);
+
                         //Main TabControl
                         foreach (Control tab in tabControl_Main.TabPages)
                         {
@@ -61,18 +62,35 @@ namespace TbManagementTool
                                         if (item.GetType().Name == "ComboBox")
                                         {
                                             ComboBox comboBox = (ComboBox)item;
+                                            Graphics comboBoxGraphic = comboBox.CreateGraphics();
+                                            float lSize = 0;
+
+                                            //Assigns specific items to a specific comboBox
                                             if (item.Name == "comboBox_DataMapper_ClientName")
                                             {
                                                 comboBox.BindingContext = new BindingContext();
                                                 comboBox.DataSource = new BindingSource(DataHandler.CharityNamesPairs(), null);
                                                 comboBox.DisplayMember = "Value";
-                                                comboBox.ValueMember = "Key";
+                                                comboBox.ValueMember = "Key";                                                
                                             }
+                                            //Assigns items to the rest of comboBoxes
                                             else
                                             {
                                                 comboBox.BindingContext = new BindingContext();
-                                                comboBox.DataSource = new BindingSource(DataHandler.colNamesArray(dt_import, true), null);
+                                                comboBox.DataSource = new BindingSource(DataHandler.colNamesArray(dt_import, true), null);                                                                                              
                                             }
+
+                                            //Resize the combobox
+                                            for (int n = 0; n < comboBox.Items.Count; n++)
+                                            {
+                                                SizeF textSize = comboBoxGraphic.MeasureString(comboBox.Items[n].ToString(), item.Font);
+                                                if (textSize.Width > lSize)
+                                                    lSize = textSize.Width;
+                                                if (lSize > 0)
+                                                    comboBox.DropDownWidth = (int)lSize;
+                                            }
+
+
                                         }
                                     }
                                 }
