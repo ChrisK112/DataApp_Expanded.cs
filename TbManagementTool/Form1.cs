@@ -20,6 +20,8 @@ namespace TbManagementTool
         //Global Variables
         string fileName;
         string fileExtention;
+        DataSet ds_import = new DataSet();
+        DataSet ds_export = new DataSet();
         DataTable dt_import = new DataTable();
         DataTable dt_export = new DataTable();
         OpenFileDialog fileSearch = new OpenFileDialog();
@@ -39,7 +41,7 @@ namespace TbManagementTool
         private void button_DataMapper_Import_Click(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 if (File.Exists(fileName))
                 {
                     if (fileExtention == ".xls" || fileExtention == ".xlsx" || fileExtention == ".csv" || fileExtention == ".txt")
@@ -96,6 +98,13 @@ namespace TbManagementTool
                                 }
                                 //comboBox1_CG_duplicates.DataSource = DataHandler.colNamesArray(DataTableFactory.DtScheme(tabPage.Name), true);
                             }
+                        }
+                        //Assigns how many files have been imported to the ListView
+                        foreach (string fileName in fileSearch.FileNames)
+                        {                            
+                            ListViewItem item = new ListViewItem(Path.GetFileName(fileName));
+                            item.SubItems.Add(dt_import.Rows.Count.ToString());
+                            listView_DataMapper.Items.Add(item);
                         }
                     }
                     else

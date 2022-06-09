@@ -33,6 +33,8 @@ namespace TbManagementTool
             this.tabPage_DataMapper = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.listView_DataMapper = new System.Windows.Forms.ListView();
+            this.columnHeader1_DataMapper_FileName = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2_DataMapper_RecordsCount = new System.Windows.Forms.ColumnHeader();
             this.button_DataMapper_FileSave = new System.Windows.Forms.Button();
             this.button_DataMapper_FileLoad = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -205,12 +207,26 @@ namespace TbManagementTool
             // 
             // listView_DataMapper
             // 
+            this.listView_DataMapper.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1_DataMapper_FileName,
+            this.columnHeader2_DataMapper_RecordsCount});
             this.listView_DataMapper.HideSelection = false;
             this.listView_DataMapper.Location = new System.Drawing.Point(6, 527);
             this.listView_DataMapper.Name = "listView_DataMapper";
             this.listView_DataMapper.Size = new System.Drawing.Size(322, 159);
             this.listView_DataMapper.TabIndex = 9;
             this.listView_DataMapper.UseCompatibleStateImageBehavior = false;
+            this.listView_DataMapper.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1_DataMapper_FileName
+            // 
+            this.columnHeader1_DataMapper_FileName.Text = "File Name";
+            this.columnHeader1_DataMapper_FileName.Width = 172;
+            // 
+            // columnHeader2_DataMapper_RecordsCount
+            // 
+            this.columnHeader2_DataMapper_RecordsCount.Text = "Records Count";
+            this.columnHeader2_DataMapper_RecordsCount.Width = 150;
             // 
             // button_DataMapper_FileSave
             // 
@@ -1684,6 +1700,8 @@ namespace TbManagementTool
         private System.Windows.Forms.Label label_DataMapper_RaffleEndNumber;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ListView listView_DataMapper;
+        private System.Windows.Forms.ColumnHeader columnHeader1_DataMapper_FileName;
+        private System.Windows.Forms.ColumnHeader columnHeader2_DataMapper_RecordsCount;
     }
 }
 
