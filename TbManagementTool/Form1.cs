@@ -48,6 +48,7 @@ namespace TbManagementTool
                     {
                         dt_import = DataHandler.fileToDt(fileName);
                         string[] colNames_import = DataHandler.colNamesArray(dt_import, true);
+                        IOrderedEnumerable<KeyValuePair<string, string>> charityNames = DataHandler.CharityNamesPairs();
 
                         //Main TabControl
                         foreach (Control tab in tabControl_Main.TabPages)
@@ -71,27 +72,45 @@ namespace TbManagementTool
                                             if (item.Name == "comboBox_DataMapper_ClientName")
                                             {
                                                 comboBox.BindingContext = new BindingContext();
-                                                comboBox.DataSource = new BindingSource(DataHandler.CharityNamesPairs(), null);
+                                                comboBox.DataSource = new BindingSource(charityNames, null);
                                                 comboBox.DisplayMember = "Value";
-                                                comboBox.ValueMember = "Key";                                                
+                                                comboBox.ValueMember = "Key";
+
+                                                //Resize the DropDown based on the longest item's name
+                                                foreach (var key in charityNames)
+                                                {
+                                                    SizeF textSize = comboBoxGraphic.MeasureString(key.Value.ToString(), comboBox.Font);
+                                                    if (textSize.Width > lSize)
+                                                    {
+                                                        lSize = textSize.Width;
+                                                    }
+                                                    if (lSize > 0)
+                                                    {
+                                                        comboBox.DropDownWidth = (int)lSize + 30;
+                                                    }                                                      
+
+                                                }
                                             }
                                             //Assigns items to the rest of comboBoxes
                                             else
                                             {
                                                 comboBox.BindingContext = new BindingContext();
-                                                comboBox.DataSource = new BindingSource(DataHandler.colNamesArray(dt_import, true), null);                                                                                              
-                                            }
+                                                comboBox.DataSource = new BindingSource(colNames_import, null);
 
-                                            //Resize the combobox
-                                            for (int n = 0; n < comboBox.Items.Count; n++)
-                                            {
-                                                SizeF textSize = comboBoxGraphic.MeasureString(comboBox.Items[n].ToString(), item.Font);
-                                                if (textSize.Width > lSize)
-                                                    lSize = textSize.Width;
-                                                if (lSize > 0)
-                                                    comboBox.DropDownWidth = (int)lSize;
-                                            }
-
+                                                //Resize the DropDown based on the longest item's name
+                                                for (int n = 0; n < comboBox.Items.Count; n++)
+                                                {
+                                                    SizeF textSize = comboBoxGraphic.MeasureString(comboBox.Items[n].ToString(), comboBox.Font);
+                                                    if (textSize.Width > lSize)
+                                                    {
+                                                        lSize = textSize.Width;
+                                                    }
+                                                    if (lSize > 0)
+                                                    {
+                                                        comboBox.DropDownWidth = (int)lSize + 30;
+                                                    }
+                                                }
+                                            }                                            
 
                                         }
                                     }
@@ -99,6 +118,7 @@ namespace TbManagementTool
                                 //comboBox1_CG_duplicates.DataSource = DataHandler.colNamesArray(DataTableFactory.DtScheme(tabPage.Name), true);
                             }
                         }
+
                         //Assigns how many files have been imported to the ListView
                         foreach (string fileName in fileSearch.FileNames)
                         {                            
