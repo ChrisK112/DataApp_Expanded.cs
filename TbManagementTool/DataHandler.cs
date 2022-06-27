@@ -128,5 +128,13 @@ namespace TbManagementTool
             dt = dt.AsEnumerable().GroupBy(x => x.Field<string>(colName)).Select(y => y.First()).CopyToDataTable();
         }
 
+        public static void unCheckListView(ref ListView lstView)
+        {
+            foreach(ListViewItem item in lstView.Items)
+            {
+                item.Checked = false;
+            }
+        }
+
     }
 }
