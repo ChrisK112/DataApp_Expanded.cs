@@ -18,12 +18,8 @@ namespace TbManagementTool
             InitializeComponent();
         }
         //Global Variables
-        string fileName;
-        string fileExtention;
         DataSet ds_import = new DataSet();
         DataSet ds_export = new DataSet();
-        DataTable dt_import = new DataTable();
-        DataTable dt_export = new DataTable();
         OpenFileDialog fileSearch = new OpenFileDialog();
 
         private void button_DataMapper_FileSearch_Click(object sender, EventArgs e)
@@ -32,22 +28,76 @@ namespace TbManagementTool
             fileSearch.Multiselect = true;
             if (fileSearch.ShowDialog() == DialogResult.OK)
             {
-                fileName = fileSearch.FileName;
-                fileExtention = Path.GetExtension(fileName);
-                textBox1_DataMapper_FileName.Text = fileName;
             }   
         }
 
         private void button_DataMapper_Import_Click(object sender, EventArgs e)
         {
             try
-            {                
-                if (File.Exists(fileName))
+            {                           
+
+                foreach (string file in fileSearch.FileNames)
                 {
-                    if (fileExtention == ".xls" || fileExtention == ".xlsx" || fileExtention == ".csv" || fileExtention == ".txt")
+                    if (File.Exists(file))
                     {
-                        dt_import = DataHandler.fileToDt(fileName);
-                        string[] colNames_import = DataHandler.colNamesArray(dt_import, true);
+                        string fileExtention = Path.GetExtension(file);
+
+                        if (fileExtention == ".xls" || fileExtention == ".xlsx" || fileExtention == ".csv" || fileExtention == ".txt")
+                        {
+                            string fileName = Path.GetFileName(file);
+                            DataTable dt = DataHandler.fileToDt(file);
+                            dt.TableName = fileName;
+                            ds_import.Tables.Add(dt);
+
+                            //Assigns how many files have been imported to the ListView
+                            ListViewItem item = new ListViewItem(fileName);
+                            item.SubItems.Add($"{dt.Rows.Count:N0}");
+                            listView_DataMapper.Items.Add(item);
+                            listView_DataMapper.CheckBoxes = true;
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("One or more files are not supported");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a file");
+                    }
+
+                }                
+            }
+            catch (System.InvalidOperationException)
+            {
+                MessageBox.Show("The file you try to import does not contain any rows");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"There is an issue with your file - {ex}");
+            }
+            
+        }
+
+        private void button_DataMapper_FileLoad_Click(object sender, EventArgs e)
+        {
+            int itemsChecked = 0;
+            foreach (ListViewItem item in listView_DataMapper.Items)
+            {
+                if (item.Checked)
+                {
+                    itemsChecked += 1;
+                }
+
+            }
+            
+            if(itemsChecked == 1)
+            {
+                foreach (ListViewItem lstItem in listView_DataMapper.Items)
+                {
+                    if (lstItem.Checked)
+                    {
+                        string[] colNames_import = DataHandler.colNamesArray(ds_import.Tables[lstItem.Text], true);
                         IOrderedEnumerable<KeyValuePair<string, string>> charityNames = DataHandler.CharityNamesPairs();
 
                         //Main TabControl
@@ -87,7 +137,7 @@ namespace TbManagementTool
                                                     if (lSize > 0)
                                                     {
                                                         comboBox.DropDownWidth = (int)lSize + 30;
-                                                    }                                                      
+                                                    }
 
                                                 }
                                             }
@@ -110,7 +160,7 @@ namespace TbManagementTool
                                                         comboBox.DropDownWidth = (int)lSize + 30;
                                                     }
                                                 }
-                                            }                                            
+                                            }
 
                                         }
                                     }
@@ -118,67 +168,17 @@ namespace TbManagementTool
                                 //comboBox1_CG_duplicates.DataSource = DataHandler.colNamesArray(DataTableFactory.DtScheme(tabPage.Name), true);
                             }
                         }
-
-                        //Assigns how many files have been imported to the ListView
-                        foreach (string fileName in fileSearch.FileNames)
-                        {                            
-                            ListViewItem item = new ListViewItem(Path.GetFileName(fileName));
-                            item.SubItems.Add(dt_import.Rows.Count.ToString());
-                            listView_DataMapper.Items.Add(item);
-                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("this file is not supported");
-                    }
-                    
-                }
-                else
-                {
-                    MessageBox.Show("Please select a file");
-                }
-            }
-            catch (System.InvalidOperationException)
-            {
-                MessageBox.Show("The file you try to import does not contain any rows");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"There is an issue with your file - {ex}");
-            }
-            
-        }
 
-        private void button_DataMapper_FileLoad_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                dt_export = DataTableFactory.DtCgSpec();
-
-                if (dt_export != null)
-                {
-                    //Loop through each column
-                    for(int col= 0; col < dt_import.Columns.Count; col++)
-                    {
-                        //loop through each row
-                        for (int row = 0; row < dt_import.Rows.Count; row++)
-                        {
-                            
-
-
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("There is no data to load");
                 }
 
+                
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"{ex}");
+                MessageBox.Show("You have to select 1 datafile");
             }
+
         }
     }
 }

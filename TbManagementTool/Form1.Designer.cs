@@ -159,6 +159,7 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
+            this.button_DataMapper_FileDelete = new System.Windows.Forms.Button();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -195,6 +196,7 @@ namespace TbManagementTool
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button_DataMapper_FileDelete);
             this.groupBox5.Controls.Add(this.listView_DataMapper);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileSave);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileLoad);
@@ -221,17 +223,17 @@ namespace TbManagementTool
             // columnHeader1_DataMapper_FileName
             // 
             this.columnHeader1_DataMapper_FileName.Text = "File Name";
-            this.columnHeader1_DataMapper_FileName.Width = 172;
+            this.columnHeader1_DataMapper_FileName.Width = 220;
             // 
             // columnHeader2_DataMapper_RecordsCount
             // 
             this.columnHeader2_DataMapper_RecordsCount.Text = "Records Count";
-            this.columnHeader2_DataMapper_RecordsCount.Width = 150;
+            this.columnHeader2_DataMapper_RecordsCount.Width = 102;
             // 
             // button_DataMapper_FileSave
             // 
             this.button_DataMapper_FileSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileSave.Location = new System.Drawing.Point(178, 692);
+            this.button_DataMapper_FileSave.Location = new System.Drawing.Point(119, 692);
             this.button_DataMapper_FileSave.Name = "button_DataMapper_FileSave";
             this.button_DataMapper_FileSave.Size = new System.Drawing.Size(97, 28);
             this.button_DataMapper_FileSave.TabIndex = 8;
@@ -241,7 +243,7 @@ namespace TbManagementTool
             // button_DataMapper_FileLoad
             // 
             this.button_DataMapper_FileLoad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileLoad.Location = new System.Drawing.Point(75, 692);
+            this.button_DataMapper_FileLoad.Location = new System.Drawing.Point(17, 692);
             this.button_DataMapper_FileLoad.Name = "button_DataMapper_FileLoad";
             this.button_DataMapper_FileLoad.Size = new System.Drawing.Size(97, 28);
             this.button_DataMapper_FileLoad.TabIndex = 6;
@@ -1541,6 +1543,16 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
+            // button_DataMapper_FileDelete
+            // 
+            this.button_DataMapper_FileDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_DataMapper_FileDelete.Location = new System.Drawing.Point(222, 692);
+            this.button_DataMapper_FileDelete.Name = "button_DataMapper_FileDelete";
+            this.button_DataMapper_FileDelete.Size = new System.Drawing.Size(97, 28);
+            this.button_DataMapper_FileDelete.TabIndex = 10;
+            this.button_DataMapper_FileDelete.Text = "Delete";
+            this.button_DataMapper_FileDelete.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1702,6 +1714,7 @@ namespace TbManagementTool
         private System.Windows.Forms.ListView listView_DataMapper;
         private System.Windows.Forms.ColumnHeader columnHeader1_DataMapper_FileName;
         private System.Windows.Forms.ColumnHeader columnHeader2_DataMapper_RecordsCount;
+        private System.Windows.Forms.Button button_DataMapper_FileDelete;
     }
 }
 
