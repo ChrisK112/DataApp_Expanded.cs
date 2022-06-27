@@ -92,21 +92,22 @@ namespace TbManagementTool
             return colNamesWithBlank;
         }
 
-        public static void DtToFlat(System.Data.DataTable dt, string dialogfilename, int extentionindex, string qualifier = "", char delimiter = ',')
+        public static void DtToFlat(System.Data.DataTable dt, string dialogfilename)
         {
             //CONVERTS DATATABLE TO FLAT FILE
-            if (extentionindex == 1)
-            {
-                File.WriteAllLines(dialogfilename, dtToListStr(dt, delimiter, qualifier));
-            }
-            else if (extentionindex == 2)
+            string extention = Path.GetExtension(dialogfilename);
+            if (extention == ".csv")
             {
                 File.WriteAllLines(dialogfilename, dtToListStr(dt, ',', "\""));
+            }
+            if (extention == ".txt")
+            {
+                File.WriteAllLines(dialogfilename, dtToListStr(dt, '|'));
             }
 
         }
 
-        public static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier)
+        public static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier = "")
         {
             //CONVERTS DATATABLE INTO A LIST<STRING>
             List<string> lines = new List<string>();
@@ -125,19 +126,6 @@ namespace TbManagementTool
         {
             //REMOVE DUPLICATE ROWS BASED ON 1 COLUMN
             dt = dt.AsEnumerable().GroupBy(x => x.Field<string>(colName)).Select(y => y.First()).CopyToDataTable();
-        }
-
-        public static List<string> lstStrData(bool dataloaded, DataTable dt1, DataTable dt2, char delimiter, string qualifier)
-        {
-            //DECIDES WHAT DATATABLE TO USE DEPENDING ON BOOLEAN AND RETURNS IT AS A LIST
-            if (dataloaded)
-            {
-                return DataHandler.dtToListStr(dt1, delimiter, qualifier);
-            }
-            else
-            {
-                return DataHandler.dtToListStr(dt2, delimiter, qualifier);
-            }
         }
 
     }
