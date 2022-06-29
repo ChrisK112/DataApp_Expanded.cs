@@ -37,9 +37,6 @@ namespace TbManagementTool
         {
             try
             {
-                //Check how many files are checked
-                lstItemsCheckedCount = listView_DataMapper.Items.OfType<ListViewItem>().Where(x => x.Checked).Count();
-
                 foreach (string file in fileSearch.FileNames)
                 {
                     if (File.Exists(file))
@@ -54,11 +51,8 @@ namespace TbManagementTool
                             dt.TableName = dtName;
                             dataset.Tables.Add(dt);
 
-                            //Assigns how many files have been imported to the ListView
-                            ListViewItem item = new ListViewItem(dtName);
-                            item.SubItems.Add($"{dt.Rows.Count:N0}");
-                            listView_DataMapper.Items.Add(item);
-                            listView_DataMapper.CheckBoxes = true;
+                            //Add new item to the listview
+                            DataHandler.addItemToListView(listView_DataMapper, dtName, dt);
 
                         }
                         else
@@ -70,7 +64,6 @@ namespace TbManagementTool
                     {
                         MessageBox.Show("Please select a file");
                     }
-
                 }                
             }
             catch (System.InvalidOperationException)
@@ -86,6 +79,9 @@ namespace TbManagementTool
 
         private void button_DataMapper_FileLoad_Click(object sender, EventArgs e)
         {
+            //Check how many files are checked
+            lstItemsCheckedCount = listView_DataMapper.Items.OfType<ListViewItem>().Where(x => x.Checked).Count();
+
             //Works only if one file is checked
             if (lstItemsCheckedCount == 1)
             {
@@ -95,74 +91,9 @@ namespace TbManagementTool
                     {
                         string[] colNames_import = DataHandler.colNamesArray(dataset.Tables[lstItem.Text], true);
                         IOrderedEnumerable<KeyValuePair<string, string>> charityNames = DataHandler.CharityNamesPairs();
+                        DataHandler.comboBoxProcess(tabControl_Main, colNames_import);
+                        DataHandler.comboBoxProcess(tabControl_Main, charityNames, comboBox_DataMapper_ClientName.Name);
 
-                        //Main TabControl
-                        foreach (Control tab in tabControl_Main.TabPages)
-                        {
-                            TabPage tabPage = (TabPage)tab;
-
-                            //Data Mapper
-                            if (tabPage.Name == "tabPage_DataMapper")
-                            {
-                                foreach (Control group in tabPage.Controls)
-                                {
-                                    foreach (Control item in group.Controls)
-                                    {
-                                        if (item.GetType().Name == "ComboBox")
-                                        {
-                                            ComboBox comboBox = (ComboBox)item;
-                                            Graphics comboBoxGraphic = comboBox.CreateGraphics();
-                                            float lSize = 0;
-
-                                            //Assigns specific items to a specific comboBox
-                                            if (item.Name == "comboBox_DataMapper_ClientName")
-                                            {
-                                                comboBox.BindingContext = new BindingContext();
-                                                comboBox.DataSource = new BindingSource(charityNames, null);
-                                                comboBox.DisplayMember = "Value";
-                                                comboBox.ValueMember = "Key";
-
-                                                //Resize the DropDown based on the longest item's name
-                                                foreach (var key in charityNames)
-                                                {
-                                                    SizeF textSize = comboBoxGraphic.MeasureString(key.Value.ToString(), comboBox.Font);
-                                                    if (textSize.Width > lSize)
-                                                    {
-                                                        lSize = textSize.Width;
-                                                    }
-                                                    if (lSize > 0)
-                                                    {
-                                                        comboBox.DropDownWidth = (int)lSize + 30;
-                                                    }
-
-                                                }
-                                            }
-                                            //Assigns items to the rest of comboBoxes
-                                            else
-                                            {
-                                                comboBox.BindingContext = new BindingContext();
-                                                comboBox.DataSource = new BindingSource(colNames_import, null);
-
-                                                //Resize the DropDown based on the longest item's name
-                                                for (int n = 0; n < comboBox.Items.Count; n++)
-                                                {
-                                                    SizeF textSize = comboBoxGraphic.MeasureString(comboBox.Items[n].ToString(), comboBox.Font);
-                                                    if (textSize.Width > lSize)
-                                                    {
-                                                        lSize = textSize.Width;
-                                                    }
-                                                    if (lSize > 0)
-                                                    {
-                                                        comboBox.DropDownWidth = (int)lSize + 30;
-                                                    }
-                                                }
-                                            }
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
 
                 }
@@ -216,10 +147,7 @@ namespace TbManagementTool
                 dataset.Tables.Add(dt);
 
                 //Add new item to the listview
-                ListViewItem item = new ListViewItem(dtName);
-                item.SubItems.Add($"{dt.Rows.Count:N0}");
-                listView_DataMapper.Items.Add(item);
-                listView_DataMapper.CheckBoxes = true;
+                DataHandler.addItemToListView(listView_DataMapper, dtName, dt);
             }
             else
             {
@@ -240,7 +168,7 @@ namespace TbManagementTool
 
         private void button_DataMapper_FileClear_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button_DataMapper_FileSave_Click(object sender, EventArgs e)

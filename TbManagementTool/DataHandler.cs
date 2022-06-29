@@ -1,15 +1,11 @@
-﻿using System;
+﻿using GenericParsing;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GenericParsing;
-using TbManagementTool;
 using System.Configuration;
-using System.Windows.Forms;
 using System.Data;
+using System.Drawing;
 using System.IO;
-using System.Text.RegularExpressions;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace TbManagementTool
 {
@@ -131,6 +127,7 @@ namespace TbManagementTool
 
         public static void clearListViewCheckedBoxes(ref ListView lstView)
         {
+            //uncheck items from ListView
             foreach(ListViewItem item in lstView.Items)
             {
                 item.Checked = false;
@@ -139,6 +136,7 @@ namespace TbManagementTool
 
         public static string StrRenamingFromDsTableName(System.Data.DataSet ds, string str = "")
         {
+            //Dynamically renames strings if already exist
             str = (str == "") ? "Data" : Path.GetFileNameWithoutExtension(str);
 
             return intAutoIncrement(ds, str, str, 0);
@@ -146,6 +144,7 @@ namespace TbManagementTool
 
         public static string intAutoIncrement(System.Data.DataSet ds, string currentStr, string OriginalStr, int count)
         {
+            //Dynamically increase integer count if already exist
             if (ds.Tables.Contains(currentStr))
             {
                 count++;
@@ -155,15 +154,14 @@ namespace TbManagementTool
             return currentStr;
         }
 
-        public static void clearDropDowns(TabControl tabControl_Main, string tabName, string itemFamily)
+        public static void comboBoxProcess(TabControl tabControl_Main, object dataSource, string Exception = "")
         {
-            //Main TabControl
+            //Iterates through tabpages from main tabcontrol
             foreach (Control tab in tabControl_Main.TabPages)
             {
                 TabPage tabPage = (TabPage)tab;
-
-                //TabPage
-                if (tabPage.Name == tabName)
+                //Selected TabPage
+                if (tabControl_Main.SelectedTab.Name == tabPage.Name)
                 {
                     //Groupboxes
                     foreach (Control group in tabPage.Controls)
@@ -171,11 +169,25 @@ namespace TbManagementTool
                         //Group Items
                         foreach (Control item in group.Controls)
                         {
-
-                            if (item.GetType().Name == itemFamily)
+                            //Select comboBoxes only
+                            if (item.GetType().Name == "ComboBox")
                             {
                                 ComboBox comboBox = (ComboBox)item;
-                                comboBox.Items.Clear();
+
+                                //If one comboBox has different datasource
+                                if(Exception != "")
+                                {
+                                    if (item.Name == Exception)
+                                    {
+                                        dataSourceBinder(ref comboBox, dataSource);
+                                    }
+                                }
+                                else
+                                {
+                                    dataSourceBinder(ref comboBox, dataSource);
+                                }
+                                
+
                             }
 
                         }
@@ -186,6 +198,67 @@ namespace TbManagementTool
             }
                 
 
+        }
+        private static void dataSourceBinder(ref ComboBox comboBox, object dataSource)
+        {
+            if (dataSource.GetType().Name == "String[]")
+            {
+                strArrayToComboBox(ref comboBox, dataSource);
+                reSizeStrArrayComboBox(comboBox);
+            }
+            if (dataSource.GetType().Name == "OrderedEnumerable`2")
+            {
+                iOrderedEnmKeyValueToComboBox(ref comboBox, dataSource);
+                reSizestrArrayComboBox(comboBox);
+            }
+        }
+        private static void strArrayToComboBox(ref ComboBox comboBox, object dataSource)
+        {
+            //Binds datasource string[]
+            comboBox.BindingContext = new BindingContext();
+            comboBox.DataSource = new BindingSource(dataSource, null);
+        }
+
+        private static void iOrderedEnmKeyValueToComboBox(ref ComboBox comboBox, object dataSource)
+        {
+            //Binds datasource keyValuePairs
+            comboBox.BindingContext = new BindingContext();
+            comboBox.DataSource = new BindingSource(dataSource, null);
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+        }
+
+        private static void reSizeStrArrayComboBox(ComboBox comboBox)
+        {
+            //Resizes Combobox based on the longest item name to string[] datasource
+            float lSize = 0;
+            Graphics comboBoxGraphic = comboBox.CreateGraphics();
+            for (int n = 0; n < comboBox.Items.Count; n++)
+            {
+                SizeF textSize = comboBoxGraphic.MeasureString(comboBox.Items[n].ToString(), comboBox.Font);
+                if (textSize.Width > lSize)
+                {
+                    lSize = textSize.Width;
+                }
+                if (lSize > 0)
+                {
+                    comboBox.DropDownWidth = (int)lSize + 30;
+                }
+            }
+        }
+        private static void reSizestrArrayComboBox(ComboBox comboBox)
+        {
+            //Resizes Combobox regardless of the datasource
+            comboBox.DropDownWidth = 300;
+        }
+
+        public static void addItemToListView(ListView lstView, string name, DataTable dt)
+        {
+            //Add new item to the listview
+            ListViewItem item = new ListViewItem(name);
+            item.SubItems.Add($"{dt.Rows.Count:N0}");
+            lstView.Items.Add(item);
+            lstView.CheckBoxes = true;
         }
 
     }
