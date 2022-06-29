@@ -19,10 +19,8 @@ namespace TbManagementTool
             InitializeComponent();
         }
         //Global Variables
-        DataSet ds_import = new DataSet();
-        DataSet ds_export = new DataSet();
+        DataSet dataset = new DataSet();
         OpenFileDialog fileSearch = new OpenFileDialog();
-        int filesSelected = 0;
         int lstItemsCheckedCount = 0;
 
         private void button_DataMapper_FileSearch_Click(object sender, EventArgs e)
@@ -38,7 +36,9 @@ namespace TbManagementTool
         private void button_DataMapper_Import_Click(object sender, EventArgs e)
         {
             try
-            {                           
+            {
+                //Check how many files are checked
+                lstItemsCheckedCount = listView_DataMapper.Items.OfType<ListViewItem>().Where(x => x.Checked).Count();
 
                 foreach (string file in fileSearch.FileNames)
                 {
@@ -48,42 +48,14 @@ namespace TbManagementTool
 
                         if (fileExtention == ".csv" || fileExtention == ".txt")
                         {
-                            string fileName = Path.GetFileName(file);
+                            string dtName = DataHandler.StrRenamingFromDsTableName(dataset, file); 
                             DataTable dt = DataHandler.fileToDt(file);
-
-                            //Renames each datatable to be added to Dataset
-                            if (ds_import.Tables.Contains(fileName))
-                            {
-                                fileName += " - Copy";
-
-                                if (ds_import.Tables.Contains(fileName))
-                                {
-                                    fileName += " (2)";
-
-                                    if (ds_import.Tables.Contains(fileName))
-                                    {
-                                        foreach (DataTable dt_temp in ds_import.Tables)
-                                        {
-                                            if (dt_temp.TableName == fileName)
-                                            {
-                                                Regex regex = new Regex(@"\d+");
-                                                Match match = regex.Match(fileName);
-                                                if (match.Success)
-                                                {
-                                                    fileName = $"{Path.GetFileName(file)} - Copy ({Int16.Parse(match.Value) + 1})";
-
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            //Creates datatables for each file                            
-                            dt.TableName = fileName;
-                            ds_import.Tables.Add(dt);
+                           
+                            dt.TableName = dtName;
+                            dataset.Tables.Add(dt);
 
                             //Assigns how many files have been imported to the ListView
-                            ListViewItem item = new ListViewItem(fileName);
+                            ListViewItem item = new ListViewItem(dtName);
                             item.SubItems.Add($"{dt.Rows.Count:N0}");
                             listView_DataMapper.Items.Add(item);
                             listView_DataMapper.CheckBoxes = true;
@@ -114,9 +86,6 @@ namespace TbManagementTool
 
         private void button_DataMapper_FileLoad_Click(object sender, EventArgs e)
         {
-            //Check how many files are checked
-            lstItemsCheckedCount = listView_DataMapper.Items.OfType<ListViewItem>().Where(x => x.Checked).Count();
-
             //Works only if one file is checked
             if (lstItemsCheckedCount == 1)
             {
@@ -124,7 +93,7 @@ namespace TbManagementTool
                 {
                     if (lstItem.Checked)
                     {
-                        string[] colNames_import = DataHandler.colNamesArray(ds_import.Tables[lstItem.Text], true);
+                        string[] colNames_import = DataHandler.colNamesArray(dataset.Tables[lstItem.Text], true);
                         IOrderedEnumerable<KeyValuePair<string, string>> charityNames = DataHandler.CharityNamesPairs();
 
                         //Main TabControl
@@ -206,7 +175,7 @@ namespace TbManagementTool
             }
 
             //Default settings
-            DataHandler.unCheckListView(ref listView_DataMapper);
+            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper);
         }
 
         private void button_DataMapper_FileDelete_Click(object sender, EventArgs e)
@@ -217,66 +186,61 @@ namespace TbManagementTool
                 if (lstItem.Checked)
                 {
                     listView_DataMapper.Items.Remove(lstItem);
-                    ds_import.Tables.Remove(lstItem.Text);
+                    dataset.Tables.Remove(lstItem.Text);
                 }
             }
         }
 
         private void button_DataMapper_FileMerge_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            string dtName = "";
+            //Check how many files are checked
+            lstItemsCheckedCount = listView_DataMapper.Items.OfType<ListViewItem>().Where(x => x.Checked).Count();
 
-            foreach (ListViewItem lstItem in listView_DataMapper.Items)
+            //Works only if 2 or more files
+            if (lstItemsCheckedCount > 1)
             {
-                //Merges all selected datatables into one new one
-                if (lstItem.Checked)
+                DataTable dt = new DataTable();
+                string dtName = DataHandler.StrRenamingFromDsTableName(dataset);
+
+                foreach (ListViewItem lstItem in listView_DataMapper.Items)
                 {
-                    dt.Merge(ds_import.Tables[lstItem.Text]);
-                    dtName = "Merged_Files";
-                }                
-            }
-
-            //Renames each datatable to be added to Dataset
-            if (ds_import.Tables.Contains(dtName))
-            {
-                dtName = "Merged_Files - Copy";
-
-                if (ds_import.Tables.Contains(dtName))
-                {
-                    dtName = "Merged_Files - Copy (2)";
-
-                    if (ds_import.Tables.Contains(dtName))
+                    //Merges all selected datatables into one new one
+                    if (lstItem.Checked)
                     {
-                        foreach(DataTable dt_temp in ds_import.Tables)
-                        {
-                            if(dt_temp.TableName == dtName)
-                            {
-                                Regex regex = new Regex(@"\d+");
-                                Match match = regex.Match(dtName);
-                                if (match.Success)
-                                {
-                                    dtName = $"Merged_Files - Copy ({Int16.Parse(match.Value) + 1})";
-                                }
-                            }
-                        }
-
+                        dt.Merge(dataset.Tables[lstItem.Text]);
                     }
                 }
+
+                //Adds new datatable
+                dt.TableName = dtName;
+                dataset.Tables.Add(dt);
+
+                //Add new item to the listview
+                ListViewItem item = new ListViewItem(dtName);
+                item.SubItems.Add($"{dt.Rows.Count:N0}");
+                listView_DataMapper.Items.Add(item);
+                listView_DataMapper.CheckBoxes = true;
             }
-
-            //Adds new datatable
-            dt.TableName = dtName;
-            ds_import.Tables.Add(dt);
-
-            //Add new item to the listview
-            ListViewItem item = new ListViewItem(dtName);
-            item.SubItems.Add($"{dt.Rows.Count:N0}");
-            listView_DataMapper.Items.Add(item);
-            listView_DataMapper.CheckBoxes = true;
+            else
+            {
+                MessageBox.Show("You need to select 2 or more datafiles");
+            }
+            
 
             //Default settings
-            DataHandler.unCheckListView(ref listView_DataMapper);
+            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper);
+        }        
+
+        private void button_DataMapper_FileCreate_Click(object sender, EventArgs e)
+        {
+            DataTable dt = DataTableFactory.DtCgSpec();
+
+
+        }        
+
+        private void button_DataMapper_FileClear_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void button_DataMapper_FileSave_Click(object sender, EventArgs e)
@@ -291,13 +255,13 @@ namespace TbManagementTool
                     //Saves selected
                     if (lstItem.Checked)
                     {
-                        DataHandler.DtToFlat(ds_import.Tables[lstItem.Text], fileDestination.FileName);
+                        DataHandler.DtToFlat(dataset.Tables[lstItem.Text], fileDestination.FileName);
                     }
                 }
             }
 
             //Default settings
-            DataHandler.unCheckListView(ref listView_DataMapper);
+            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper);
 
         }
     }

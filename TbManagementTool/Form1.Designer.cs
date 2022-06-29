@@ -161,6 +161,8 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
+            this.button_DataMapper_FileCreate = new System.Windows.Forms.Button();
+            this.button_DataMapper_FileClear = new System.Windows.Forms.Button();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -409,6 +411,8 @@ namespace TbManagementTool
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button_DataMapper_FileClear);
+            this.groupBox3.Controls.Add(this.button_DataMapper_FileCreate);
             this.groupBox3.Controls.Add(this.label_DataMapper_ThirdPartyPreference);
             this.groupBox3.Controls.Add(this.label_DataMapper_PreloadedCAFNumber);
             this.groupBox3.Controls.Add(this.comboBox_DataMapper_GiftAid);
@@ -1568,6 +1572,28 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
+            // button_DataMapper_FileCreate
+            // 
+            this.button_DataMapper_FileCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_DataMapper_FileCreate.Location = new System.Drawing.Point(203, 572);
+            this.button_DataMapper_FileCreate.Name = "button_DataMapper_FileCreate";
+            this.button_DataMapper_FileCreate.Size = new System.Drawing.Size(97, 28);
+            this.button_DataMapper_FileCreate.TabIndex = 50;
+            this.button_DataMapper_FileCreate.Text = "Create";
+            this.button_DataMapper_FileCreate.UseVisualStyleBackColor = true;
+            this.button_DataMapper_FileCreate.Click += new System.EventHandler(this.button_DataMapper_FileCreate_Click);
+            // 
+            // button_DataMapper_FileClear
+            // 
+            this.button_DataMapper_FileClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_DataMapper_FileClear.Location = new System.Drawing.Point(100, 571);
+            this.button_DataMapper_FileClear.Name = "button_DataMapper_FileClear";
+            this.button_DataMapper_FileClear.Size = new System.Drawing.Size(97, 28);
+            this.button_DataMapper_FileClear.TabIndex = 51;
+            this.button_DataMapper_FileClear.Text = "Clear";
+            this.button_DataMapper_FileClear.UseVisualStyleBackColor = true;
+            this.button_DataMapper_FileClear.Click += new System.EventHandler(this.button_DataMapper_FileClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1731,6 +1757,8 @@ namespace TbManagementTool
         private System.Windows.Forms.ColumnHeader columnHeader2_DataMapper_RecordsCount;
         private System.Windows.Forms.Button button_DataMapper_FileDelete;
         private System.Windows.Forms.Button button_DataMapper_FileMerge;
+        private System.Windows.Forms.Button button_DataMapper_FileCreate;
+        private System.Windows.Forms.Button button_DataMapper_FileClear;
     }
 }
 

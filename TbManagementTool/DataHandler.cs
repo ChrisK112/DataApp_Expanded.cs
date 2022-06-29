@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Windows.Forms;
 using System.Data;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace TbManagementTool
 {
@@ -128,12 +129,63 @@ namespace TbManagementTool
             dt = dt.AsEnumerable().GroupBy(x => x.Field<string>(colName)).Select(y => y.First()).CopyToDataTable();
         }
 
-        public static void unCheckListView(ref ListView lstView)
+        public static void clearListViewCheckedBoxes(ref ListView lstView)
         {
             foreach(ListViewItem item in lstView.Items)
             {
                 item.Checked = false;
             }
+        }
+
+        public static string StrRenamingFromDsTableName(System.Data.DataSet ds, string str = "")
+        {
+            str = (str == "") ? "Data" : Path.GetFileNameWithoutExtension(str);
+
+            return intAutoIncrement(ds, str, str, 0);
+        }
+
+        public static string intAutoIncrement(System.Data.DataSet ds, string currentStr, string OriginalStr, int count)
+        {
+            if (ds.Tables.Contains(currentStr))
+            {
+                count++;
+                currentStr = intAutoIncrement(ds, OriginalStr + $"({count})", OriginalStr, count);
+
+            }
+            return currentStr;
+        }
+
+        public static void clearDropDowns(TabControl tabControl_Main, string tabName, string itemFamily)
+        {
+            //Main TabControl
+            foreach (Control tab in tabControl_Main.TabPages)
+            {
+                TabPage tabPage = (TabPage)tab;
+
+                //TabPage
+                if (tabPage.Name == tabName)
+                {
+                    //Groupboxes
+                    foreach (Control group in tabPage.Controls)
+                    {
+                        //Group Items
+                        foreach (Control item in group.Controls)
+                        {
+
+                            if (item.GetType().Name == itemFamily)
+                            {
+                                ComboBox comboBox = (ComboBox)item;
+                                comboBox.Items.Clear();
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+                
+
         }
 
     }
