@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Text;
 
 namespace TbManagementTool
 {
@@ -22,8 +23,8 @@ namespace TbManagementTool
             string fileExtention = Path.GetExtension(fileName);
             DataTable dt = new DataTable();
 
-            GenericParserAdapter parser = new GenericParserAdapter();
-            parser.SetDataSource(fileName);
+            GenericParserAdapter parser = new GenericParserAdapter(fileName);
+            parser.SetDataSource(fileName, Encoding.UTF8);
             if (Path.GetExtension(fileName) == ".txt")
             {
                 parser.ColumnDelimiter = '|';
@@ -125,12 +126,15 @@ namespace TbManagementTool
             dt = dt.AsEnumerable().GroupBy(x => x.Field<string>(colName)).Select(y => y.First()).CopyToDataTable();
         }
 
-        public static void clearListViewCheckedBoxes(ref ListView lstView)
+        public static void clearListViewCheckedBoxes(ref ListView lstView, string dataInUse)
         {
             //uncheck items from ListView
             foreach(ListViewItem item in lstView.Items)
             {
-                item.Checked = false;
+                if(item.Name != dataInUse)
+                {
+                    item.Checked = false;
+                }
             }
         }
 

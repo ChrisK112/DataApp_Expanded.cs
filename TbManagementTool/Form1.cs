@@ -22,6 +22,7 @@ namespace TbManagementTool
         DataSet dataset = new DataSet();
         OpenFileDialog fileSearch = new OpenFileDialog();
         int lstItemsCheckedCount = 0;
+        string dataInUse = "";
 
         private void button_DataMapper_FileSearch_Click(object sender, EventArgs e)
         {
@@ -89,8 +90,15 @@ namespace TbManagementTool
                 {
                     if (lstItem.Checked)
                     {
+                        //Update what data is being loaded
+                        dataInUse = lstItem.Name;
+                       
+                        
+                        //Get datasources
                         string[] colNames_import = DataHandler.colNamesArray(dataset.Tables[lstItem.Text], true);
                         IOrderedEnumerable<KeyValuePair<string, string>> charityNames = DataHandler.CharityNamesPairs();
+
+                        //Bind data sources to ComboBox
                         DataHandler.comboBoxProcess(tabControl_Main, colNames_import);
                         DataHandler.comboBoxProcess(tabControl_Main, charityNames, comboBox_DataMapper_ClientName.Name);
 
@@ -106,7 +114,7 @@ namespace TbManagementTool
             }
 
             //Default settings
-            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper);
+            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
         }
 
         private void button_DataMapper_FileDelete_Click(object sender, EventArgs e)
@@ -116,8 +124,16 @@ namespace TbManagementTool
                 //Delete selected datatables and listviewitems
                 if (lstItem.Checked)
                 {
-                    listView_DataMapper.Items.Remove(lstItem);
-                    dataset.Tables.Remove(lstItem.Text);
+                    //Check if it has not been loaded
+                    if(lstItem.Name != dataInUse)
+                    {
+                        listView_DataMapper.Items.Remove(lstItem);
+                        dataset.Tables.Remove(lstItem.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("The data is currently being used\nPlease clear the data loaded first");
+                    }
                 }
             }
         }
@@ -156,19 +172,86 @@ namespace TbManagementTool
             
 
             //Default settings
-            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper);
+            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
         }        
 
         private void button_DataMapper_FileCreate_Click(object sender, EventArgs e)
         {
-            DataTable dt = DataTableFactory.DtCgSpec();
+            try
+            {
+                DataTable dt = DataTableFactory.DtCgSpec();
+
+                foreach(DataRow row_import in dataset.Tables[dataInUse].Rows)
+                {
+                    DataRow row_export = dt.NewRow();
+                    
+                    //row_export["Primkey"] =
+                    //row_export["PersonRef"] =
+                    //row_export["ClientName"] =
+                    //row_export["AddedBy"] =
+                    //row_export["AddedDateTime"] =
+                    //row_export["Title"] =
+                    //row_export["FirstName"] =
+                    //row_export["MiddleName"] =
+                    //row_export["Surname"] =
+                    //row_export["Salutation"] =
+                    //row_export["AddressLine1"] =
+                    //row_export["AddressLine2"] =
+                    //row_export["AddressLine3"] =
+                    //row_export["TownCity"] =
+                    //row_export["County"] =
+                    //row_export["Postcode"] =
+                    //row_export["Country"] =
+                    //row_export["OrganisationName"] =
+                    //row_export["TelephoneNumber"] =
+                    //row_export["MobileNumber"] =
+                    //row_export["EmailAddress"] =
+                    //row_export["AppealCode"] =
+                    //row_export["PackageCode"] =
+                    //row_export["Deceased"] =
+                    //row_export["Goneaway"] =
+                    //row_export["NoFurtherCommunication"] =
+                    //row_export["PreloadedCAFNumber"] =
+                    //row_export["ColdURN"] =
+                    //row_export["ImportFile"] =
+                    //row_export["RaffleStartNumber"] =
+                    //row_export["RaffleEndNumber"] =
+                    //row_export["RecordType"] =
+                    //row_export["GiftAid"] =
+                    //row_export["Campaign"] =
+                    //row_export["PhonePreference"] =
+                    //row_export["MailPreference"] =
+                    //row_export["EmailPreference"] =
+                    //row_export["SMSPreference"] =
+                    //row_export["ThirdPartyPreference"] =
+                    //row_export["Barcode"] =
+                    //row_export["ClientData1"] =
+                    //row_export["ClientData2"] =
+                    //row_export["ClientData3"] =
+                    //row_export["ClientData4"] =
+                    //row_export["ClientData5"] =
+                    //row_export["ClientData6"] =
+                    //row_export["ClientData7"] =
+                    //row_export["ClientData8"] =
+                    //row_export["ClientData9"] =
+                    //row_export["ClientData10"] =
+
+                }
+
+            }
+            catch
+            {
+
+            }
 
 
         }        
 
         private void button_DataMapper_FileClear_Click(object sender, EventArgs e)
         {
-            
+            //Clear dataloaded
+            dataInUse = "";
+            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
         }
 
         private void button_DataMapper_FileSave_Click(object sender, EventArgs e)
@@ -189,7 +272,7 @@ namespace TbManagementTool
             }
 
             //Default settings
-            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper);
+            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
 
         }
     }
