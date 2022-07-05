@@ -38,7 +38,6 @@ namespace TbManagementTool
         {
             try
             {
-                textBox_DataMapper_AppealCode.Text = DataHandler.specialCharReplacingLst();
                 foreach (string file in fileSearch.FileNames)
                 {
                     if (File.Exists(file))
@@ -49,7 +48,7 @@ namespace TbManagementTool
                         {
                             string dtName = DataHandler.StrRenamingFromDsTableName(dataset, file); 
                             DataTable dt = DataHandler.fileToDt(file);
-                           
+                            MessageBox.Show(dtName);
                             dt.TableName = dtName;
                             dataset.Tables.Add(dt);
 
@@ -93,6 +92,7 @@ namespace TbManagementTool
                     {
                         //Update what data is being loaded
                         dataInUse = lstItem.Text;
+                        MessageBox.Show(dataInUse);
                         
                         //Get datasources
                         string[] colNames_import = DataHandler.colNamesArray(dataset.Tables[lstItem.Text], true);
@@ -182,6 +182,7 @@ namespace TbManagementTool
         {
             try
             {
+                MessageBox.Show(dataInUse);
                 DataTable dt = DataTableFactory.DtCgSpec();
                 foreach(DataRow row_import in dataset.Tables[dataInUse].Rows)
                 {

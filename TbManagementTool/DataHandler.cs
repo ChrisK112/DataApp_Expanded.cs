@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
 namespace TbManagementTool
 {
@@ -265,31 +267,48 @@ namespace TbManagementTool
             lstView.CheckBoxes = true;
         }
 
-        public static Dictionary<string, string> specialCharReplacingLst()
+        private static Dictionary<string, string> specialCharLst()
         {
-            Dictionary<string, string> strDic = new Dictionary<string, string>();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
-            strDic.Add();
+            Dictionary<string, string> strDic = new Dictionary<string, string>()
+            {
+                {"â‚¬","€" },
+                {"â€š","‚" },
+                {"Æ’","ƒ" },
+                {"â€ž","„" },
+                {"â€¦","…" },
+                {"â€","†" },
+                {"â€¡","‡" },
+                {"Ë†","ˆ" },
+                {"â€°","‰" },
+                {"Å","Š" },
+                {"â€¹","‹" },
+                {"Å’","Œ" },
+                {"Å½","Ž" },
+                {"â€˜","‘" },
+                {"â€™","’" },
+                {"â€œ","“" },
+                {"â€","”" },
+                {"â€¢","•" },
+                {"â€“","–" },
+                {"â€”","—" },
+                {"Ëœ","˜" },
+                {"â„¢","™" },
+                {"Å¡","š" },
+                {"â€º","›" },
+                {"Å“","œ" },
+            };                
 
             return strDic;
+        }
+        public static string replaceSpecialChar(string str, Dictionary<string, string> dic)
+        {
+            foreach(var item in dic)
+            {
+                if (str.Contains(item.Key))
+                {
+                    Regex regex = new Regex("")
+                }
+            }
         }
 
     }
