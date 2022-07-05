@@ -44,7 +44,7 @@ namespace TbManagementTool
             this.label_DataMapper_Progress = new System.Windows.Forms.Label();
             this.label_DataMapper_Primkey = new System.Windows.Forms.Label();
             this.label_DataMapper_Barcode = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox3_DataMapper_Primkey = new System.Windows.Forms.TextBox();
             this.textBox1_DataMapper_Barcode = new System.Windows.Forms.TextBox();
             this.progressBar_DataMapper_Progress = new System.Windows.Forms.ProgressBar();
             this.textBox2_DataMapper_Primkey = new System.Windows.Forms.TextBox();
@@ -54,6 +54,8 @@ namespace TbManagementTool
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button_DataMapper_FileClear = new System.Windows.Forms.Button();
+            this.button_DataMapper_FileCreate = new System.Windows.Forms.Button();
             this.label_DataMapper_ThirdPartyPreference = new System.Windows.Forms.Label();
             this.label_DataMapper_PreloadedCAFNumber = new System.Windows.Forms.Label();
             this.comboBox_DataMapper_GiftAid = new System.Windows.Forms.ComboBox();
@@ -128,11 +130,11 @@ namespace TbManagementTool
             this.comboBox_DataMapper_RaffleStartNumber = new System.Windows.Forms.ComboBox();
             this.label_DataMapper_RaffleStartNumber = new System.Windows.Forms.Label();
             this.label_DataMapper_RaffleEndNumber = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_DataMapper_AddedBy = new System.Windows.Forms.TextBox();
+            this.textBox_DataMapper_AddedDateTime = new System.Windows.Forms.TextBox();
             this.label_DataMapper_AddedBy = new System.Windows.Forms.Label();
             this.label_DataMapper_AddedDateTime = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox_DataMapper_ImportFile = new System.Windows.Forms.TextBox();
             this.label_DataMapper_ImportFile = new System.Windows.Forms.Label();
             this.label_DataMapper_MiddleName = new System.Windows.Forms.Label();
             this.textBox_DataMapper_AppealCode = new System.Windows.Forms.TextBox();
@@ -161,8 +163,6 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
-            this.button_DataMapper_FileCreate = new System.Windows.Forms.Button();
-            this.button_DataMapper_FileClear = new System.Windows.Forms.Button();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -284,7 +284,7 @@ namespace TbManagementTool
             this.groupBox4.Controls.Add(this.label_DataMapper_Progress);
             this.groupBox4.Controls.Add(this.label_DataMapper_Primkey);
             this.groupBox4.Controls.Add(this.label_DataMapper_Barcode);
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.textBox3_DataMapper_Primkey);
             this.groupBox4.Controls.Add(this.textBox1_DataMapper_Barcode);
             this.groupBox4.Controls.Add(this.progressBar_DataMapper_Progress);
             this.groupBox4.Controls.Add(this.textBox2_DataMapper_Primkey);
@@ -338,12 +338,12 @@ namespace TbManagementTool
             this.label_DataMapper_Barcode.TabIndex = 9;
             this.label_DataMapper_Barcode.Text = "Barcode";
             // 
-            // textBox1
+            // textBox3_DataMapper_Primkey
             // 
-            this.textBox1.Location = new System.Drawing.Point(477, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 23);
-            this.textBox1.TabIndex = 30;
+            this.textBox3_DataMapper_Primkey.Location = new System.Drawing.Point(477, 24);
+            this.textBox3_DataMapper_Primkey.Name = "textBox3_DataMapper_Primkey";
+            this.textBox3_DataMapper_Primkey.Size = new System.Drawing.Size(167, 23);
+            this.textBox3_DataMapper_Primkey.TabIndex = 30;
             // 
             // textBox1_DataMapper_Barcode
             // 
@@ -449,6 +449,28 @@ namespace TbManagementTool
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
+            // 
+            // button_DataMapper_FileClear
+            // 
+            this.button_DataMapper_FileClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_DataMapper_FileClear.Location = new System.Drawing.Point(100, 571);
+            this.button_DataMapper_FileClear.Name = "button_DataMapper_FileClear";
+            this.button_DataMapper_FileClear.Size = new System.Drawing.Size(97, 28);
+            this.button_DataMapper_FileClear.TabIndex = 51;
+            this.button_DataMapper_FileClear.Text = "Clear";
+            this.button_DataMapper_FileClear.UseVisualStyleBackColor = true;
+            this.button_DataMapper_FileClear.Click += new System.EventHandler(this.button_DataMapper_FileClear_Click);
+            // 
+            // button_DataMapper_FileCreate
+            // 
+            this.button_DataMapper_FileCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_DataMapper_FileCreate.Location = new System.Drawing.Point(203, 572);
+            this.button_DataMapper_FileCreate.Name = "button_DataMapper_FileCreate";
+            this.button_DataMapper_FileCreate.Size = new System.Drawing.Size(97, 28);
+            this.button_DataMapper_FileCreate.TabIndex = 50;
+            this.button_DataMapper_FileCreate.Text = "Create";
+            this.button_DataMapper_FileCreate.UseVisualStyleBackColor = true;
+            this.button_DataMapper_FileCreate.Click += new System.EventHandler(this.button_DataMapper_FileCreate_Click);
             // 
             // label_DataMapper_ThirdPartyPreference
             // 
@@ -1183,11 +1205,11 @@ namespace TbManagementTool
             this.groupBox1.Controls.Add(this.comboBox_DataMapper_RaffleStartNumber);
             this.groupBox1.Controls.Add(this.label_DataMapper_RaffleStartNumber);
             this.groupBox1.Controls.Add(this.label_DataMapper_RaffleEndNumber);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBox_DataMapper_AddedBy);
+            this.groupBox1.Controls.Add(this.textBox_DataMapper_AddedDateTime);
             this.groupBox1.Controls.Add(this.label_DataMapper_AddedBy);
             this.groupBox1.Controls.Add(this.label_DataMapper_AddedDateTime);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.textBox_DataMapper_ImportFile);
             this.groupBox1.Controls.Add(this.label_DataMapper_ImportFile);
             this.groupBox1.Controls.Add(this.label_DataMapper_MiddleName);
             this.groupBox1.Controls.Add(this.textBox_DataMapper_AppealCode);
@@ -1258,19 +1280,19 @@ namespace TbManagementTool
             this.label_DataMapper_RaffleEndNumber.TabIndex = 43;
             this.label_DataMapper_RaffleEndNumber.Text = "RaffleEndNumber";
             // 
-            // textBox2
+            // textBox_DataMapper_AddedBy
             // 
-            this.textBox2.Location = new System.Drawing.Point(170, 151);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(130, 23);
-            this.textBox2.TabIndex = 41;
+            this.textBox_DataMapper_AddedBy.Location = new System.Drawing.Point(170, 151);
+            this.textBox_DataMapper_AddedBy.Name = "textBox_DataMapper_AddedBy";
+            this.textBox_DataMapper_AddedBy.Size = new System.Drawing.Size(130, 23);
+            this.textBox_DataMapper_AddedBy.TabIndex = 41;
             // 
-            // textBox3
+            // textBox_DataMapper_AddedDateTime
             // 
-            this.textBox3.Location = new System.Drawing.Point(170, 180);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(130, 23);
-            this.textBox3.TabIndex = 40;
+            this.textBox_DataMapper_AddedDateTime.Location = new System.Drawing.Point(170, 180);
+            this.textBox_DataMapper_AddedDateTime.Name = "textBox_DataMapper_AddedDateTime";
+            this.textBox_DataMapper_AddedDateTime.Size = new System.Drawing.Size(130, 23);
+            this.textBox_DataMapper_AddedDateTime.TabIndex = 40;
             // 
             // label_DataMapper_AddedBy
             // 
@@ -1292,12 +1314,12 @@ namespace TbManagementTool
             this.label_DataMapper_AddedDateTime.TabIndex = 38;
             this.label_DataMapper_AddedDateTime.Text = "AddedDateTime";
             // 
-            // textBox4
+            // textBox_DataMapper_ImportFile
             // 
-            this.textBox4.Location = new System.Drawing.Point(170, 122);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(130, 23);
-            this.textBox4.TabIndex = 37;
+            this.textBox_DataMapper_ImportFile.Location = new System.Drawing.Point(170, 122);
+            this.textBox_DataMapper_ImportFile.Name = "textBox_DataMapper_ImportFile";
+            this.textBox_DataMapper_ImportFile.Size = new System.Drawing.Size(130, 23);
+            this.textBox_DataMapper_ImportFile.TabIndex = 37;
             // 
             // label_DataMapper_ImportFile
             // 
@@ -1325,6 +1347,7 @@ namespace TbManagementTool
             this.textBox_DataMapper_AppealCode.Name = "textBox_DataMapper_AppealCode";
             this.textBox_DataMapper_AppealCode.Size = new System.Drawing.Size(130, 23);
             this.textBox_DataMapper_AppealCode.TabIndex = 32;
+            this.textBox_DataMapper_AppealCode.TextChanged += new System.EventHandler(this.textBox_DataMapper_AppealCode_TextChanged);
             // 
             // textBox_DataMapper_Campaign
             // 
@@ -1452,6 +1475,7 @@ namespace TbManagementTool
             this.comboBox_DataMapper_ClientName.Name = "comboBox_DataMapper_ClientName";
             this.comboBox_DataMapper_ClientName.Size = new System.Drawing.Size(130, 23);
             this.comboBox_DataMapper_ClientName.TabIndex = 10;
+            this.comboBox_DataMapper_ClientName.SelectedIndexChanged += new System.EventHandler(this.comboBox_DataMapper_ClientName_SelectedIndexChanged);
             // 
             // label_DataMapper_ClientName
             // 
@@ -1572,28 +1596,6 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
-            // button_DataMapper_FileCreate
-            // 
-            this.button_DataMapper_FileCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileCreate.Location = new System.Drawing.Point(203, 572);
-            this.button_DataMapper_FileCreate.Name = "button_DataMapper_FileCreate";
-            this.button_DataMapper_FileCreate.Size = new System.Drawing.Size(97, 28);
-            this.button_DataMapper_FileCreate.TabIndex = 50;
-            this.button_DataMapper_FileCreate.Text = "Create";
-            this.button_DataMapper_FileCreate.UseVisualStyleBackColor = true;
-            this.button_DataMapper_FileCreate.Click += new System.EventHandler(this.button_DataMapper_FileCreate_Click);
-            // 
-            // button_DataMapper_FileClear
-            // 
-            this.button_DataMapper_FileClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileClear.Location = new System.Drawing.Point(100, 571);
-            this.button_DataMapper_FileClear.Name = "button_DataMapper_FileClear";
-            this.button_DataMapper_FileClear.Size = new System.Drawing.Size(97, 28);
-            this.button_DataMapper_FileClear.TabIndex = 51;
-            this.button_DataMapper_FileClear.Text = "Clear";
-            this.button_DataMapper_FileClear.UseVisualStyleBackColor = true;
-            this.button_DataMapper_FileClear.Click += new System.EventHandler(this.button_DataMapper_FileClear_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1667,7 +1669,7 @@ namespace TbManagementTool
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.TextBox textBox1_DataMapper_Primkey;
         private System.Windows.Forms.TextBox textBox1_DataMapper_Barcode;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox3_DataMapper_Primkey;
         private System.Windows.Forms.TextBox textBox1_DataMapper_FileName;
         private System.Windows.Forms.ProgressBar progressBar_DataMapper_Progress;
         private System.Windows.Forms.Button button_DataMapper_FileSave;
@@ -1711,10 +1713,10 @@ namespace TbManagementTool
         private System.Windows.Forms.TextBox textBox_DataMapper_Progress;
         private System.Windows.Forms.TextBox textBox_DataMapper_AppealCode;
         private System.Windows.Forms.TextBox textBox_DataMapper_Campaign;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox_DataMapper_ImportFile;
         private System.Windows.Forms.Label label_DataMapper_ImportFile;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_DataMapper_AddedBy;
+        private System.Windows.Forms.TextBox textBox_DataMapper_AddedDateTime;
         private System.Windows.Forms.Label label_DataMapper_AddedBy;
         private System.Windows.Forms.Label label_DataMapper_AddedDateTime;
         private System.Windows.Forms.Label label_DataMapper_ThirdPartyPreference;

@@ -38,6 +38,7 @@ namespace TbManagementTool
         {
             try
             {
+                textBox_DataMapper_AppealCode.Text = DataHandler.specialCharReplacingLst();
                 foreach (string file in fileSearch.FileNames)
                 {
                     if (File.Exists(file))
@@ -91,8 +92,7 @@ namespace TbManagementTool
                     if (lstItem.Checked)
                     {
                         //Update what data is being loaded
-                        dataInUse = lstItem.Name;
-                       
+                        dataInUse = lstItem.Text;
                         
                         //Get datasources
                         string[] colNames_import = DataHandler.colNamesArray(dataset.Tables[lstItem.Text], true);
@@ -115,6 +115,9 @@ namespace TbManagementTool
 
             //Default settings
             DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
+            textBox3_DataMapper_Primkey.Text = DateTime.Now.ToString("ddMMyyyy");
+            textBox_DataMapper_AddedDateTime.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            textBox_DataMapper_AddedBy.Text = "Admin";
         }
 
         private void button_DataMapper_FileDelete_Click(object sender, EventArgs e)
@@ -180,12 +183,16 @@ namespace TbManagementTool
             try
             {
                 DataTable dt = DataTableFactory.DtCgSpec();
-
                 foreach(DataRow row_import in dataset.Tables[dataInUse].Rows)
                 {
                     DataRow row_export = dt.NewRow();
-                    
-                    //row_export["Primkey"] =
+
+                    if(row_import.Field<string>(comboBox_DataMapper_PersonRef.Text) == "â‚¬")
+                    {
+
+                       // row_export["Primkey"] = "hola".Replace()
+                    }
+                    row_export["Primkey"] = "hola";
                     //row_export["PersonRef"] =
                     //row_export["ClientName"] =
                     //row_export["AddedBy"] =
@@ -236,10 +243,15 @@ namespace TbManagementTool
                     //row_export["ClientData9"] =
                     //row_export["ClientData10"] =
 
+                    dt.Rows.Add(row_export);
                 }
+                dt.TableName = DataHandler.StrRenamingFromDsTableName(dataset, $"{textBox_DataMapper_AppealCode.Text}_{textBox3_DataMapper_Primkey.Text}");
+                dataset.Tables.Add(dt);
 
+                //Add new item to the listview
+                DataHandler.addItemToListView(listView_DataMapper, dt.TableName, dt);
             }
-            catch
+            catch 
             {
 
             }
@@ -274,6 +286,17 @@ namespace TbManagementTool
             //Default settings
             DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
 
+        }
+
+        private void comboBox_DataMapper_ClientName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox1_DataMapper_Primkey.Text = ((KeyValuePair<string,string>) comboBox_DataMapper_ClientName.SelectedItem).Key;
+        }
+
+        private void textBox_DataMapper_AppealCode_TextChanged(object sender, EventArgs e)
+        {
+            textBox2_DataMapper_Primkey.Text = textBox_DataMapper_AppealCode.Text;
+            textBox_DataMapper_ImportFile.Text = textBox_DataMapper_AppealCode.Text;
         }
     }
 }

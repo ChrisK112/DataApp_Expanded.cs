@@ -265,5 +265,32 @@ namespace TbManagementTool
             lstView.CheckBoxes = true;
         }
 
+        public static Dictionary<string, string> specialCharReplacingLst()
+        {
+            Dictionary<string, string> strDic = new Dictionary<string, string>();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+            strDic.Add();
+
+            return strDic;
+        }
+
     }
 }
