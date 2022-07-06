@@ -38,6 +38,7 @@ namespace TbManagementTool
         {
             try
             {
+                DataHandler.replaceSpecialChar("hola");
                 foreach (string file in fileSearch.FileNames)
                 {
                     if (File.Exists(file))
@@ -188,12 +189,9 @@ namespace TbManagementTool
                 {
                     DataRow row_export = dt.NewRow();
 
-                    if(row_import.Field<string>(comboBox_DataMapper_PersonRef.Text) == "â‚¬")
-                    {
+                    //Primkey
+                    row_export["Primkey"] = /**/textBox1_DataMapper_Primkey.Text + /**/textBox2_DataMapper_Primkey.Text + /**/row_import.Field<string>(comboBox_DataMapper_Primkey.Text) + /**/textBox3_DataMapper_Primkey.Text;
 
-                       // row_export["Primkey"] = "hola".Replace()
-                    }
-                    row_export["Primkey"] = "hola";
                     //row_export["PersonRef"] =
                     //row_export["ClientName"] =
                     //row_export["AddedBy"] =

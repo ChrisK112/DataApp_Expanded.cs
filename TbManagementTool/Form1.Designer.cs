@@ -48,7 +48,7 @@ namespace TbManagementTool
             this.textBox1_DataMapper_Barcode = new System.Windows.Forms.TextBox();
             this.progressBar_DataMapper_Progress = new System.Windows.Forms.ProgressBar();
             this.textBox2_DataMapper_Primkey = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox_DataMapper_Primkey = new System.Windows.Forms.ComboBox();
             this.textBox1_DataMapper_Primkey = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -288,7 +288,7 @@ namespace TbManagementTool
             this.groupBox4.Controls.Add(this.textBox1_DataMapper_Barcode);
             this.groupBox4.Controls.Add(this.progressBar_DataMapper_Progress);
             this.groupBox4.Controls.Add(this.textBox2_DataMapper_Primkey);
-            this.groupBox4.Controls.Add(this.comboBox4);
+            this.groupBox4.Controls.Add(this.comboBox_DataMapper_Primkey);
             this.groupBox4.Controls.Add(this.textBox1_DataMapper_Primkey);
             this.groupBox4.Controls.Add(this.comboBox3);
             this.groupBox4.Controls.Add(this.comboBox2);
@@ -366,14 +366,14 @@ namespace TbManagementTool
             this.textBox2_DataMapper_Primkey.Size = new System.Drawing.Size(167, 23);
             this.textBox2_DataMapper_Primkey.TabIndex = 28;
             // 
-            // comboBox4
+            // comboBox_DataMapper_Primkey
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(322, 24);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(149, 23);
-            this.comboBox4.TabIndex = 27;
+            this.comboBox_DataMapper_Primkey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_Primkey.FormattingEnabled = true;
+            this.comboBox_DataMapper_Primkey.Location = new System.Drawing.Point(322, 24);
+            this.comboBox_DataMapper_Primkey.Name = "comboBox_DataMapper_Primkey";
+            this.comboBox_DataMapper_Primkey.Size = new System.Drawing.Size(149, 23);
+            this.comboBox_DataMapper_Primkey.TabIndex = 27;
             // 
             // textBox1_DataMapper_Primkey
             // 
@@ -1666,7 +1666,7 @@ namespace TbManagementTool
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox2_DataMapper_Primkey;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_Primkey;
         private System.Windows.Forms.TextBox textBox1_DataMapper_Primkey;
         private System.Windows.Forms.TextBox textBox1_DataMapper_Barcode;
         private System.Windows.Forms.TextBox textBox3_DataMapper_Primkey;

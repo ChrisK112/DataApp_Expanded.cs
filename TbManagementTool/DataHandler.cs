@@ -271,44 +271,49 @@ namespace TbManagementTool
         {
             Dictionary<string, string> strDic = new Dictionary<string, string>()
             {
-                {"â‚¬","€" },
-                {"â€š","‚" },
-                {"Æ’","ƒ" },
-                {"â€ž","„" },
-                {"â€¦","…" },
-                {"â€","†" },
-                {"â€¡","‡" },
-                {"Ë†","ˆ" },
-                {"â€°","‰" },
-                {"Å","Š" },
-                {"â€¹","‹" },
-                {"Å’","Œ" },
-                {"Å½","Ž" },
-                {"â€˜","‘" },
-                {"â€™","’" },
-                {"â€œ","“" },
-                {"â€","”" },
-                {"â€¢","•" },
-                {"â€“","–" },
-                {"â€”","—" },
-                {"Ëœ","˜" },
-                {"â„¢","™" },
-                {"Å¡","š" },
-                {"â€º","›" },
-                {"Å“","œ" },
+                //{"â‚¬","€" },
+                //{"â€š","‚" },
+                //{"Æ’","ƒ" },
+                //{"â€ž","„" },
+                //{"â€¦","…" },
+                //{"â€","†" },
+                //{"â€¡","‡" },
+                //{"Ë†","ˆ" },
+                //{"â€°","‰" },
+                //{"Å","Š" },
+                //{"â€¹","‹" },
+                //{"Å’","Œ" },
+                //{"Å½","Ž" },
+                //{"â€˜","‘" },
+                //{"â€™","’" },
+                //{"â€œ","“" },
+                //{"â€","”" },
+                //{"â€¢","•" },
+                //{"â€“","–" },
+                //{"â€”","—" },
+                //{"Ëœ","˜" },
+                //{"â„¢","™" },
+                //{"Å¡","š" },
+                //{"â€º","›" },
+                //{"Å“","œ" },
+                {"izi","pizi" },
             };                
 
             return strDic;
         }
-        public static string replaceSpecialChar(string str, Dictionary<string, string> dic)
+        public static string replaceSpecialChar(string str)
         {
-            foreach(var item in dic)
+            string str_temp = "";
+            foreach(var item in specialCharLst())
             {
-                if (str.Contains(item.Key))
-                {
-                    Regex regex = new Regex("")
-                }
+                //if (str.Contains(item.Key))
+                //{
+                //    str.Replace(item.Key, item.Value);
+                //}
+                str_temp += item.Key;
             }
+            MessageBox.Show(str_temp);
+            return str;
         }
 
     }
