@@ -38,7 +38,7 @@ namespace TbManagementTool
         {
             try
             {
-                DataHandler.replaceSpecialChar("hola");
+                //DataHandler.replaceSpecialChar("hola");
                 foreach (string file in fileSearch.FileNames)
                 {
                     if (File.Exists(file))
