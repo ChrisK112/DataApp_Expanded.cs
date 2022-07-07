@@ -38,7 +38,6 @@ namespace TbManagementTool
         {
             try
             {
-                //DataHandler.replaceSpecialChar("hola");
                 foreach (string file in fileSearch.FileNames)
                 {
                     if (File.Exists(file))
@@ -49,7 +48,6 @@ namespace TbManagementTool
                         {
                             string dtName = DataHandler.StrRenamingFromDsTableName(dataset, file); 
                             DataTable dt = DataHandler.fileToDt(file);
-                            MessageBox.Show(dtName);
                             dt.TableName = dtName;
                             dataset.Tables.Add(dt);
 
@@ -93,7 +91,6 @@ namespace TbManagementTool
                     {
                         //Update what data is being loaded
                         dataInUse = lstItem.Text;
-                        MessageBox.Show(dataInUse);
                         
                         //Get datasources
                         string[] colNames_import = DataHandler.colNamesArray(dataset.Tables[lstItem.Text], true);
@@ -183,67 +180,369 @@ namespace TbManagementTool
         {
             try
             {
-                MessageBox.Show(dataInUse);
                 DataTable dt = DataTableFactory.DtCgSpec();
+                string joinedStr = ""; /*This is use below to join addressLines and Barcode comboboxes*/
                 foreach(DataRow row_import in dataset.Tables[dataInUse].Rows)
                 {
                     DataRow row_export = dt.NewRow();
 
                     //Primkey
-                    row_export["Primkey"] = /**/textBox1_DataMapper_Primkey.Text + /**/textBox2_DataMapper_Primkey.Text + /**/row_import.Field<string>(comboBox_DataMapper_Primkey.Text) + /**/textBox3_DataMapper_Primkey.Text;
+                    if(comboBox_DataMapper_Primkey.Text != "")
+                    {
+                        row_export["Primkey"] = /**/textBox1_DataMapper_Primkey.Text + /**/textBox2_DataMapper_Primkey.Text + /**/row_import.Field<string>(comboBox_DataMapper_Primkey.Text) + /**/textBox3_DataMapper_Primkey.Text;
+                    }
 
-                    //row_export["PersonRef"] =
-                    //row_export["ClientName"] =
-                    //row_export["AddedBy"] =
-                    //row_export["AddedDateTime"] =
-                    //row_export["Title"] =
-                    //row_export["FirstName"] =
-                    //row_export["MiddleName"] =
-                    //row_export["Surname"] =
-                    //row_export["Salutation"] =
-                    //row_export["AddressLine1"] =
-                    //row_export["AddressLine2"] =
-                    //row_export["AddressLine3"] =
-                    //row_export["TownCity"] =
-                    //row_export["County"] =
-                    //row_export["Postcode"] =
-                    //row_export["Country"] =
-                    //row_export["OrganisationName"] =
-                    //row_export["TelephoneNumber"] =
-                    //row_export["MobileNumber"] =
-                    //row_export["EmailAddress"] =
-                    //row_export["AppealCode"] =
-                    //row_export["PackageCode"] =
-                    //row_export["Deceased"] =
-                    //row_export["Goneaway"] =
-                    //row_export["NoFurtherCommunication"] =
-                    //row_export["PreloadedCAFNumber"] =
-                    //row_export["ColdURN"] =
-                    //row_export["ImportFile"] =
-                    //row_export["RaffleStartNumber"] =
-                    //row_export["RaffleEndNumber"] =
-                    //row_export["RecordType"] =
-                    //row_export["GiftAid"] =
-                    //row_export["Campaign"] =
-                    //row_export["PhonePreference"] =
-                    //row_export["MailPreference"] =
-                    //row_export["EmailPreference"] =
-                    //row_export["SMSPreference"] =
-                    //row_export["ThirdPartyPreference"] =
-                    //row_export["Barcode"] =
-                    //row_export["ClientData1"] =
-                    //row_export["ClientData2"] =
-                    //row_export["ClientData3"] =
-                    //row_export["ClientData4"] =
-                    //row_export["ClientData5"] =
-                    //row_export["ClientData6"] =
-                    //row_export["ClientData7"] =
-                    //row_export["ClientData8"] =
-                    //row_export["ClientData9"] =
-                    //row_export["ClientData10"] =
+                    //PersonRef
+                    if(comboBox_DataMapper_PersonRef.Text != "")
+                    {
+                        row_export["PersonRef"] = row_import.Field<string>(comboBox_DataMapper_PersonRef.Text);
+                    }
+
+                    //ClientName
+                    if (comboBox_DataMapper_ClientName.Text != "")
+                    {
+                        row_export["ClientName"] = row_import.Field<string>(comboBox_DataMapper_ClientName.Text);
+                    }
+
+                    //AddedBy
+                    if (textBox_DataMapper_AddedBy.Text != "")
+                    {
+                        row_export["AddedBy"] = textBox_DataMapper_AddedBy.Text;
+                    }
+
+                    //AddedDateTime
+                    if (textBox_DataMapper_AddedDateTime.Text != "")
+                    {
+                        row_export["AddedDateTime"] = textBox_DataMapper_AddedDateTime.Text;
+                    }
+
+                    //Title
+                    if (comboBox_DataMapper_Title.Text != "")
+                    {
+                        row_export["Title"] = row_import.Field<string>(comboBox_DataMapper_Title.Text);
+                    }
+
+                    //FirstName
+                    if (comboBox_DataMapper_FirstName.Text != "")
+                    {
+                        row_export["FirstName"] = row_import.Field<string>(comboBox_DataMapper_FirstName.Text);
+                    }
+
+                    //MiddleName
+                    if (comboBox_DataMapper_MiddleName.Text != "")
+                    {
+                        row_export["MiddleName"] = row_import.Field<string>(comboBox_DataMapper_MiddleName.Text);
+                    }
+
+                    //Surname
+                    if (comboBox_DataMapper_Surname.Text != "")
+                    {
+                        row_export["Surname"] = row_import.Field<string>(comboBox_DataMapper_Surname.Text);
+                    }
+
+                    //Salutation
+                    if (comboBox_DataMapper_Salutation.Text != "")
+                    {
+                        row_export["Salutation"] = row_import.Field<string>(comboBox_DataMapper_Salutation.Text);
+                    }
+
+                    //AddressLine1
+                    if (comboBox_DataMapper_AddressLine1.Text != "")
+                    {
+                        row_export["AddressLine1"] = row_import.Field<string>(comboBox_DataMapper_AddressLine1.Text);
+                    }
+
+                    //AddressLine2
+                    if (comboBox_DataMapper_AddressLine2.Text != "")
+                    {
+                        row_export["AddressLine2"] = row_import.Field<string>(comboBox_DataMapper_AddressLine2.Text);
+                    }
+
+                    //AddressLine3
+                    if(comboBox_DataMapper_AddressLine3.Text != "")
+                    {
+                        joinedStr = row_import.Field<string>(comboBox_DataMapper_AddressLine3.Text);
+                    }
+                    if (comboBox_DataMapper_AddressLine4.Text != "")
+                    {
+                        joinedStr += " " + row_import.Field<string>(comboBox_DataMapper_AddressLine4.Text);
+                    }
+                    if (comboBox_DataMapper_AddressLine5.Text != "")
+                    {
+                        joinedStr += " " + row_import.Field<string>(comboBox_DataMapper_AddressLine5.Text);
+                    }
+                    
+                    row_export["AddressLine3"] = joinedStr.Replace("  ", " ").TrimStart().TrimEnd();
+
+                    //TownCity
+                    if (comboBox_DataMapper_TownCity.Text != "")
+                    {
+                        row_export["TownCity"] = row_import.Field<string>(comboBox_DataMapper_TownCity.Text);
+                    }
+
+                    //County
+                    if (comboBox_DataMapper_County.Text != "")
+                    {
+                        row_export["County"] = row_import.Field<string>(comboBox_DataMapper_County.Text);
+                    }
+
+                    //Postcode
+                    if (comboBox_DataMapper_Postcode.Text != "")
+                    {
+                        row_export["Postcode"] = row_import.Field<string>(comboBox_DataMapper_Postcode.Text);
+                    }
+
+                    //Country
+                    if (comboBox_DataMapper_Country.Text != "")
+                    {
+                        row_export["Country"] = row_import.Field<string>(comboBox_DataMapper_Country.Text);
+                    }
+
+                    //OrganisationName
+                    if (comboBox_DataMapper_OrganisationName.Text != "")
+                    {
+                        row_export["OrganisationName"] = row_import.Field<string>(comboBox_DataMapper_OrganisationName.Text);
+                    }
+
+                    //TelephoneNumber
+                    if (comboBox_DataMapper_TelephoneNumber.Text != "")
+                    {
+                        row_export["TelephoneNumber"] = row_import.Field<string>(comboBox_DataMapper_TelephoneNumber.Text);
+                    }
+
+                    //MobileNumber
+                    if (comboBox_DataMapper_MobileNumber.Text != "")
+                    {
+                        row_export["MobileNumber"] = row_import.Field<string>(comboBox_DataMapper_MobileNumber.Text);
+                    }
+
+                    //EmailAddress
+                    if (comboBox_DataMapper_EmailAddress.Text != "")
+                    {
+                        row_export["EmailAddress"] = row_import.Field<string>(comboBox_DataMapper_EmailAddress.Text);
+                    }
+
+                    //AppealCode
+                    if (textBox_DataMapper_AppealCode.Text != "")
+                    {
+                        row_export["AppealCode"] = textBox_DataMapper_AppealCode.Text;
+                    }
+
+                    //PackageCode
+                    if (comboBox_DataMapper_PackageCode.Text != "")
+                    {
+                        row_export["PackageCode"] = row_import.Field<string>(comboBox_DataMapper_PackageCode.Text);
+                    }
+
+                    //Deceased
+                    if (comboBox_DataMapper_Deceased.Text != "")
+                    {
+                        row_export["Deceased"] = row_import.Field<string>(comboBox_DataMapper_Deceased.Text);
+                    }
+                    else
+                    {
+                        row_export["Deceased"] = "0";
+                    }
+
+                    //Goneaway
+                    if (comboBox_DataMapper_Goneaway.Text != "")
+                    {
+                        row_export["Goneaway"] = row_import.Field<string>(comboBox_DataMapper_Goneaway.Text);
+                    }
+                    else
+                    {
+                        row_export["Goneaway"] = "0";
+                    }
+
+                    //NoFurtherCommunication
+                    if (comboBox_DataMapper_NoFurtherCommunication.Text != "")
+                    {
+                        row_export["NoFurtherCommunication"] = row_import.Field<string>(comboBox_DataMapper_NoFurtherCommunication.Text);
+                    }
+                    else
+                    {
+                        row_export["NoFurtherCommunication"] = "0";
+                    }
+
+                    //PreloadedCAFNumber
+                    if (comboBox_DataMapper_PreloadedCAFNumber.Text != "")
+                    {
+                        row_export["PreloadedCAFNumber"] = row_import.Field<string>(comboBox_DataMapper_PreloadedCAFNumber.Text);
+                    }
+
+                    //ColdURN
+                    if (comboBox_DataMapper_ColdURN.Text != "")
+                    {
+                        row_export["ColdURN"] = row_import.Field<string>(comboBox_DataMapper_ColdURN.Text);
+                    }
+
+                    //ImportFile
+                    if (textBox_DataMapper_ImportFile.Text != "")
+                    {
+                        row_export["ImportFile"] = textBox_DataMapper_ImportFile.Text;
+                    }
+
+                    //RaffleStartNumber
+                    if (comboBox_DataMapper_RaffleStartNumber.Text != "")
+                    {
+                        row_export["RaffleStartNumber"] = row_import.Field<string>(comboBox_DataMapper_RaffleStartNumber.Text);
+                    }
+
+                    //RaffleStartNumber
+                    if (comboBox_DataMapper_RaffleEndNumber.Text != "")
+                    {
+                        row_export["RaffleEndNumber"] = row_import.Field<string>(comboBox_DataMapper_RaffleEndNumber.Text);
+                    }
+
+                    //RecordType
+                    row_export["RecordType"] = (radioButton1_DataMapper_RecordType.Checked ? "Warm" : "Cold");
+
+                    //GiftAid
+                    if (comboBox_DataMapper_GiftAid.Text != "")
+                    {
+                        row_export["GiftAid"] = row_import.Field<string>(comboBox_DataMapper_GiftAid.Text);
+                    }
+                    else
+                    {
+                        row_export["GiftAid"] = "Unknown";
+                    }
+
+                    //Campaign
+                    if (textBox_DataMapper_ImportFile.Text != "")
+                    {
+                        row_export["Campaign"] = textBox_DataMapper_Campaign.Text;
+                    }
+
+                    //PhonePreference
+                    if (comboBox_DataMapper_PhonePreference.Text != "")
+                    {
+                        row_export["PhonePreference"] = row_import.Field<string>(comboBox_DataMapper_PhonePreference.Text);
+                    }
+                    else
+                    {
+                        row_export["PhonePreference"] = "Unknown";
+                    }
+
+                    //MailPreference
+                    if (comboBox_DataMapper_MailPreference.Text != "")
+                    {
+                        row_export["MailPreference"] = row_import.Field<string>(comboBox_DataMapper_MailPreference.Text);
+                    }
+                    else
+                    {
+                        row_export["MailPreference"] = "Unknown";
+                    }
+
+                    //EmailPreference
+                    if (comboBox_DataMapper_EmailPreference.Text != "")
+                    {
+                        row_export["EmailPreference"] = row_import.Field<string>(comboBox_DataMapper_EmailPreference.Text);
+                    }
+                    else
+                    {
+                        row_export["EmailPreference"] = "Unknown";
+                    }
+
+                    //SMSPreference
+                    if (comboBox_DataMapper_SMSPreference.Text != "")
+                    {
+                        row_export["SMSPreference"] = row_import.Field<string>(comboBox_DataMapper_SMSPreference.Text);
+                    }
+                    else
+                    {
+                        row_export["SMSPreference"] = "Unknown";
+                    }
+
+                    //ThirdPartyPreference
+                    if (comboBox_DataMapper_ThirdPartyPreference.Text != "")
+                    {
+                        row_export["ThirdPartyPreference"] = row_import.Field<string>(comboBox_DataMapper_ThirdPartyPreference.Text);
+                    }
+                    else
+                    {
+                        row_export["ThirdPartyPreference"] = "Unknown";
+                    }
+
+                    //Barcode
+                    string delimiter = (textBox1_DataMapper_Barcode.Text == "" ? " " : textBox1_DataMapper_Barcode.Text);
+                    if (comboBox1_DataMapper_Barcode.Text != "")
+                    {
+                        joinedStr = row_import.Field<string>(comboBox1_DataMapper_Barcode.Text);
+                    }
+                    if (comboBox2_DataMapper_Barcode.Text != "")
+                    {
+                        joinedStr += textBox1_DataMapper_Barcode.Text + row_import.Field<string>(comboBox2_DataMapper_Barcode.Text);
+                    }
+                    if (comboBox3_DataMapper_Barcode.Text != "")
+                    {
+                        joinedStr += textBox1_DataMapper_Barcode.Text + row_import.Field<string>(comboBox3_DataMapper_Barcode.Text);
+                    }
+
+                    row_export["Barcode"] = joinedStr.ToString().Replace(delimiter + delimiter, delimiter).TrimStart(Convert.ToChar(delimiter)).TrimEnd(Convert.ToChar(delimiter));
+
+                    //ClientData1
+                    if (comboBox_DataMapper_ClientData1.Text != "")
+                    {
+                        row_export["ClientData1"] = row_import.Field<string>(comboBox_DataMapper_ClientData1.Text);
+                    }
+
+                    //ClientData2
+                    if (comboBox_DataMapper_ClientData2.Text != "")
+                    {
+                        row_export["ClientData2"] = row_import.Field<string>(comboBox_DataMapper_ClientData2.Text);
+                    }
+
+                    //ClientData3
+                    if (comboBox_DataMapper_ClientData3.Text != "")
+                    {
+                        row_export["ClientData3"] = row_import.Field<string>(comboBox_DataMapper_ClientData3.Text);
+                    }
+
+                    //ClientData4
+                    if (comboBox_DataMapper_ClientData4.Text != "")
+                    {
+                        row_export["ClientData4"] = row_import.Field<string>(comboBox_DataMapper_ClientData4.Text);
+                    }
+
+                    //ClientData5
+                    if (comboBox_DataMapper_ClientData5.Text != "")
+                    {
+                        row_export["ClientData5"] = row_import.Field<string>(comboBox_DataMapper_ClientData5.Text);
+                    }
+
+                    //ClientData6
+                    if (comboBox_DataMapper_ClientData6.Text != "")
+                    {
+                        row_export["ClientData6"] = row_import.Field<string>(comboBox_DataMapper_ClientData6.Text);
+                    }
+
+                    //ClientData7
+                    if (comboBox_DataMapper_ClientData7.Text != "")
+                    {
+                        row_export["ClientData7"] = row_import.Field<string>(comboBox_DataMapper_ClientData7.Text);
+                    }
+
+                    //ClientData8
+                    if (comboBox_DataMapper_ClientData8.Text != "")
+                    {
+                        row_export["ClientData8"] = row_import.Field<string>(comboBox_DataMapper_ClientData8.Text);
+                    }
+
+                    //ClientData9
+                    if (comboBox_DataMapper_ClientData9.Text != "")
+                    {
+                        row_export["ClientData9"] = row_import.Field<string>(comboBox_DataMapper_ClientData9.Text);
+                    }
+
+                    //ClientData10
+                    if (comboBox_DataMapper_ClientData10.Text != "")
+                    {
+                        row_export["ClientData10"] = row_import.Field<string>(comboBox_DataMapper_ClientData10.Text);
+                    }
 
                     dt.Rows.Add(row_export);
                 }
+
                 dt.TableName = DataHandler.StrRenamingFromDsTableName(dataset, $"{textBox_DataMapper_AppealCode.Text}_{textBox3_DataMapper_Primkey.Text}");
                 dataset.Tables.Add(dt);
 

@@ -119,10 +119,6 @@ namespace TbManagementTool
             EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString()}{qualifier}")));
             lines.AddRange(strData);
 
-            for(int n = 0; n < lines.Count - 1; n++)
-            {
-                lines[n] = replaceSpecialChar(lines[n]);
-            }
             return lines;
         }
 
@@ -271,100 +267,25 @@ namespace TbManagementTool
             lstView.CheckBoxes = true;
         }
 
-        //private static Dictionary<string, string> specialCharLst()
-        //{
-        //    Dictionary<string, string> strDic = new Dictionary<string, string>()
-        //    {
-        //        //{"â‚¬","€" },
-        //        //{"â€š","‚" },
-        //        //{"Æ’","ƒ" },
-        //        //{"â€ž","„" },
-        //        //{"â€¦","…" },
-        //        //{"â€","†" },
-        //        //{"â€¡","‡" },
-        //        //{"Ë†","ˆ" },
-        //        //{"â€°","‰" },
-        //        //{"Å","Š" },
-        //        //{"â€¹","‹" },
-        //        //{"Å’","Œ" },
-        //        //{"Å½","Ž" },
-        //        //{"â€˜","‘" },
-        //        //{"â€™","’" },
-        //        //{"â€œ","“" },
-        //        //{"â€","”" },
-        //        //{"â€¢","•" },
-        //        //{"â€“","–" },
-        //        //{"â€”","—" },
-        //        //{"Ëœ","˜" },
-        //        //{"â„¢","™" },
-        //        //{"Å¡","š" },
-        //        //{"â€º","›" },
-        //        //{"Å“","œ" },
-        //        {"izi","pizi" },
-        //    };                
-
-        //    return strDic;
-        //}
-        private static string[,] specialCharLst()
+        public static string join3Str(string str1 = "", string str2 = "", string str3 = "", string delimiter = " ")
         {
-            string[,]array2d = new string[,]
-            {
-                { "â‚¬","€" },
-                { "â€š","‚" },
-                { "Æ’","ƒ" },
-                { "â€ž","„" },
-                { "â€¦","…" },
-                { "â€","†" },
-                { "â€¡","‡" },
-                { "Ë†","ˆ" },
-                { "â€°","‰" },
-                { "Å","Š" },
-                { "â€¹","‹" },
-                { "Å’","Œ" },
-                { "Å½","Ž" },
-                { "â€˜","‘" },
-                { "â€™","’" },
-                { "â€œ","“" },
-                { "â€","”" },
-                { "â€¢","•" },
-                { "â€“","–" },
-                { "â€”","—" },
-                { "Ëœ","˜" },
-                { "â„¢","™" },
-                { "Å¡","š" },
-                { "â€º","›" },
-                { "Å“","œ" },
-            };
+            string addLine = "";
 
-            return array2d;
-        }
-        public static string replaceSpecialChar(string str)
-        {
-            string[,] array = specialCharLst();
-
-            for (int n = 0; n< array.Length; n++)
+            if(str1 != "")
             {
-                if (str.Contains(array[n, 0]))
-                {
-                    str.Replace(array[n, 0], array[n, 1]);
-                }
+                addLine += delimiter + str1;
             }
-            return str;
+            if (str2 != "")
+            {
+                addLine += delimiter + str2;
+            }
+            if (str3 != "")
+            {
+                addLine += delimiter + str3;
+            }
+
+            return addLine.Replace("  ", " ").TrimStart().TrimEnd();
         }
-        //public static string replaceSpecialChar(string str)
-        //{
-        //    string str_temp = "";
-        //    foreach(var item in specialCharLst())
-        //    {
-        //        //if (str.Contains(item.Key))
-        //        //{
-        //        //    str.Replace(item.Key, item.Value);
-        //        //}
-        //        str_temp += item.Key;
-        //    }
-        //    MessageBox.Show(str_temp);
-        //    return str;
-        //}
 
     }
 }
