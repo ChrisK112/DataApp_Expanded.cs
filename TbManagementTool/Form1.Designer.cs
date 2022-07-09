@@ -32,6 +32,15 @@ namespace TbManagementTool
             this.tabControl_Main = new System.Windows.Forms.TabControl();
             this.tabPage_DataMapper = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox_DataMapper_Replace = new System.Windows.Forms.CheckBox();
+            this.checkBox_DataMapper_RemoveDuplicate = new System.Windows.Forms.CheckBox();
+            this.comboBox_DataMapper_RemoveDuplicate = new System.Windows.Forms.ComboBox();
+            this.label2_DataMapper_Divider = new System.Windows.Forms.Label();
+            this.textBox2_DataMapper_Replace = new System.Windows.Forms.TextBox();
+            this.label_DataMapper_ReplaceTo = new System.Windows.Forms.Label();
+            this.textBox1_DataMapper_Replace = new System.Windows.Forms.TextBox();
+            this.label_DataMapper_ReplaceFrom = new System.Windows.Forms.Label();
+            this.comboBox_DataMapper_Replace = new System.Windows.Forms.ComboBox();
             this.button_DataMapper_FileMerge = new System.Windows.Forms.Button();
             this.button_DataMapper_FileDelete = new System.Windows.Forms.Button();
             this.listView_DataMapper = new System.Windows.Forms.ListView();
@@ -50,10 +59,11 @@ namespace TbManagementTool
             this.textBox2_DataMapper_Primkey = new System.Windows.Forms.TextBox();
             this.comboBox_DataMapper_Primkey = new System.Windows.Forms.ComboBox();
             this.textBox1_DataMapper_Primkey = new System.Windows.Forms.TextBox();
-            this.comboBox3_DataMapper_Barcode = new System.Windows.Forms.ComboBox();
-            this.comboBox2_DataMapper_Barcode = new System.Windows.Forms.ComboBox();
-            this.comboBox1_DataMapper_Barcode = new System.Windows.Forms.ComboBox();
+            this.comboBox_DataMapper_Barcode3 = new System.Windows.Forms.ComboBox();
+            this.comboBox_DataMapper_Barcode2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_DataMapper_Barcode1 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1_DataMapper_Divider = new System.Windows.Forms.Label();
             this.button_DataMapper_FileClear = new System.Windows.Forms.Button();
             this.button_DataMapper_FileCreate = new System.Windows.Forms.Button();
             this.label_DataMapper_ThirdPartyPreference = new System.Windows.Forms.Label();
@@ -124,6 +134,11 @@ namespace TbManagementTool
             this.comboBox_DataMapper_AddressLine1 = new System.Windows.Forms.ComboBox();
             this.comboBox_DataMapper_ClientData1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox_DataMapper_Quantity = new System.Windows.Forms.CheckBox();
+            this.comboBox_DataMapper_Quantity = new System.Windows.Forms.ComboBox();
+            this.label_DataMapper_QuantityOr = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.radioButton2_DataMapper_RecordType = new System.Windows.Forms.RadioButton();
             this.radioButton1_DataMapper_RecordType = new System.Windows.Forms.RadioButton();
             this.comboBox_DataMapper_RaffleEndNumber = new System.Windows.Forms.ComboBox();
@@ -164,8 +179,8 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
-            this.label_DataMapper_ = new System.Windows.Forms.Label();
-            this.comboBox_DataMapper_Replace = new System.Windows.Forms.ComboBox();
+            this.button_DataMapper_ToMiScan = new System.Windows.Forms.Button();
+            this.checkBox_DataMapper_ClientFieldsIncluded = new System.Windows.Forms.CheckBox();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -202,8 +217,17 @@ namespace TbManagementTool
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.checkBox_DataMapper_ClientFieldsIncluded);
+            this.groupBox5.Controls.Add(this.button_DataMapper_ToMiScan);
+            this.groupBox5.Controls.Add(this.checkBox_DataMapper_Replace);
+            this.groupBox5.Controls.Add(this.checkBox_DataMapper_RemoveDuplicate);
+            this.groupBox5.Controls.Add(this.comboBox_DataMapper_RemoveDuplicate);
+            this.groupBox5.Controls.Add(this.label2_DataMapper_Divider);
+            this.groupBox5.Controls.Add(this.textBox2_DataMapper_Replace);
+            this.groupBox5.Controls.Add(this.label_DataMapper_ReplaceTo);
+            this.groupBox5.Controls.Add(this.textBox1_DataMapper_Replace);
+            this.groupBox5.Controls.Add(this.label_DataMapper_ReplaceFrom);
             this.groupBox5.Controls.Add(this.comboBox_DataMapper_Replace);
-            this.groupBox5.Controls.Add(this.label_DataMapper_);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileMerge);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileDelete);
             this.groupBox5.Controls.Add(this.listView_DataMapper);
@@ -216,10 +240,101 @@ namespace TbManagementTool
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
             // 
+            // checkBox_DataMapper_Replace
+            // 
+            this.checkBox_DataMapper_Replace.AutoSize = true;
+            this.checkBox_DataMapper_Replace.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_DataMapper_Replace.Location = new System.Drawing.Point(38, 406);
+            this.checkBox_DataMapper_Replace.Name = "checkBox_DataMapper_Replace";
+            this.checkBox_DataMapper_Replace.Size = new System.Drawing.Size(154, 23);
+            this.checkBox_DataMapper_Replace.TabIndex = 40;
+            this.checkBox_DataMapper_Replace.Text = "Replace Values On:";
+            this.checkBox_DataMapper_Replace.UseVisualStyleBackColor = true;
+            this.checkBox_DataMapper_Replace.CheckedChanged += new System.EventHandler(this.checkBox_DataMapper_Replace_CheckedChanged);
+            // 
+            // checkBox_DataMapper_RemoveDuplicate
+            // 
+            this.checkBox_DataMapper_RemoveDuplicate.AutoSize = true;
+            this.checkBox_DataMapper_RemoveDuplicate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_DataMapper_RemoveDuplicate.Location = new System.Drawing.Point(9, 369);
+            this.checkBox_DataMapper_RemoveDuplicate.Name = "checkBox_DataMapper_RemoveDuplicate";
+            this.checkBox_DataMapper_RemoveDuplicate.Size = new System.Drawing.Size(183, 23);
+            this.checkBox_DataMapper_RemoveDuplicate.TabIndex = 39;
+            this.checkBox_DataMapper_RemoveDuplicate.Text = "Remove Duplicates On:";
+            this.checkBox_DataMapper_RemoveDuplicate.UseVisualStyleBackColor = true;
+            this.checkBox_DataMapper_RemoveDuplicate.CheckedChanged += new System.EventHandler(this.checkBox_DataMapper_RemoveDuplicate_CheckedChanged);
+            // 
+            // comboBox_DataMapper_RemoveDuplicate
+            // 
+            this.comboBox_DataMapper_RemoveDuplicate.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_RemoveDuplicate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_RemoveDuplicate.Enabled = false;
+            this.comboBox_DataMapper_RemoveDuplicate.FormattingEnabled = true;
+            this.comboBox_DataMapper_RemoveDuplicate.Location = new System.Drawing.Point(198, 369);
+            this.comboBox_DataMapper_RemoveDuplicate.Name = "comboBox_DataMapper_RemoveDuplicate";
+            this.comboBox_DataMapper_RemoveDuplicate.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_RemoveDuplicate.TabIndex = 38;
+            // 
+            // label2_DataMapper_Divider
+            // 
+            this.label2_DataMapper_Divider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2_DataMapper_Divider.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2_DataMapper_Divider.Location = new System.Drawing.Point(5, 398);
+            this.label2_DataMapper_Divider.Name = "label2_DataMapper_Divider";
+            this.label2_DataMapper_Divider.Size = new System.Drawing.Size(323, 1);
+            this.label2_DataMapper_Divider.TabIndex = 36;
+            // 
+            // textBox2_DataMapper_Replace
+            // 
+            this.textBox2_DataMapper_Replace.Enabled = false;
+            this.textBox2_DataMapper_Replace.Location = new System.Drawing.Point(198, 464);
+            this.textBox2_DataMapper_Replace.Name = "textBox2_DataMapper_Replace";
+            this.textBox2_DataMapper_Replace.Size = new System.Drawing.Size(130, 23);
+            this.textBox2_DataMapper_Replace.TabIndex = 35;
+            // 
+            // label_DataMapper_ReplaceTo
+            // 
+            this.label_DataMapper_ReplaceTo.AutoSize = true;
+            this.label_DataMapper_ReplaceTo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_DataMapper_ReplaceTo.Location = new System.Drawing.Point(163, 464);
+            this.label_DataMapper_ReplaceTo.Name = "label_DataMapper_ReplaceTo";
+            this.label_DataMapper_ReplaceTo.Size = new System.Drawing.Size(29, 19);
+            this.label_DataMapper_ReplaceTo.TabIndex = 34;
+            this.label_DataMapper_ReplaceTo.Text = "To:";
+            // 
+            // textBox1_DataMapper_Replace
+            // 
+            this.textBox1_DataMapper_Replace.Enabled = false;
+            this.textBox1_DataMapper_Replace.Location = new System.Drawing.Point(198, 435);
+            this.textBox1_DataMapper_Replace.Name = "textBox1_DataMapper_Replace";
+            this.textBox1_DataMapper_Replace.Size = new System.Drawing.Size(130, 23);
+            this.textBox1_DataMapper_Replace.TabIndex = 33;
+            // 
+            // label_DataMapper_ReplaceFrom
+            // 
+            this.label_DataMapper_ReplaceFrom.AutoSize = true;
+            this.label_DataMapper_ReplaceFrom.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_DataMapper_ReplaceFrom.Location = new System.Drawing.Point(144, 435);
+            this.label_DataMapper_ReplaceFrom.Name = "label_DataMapper_ReplaceFrom";
+            this.label_DataMapper_ReplaceFrom.Size = new System.Drawing.Size(48, 19);
+            this.label_DataMapper_ReplaceFrom.TabIndex = 14;
+            this.label_DataMapper_ReplaceFrom.Text = "From:";
+            // 
+            // comboBox_DataMapper_Replace
+            // 
+            this.comboBox_DataMapper_Replace.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_Replace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_Replace.Enabled = false;
+            this.comboBox_DataMapper_Replace.FormattingEnabled = true;
+            this.comboBox_DataMapper_Replace.Location = new System.Drawing.Point(198, 406);
+            this.comboBox_DataMapper_Replace.Name = "comboBox_DataMapper_Replace";
+            this.comboBox_DataMapper_Replace.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_Replace.TabIndex = 13;
+            // 
             // button_DataMapper_FileMerge
             // 
             this.button_DataMapper_FileMerge.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileMerge.Location = new System.Drawing.Point(117, 658);
+            this.button_DataMapper_FileMerge.Location = new System.Drawing.Point(128, 657);
             this.button_DataMapper_FileMerge.Name = "button_DataMapper_FileMerge";
             this.button_DataMapper_FileMerge.Size = new System.Drawing.Size(97, 28);
             this.button_DataMapper_FileMerge.TabIndex = 11;
@@ -230,7 +345,7 @@ namespace TbManagementTool
             // button_DataMapper_FileDelete
             // 
             this.button_DataMapper_FileDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileDelete.Location = new System.Drawing.Point(220, 658);
+            this.button_DataMapper_FileDelete.Location = new System.Drawing.Point(231, 658);
             this.button_DataMapper_FileDelete.Name = "button_DataMapper_FileDelete";
             this.button_DataMapper_FileDelete.Size = new System.Drawing.Size(97, 28);
             this.button_DataMapper_FileDelete.TabIndex = 10;
@@ -264,7 +379,7 @@ namespace TbManagementTool
             // button_DataMapper_FileSave
             // 
             this.button_DataMapper_FileSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileSave.Location = new System.Drawing.Point(220, 692);
+            this.button_DataMapper_FileSave.Location = new System.Drawing.Point(231, 692);
             this.button_DataMapper_FileSave.Name = "button_DataMapper_FileSave";
             this.button_DataMapper_FileSave.Size = new System.Drawing.Size(97, 28);
             this.button_DataMapper_FileSave.TabIndex = 8;
@@ -275,7 +390,7 @@ namespace TbManagementTool
             // button_DataMapper_FileLoad
             // 
             this.button_DataMapper_FileLoad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileLoad.Location = new System.Drawing.Point(15, 658);
+            this.button_DataMapper_FileLoad.Location = new System.Drawing.Point(25, 657);
             this.button_DataMapper_FileLoad.Name = "button_DataMapper_FileLoad";
             this.button_DataMapper_FileLoad.Size = new System.Drawing.Size(97, 28);
             this.button_DataMapper_FileLoad.TabIndex = 6;
@@ -295,9 +410,9 @@ namespace TbManagementTool
             this.groupBox4.Controls.Add(this.textBox2_DataMapper_Primkey);
             this.groupBox4.Controls.Add(this.comboBox_DataMapper_Primkey);
             this.groupBox4.Controls.Add(this.textBox1_DataMapper_Primkey);
-            this.groupBox4.Controls.Add(this.comboBox3_DataMapper_Barcode);
-            this.groupBox4.Controls.Add(this.comboBox2_DataMapper_Barcode);
-            this.groupBox4.Controls.Add(this.comboBox1_DataMapper_Barcode);
+            this.groupBox4.Controls.Add(this.comboBox_DataMapper_Barcode3);
+            this.groupBox4.Controls.Add(this.comboBox_DataMapper_Barcode2);
+            this.groupBox4.Controls.Add(this.comboBox_DataMapper_Barcode1);
             this.groupBox4.Location = new System.Drawing.Point(6, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1027, 100);
@@ -388,35 +503,36 @@ namespace TbManagementTool
             this.textBox1_DataMapper_Primkey.Size = new System.Drawing.Size(53, 23);
             this.textBox1_DataMapper_Primkey.TabIndex = 26;
             // 
-            // comboBox3_DataMapper_Barcode
+            // comboBox_DataMapper_Barcode3
             // 
-            this.comboBox3_DataMapper_Barcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3_DataMapper_Barcode.FormattingEnabled = true;
-            this.comboBox3_DataMapper_Barcode.Location = new System.Drawing.Point(400, 63);
-            this.comboBox3_DataMapper_Barcode.Name = "comboBox3_DataMapper_Barcode";
-            this.comboBox3_DataMapper_Barcode.Size = new System.Drawing.Size(149, 23);
-            this.comboBox3_DataMapper_Barcode.TabIndex = 25;
+            this.comboBox_DataMapper_Barcode3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_Barcode3.FormattingEnabled = true;
+            this.comboBox_DataMapper_Barcode3.Location = new System.Drawing.Point(400, 63);
+            this.comboBox_DataMapper_Barcode3.Name = "comboBox_DataMapper_Barcode3";
+            this.comboBox_DataMapper_Barcode3.Size = new System.Drawing.Size(149, 23);
+            this.comboBox_DataMapper_Barcode3.TabIndex = 25;
             // 
-            // comboBox2_DataMapper_Barcode
+            // comboBox_DataMapper_Barcode2
             // 
-            this.comboBox2_DataMapper_Barcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2_DataMapper_Barcode.FormattingEnabled = true;
-            this.comboBox2_DataMapper_Barcode.Location = new System.Drawing.Point(245, 63);
-            this.comboBox2_DataMapper_Barcode.Name = "comboBox2_DataMapper_Barcode";
-            this.comboBox2_DataMapper_Barcode.Size = new System.Drawing.Size(149, 23);
-            this.comboBox2_DataMapper_Barcode.TabIndex = 24;
+            this.comboBox_DataMapper_Barcode2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_Barcode2.FormattingEnabled = true;
+            this.comboBox_DataMapper_Barcode2.Location = new System.Drawing.Point(245, 63);
+            this.comboBox_DataMapper_Barcode2.Name = "comboBox_DataMapper_Barcode2";
+            this.comboBox_DataMapper_Barcode2.Size = new System.Drawing.Size(149, 23);
+            this.comboBox_DataMapper_Barcode2.TabIndex = 24;
             // 
-            // comboBox1_DataMapper_Barcode
+            // comboBox_DataMapper_Barcode1
             // 
-            this.comboBox1_DataMapper_Barcode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1_DataMapper_Barcode.FormattingEnabled = true;
-            this.comboBox1_DataMapper_Barcode.Location = new System.Drawing.Point(90, 63);
-            this.comboBox1_DataMapper_Barcode.Name = "comboBox1_DataMapper_Barcode";
-            this.comboBox1_DataMapper_Barcode.Size = new System.Drawing.Size(149, 23);
-            this.comboBox1_DataMapper_Barcode.TabIndex = 23;
+            this.comboBox_DataMapper_Barcode1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_Barcode1.FormattingEnabled = true;
+            this.comboBox_DataMapper_Barcode1.Location = new System.Drawing.Point(90, 63);
+            this.comboBox_DataMapper_Barcode1.Name = "comboBox_DataMapper_Barcode1";
+            this.comboBox_DataMapper_Barcode1.Size = new System.Drawing.Size(149, 23);
+            this.comboBox_DataMapper_Barcode1.TabIndex = 23;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label1_DataMapper_Divider);
             this.groupBox3.Controls.Add(this.button_DataMapper_FileClear);
             this.groupBox3.Controls.Add(this.button_DataMapper_FileCreate);
             this.groupBox3.Controls.Add(this.label_DataMapper_ThirdPartyPreference);
@@ -454,10 +570,19 @@ namespace TbManagementTool
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
+            // label1_DataMapper_Divider
+            // 
+            this.label1_DataMapper_Divider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1_DataMapper_Divider.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1_DataMapper_Divider.Location = new System.Drawing.Point(6, 442);
+            this.label1_DataMapper_Divider.Name = "label1_DataMapper_Divider";
+            this.label1_DataMapper_Divider.Size = new System.Drawing.Size(323, 1);
+            this.label1_DataMapper_Divider.TabIndex = 52;
+            // 
             // button_DataMapper_FileClear
             // 
             this.button_DataMapper_FileClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileClear.Location = new System.Drawing.Point(100, 571);
+            this.button_DataMapper_FileClear.Location = new System.Drawing.Point(231, 552);
             this.button_DataMapper_FileClear.Name = "button_DataMapper_FileClear";
             this.button_DataMapper_FileClear.Size = new System.Drawing.Size(97, 28);
             this.button_DataMapper_FileClear.TabIndex = 51;
@@ -468,7 +593,7 @@ namespace TbManagementTool
             // button_DataMapper_FileCreate
             // 
             this.button_DataMapper_FileCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_FileCreate.Location = new System.Drawing.Point(203, 572);
+            this.button_DataMapper_FileCreate.Location = new System.Drawing.Point(231, 586);
             this.button_DataMapper_FileCreate.Name = "button_DataMapper_FileCreate";
             this.button_DataMapper_FileCreate.Size = new System.Drawing.Size(97, 28);
             this.button_DataMapper_FileCreate.TabIndex = 50;
@@ -1185,6 +1310,11 @@ namespace TbManagementTool
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox_DataMapper_Quantity);
+            this.groupBox1.Controls.Add(this.comboBox_DataMapper_Quantity);
+            this.groupBox1.Controls.Add(this.label_DataMapper_QuantityOr);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButton2_DataMapper_RecordType);
             this.groupBox1.Controls.Add(this.radioButton1_DataMapper_RecordType);
             this.groupBox1.Controls.Add(this.comboBox_DataMapper_RaffleEndNumber);
@@ -1227,6 +1357,55 @@ namespace TbManagementTool
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // checkBox_DataMapper_Quantity
+            // 
+            this.checkBox_DataMapper_Quantity.AutoSize = true;
+            this.checkBox_DataMapper_Quantity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_DataMapper_Quantity.Location = new System.Drawing.Point(11, 535);
+            this.checkBox_DataMapper_Quantity.Name = "checkBox_DataMapper_Quantity";
+            this.checkBox_DataMapper_Quantity.Size = new System.Drawing.Size(56, 23);
+            this.checkBox_DataMapper_Quantity.TabIndex = 58;
+            this.checkBox_DataMapper_Quantity.Text = "Qty:";
+            this.checkBox_DataMapper_Quantity.UseVisualStyleBackColor = true;
+            // 
+            // comboBox_DataMapper_Quantity
+            // 
+            this.comboBox_DataMapper_Quantity.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_Quantity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_Quantity.Enabled = false;
+            this.comboBox_DataMapper_Quantity.FormattingEnabled = true;
+            this.comboBox_DataMapper_Quantity.Location = new System.Drawing.Point(170, 535);
+            this.comboBox_DataMapper_Quantity.Name = "comboBox_DataMapper_Quantity";
+            this.comboBox_DataMapper_Quantity.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_Quantity.TabIndex = 57;
+            // 
+            // label_DataMapper_QuantityOr
+            // 
+            this.label_DataMapper_QuantityOr.AutoSize = true;
+            this.label_DataMapper_QuantityOr.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_DataMapper_QuantityOr.Location = new System.Drawing.Point(133, 536);
+            this.label_DataMapper_QuantityOr.Name = "label_DataMapper_QuantityOr";
+            this.label_DataMapper_QuantityOr.Size = new System.Drawing.Size(31, 19);
+            this.label_DataMapper_QuantityOr.TabIndex = 56;
+            this.label_DataMapper_QuantityOr.Text = "Or:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(90, 535);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(39, 23);
+            this.textBox1.TabIndex = 54;
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(6, 473);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(323, 1);
+            this.label1.TabIndex = 53;
+            // 
             // radioButton2_DataMapper_RecordType
             // 
             this.radioButton2_DataMapper_RecordType.AutoSize = true;
@@ -1256,7 +1435,7 @@ namespace TbManagementTool
             this.comboBox_DataMapper_RaffleEndNumber.BackColor = System.Drawing.SystemColors.Window;
             this.comboBox_DataMapper_RaffleEndNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_DataMapper_RaffleEndNumber.FormattingEnabled = true;
-            this.comboBox_DataMapper_RaffleEndNumber.Location = new System.Drawing.Point(170, 571);
+            this.comboBox_DataMapper_RaffleEndNumber.Location = new System.Drawing.Point(170, 577);
             this.comboBox_DataMapper_RaffleEndNumber.Name = "comboBox_DataMapper_RaffleEndNumber";
             this.comboBox_DataMapper_RaffleEndNumber.Size = new System.Drawing.Size(130, 23);
             this.comboBox_DataMapper_RaffleEndNumber.TabIndex = 45;
@@ -1266,7 +1445,7 @@ namespace TbManagementTool
             this.comboBox_DataMapper_RaffleStartNumber.BackColor = System.Drawing.SystemColors.Window;
             this.comboBox_DataMapper_RaffleStartNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_DataMapper_RaffleStartNumber.FormattingEnabled = true;
-            this.comboBox_DataMapper_RaffleStartNumber.Location = new System.Drawing.Point(170, 542);
+            this.comboBox_DataMapper_RaffleStartNumber.Location = new System.Drawing.Point(170, 493);
             this.comboBox_DataMapper_RaffleStartNumber.Name = "comboBox_DataMapper_RaffleStartNumber";
             this.comboBox_DataMapper_RaffleStartNumber.Size = new System.Drawing.Size(130, 23);
             this.comboBox_DataMapper_RaffleStartNumber.TabIndex = 44;
@@ -1275,7 +1454,7 @@ namespace TbManagementTool
             // 
             this.label_DataMapper_RaffleStartNumber.AutoSize = true;
             this.label_DataMapper_RaffleStartNumber.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_DataMapper_RaffleStartNumber.Location = new System.Drawing.Point(11, 543);
+            this.label_DataMapper_RaffleStartNumber.Location = new System.Drawing.Point(11, 494);
             this.label_DataMapper_RaffleStartNumber.Name = "label_DataMapper_RaffleStartNumber";
             this.label_DataMapper_RaffleStartNumber.Size = new System.Drawing.Size(135, 19);
             this.label_DataMapper_RaffleStartNumber.TabIndex = 42;
@@ -1285,7 +1464,7 @@ namespace TbManagementTool
             // 
             this.label_DataMapper_RaffleEndNumber.AutoSize = true;
             this.label_DataMapper_RaffleEndNumber.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_DataMapper_RaffleEndNumber.Location = new System.Drawing.Point(11, 572);
+            this.label_DataMapper_RaffleEndNumber.Location = new System.Drawing.Point(11, 578);
             this.label_DataMapper_RaffleEndNumber.Name = "label_DataMapper_RaffleEndNumber";
             this.label_DataMapper_RaffleEndNumber.Size = new System.Drawing.Size(127, 19);
             this.label_DataMapper_RaffleEndNumber.TabIndex = 43;
@@ -1617,25 +1796,27 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
-            // label_DataMapper_
+            // button_DataMapper_ToMiScan
             // 
-            this.label_DataMapper_.AutoSize = true;
-            this.label_DataMapper_.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_DataMapper_.Location = new System.Drawing.Point(11, 395);
-            this.label_DataMapper_.Name = "label_DataMapper_";
-            this.label_DataMapper_.Size = new System.Drawing.Size(104, 19);
-            this.label_DataMapper_.TabIndex = 12;
-            this.label_DataMapper_.Text = "Replace or Fill";
+            this.button_DataMapper_ToMiScan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_DataMapper_ToMiScan.Location = new System.Drawing.Point(128, 692);
+            this.button_DataMapper_ToMiScan.Name = "button_DataMapper_ToMiScan";
+            this.button_DataMapper_ToMiScan.Size = new System.Drawing.Size(97, 28);
+            this.button_DataMapper_ToMiScan.TabIndex = 41;
+            this.button_DataMapper_ToMiScan.Text = "To MiScan";
+            this.button_DataMapper_ToMiScan.UseVisualStyleBackColor = true;
+            this.button_DataMapper_ToMiScan.Click += new System.EventHandler(this.button_DataMapper_ToMiScan_Click);
             // 
-            // comboBox_DataMapper_Replace
+            // checkBox_DataMapper_ClientFieldsIncluded
             // 
-            this.comboBox_DataMapper_Replace.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox_DataMapper_Replace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_DataMapper_Replace.FormattingEnabled = true;
-            this.comboBox_DataMapper_Replace.Location = new System.Drawing.Point(11, 417);
-            this.comboBox_DataMapper_Replace.Name = "comboBox_DataMapper_Replace";
-            this.comboBox_DataMapper_Replace.Size = new System.Drawing.Size(130, 23);
-            this.comboBox_DataMapper_Replace.TabIndex = 13;
+            this.checkBox_DataMapper_ClientFieldsIncluded.AutoSize = true;
+            this.checkBox_DataMapper_ClientFieldsIncluded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_DataMapper_ClientFieldsIncluded.Location = new System.Drawing.Point(9, 695);
+            this.checkBox_DataMapper_ClientFieldsIncluded.Name = "checkBox_DataMapper_ClientFieldsIncluded";
+            this.checkBox_DataMapper_ClientFieldsIncluded.Size = new System.Drawing.Size(114, 23);
+            this.checkBox_DataMapper_ClientFieldsIncluded.TabIndex = 42;
+            this.checkBox_DataMapper_ClientFieldsIncluded.Text = "Client Fields?";
+            this.checkBox_DataMapper_ClientFieldsIncluded.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1704,9 +1885,9 @@ namespace TbManagementTool
         private System.Windows.Forms.ComboBox comboBox_DataMapper_OrganisationName;
         private System.Windows.Forms.ComboBox comboBox_DataMapper_ClientName;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox comboBox3_DataMapper_Barcode;
-        private System.Windows.Forms.ComboBox comboBox2_DataMapper_Barcode;
-        private System.Windows.Forms.ComboBox comboBox1_DataMapper_Barcode;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_Barcode3;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_Barcode2;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_Barcode1;
         private System.Windows.Forms.TextBox textBox2_DataMapper_Primkey;
         private System.Windows.Forms.ComboBox comboBox_DataMapper_Primkey;
         private System.Windows.Forms.TextBox textBox1_DataMapper_Primkey;
@@ -1805,7 +1986,22 @@ namespace TbManagementTool
         private System.Windows.Forms.RadioButton radioButton2_DataMapper_RecordType;
         private System.Windows.Forms.RadioButton radioButton1_DataMapper_RecordType;
         private System.Windows.Forms.ComboBox comboBox_DataMapper_Replace;
-        private System.Windows.Forms.Label label_DataMapper_;
+        private System.Windows.Forms.TextBox textBox2_DataMapper_Replace;
+        private System.Windows.Forms.Label label_DataMapper_ReplaceTo;
+        private System.Windows.Forms.TextBox textBox1_DataMapper_Replace;
+        private System.Windows.Forms.Label label_DataMapper_ReplaceFrom;
+        private System.Windows.Forms.Label label2_DataMapper_Divider;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_RemoveDuplicate;
+        private System.Windows.Forms.CheckBox checkBox_DataMapper_Replace;
+        private System.Windows.Forms.CheckBox checkBox_DataMapper_RemoveDuplicate;
+        private System.Windows.Forms.Label label1_DataMapper_Divider;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_Quantity;
+        private System.Windows.Forms.Label label_DataMapper_QuantityOr;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox checkBox_DataMapper_Quantity;
+        private System.Windows.Forms.Button button_DataMapper_ToMiScan;
+        private System.Windows.Forms.CheckBox checkBox_DataMapper_ClientFieldsIncluded;
     }
 }
 

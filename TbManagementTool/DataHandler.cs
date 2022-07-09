@@ -160,72 +160,28 @@ namespace TbManagementTool
             return currentStr;
         }
 
-        public static void comboBoxProcess(TabControl tabControl_Main, object dataSource, string Exception = "")
-        {
-            //Iterates through tabpages from main tabcontrol
-            foreach (Control tab in tabControl_Main.TabPages)
-            {
-                TabPage tabPage = (TabPage)tab;
-                //Selected TabPage
-                if (tabControl_Main.SelectedTab.Name == tabPage.Name)
-                {
-                    //Groupboxes
-                    foreach (Control group in tabPage.Controls)
-                    {
-                        //Group Items
-                        foreach (Control item in group.Controls)
-                        {
-                            //Select comboBoxes only
-                            if (item.GetType().Name == "ComboBox")
-                            {
-                                ComboBox comboBox = (ComboBox)item;
 
-                                //If one comboBox has different datasource
-                                if (Exception != "")
-                                {
-                                    if (item.Name == Exception)
-                                    {
-                                        dataSourceBinder(ref comboBox, dataSource);
-                                    }
-                                }
-                                else
-                                {
-                                    dataSourceBinder(ref comboBox, dataSource);
-                                }
-
-
-                            }
-
-                        }
-
-                    }
-
-                }
-            }
-
-
-        }
-        private static void dataSourceBinder(ref ComboBox comboBox, object dataSource)
+        public static void dataSourceBinder(ComboBox comboBox, object dataSource)
         {
             if (dataSource.GetType().Name == "String[]")
             {
-                strArrayToComboBox(ref comboBox, dataSource);
+                strArrayToComboBox(comboBox, dataSource);
                 reSizeStrArrayComboBox(comboBox);
             }
             if (dataSource.GetType().Name == "OrderedEnumerable`2")
             {
-                iOrderedEnmKeyValueToComboBox(ref comboBox, dataSource);
+                iOrderedEnmKeyValueToComboBox(comboBox, dataSource);
                 reSizestrArrayComboBox(comboBox);
             }
         }
-        private static void strArrayToComboBox(ref ComboBox comboBox, object dataSource)
+        private static void strArrayToComboBox(ComboBox comboBox, object dataSource)
         {
             //Binds datasource string[]
             comboBox.BindingContext = new BindingContext();
             comboBox.DataSource = new BindingSource(dataSource, null);
         }
 
-        private static void iOrderedEnmKeyValueToComboBox(ref ComboBox comboBox, object dataSource)
+        private static void iOrderedEnmKeyValueToComboBox(ComboBox comboBox, object dataSource)
         {
             //Binds datasource keyValuePairs
             comboBox.BindingContext = new BindingContext();
@@ -267,25 +223,28 @@ namespace TbManagementTool
             lstView.CheckBoxes = true;
         }
 
-        public static string join3Str(string str1 = "", string str2 = "", string str3 = "", string delimiter = " ")
+        public static IEnumerable<Control> ienumControlList(Control control, System.Type type)
         {
-            string addLine = "";
+            //ENLIST ALL CONTROL OF TYPE WITHIN CONTROL
+            var controls = control.Controls.Cast<Control>();
 
-            if(str1 != "")
-            {
-                addLine += delimiter + str1;
-            }
-            if (str2 != "")
-            {
-                addLine += delimiter + str2;
-            }
-            if (str3 != "")
-            {
-                addLine += delimiter + str3;
-            }
-
-            return addLine.Replace("  ", " ").TrimStart().TrimEnd();
+            return controls.SelectMany(ctrl => ienumControlList(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
         }
 
+        public static bool allColumnsExist(DataTable dt_import, DataTable dt_export)
+        {
+            //CHECKS IF ALL COLUMNS FROM ONE DT_IMPORT EXIST IN ANOTHER DT_EXPORT
+            bool allExist = true;
+            foreach(DataColumn column_import in dt_import.Columns)
+            {
+                if (!dt_export.Columns.Contains(column_import.ColumnName))
+                {
+                    allExist = false;
+                }
+            }
+            return allExist;
+        }
     }
 }
