@@ -414,10 +414,48 @@ namespace TbManagementTool
                         row_export["RaffleStartNumber"] = row_import.Field<string>(comboBox_DataMapper_RaffleStartNumber.Text);
                     }
 
-                    //RaffleStartNumber
+                    //RaffleEndNumber
                     if (comboBox_DataMapper_RaffleEndNumber.Text != "")
                     {
                         row_export["RaffleEndNumber"] = row_import.Field<string>(comboBox_DataMapper_RaffleEndNumber.Text);
+                    }
+                    else if (checkBox_DataMapper_RaffleQuantity.Checked)
+                    {
+                        if(comboBox_DataMapper_RaffleStartNumber.Text != "")
+                        {
+                            //IF NUMERICUPDOWN
+                            int bookSize = Convert.ToInt16(numericUpDown_DataMapper_RaffleQuantity.Value);
+                            if (bookSize > 0 & comboBox_DataMapper_RaffleQuantity.Text == "")
+                            {
+                                int val;
+                                if (int.TryParse(row_import.Field<string>(comboBox_DataMapper_RaffleStartNumber.Text), out val))
+                                {
+                                    row_export["RaffleEndNumber"] = (val + bookSize - 1).ToString();
+                                }
+                                else
+                                {
+                                    row_export["RaffleEndNumber"] = "";
+                                }
+                            }
+                            //IF COMBOBOX
+                            else if (comboBox_DataMapper_RaffleQuantity.Text != "")
+                            {
+                                int val;
+                                if (int.TryParse(row_import.Field<string>(comboBox_DataMapper_RaffleStartNumber.Text), out val))
+                                {
+                                    int val2;
+                                    if (int.TryParse(row_import.Field<string>(comboBox_DataMapper_RaffleQuantity.Text), out val2))
+                                    {
+                                        row_export["RaffleEndNumber"] = (val + val2 - 1).ToString();
+                                    }
+                                }
+                                else
+                                {
+                                    row_export["RaffleEndNumber"] = "";
+                                }
+                            }
+                        }
+                        
                     }
 
                     //RecordType
@@ -661,6 +699,8 @@ namespace TbManagementTool
         private void checkBox_DataMapper_Replace_CheckedChanged(object sender, EventArgs e)
         {
             comboBox_DataMapper_Replace.Enabled = (checkBox_DataMapper_Replace.Checked == true ? true : false);
+            textBox1_DataMapper_Replace.Enabled = (checkBox_DataMapper_Replace.Checked == true ? true : false);
+            textBox2_DataMapper_Replace.Enabled = (checkBox_DataMapper_Replace.Checked == true ? true : false);
         }
 
         private void button_DataMapper_ToMiScan_Click(object sender, EventArgs e)
@@ -772,6 +812,12 @@ namespace TbManagementTool
             
             //Default settings
             DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
+        }
+
+        private void checkBox_DataMapper_Quantity_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox_DataMapper_RaffleQuantity.Enabled = (checkBox_DataMapper_RaffleQuantity.Checked == true ? true : false);
+            numericUpDown_DataMapper_RaffleQuantity.Enabled = (checkBox_DataMapper_RaffleQuantity.Checked == true ? true : false);
         }
     }
 }

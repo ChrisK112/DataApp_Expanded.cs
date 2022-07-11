@@ -32,6 +32,8 @@ namespace TbManagementTool
             this.tabControl_Main = new System.Windows.Forms.TabControl();
             this.tabPage_DataMapper = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox_DataMapper_ClientFieldsIncluded = new System.Windows.Forms.CheckBox();
+            this.button_DataMapper_ToMiScan = new System.Windows.Forms.Button();
             this.checkBox_DataMapper_Replace = new System.Windows.Forms.CheckBox();
             this.checkBox_DataMapper_RemoveDuplicate = new System.Windows.Forms.CheckBox();
             this.comboBox_DataMapper_RemoveDuplicate = new System.Windows.Forms.ComboBox();
@@ -134,10 +136,9 @@ namespace TbManagementTool
             this.comboBox_DataMapper_AddressLine1 = new System.Windows.Forms.ComboBox();
             this.comboBox_DataMapper_ClientData1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox_DataMapper_Quantity = new System.Windows.Forms.CheckBox();
-            this.comboBox_DataMapper_Quantity = new System.Windows.Forms.ComboBox();
+            this.checkBox_DataMapper_RaffleQuantity = new System.Windows.Forms.CheckBox();
+            this.comboBox_DataMapper_RaffleQuantity = new System.Windows.Forms.ComboBox();
             this.label_DataMapper_QuantityOr = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton2_DataMapper_RecordType = new System.Windows.Forms.RadioButton();
             this.radioButton1_DataMapper_RecordType = new System.Windows.Forms.RadioButton();
@@ -179,8 +180,7 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
-            this.button_DataMapper_ToMiScan = new System.Windows.Forms.Button();
-            this.checkBox_DataMapper_ClientFieldsIncluded = new System.Windows.Forms.CheckBox();
+            this.numericUpDown_DataMapper_RaffleQuantity = new System.Windows.Forms.NumericUpDown();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -188,6 +188,7 @@ namespace TbManagementTool
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RaffleQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl_Main
@@ -239,6 +240,28 @@ namespace TbManagementTool
             this.groupBox5.TabIndex = 24;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
+            // 
+            // checkBox_DataMapper_ClientFieldsIncluded
+            // 
+            this.checkBox_DataMapper_ClientFieldsIncluded.AutoSize = true;
+            this.checkBox_DataMapper_ClientFieldsIncluded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_DataMapper_ClientFieldsIncluded.Location = new System.Drawing.Point(9, 695);
+            this.checkBox_DataMapper_ClientFieldsIncluded.Name = "checkBox_DataMapper_ClientFieldsIncluded";
+            this.checkBox_DataMapper_ClientFieldsIncluded.Size = new System.Drawing.Size(114, 23);
+            this.checkBox_DataMapper_ClientFieldsIncluded.TabIndex = 42;
+            this.checkBox_DataMapper_ClientFieldsIncluded.Text = "Client Fields?";
+            this.checkBox_DataMapper_ClientFieldsIncluded.UseVisualStyleBackColor = true;
+            // 
+            // button_DataMapper_ToMiScan
+            // 
+            this.button_DataMapper_ToMiScan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_DataMapper_ToMiScan.Location = new System.Drawing.Point(128, 692);
+            this.button_DataMapper_ToMiScan.Name = "button_DataMapper_ToMiScan";
+            this.button_DataMapper_ToMiScan.Size = new System.Drawing.Size(97, 28);
+            this.button_DataMapper_ToMiScan.TabIndex = 41;
+            this.button_DataMapper_ToMiScan.Text = "To MiScan";
+            this.button_DataMapper_ToMiScan.UseVisualStyleBackColor = true;
+            this.button_DataMapper_ToMiScan.Click += new System.EventHandler(this.button_DataMapper_ToMiScan_Click);
             // 
             // checkBox_DataMapper_Replace
             // 
@@ -1310,10 +1333,10 @@ namespace TbManagementTool
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox_DataMapper_Quantity);
-            this.groupBox1.Controls.Add(this.comboBox_DataMapper_Quantity);
+            this.groupBox1.Controls.Add(this.numericUpDown_DataMapper_RaffleQuantity);
+            this.groupBox1.Controls.Add(this.checkBox_DataMapper_RaffleQuantity);
+            this.groupBox1.Controls.Add(this.comboBox_DataMapper_RaffleQuantity);
             this.groupBox1.Controls.Add(this.label_DataMapper_QuantityOr);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButton2_DataMapper_RecordType);
             this.groupBox1.Controls.Add(this.radioButton1_DataMapper_RecordType);
@@ -1357,27 +1380,28 @@ namespace TbManagementTool
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // checkBox_DataMapper_Quantity
+            // checkBox_DataMapper_RaffleQuantity
             // 
-            this.checkBox_DataMapper_Quantity.AutoSize = true;
-            this.checkBox_DataMapper_Quantity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox_DataMapper_Quantity.Location = new System.Drawing.Point(11, 535);
-            this.checkBox_DataMapper_Quantity.Name = "checkBox_DataMapper_Quantity";
-            this.checkBox_DataMapper_Quantity.Size = new System.Drawing.Size(56, 23);
-            this.checkBox_DataMapper_Quantity.TabIndex = 58;
-            this.checkBox_DataMapper_Quantity.Text = "Qty:";
-            this.checkBox_DataMapper_Quantity.UseVisualStyleBackColor = true;
+            this.checkBox_DataMapper_RaffleQuantity.AutoSize = true;
+            this.checkBox_DataMapper_RaffleQuantity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_DataMapper_RaffleQuantity.Location = new System.Drawing.Point(11, 535);
+            this.checkBox_DataMapper_RaffleQuantity.Name = "checkBox_DataMapper_RaffleQuantity";
+            this.checkBox_DataMapper_RaffleQuantity.Size = new System.Drawing.Size(56, 23);
+            this.checkBox_DataMapper_RaffleQuantity.TabIndex = 58;
+            this.checkBox_DataMapper_RaffleQuantity.Text = "Qty:";
+            this.checkBox_DataMapper_RaffleQuantity.UseVisualStyleBackColor = true;
+            this.checkBox_DataMapper_RaffleQuantity.CheckedChanged += new System.EventHandler(this.checkBox_DataMapper_Quantity_CheckedChanged);
             // 
-            // comboBox_DataMapper_Quantity
+            // comboBox_DataMapper_RaffleQuantity
             // 
-            this.comboBox_DataMapper_Quantity.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox_DataMapper_Quantity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_DataMapper_Quantity.Enabled = false;
-            this.comboBox_DataMapper_Quantity.FormattingEnabled = true;
-            this.comboBox_DataMapper_Quantity.Location = new System.Drawing.Point(170, 535);
-            this.comboBox_DataMapper_Quantity.Name = "comboBox_DataMapper_Quantity";
-            this.comboBox_DataMapper_Quantity.Size = new System.Drawing.Size(130, 23);
-            this.comboBox_DataMapper_Quantity.TabIndex = 57;
+            this.comboBox_DataMapper_RaffleQuantity.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_RaffleQuantity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_RaffleQuantity.Enabled = false;
+            this.comboBox_DataMapper_RaffleQuantity.FormattingEnabled = true;
+            this.comboBox_DataMapper_RaffleQuantity.Location = new System.Drawing.Point(170, 535);
+            this.comboBox_DataMapper_RaffleQuantity.Name = "comboBox_DataMapper_RaffleQuantity";
+            this.comboBox_DataMapper_RaffleQuantity.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_RaffleQuantity.TabIndex = 57;
             // 
             // label_DataMapper_QuantityOr
             // 
@@ -1388,14 +1412,6 @@ namespace TbManagementTool
             this.label_DataMapper_QuantityOr.Size = new System.Drawing.Size(31, 19);
             this.label_DataMapper_QuantityOr.TabIndex = 56;
             this.label_DataMapper_QuantityOr.Text = "Or:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(90, 535);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(39, 23);
-            this.textBox1.TabIndex = 54;
             // 
             // label1
             // 
@@ -1796,27 +1812,12 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
-            // button_DataMapper_ToMiScan
+            // numericUpDown_DataMapper_RaffleQuantity
             // 
-            this.button_DataMapper_ToMiScan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_DataMapper_ToMiScan.Location = new System.Drawing.Point(128, 692);
-            this.button_DataMapper_ToMiScan.Name = "button_DataMapper_ToMiScan";
-            this.button_DataMapper_ToMiScan.Size = new System.Drawing.Size(97, 28);
-            this.button_DataMapper_ToMiScan.TabIndex = 41;
-            this.button_DataMapper_ToMiScan.Text = "To MiScan";
-            this.button_DataMapper_ToMiScan.UseVisualStyleBackColor = true;
-            this.button_DataMapper_ToMiScan.Click += new System.EventHandler(this.button_DataMapper_ToMiScan_Click);
-            // 
-            // checkBox_DataMapper_ClientFieldsIncluded
-            // 
-            this.checkBox_DataMapper_ClientFieldsIncluded.AutoSize = true;
-            this.checkBox_DataMapper_ClientFieldsIncluded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox_DataMapper_ClientFieldsIncluded.Location = new System.Drawing.Point(9, 695);
-            this.checkBox_DataMapper_ClientFieldsIncluded.Name = "checkBox_DataMapper_ClientFieldsIncluded";
-            this.checkBox_DataMapper_ClientFieldsIncluded.Size = new System.Drawing.Size(114, 23);
-            this.checkBox_DataMapper_ClientFieldsIncluded.TabIndex = 42;
-            this.checkBox_DataMapper_ClientFieldsIncluded.Text = "Client Fields?";
-            this.checkBox_DataMapper_ClientFieldsIncluded.UseVisualStyleBackColor = true;
+            this.numericUpDown_DataMapper_RaffleQuantity.Location = new System.Drawing.Point(73, 535);
+            this.numericUpDown_DataMapper_RaffleQuantity.Name = "numericUpDown_DataMapper_RaffleQuantity";
+            this.numericUpDown_DataMapper_RaffleQuantity.Size = new System.Drawing.Size(49, 23);
+            this.numericUpDown_DataMapper_RaffleQuantity.TabIndex = 43;
             // 
             // Form1
             // 
@@ -1843,6 +1844,7 @@ namespace TbManagementTool
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RaffleQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1996,12 +1998,12 @@ namespace TbManagementTool
         private System.Windows.Forms.CheckBox checkBox_DataMapper_RemoveDuplicate;
         private System.Windows.Forms.Label label1_DataMapper_Divider;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox_DataMapper_Quantity;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_RaffleQuantity;
         private System.Windows.Forms.Label label_DataMapper_QuantityOr;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox_DataMapper_Quantity;
+        private System.Windows.Forms.CheckBox checkBox_DataMapper_RaffleQuantity;
         private System.Windows.Forms.Button button_DataMapper_ToMiScan;
         private System.Windows.Forms.CheckBox checkBox_DataMapper_ClientFieldsIncluded;
+        private System.Windows.Forms.NumericUpDown numericUpDown_DataMapper_RaffleQuantity;
     }
 }
 
