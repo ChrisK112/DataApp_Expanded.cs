@@ -7,26 +7,21 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Text.RegularExpressions;
+using System;
 
 namespace TbManagementTool
 {
     class DataHandler
     {
-        public static DataTable excelToDt(string fileName)
-        {
-            DataTable dt = new DataTable();
-            return dt;
-        }
-
         public static DataTable flatToDt(string fileName)
         {
+            //READS FLAT FILES INTO DATATABLE
             string fileExtention = Path.GetExtension(fileName);
             DataTable dt = new DataTable();
 
             GenericParserAdapter parser = new GenericParserAdapter(fileName);
             parser.SetDataSource(fileName, Encoding.UTF8);
+
             if (Path.GetExtension(fileName) == ".txt")
             {
                 parser.ColumnDelimiter = '|';
@@ -43,24 +38,6 @@ namespace TbManagementTool
             parser.Close();
             return dt;
         }
-        public static DataTable fileToDt(string fileName)
-        {
-            string fileExtention = Path.GetExtension(fileName);
-            DataTable dt = new DataTable();
-
-            if (fileExtention == ".csv" || fileExtention == ".txt")
-            {
-                dt = flatToDt(fileName);
-            }
-
-            if (fileExtention == ".xls" || fileExtention == ".xlsx")
-            {
-                dt = excelToDt(fileName);
-            }
-            return dt;
-
-        }
-
 
         public static System.Linq.IOrderedEnumerable<System.Collections.Generic.KeyValuePair<string, string>> CharityNamesPairs()
         {
@@ -107,13 +84,13 @@ namespace TbManagementTool
 
         }
 
-        public static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier = "")
+        private static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier="")
         {
             //CONVERTS DATATABLE INTO A LIST<STRING>
             List<string> lines = new List<string>();
             string[] arrayColNames = dt.Columns.Cast<DataColumn>().Select(col => col.ColumnName).ToArray();
 
-            string strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().Replace(qualifier == "" ? "*" : qualifier, "")}{qualifier}"));
+            string strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().Replace(qualifier,"")}{qualifier}"));
             lines.Add(strColNames);
 
             EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString()}{qualifier}")));
@@ -142,15 +119,15 @@ namespace TbManagementTool
 
         public static string StrRenamingFromDsTableName(System.Data.DataSet ds, string str = "")
         {
-            //Dynamically renames strings if already exist
-            str = (str == "") ? "Data" : Path.GetFileNameWithoutExtension(str);
+            //DYNAMICALLY RENAMES STRING IF ALREADY EXIST
+            str = (str == "") ? $"Data_{DateTime.Now.ToString("ddMMyyyy")}" : Path.GetFileNameWithoutExtension(str);
 
             return intAutoIncrement(ds, str, str, 0);
         }
 
         public static string intAutoIncrement(System.Data.DataSet ds, string currentStr, string OriginalStr, int count)
         {
-            //Dynamically increase integer count if already exist
+            //DYNAMICALLY INCREASE INTEGER COUNT IF ALREADY EXIST
             if (ds.Tables.Contains(currentStr))
             {
                 count++;
@@ -163,6 +140,7 @@ namespace TbManagementTool
 
         public static void dataSourceBinder(ComboBox comboBox, object dataSource)
         {
+            //ASSIGNS DATASOURCE BASED ON THE DATASOURCE TYPE
             if (dataSource.GetType().Name == "String[]")
             {
                 strArrayToComboBox(comboBox, dataSource);
@@ -176,14 +154,14 @@ namespace TbManagementTool
         }
         private static void strArrayToComboBox(ComboBox comboBox, object dataSource)
         {
-            //Binds datasource string[]
+            //BINDS DATASOURCE string[]
             comboBox.BindingContext = new BindingContext();
             comboBox.DataSource = new BindingSource(dataSource, null);
         }
 
         private static void iOrderedEnmKeyValueToComboBox(ComboBox comboBox, object dataSource)
         {
-            //Binds datasource keyValuePairs
+            //BINDS DATASOURCE keyValuePairs{}
             comboBox.BindingContext = new BindingContext();
             comboBox.DataSource = new BindingSource(dataSource, null);
             comboBox.DisplayMember = "Value";
@@ -192,7 +170,7 @@ namespace TbManagementTool
 
         private static void reSizeStrArrayComboBox(ComboBox comboBox)
         {
-            //Resizes Combobox based on the longest item name to string[] datasource
+            //RESIZES COMBOBOX BASED ON THE LONGEST ITEM FOR  string[] DATASOURCE
             float lSize = 0;
             Graphics comboBoxGraphic = comboBox.CreateGraphics();
             for (int n = 0; n < comboBox.Items.Count; n++)
@@ -210,13 +188,13 @@ namespace TbManagementTool
         }
         private static void reSizestrArrayComboBox(ComboBox comboBox)
         {
-            //Resizes Combobox regardless of the datasource
+            //RESIZES COMBOBOX REGARDLESS OF THE DATASOURCE
             comboBox.DropDownWidth = 300;
         }
 
         public static void addItemToListView(ListView lstView, string name, DataTable dt)
         {
-            //Add new item to the listview
+            //ADDS NEW ITEM TO THE LISTVIEW
             ListViewItem item = new ListViewItem(name);
             item.SubItems.Add($"{dt.Rows.Count:N0}");
             lstView.Items.Add(item);
