@@ -207,6 +207,8 @@ namespace TbManagementTool
                 if (dataInUse != "")
                 {                    
                     string joinedStr = ""; /*This is use below to join addressLines and Barcode comboboxes*/
+                    int rowCount = 0; /*This is to split the data if the count is higher than  100k rows*/
+
                     foreach (DataRow row_import in dataset.Tables[dataInUse].Rows)
                     {
                         DataRow row_export = dt.NewRow();
@@ -320,7 +322,14 @@ namespace TbManagementTool
                         //Country
                         if (comboBox_DataMapper_Country.Text != "")
                         {
-                            row_export["Country"] = row_import.Field<string>(comboBox_DataMapper_Country.Text);
+                            if(row_import.Field<string>(comboBox_DataMapper_Country.Text) == "")
+                            {
+                                row_export["Country"] = "United Kingdom";
+                            }
+                            else
+                            {
+                                row_export["Country"] = row_import.Field<string>(comboBox_DataMapper_Country.Text);
+                            }
                         }
                         else
                         {
@@ -358,7 +367,11 @@ namespace TbManagementTool
                         }
 
                         //PackageCode
-                        if (comboBox_DataMapper_PackageCode.Text != "")
+                        if (checkBox_DataMapper_UniquePackageCode.Checked)
+                        {
+                            row_export["PackageCode"] = textBox_DataMapper_UniquePackageCode.Text;
+                        }
+                        else if (comboBox_DataMapper_PackageCode.Text != "")
                         {
                             row_export["PackageCode"] = row_import.Field<string>(comboBox_DataMapper_PackageCode.Text);
                         }
@@ -608,8 +621,34 @@ namespace TbManagementTool
                         }
 
                         dt.Rows.Add(row_export);
+                        rowCount += 1;
+
+                        //SPLIT DATA IF OVER 100K ROWS
+                        if(rowCount == 99999)
+                        {
+                            //DATA NAME
+                            string dt_name_temp = textBox_DataMapper_AppealCode.Text == "" ? "" : $"{textBox_DataMapper_AppealCode.Text}_{textBox3_DataMapper_Primkey.Text}";
+                            dt.TableName = DataHandler.StrRenamingFromDsTableName(dataset, dt_name_temp);
+
+                            //REMOVES DUPLICATES FROM TABLE
+                            if (checkBox_DataMapper_RemoveDuplicate.Checked)
+                            {
+                                string colDuplicateSelected = comboBox_DataMapper_RemoveDuplicate.Text == "" ? "Primkey" : comboBox_DataMapper_RemoveDuplicate.Text;
+                                DataHandler.dtRemoveDuplicateRows(ref dt, colDuplicateSelected);
+                            }
+
+                            dataset.Tables.Add(dt);
+
+                            //Add new item to the listview
+                            DataHandler.addItemToListView(listView_DataMapper, dt.TableName, dt);
+
+                            //RESET DATATABLE AND COUNT
+                            dt = DataTableFactory.DtCgSpec();
+                            rowCount = 0;
+                        }
                     }
 
+                    //DATA NAME
                     string dt_name = textBox_DataMapper_AppealCode.Text == "" ? "" : $"{textBox_DataMapper_AppealCode.Text}_{textBox3_DataMapper_Primkey.Text}";
                     dt.TableName = DataHandler.StrRenamingFromDsTableName(dataset, dt_name);
 
@@ -624,6 +663,10 @@ namespace TbManagementTool
 
                     //Add new item to the listview
                     DataHandler.addItemToListView(listView_DataMapper, dt.TableName, dt);
+
+                    //RESET DATATABLE AND COUNT
+                    dt = DataTableFactory.DtCgSpec();
+                    rowCount = 0;
 
                 }
                 else
@@ -673,27 +716,6 @@ namespace TbManagementTool
             }
 
         }
-        private void button_DataMapper_FileSave_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog fileDestination = new SaveFileDialog();
-            fileDestination.Filter = "Text(Tab delimited) (*.txt) |*.txt| CSV (Comma delimited) (*.csv) |*.csv";
-            fileDestination.InitialDirectory = Path.GetDirectoryName(fileSearch.FileName);
-            if (fileDestination.ShowDialog() == DialogResult.OK)
-            {
-                foreach (ListViewItem lstItem in listView_DataMapper.Items)
-                {
-                    //Saves selected
-                    if (lstItem.Checked)
-                    {
-                        DataHandler.DtToFlat(dataset.Tables[lstItem.Text], fileDestination.FileName);
-                    }
-                }
-            }
-
-            //Default settings
-            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
-
-        }
 
         private void comboBox_DataMapper_ClientName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -709,13 +731,6 @@ namespace TbManagementTool
         private void checkBox_DataMapper_RemoveDuplicate_CheckedChanged(object sender, EventArgs e)
         {
             comboBox_DataMapper_RemoveDuplicate.Enabled = (checkBox_DataMapper_RemoveDuplicate.Checked == true ? true : false);
-        }
-
-        private void checkBox_DataMapper_Replace_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBox_DataMapper_Replace.Enabled = (checkBox_DataMapper_Replace.Checked == true ? true : false);
-            textBox1_DataMapper_Replace.Enabled = (checkBox_DataMapper_Replace.Checked == true ? true : false);
-            textBox2_DataMapper_Replace.Enabled = (checkBox_DataMapper_Replace.Checked == true ? true : false);
         }
 
         private void button_DataMapper_ToMiScan_Click(object sender, EventArgs e)
@@ -858,6 +873,69 @@ namespace TbManagementTool
         private void button_DataMapper_Word_Click(object sender, EventArgs e)
         {
             WordHandler.dtToWord(dataset.Tables[dataInUse]);
+        }
+
+        private void comboBox_DataMapper_RemoveDuplicate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox_DataMapper_UniquePackageCode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_DataMapper_UniquePackageCode.Checked)
+            {
+                textBox_DataMapper_UniquePackageCode.Enabled = true;
+            }
+            else
+            {
+                textBox_DataMapper_UniquePackageCode.Text = "";
+                textBox_DataMapper_UniquePackageCode.Enabled = false;
+            }
+        }
+
+        private void button_DataMapper_FileSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDestination = new SaveFileDialog();
+            fileDestination.Filter = "Text(Tab delimited) (*.txt) |*.txt| CSV (Comma delimited) (*.csv) |*.csv";
+            fileDestination.InitialDirectory = Path.GetDirectoryName(fileSearch.FileName);
+
+            //Check how many files are checked
+            lstItemsCheckedCount = listView_DataMapper.Items.OfType<ListViewItem>().Where(x => x.Checked).Count();
+
+            if (fileDestination.ShowDialog() == DialogResult.OK)
+            {
+                foreach (ListViewItem lstItem in listView_DataMapper.Items)
+                {
+                    //Saves selected
+                    if (lstItem.Checked)
+                    {
+                        MessageBox.Show(fileDestination.InitialDirectory);
+                        DataHandler.DtToFlat(dataset.Tables[lstItem.Text], fileDestination.FileName);
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            FolderBrowserDialog directory = new FolderBrowserDialog();
+
+            if (directory.ShowDialog() == DialogResult.OK)
+            {
+                foreach (ListViewItem lstItem in listView_DataMapper.Items)
+                {
+                    //Saves selected
+                    if (lstItem.Checked)
+                    {
+                        MessageBox.Show(directory.SelectedPath + "//" + lstItem.Text);
+                        DataHandler.DtToFlat(dataset.Tables[lstItem.Text], directory.SelectedPath + "//" + lstItem.Text);
+                    }
+                }
+            }
+
+            //Default settings
+            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
         }
     }
 }

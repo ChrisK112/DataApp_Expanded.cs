@@ -84,7 +84,7 @@ namespace TbManagementTool
 
         }
 
-        private static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier="")
+        public static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier="")
         {
             //CONVERTS DATATABLE INTO A LIST<STRING>
             List<string> lines = new List<string>();
@@ -224,5 +224,6 @@ namespace TbManagementTool
             }
             return allExist;
         }
+
     }
 }
