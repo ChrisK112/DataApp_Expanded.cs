@@ -1,0 +1,13 @@
+Primkey|PersonRef|ClientName|AddedBy|AddedDateTime|Title|FirstName|MiddleName|Surname|Salutation|AddressLine1|AddressLine2|AddressLine3|TownCity|County|Postcode|Country|OrganisationName|TelephoneNumber|MobileNumber|EmailAddress|AppealCode|PackageCode|Deceased|Goneaway|NoFurtherCommunication|PreloadedCAFNumber|ColdURN|ImportFile|RaffleStartNumber|RaffleEndNumber|RecordType|GiftAid|Campaign|PhonePreference|MailPreference|EmailPreference|SMSPreference|ThirdPartyPreference|Barcode|ClientData1|ClientData2|ClientData3|ClientData4|ClientData5|ClientData6|ClientData7|ClientData8|ClientData9|ClientData10
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||
+|||Admin|28/07/2022||||||||||||United Kingdom|||||||0|0|0||||||Warm|Unknown||Unknown|Unknown|Unknown|Unknown|Unknown|||||||||||

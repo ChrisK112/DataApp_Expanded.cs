@@ -84,13 +84,24 @@ namespace TbManagementTool
 
         }
 
-        public static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier="")
+        private static List<string> dtToListStr(DataTable dt, char delimiter, string qualifier="")
         {
             //CONVERTS DATATABLE INTO A LIST<STRING>
             List<string> lines = new List<string>();
             string[] arrayColNames = dt.Columns.Cast<DataColumn>().Select(col => col.ColumnName).ToArray();
+            string strColNames = "";
 
-            string strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().Replace(qualifier,"")}{qualifier}"));
+            if (qualifier == "")
+            {
+                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString()}{qualifier}"));
+
+            }
+            else
+            {
+                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().Replace(qualifier, "")}{qualifier}"));
+
+            }
+
             lines.Add(strColNames);
 
             EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString()}{qualifier}")));
@@ -117,24 +128,50 @@ namespace TbManagementTool
             }
         }
 
-        public static string StrRenamingFromDsTableName(System.Data.DataSet ds, string str = "")
+        public static string dtStrRename(System.Data.DataSet ds, string str = "")
         {
-            //DYNAMICALLY RENAMES STRING IF ALREADY EXIST
+            //DYNAMICALLY RENAMES DT IF ALREADY EXIST
             str = (str == "") ? $"Data_{DateTime.Now.ToString("ddMMyyyy")}" : Path.GetFileNameWithoutExtension(str);
 
-            return intAutoIncrement(ds, str, str, 0);
+            List<string> dsTables = new List<string>();
+
+            foreach (System.Data.DataTable dt in ds.Tables)
+            {
+                dsTables.Add(dt.TableName);
+            }
+
+            return intAutoIncrement(dsTables, str, str, 0);
         }
 
-        public static string intAutoIncrement(System.Data.DataSet ds, string currentStr, string OriginalStr, int count)
+        public static string intAutoIncrement(List<string> lst, string currentStr, string OriginalStr, int count)
         {
             //DYNAMICALLY INCREASE INTEGER COUNT IF ALREADY EXIST
-            if (ds.Tables.Contains(currentStr))
+            foreach(string item in lst)
             {
-                count++;
-                currentStr = intAutoIncrement(ds, OriginalStr + $"({count})", OriginalStr, count);
+                if(item == currentStr)
+                {
+                    count++;
+                    currentStr = intAutoIncrement(lst, OriginalStr + $"({count})", OriginalStr, count);
+
+                }
+            }
+
+            return currentStr;
+        }
+
+        public static string dirLstStrRename(string dir, string fileName)
+        {
+            //DYNAMICALLY RENAMES FULL FILE PATH IF ALREADY EXIST
+            string[] dirFiles = Directory.GetFiles(dir);
+            List<string> fileLst = new List<string>();
+
+            foreach (string dirFile in dirFiles)
+            {
+                string dirFileName = Path.GetFileNameWithoutExtension(dirFile);
+                fileLst.Add(dirFileName);
 
             }
-            return currentStr;
+            return intAutoIncrement(fileLst, fileName, fileName, 0); ;
         }
 
 
@@ -211,7 +248,7 @@ namespace TbManagementTool
                                       .Where(c => c.GetType() == type);
         }
 
-        public static bool allColumnsExist(DataTable dt_import, DataTable dt_export)
+        public static bool allColumnsExist(System.Data.DataTable dt_import, System.Data.DataTable dt_export)
         {
             //CHECKS IF ALL COLUMNS FROM ONE DT_IMPORT EXIST IN ANOTHER DT_EXPORT
             bool allExist = true;
@@ -223,6 +260,22 @@ namespace TbManagementTool
                 }
             }
             return allExist;
+        }
+
+        public static void comboBoxFiller(System.Data.DataTable dt_import, System.Data.DataTable dt_export)
+        {
+            string[] dirFiles = Directory.GetFiles("xx");
+        }
+
+        public static string[] preSetTableList()
+        {
+
+            string sourceDir = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string targetDir = Path.GetFullPath(Path.Combine(sourceDir, @"../../../../Dependencies\\Tables Templates"));
+            string[] dirFiles = Directory.GetFiles(targetDir).Cast<string>().Select(x => Path.GetFileNameWithoutExtension(x.ToString())).ToArray();
+
+            return dirFiles;
+            
         }
 
     }

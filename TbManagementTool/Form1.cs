@@ -41,7 +41,7 @@ namespace TbManagementTool
 
                         if (fileExtention == ".csv" || fileExtention == ".txt")
                         {
-                            string dtName = DataHandler.StrRenamingFromDsTableName(dataset, file); 
+                            string dtName = DataHandler.dtStrRename(dataset, file); 
                             DataTable dt = DataHandler.flatToDt(file);
                             dt.TableName = dtName;
                             dataset.Tables.Add(dt);
@@ -100,17 +100,22 @@ namespace TbManagementTool
 
                                 //GET COMBOBOXES
                                 IEnumerable<Control> comboBoxLst = DataHandler.ienumControlList(tabpage, typeof(ComboBox));
+                                
 
                                 foreach (ComboBox comboBox in comboBoxLst)
                                 {
                                     //BIND DATA SOURCES
-                                    if (comboBox.Name == "comboBox_DataMapper_ClientName")
+                                    if (comboBox.Name == "comboBox_DataMapper_ClientNameList")
                                     {
                                         DataHandler.dataSourceBinder(comboBox, charityNames);
                                     }
                                     else if (comboBox.Name == "comboBox_DataMapper_RemoveDuplicate" || comboBox.Name == "comboBox_DataMapper_Replace")
                                     {
                                         DataHandler.dataSourceBinder(comboBox, colNames_Cg);
+                                    }
+                                    else if (comboBox.Name == "comboBox_DataMapper_AppealCodeList")
+                                    {
+
                                     }
                                     else
                                     {
@@ -170,7 +175,7 @@ namespace TbManagementTool
             if (lstItemsCheckedCount > 1)
             {
                 DataTable dt = new DataTable();
-                string dtName = DataHandler.StrRenamingFromDsTableName(dataset);
+                string dtName = DataHandler.dtStrRename(dataset);
 
                 foreach (ListViewItem lstItem in listView_DataMapper.Items)
                 {
@@ -226,9 +231,9 @@ namespace TbManagementTool
                         }
 
                         //ClientName
-                        if (comboBox_DataMapper_ClientName.Text != "")
+                        if (comboBox_DataMapper_ClientNameList.Text != "")
                         {
-                            row_export["ClientName"] = comboBox_DataMapper_ClientName.Text;
+                            row_export["ClientName"] = comboBox_DataMapper_ClientNameList.Text;
                         }
 
                         //AddedBy
@@ -628,7 +633,7 @@ namespace TbManagementTool
                         {
                             //DATA NAME
                             string dt_name_temp = textBox_DataMapper_AppealCode.Text == "" ? "" : $"{textBox_DataMapper_AppealCode.Text}_{textBox3_DataMapper_Primkey.Text}";
-                            dt.TableName = DataHandler.StrRenamingFromDsTableName(dataset, dt_name_temp);
+                            dt.TableName = DataHandler.dtStrRename(dataset, dt_name_temp);
 
                             //REMOVES DUPLICATES FROM TABLE
                             if (checkBox_DataMapper_RemoveDuplicate.Checked)
@@ -650,7 +655,7 @@ namespace TbManagementTool
 
                     //DATA NAME
                     string dt_name = textBox_DataMapper_AppealCode.Text == "" ? "" : $"{textBox_DataMapper_AppealCode.Text}_{textBox3_DataMapper_Primkey.Text}";
-                    dt.TableName = DataHandler.StrRenamingFromDsTableName(dataset, dt_name);
+                    dt.TableName = DataHandler.dtStrRename(dataset, dt_name);
 
                     //REMOVES DUPLICATES FROM TABLE
                     if (checkBox_DataMapper_RemoveDuplicate.Checked)
@@ -719,7 +724,8 @@ namespace TbManagementTool
 
         private void comboBox_DataMapper_ClientName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBox1_DataMapper_Primkey.Text = ((KeyValuePair<string,string>) comboBox_DataMapper_ClientName.SelectedItem).Key;
+            textBox1_DataMapper_Primkey.Text = ((KeyValuePair<string,string>) comboBox_DataMapper_ClientNameList.SelectedItem).Key;
+
         }
 
         private void textBox_DataMapper_AppealCode_TextChanged(object sender, EventArgs e)
@@ -822,7 +828,7 @@ namespace TbManagementTool
                             }
 
                             //Adds new datatable
-                            string dtName = DataHandler.StrRenamingFromDsTableName(dataset);
+                            string dtName = DataHandler.dtStrRename(dataset);
                             dt_export.TableName = dtName;
                             dataset.Tables.Add(dt_export);
 
@@ -870,16 +876,6 @@ namespace TbManagementTool
             }
         }
 
-        private void button_DataMapper_Word_Click(object sender, EventArgs e)
-        {
-            WordHandler.dtToWord(dataset.Tables[dataInUse]);
-        }
-
-        private void comboBox_DataMapper_RemoveDuplicate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void checkBox_DataMapper_UniquePackageCode_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_DataMapper_UniquePackageCode.Checked)
@@ -893,49 +889,52 @@ namespace TbManagementTool
             }
         }
 
-        private void button_DataMapper_FileSave_Click(object sender, EventArgs e)
+        private void button_DataMapper_FileSaveTxt_Click(object sender, EventArgs e)
         {
-            SaveFileDialog fileDestination = new SaveFileDialog();
-            fileDestination.Filter = "Text(Tab delimited) (*.txt) |*.txt| CSV (Comma delimited) (*.csv) |*.csv";
-            fileDestination.InitialDirectory = Path.GetDirectoryName(fileSearch.FileName);
+            FolderBrowserDialog dir = new FolderBrowserDialog();
 
-            //Check how many files are checked
-            lstItemsCheckedCount = listView_DataMapper.Items.OfType<ListViewItem>().Where(x => x.Checked).Count();
-
-            if (fileDestination.ShowDialog() == DialogResult.OK)
+            if (dir.ShowDialog() == DialogResult.OK)
             {
                 foreach (ListViewItem lstItem in listView_DataMapper.Items)
                 {
-                    //Saves selected
+                    //CHECKS IF SELECTED
                     if (lstItem.Checked)
+                    {                        
+                        string fileName = DataHandler.dirLstStrRename(dir.SelectedPath, lstItem.Text);
+                        string fileDir = dir.SelectedPath + "\\" + fileName + ".txt";
+                        DataHandler.DtToFlat(dataset.Tables[lstItem.Text], fileDir);
+                    }
+                    else
                     {
-                        MessageBox.Show(fileDestination.InitialDirectory);
-                        DataHandler.DtToFlat(dataset.Tables[lstItem.Text], fileDestination.FileName);
+                        MessageBox.Show("Please select a file");
                     }
                 }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_DataMapper_FileSaveCsv_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog dir = new FolderBrowserDialog();
 
-            FolderBrowserDialog directory = new FolderBrowserDialog();
-
-            if (directory.ShowDialog() == DialogResult.OK)
+            if (dir.ShowDialog() == DialogResult.OK)
             {
                 foreach (ListViewItem lstItem in listView_DataMapper.Items)
                 {
-                    //Saves selected
+                    //CHECKS IF SELECTED
                     if (lstItem.Checked)
                     {
-                        MessageBox.Show(directory.SelectedPath + "//" + lstItem.Text);
-                        DataHandler.DtToFlat(dataset.Tables[lstItem.Text], directory.SelectedPath + "//" + lstItem.Text);
+                        string fileName = DataHandler.dirLstStrRename(dir.SelectedPath, lstItem.Text);
+                        string fileDir = dir.SelectedPath + "\\" + fileName + ".csv";
+                        MessageBox.Show(fileName);
+                        MessageBox.Show(fileDir);
+                        DataHandler.DtToFlat(dataset.Tables[lstItem.Text], fileDir);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a file");
                     }
                 }
             }
-
-            //Default settings
-            DataHandler.clearListViewCheckedBoxes(ref listView_DataMapper, dataInUse);
         }
     }
 }
