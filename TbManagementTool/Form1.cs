@@ -212,7 +212,9 @@ namespace TbManagementTool
                 if (dataInUse != "")
                 {                    
                     string joinedStr = ""; /*This is use below to join addressLines and Barcode comboboxes*/
-                    int rowCount = 0; /*This is to split the data if the count is higher than  100k rows*/
+                    int currentRowsCount = 0; /*This is to split the data if the count is higher than  100k rows*/
+                    int totalRowsCount = dataset.Tables[dataInUse].Rows.Count;
+                    bool notToManeTablesCreated = (int)numericUpDown_DataMapper_RowLimit.Value >= (totalRowsCount * 0.5) ? true : false;
 
                     foreach (DataRow row_import in dataset.Tables[dataInUse].Rows)
                     {
@@ -231,9 +233,9 @@ namespace TbManagementTool
                         }
 
                         //ClientName
-                        if (comboBox_DataMapper_ClientNameList.Text != "")
+                        if (comboBox_DataMapper_ClientName.Text != "")
                         {
-                            row_export["ClientName"] = comboBox_DataMapper_ClientNameList.Text;
+                            row_export["ClientName"] = comboBox_DataMapper_ClientName.Text;
                         }
 
                         //AddedBy
@@ -626,31 +628,36 @@ namespace TbManagementTool
                         }
 
                         dt.Rows.Add(row_export);
-                        rowCount += 1;
+                        currentRowsCount += 1;
 
                         //SPLIT DATA IF OVER 100K ROWS
-                        if(rowCount == 99999)
-                        {
-                            //DATA NAME
-                            string dt_name_temp = textBox_DataMapper_AppealCode.Text == "" ? "" : $"{textBox_DataMapper_AppealCode.Text}_{textBox3_DataMapper_Primkey.Text}";
-                            dt.TableName = DataHandler.dtStrRename(dataset, dt_name_temp);
+                        if (checkBox_DataMapper_RowLimit.Checked)
+                        {                          
 
-                            //REMOVES DUPLICATES FROM TABLE
-                            if (checkBox_DataMapper_RemoveDuplicate.Checked)
+                            if (currentRowsCount == numericUpDown_DataMapper_RowLimit.Value && notToManeTablesCreated)
                             {
-                                string colDuplicateSelected = comboBox_DataMapper_RemoveDuplicate.Text == "" ? "Primkey" : comboBox_DataMapper_RemoveDuplicate.Text;
-                                DataHandler.dtRemoveDuplicateRows(ref dt, colDuplicateSelected);
+                                //DATA NAME
+                                string dt_name_temp = textBox_DataMapper_AppealCode.Text == "" ? "" : $"{textBox_DataMapper_AppealCode.Text}_{textBox3_DataMapper_Primkey.Text}";
+                                dt.TableName = DataHandler.dtStrRename(dataset, dt_name_temp);
+
+                                //REMOVES DUPLICATES FROM TABLE
+                                if (checkBox_DataMapper_RemoveDuplicate.Checked)
+                                {
+                                    string colDuplicateSelected = comboBox_DataMapper_RemoveDuplicate.Text == "" ? "Primkey" : comboBox_DataMapper_RemoveDuplicate.Text;
+                                    DataHandler.dtRemoveDuplicateRows(ref dt, colDuplicateSelected);
+                                }
+
+                                dataset.Tables.Add(dt);
+
+                                //Add new item to the listview
+                                DataHandler.addItemToListView(listView_DataMapper, dt.TableName, dt);
+
+                                //RESET DATATABLE AND COUNT
+                                dt = DataTableFactory.DtCgSpec();
+                                currentRowsCount = 0;
                             }
-
-                            dataset.Tables.Add(dt);
-
-                            //Add new item to the listview
-                            DataHandler.addItemToListView(listView_DataMapper, dt.TableName, dt);
-
-                            //RESET DATATABLE AND COUNT
-                            dt = DataTableFactory.DtCgSpec();
-                            rowCount = 0;
                         }
+                        
                     }
 
                     //DATA NAME
@@ -671,7 +678,7 @@ namespace TbManagementTool
 
                     //RESET DATATABLE AND COUNT
                     dt = DataTableFactory.DtCgSpec();
-                    rowCount = 0;
+                    currentRowsCount = 0;
 
                 }
                 else
@@ -724,7 +731,7 @@ namespace TbManagementTool
 
         private void comboBox_DataMapper_ClientName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBox1_DataMapper_Primkey.Text = ((KeyValuePair<string,string>) comboBox_DataMapper_ClientNameList.SelectedItem).Key;
+            textBox1_DataMapper_Primkey.Text = ((KeyValuePair<string,string>) comboBox_DataMapper_ClientName.SelectedItem).Key;
 
         }
 
@@ -935,6 +942,11 @@ namespace TbManagementTool
                     }
                 }
             }
+        }
+
+        private void checkBox_DataMapper_RowLimit_CheckedChanged(object sender, EventArgs e)
+        {
+            numericUpDown_DataMapper_RowLimit.Enabled = (checkBox_DataMapper_RowLimit.Checked == true ? true : false);
         }
     }
 }

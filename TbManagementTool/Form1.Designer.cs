@@ -32,8 +32,7 @@ namespace TbManagementTool
             this.tabControl_Main = new System.Windows.Forms.TabControl();
             this.tabPage_DataMapper = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label_DataMapper_AppealCodeList = new System.Windows.Forms.Label();
-            this.comboBox_DataMapper_AppealCodeList = new System.Windows.Forms.ComboBox();
+            this.checkBox_DataMapper_RowLimit = new System.Windows.Forms.CheckBox();
             this.button_DataMapper_FileSaveCsv = new System.Windows.Forms.Button();
             this.button_DataMapper_FileSaveTxt = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,8 +53,6 @@ namespace TbManagementTool
             this.columnHeader1_DataMapper_FileName = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2_DataMapper_RecordsCount = new System.Windows.Forms.ColumnHeader();
             this.button_DataMapper_FileLoad = new System.Windows.Forms.Button();
-            this.label_DataMapper_ClientNameList = new System.Windows.Forms.Label();
-            this.comboBox_DataMapper_ClientNameList = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label_DataMapper_Primkey = new System.Windows.Forms.Label();
             this.label_DataMapper_Barcode = new System.Windows.Forms.Label();
@@ -138,7 +135,6 @@ namespace TbManagementTool
             this.comboBox_DataMapper_ClientData1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label_DataMapper_ClientName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.numericUpDown_DataMapper_RaffleQuantity = new System.Windows.Forms.NumericUpDown();
             this.checkBox_DataMapper_RaffleQuantity = new System.Windows.Forms.CheckBox();
             this.comboBox_DataMapper_RaffleQuantity = new System.Windows.Forms.ComboBox();
@@ -159,6 +155,7 @@ namespace TbManagementTool
             this.label_DataMapper_MiddleName = new System.Windows.Forms.Label();
             this.textBox_DataMapper_AppealCode = new System.Windows.Forms.TextBox();
             this.textBox_DataMapper_Campaign = new System.Windows.Forms.TextBox();
+            this.comboBox_DataMapper_ClientName = new System.Windows.Forms.ComboBox();
             this.label_DataMapper_Title = new System.Windows.Forms.Label();
             this.label_DataMapper_Salutation = new System.Windows.Forms.Label();
             this.comboBox_DataMapper_Surname = new System.Windows.Forms.ComboBox();
@@ -182,6 +179,7 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
+            this.numericUpDown_DataMapper_RowLimit = new System.Windows.Forms.NumericUpDown();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -190,6 +188,7 @@ namespace TbManagementTool
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RaffleQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RowLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl_Main
@@ -219,8 +218,8 @@ namespace TbManagementTool
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label_DataMapper_AppealCodeList);
-            this.groupBox5.Controls.Add(this.comboBox_DataMapper_AppealCodeList);
+            this.groupBox5.Controls.Add(this.numericUpDown_DataMapper_RowLimit);
+            this.groupBox5.Controls.Add(this.checkBox_DataMapper_RowLimit);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileSaveCsv);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileSaveTxt);
             this.groupBox5.Controls.Add(this.label3);
@@ -239,8 +238,6 @@ namespace TbManagementTool
             this.groupBox5.Controls.Add(this.button_DataMapper_FileDelete);
             this.groupBox5.Controls.Add(this.listView_DataMapper);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileLoad);
-            this.groupBox5.Controls.Add(this.label_DataMapper_ClientNameList);
-            this.groupBox5.Controls.Add(this.comboBox_DataMapper_ClientNameList);
             this.groupBox5.Location = new System.Drawing.Point(1039, 6);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(334, 726);
@@ -248,25 +245,17 @@ namespace TbManagementTool
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
             // 
-            // label_DataMapper_AppealCodeList
+            // checkBox_DataMapper_RowLimit
             // 
-            this.label_DataMapper_AppealCodeList.AutoSize = true;
-            this.label_DataMapper_AppealCodeList.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_DataMapper_AppealCodeList.Location = new System.Drawing.Point(15, 54);
-            this.label_DataMapper_AppealCodeList.Name = "label_DataMapper_AppealCodeList";
-            this.label_DataMapper_AppealCodeList.Size = new System.Drawing.Size(92, 19);
-            this.label_DataMapper_AppealCodeList.TabIndex = 59;
-            this.label_DataMapper_AppealCodeList.Text = "AppealCode";
-            // 
-            // comboBox_DataMapper_AppealCodeList
-            // 
-            this.comboBox_DataMapper_AppealCodeList.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox_DataMapper_AppealCodeList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_DataMapper_AppealCodeList.FormattingEnabled = true;
-            this.comboBox_DataMapper_AppealCodeList.Location = new System.Drawing.Point(198, 53);
-            this.comboBox_DataMapper_AppealCodeList.Name = "comboBox_DataMapper_AppealCodeList";
-            this.comboBox_DataMapper_AppealCodeList.Size = new System.Drawing.Size(130, 23);
-            this.comboBox_DataMapper_AppealCodeList.TabIndex = 60;
+            this.checkBox_DataMapper_RowLimit.AutoSize = true;
+            this.checkBox_DataMapper_RowLimit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_DataMapper_RowLimit.Location = new System.Drawing.Point(9, 221);
+            this.checkBox_DataMapper_RowLimit.Name = "checkBox_DataMapper_RowLimit";
+            this.checkBox_DataMapper_RowLimit.Size = new System.Drawing.Size(152, 23);
+            this.checkBox_DataMapper_RowLimit.TabIndex = 59;
+            this.checkBox_DataMapper_RowLimit.Text = "Row Limit Per File:";
+            this.checkBox_DataMapper_RowLimit.UseVisualStyleBackColor = true;
+            this.checkBox_DataMapper_RowLimit.CheckedChanged += new System.EventHandler(this.checkBox_DataMapper_RowLimit_CheckedChanged);
             // 
             // button_DataMapper_FileSaveCsv
             // 
@@ -470,27 +459,6 @@ namespace TbManagementTool
             this.button_DataMapper_FileLoad.Text = "Load Form";
             this.button_DataMapper_FileLoad.UseVisualStyleBackColor = true;
             this.button_DataMapper_FileLoad.Click += new System.EventHandler(this.button_DataMapper_FileLoad_Click);
-            // 
-            // label_DataMapper_ClientNameList
-            // 
-            this.label_DataMapper_ClientNameList.AutoSize = true;
-            this.label_DataMapper_ClientNameList.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_DataMapper_ClientNameList.Location = new System.Drawing.Point(15, 25);
-            this.label_DataMapper_ClientNameList.Name = "label_DataMapper_ClientNameList";
-            this.label_DataMapper_ClientNameList.Size = new System.Drawing.Size(87, 19);
-            this.label_DataMapper_ClientNameList.TabIndex = 0;
-            this.label_DataMapper_ClientNameList.Text = "ClientName";
-            // 
-            // comboBox_DataMapper_ClientNameList
-            // 
-            this.comboBox_DataMapper_ClientNameList.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox_DataMapper_ClientNameList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_DataMapper_ClientNameList.FormattingEnabled = true;
-            this.comboBox_DataMapper_ClientNameList.Location = new System.Drawing.Point(198, 24);
-            this.comboBox_DataMapper_ClientNameList.Name = "comboBox_DataMapper_ClientNameList";
-            this.comboBox_DataMapper_ClientNameList.Size = new System.Drawing.Size(130, 23);
-            this.comboBox_DataMapper_ClientNameList.TabIndex = 10;
-            this.comboBox_DataMapper_ClientNameList.SelectedIndexChanged += new System.EventHandler(this.comboBox_DataMapper_ClientName_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -1353,7 +1321,6 @@ namespace TbManagementTool
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label_DataMapper_ClientName);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.numericUpDown_DataMapper_RaffleQuantity);
             this.groupBox1.Controls.Add(this.checkBox_DataMapper_RaffleQuantity);
             this.groupBox1.Controls.Add(this.comboBox_DataMapper_RaffleQuantity);
@@ -1374,6 +1341,7 @@ namespace TbManagementTool
             this.groupBox1.Controls.Add(this.label_DataMapper_MiddleName);
             this.groupBox1.Controls.Add(this.textBox_DataMapper_AppealCode);
             this.groupBox1.Controls.Add(this.textBox_DataMapper_Campaign);
+            this.groupBox1.Controls.Add(this.comboBox_DataMapper_ClientName);
             this.groupBox1.Controls.Add(this.label_DataMapper_Title);
             this.groupBox1.Controls.Add(this.label_DataMapper_Salutation);
             this.groupBox1.Controls.Add(this.comboBox_DataMapper_Surname);
@@ -1408,13 +1376,6 @@ namespace TbManagementTool
             this.label_DataMapper_ClientName.Size = new System.Drawing.Size(87, 19);
             this.label_DataMapper_ClientName.TabIndex = 59;
             this.label_DataMapper_ClientName.Text = "ClientName";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(170, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 23);
-            this.textBox1.TabIndex = 60;
             // 
             // numericUpDown_DataMapper_RaffleQuantity
             // 
@@ -1604,6 +1565,17 @@ namespace TbManagementTool
             this.textBox_DataMapper_Campaign.Name = "textBox_DataMapper_Campaign";
             this.textBox_DataMapper_Campaign.Size = new System.Drawing.Size(130, 23);
             this.textBox_DataMapper_Campaign.TabIndex = 31;
+            // 
+            // comboBox_DataMapper_ClientName
+            // 
+            this.comboBox_DataMapper_ClientName.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_ClientName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_ClientName.FormattingEnabled = true;
+            this.comboBox_DataMapper_ClientName.Location = new System.Drawing.Point(170, 36);
+            this.comboBox_DataMapper_ClientName.Name = "comboBox_DataMapper_ClientName";
+            this.comboBox_DataMapper_ClientName.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_ClientName.TabIndex = 10;
+            this.comboBox_DataMapper_ClientName.SelectedIndexChanged += new System.EventHandler(this.comboBox_DataMapper_ClientName_SelectedIndexChanged);
             // 
             // label_DataMapper_Title
             // 
@@ -1834,6 +1806,19 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
+            // numericUpDown_DataMapper_RowLimit
+            // 
+            this.numericUpDown_DataMapper_RowLimit.Enabled = false;
+            this.numericUpDown_DataMapper_RowLimit.Location = new System.Drawing.Point(198, 221);
+            this.numericUpDown_DataMapper_RowLimit.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown_DataMapper_RowLimit.Name = "numericUpDown_DataMapper_RowLimit";
+            this.numericUpDown_DataMapper_RowLimit.Size = new System.Drawing.Size(130, 23);
+            this.numericUpDown_DataMapper_RowLimit.TabIndex = 61;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1860,6 +1845,7 @@ namespace TbManagementTool
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RaffleQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RowLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1900,7 +1886,7 @@ namespace TbManagementTool
         private System.Windows.Forms.ComboBox comboBox_DataMapper_PersonRef;
         private System.Windows.Forms.ComboBox comboBox_DataMapper_PackageCode;
         private System.Windows.Forms.ComboBox comboBox_DataMapper_OrganisationName;
-        private System.Windows.Forms.ComboBox comboBox_DataMapper_ClientNameList;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_ClientName;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox comboBox_DataMapper_Barcode3;
         private System.Windows.Forms.ComboBox comboBox_DataMapper_Barcode2;
@@ -1928,7 +1914,6 @@ namespace TbManagementTool
         private System.Windows.Forms.Label label_DataMapper_Salutation;
         private System.Windows.Forms.Label label_DataMapper_FirstName;
         private System.Windows.Forms.Label label_DataMapper_Surname;
-        private System.Windows.Forms.Label label_DataMapper_ClientNameList;
         private System.Windows.Forms.Label label_DataMapper_PersonRef;
         private System.Windows.Forms.Label label_DataMapper_AppealCode;
         private System.Windows.Forms.Label label_DataMapper_PackageCode;
@@ -2016,10 +2001,9 @@ namespace TbManagementTool
         private System.Windows.Forms.ComboBox comboBox_DataMapper_RemoveDuplicate;
         private System.Windows.Forms.Button button_DataMapper_FileSaveTxt;
         private System.Windows.Forms.Button button_DataMapper_FileSaveCsv;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label_DataMapper_ClientName;
-        private System.Windows.Forms.Label label_DataMapper_AppealCodeList;
-        private System.Windows.Forms.ComboBox comboBox_DataMapper_AppealCodeList;
+        private System.Windows.Forms.CheckBox checkBox_DataMapper_RowLimit;
+        private System.Windows.Forms.NumericUpDown numericUpDown_DataMapper_RowLimit;
     }
 }
 
