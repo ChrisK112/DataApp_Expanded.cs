@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "TbManagementTool/1.0.0": {
+      "TbManagementTool_NiggiVersion/1.0.0": {
         "dependencies": {
           "GenericParsing": "1.1.5.29274"
         },
         "runtime": {
-          "TbManagementTool.dll": {}
+          "TbManagementTool_NiggiVersion.dll": {}
         }
       },
       "GenericParsing/1.1.5.29274": {
@@ -25,7 +25,7 @@
     }
   },
   "libraries": {
-    "TbManagementTool/1.0.0": {
+    "TbManagementTool_NiggiVersion/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

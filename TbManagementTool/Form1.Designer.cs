@@ -29,9 +29,11 @@ namespace TbManagementTool
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl_Main = new System.Windows.Forms.TabControl();
             this.tabPage_DataMapper = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_DataMapper_RowLimit = new System.Windows.Forms.NumericUpDown();
             this.checkBox_DataMapper_RowLimit = new System.Windows.Forms.CheckBox();
             this.button_DataMapper_FileSaveCsv = new System.Windows.Forms.Button();
             this.button_DataMapper_FileSaveTxt = new System.Windows.Forms.Button();
@@ -179,16 +181,15 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
-            this.numericUpDown_DataMapper_RowLimit = new System.Windows.Forms.NumericUpDown();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RowLimit)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RaffleQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RowLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl_Main
@@ -244,6 +245,19 @@ namespace TbManagementTool
             this.groupBox5.TabIndex = 24;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
+            // 
+            // numericUpDown_DataMapper_RowLimit
+            // 
+            this.numericUpDown_DataMapper_RowLimit.Enabled = false;
+            this.numericUpDown_DataMapper_RowLimit.Location = new System.Drawing.Point(198, 221);
+            this.numericUpDown_DataMapper_RowLimit.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown_DataMapper_RowLimit.Name = "numericUpDown_DataMapper_RowLimit";
+            this.numericUpDown_DataMapper_RowLimit.Size = new System.Drawing.Size(130, 23);
+            this.numericUpDown_DataMapper_RowLimit.TabIndex = 61;
             // 
             // checkBox_DataMapper_RowLimit
             // 
@@ -1806,19 +1820,6 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
-            // numericUpDown_DataMapper_RowLimit
-            // 
-            this.numericUpDown_DataMapper_RowLimit.Enabled = false;
-            this.numericUpDown_DataMapper_RowLimit.Location = new System.Drawing.Point(198, 221);
-            this.numericUpDown_DataMapper_RowLimit.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown_DataMapper_RowLimit.Name = "numericUpDown_DataMapper_RowLimit";
-            this.numericUpDown_DataMapper_RowLimit.Size = new System.Drawing.Size(130, 23);
-            this.numericUpDown_DataMapper_RowLimit.TabIndex = 61;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1829,13 +1830,15 @@ namespace TbManagementTool
             this.Controls.Add(this.button_DataMapper_Import);
             this.Controls.Add(this.textBox1_DataMapper_FileName);
             this.Controls.Add(this.button_DataMapper_FileSearch);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1400, 800);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Setup";
             this.tabControl_Main.ResumeLayout(false);
             this.tabPage_DataMapper.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RowLimit)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -1845,7 +1848,6 @@ namespace TbManagementTool
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RaffleQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataMapper_RowLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

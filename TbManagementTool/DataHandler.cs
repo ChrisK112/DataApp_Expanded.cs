@@ -93,18 +93,18 @@ namespace TbManagementTool
 
             if (qualifier == "")
             {
-                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString()}{qualifier}"));
+                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace("\t","").Replace("\r", "").Replace("\n", "")}{qualifier}"));
 
             }
             else
             {
-                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().Replace(qualifier, "")}{qualifier}"));
+                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace(qualifier, "").Replace("\t", "").Replace("\r", "").Replace("\n", "")}{qualifier}"));
 
             }
 
             lines.Add(strColNames);
 
-            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString()}{qualifier}")));
+            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace("\t", "").Replace("\r", "").Replace("\n", "")}{qualifier}")));
             lines.AddRange(strData);
 
             return lines;
