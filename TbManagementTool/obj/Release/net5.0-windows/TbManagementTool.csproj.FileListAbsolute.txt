@@ -8,7 +8,6 @@ C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-wi
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\TbManagementTool_NiggiVersion.pdb
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\GenericParsing.dll
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\GenericParsing.xml
-C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.csproj.AssemblyReference.cache
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\Interop.Microsoft.Office.Interop.Word.dll
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.csproj.ResolveComReference.cache
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.Form1.resources
