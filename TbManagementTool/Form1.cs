@@ -633,6 +633,30 @@ namespace TbManagementTool
                                     row_export["ClientData10"] = row_import.Field<string>(comboBox_DataMapper_ClientData10.Text);
                                 }
 
+                                //MembershipStartDate
+                                if (comboBox_DataMapper_MembershipStartDate.Text != "")
+                                {
+                                    row_export["MembershipStartDate"] = row_import.Field<string>(comboBox_DataMapper_MembershipStartDate.Text);
+                                }
+
+                                //MembershipEndDate
+                                if (comboBox_DataMapper_MembershipEndDate.Text != "")
+                                {
+                                    row_export["MembershipEndDate"] = row_import.Field<string>(comboBox_DataMapper_MembershipEndDate.Text);
+                                }
+
+                                //MembershipStatus
+                                if (comboBox_DataMapper_MembershipStatus.Text != "")
+                                {
+                                    row_export["MembershipStatus"] = row_import.Field<string>(comboBox_DataMapper_MembershipStatus.Text);
+                                }
+
+                                //MembershipType
+                                if (comboBox_DataMapper_MembershipType.Text != "")
+                                {
+                                    row_export["MembershipType"] = row_import.Field<string>(comboBox_DataMapper_MembershipType.Text);
+                                }
+
                                 dt.Rows.Add(row_export);
                                 currentRowsCount += 1;
 

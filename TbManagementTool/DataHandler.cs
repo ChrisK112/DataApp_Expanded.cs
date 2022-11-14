@@ -98,7 +98,7 @@ namespace TbManagementTool
             }
             else
             {
-                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace(qualifier, "").Replace("\t", "").Replace("\r", "").Replace("\n", "")}{qualifier}"));
+                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace(qualifier, "").Replace("\t", "").Replace("\r", "").Replace("\n", "").Replace("|","")}{qualifier}"));
 
             }
 

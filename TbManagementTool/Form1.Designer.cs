@@ -67,7 +67,6 @@ namespace TbManagementTool
             this.comboBox_DataMapper_Barcode2 = new System.Windows.Forms.ComboBox();
             this.comboBox_DataMapper_Barcode1 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1_DataMapper_Divider = new System.Windows.Forms.Label();
             this.label_DataMapper_ThirdPartyPreference = new System.Windows.Forms.Label();
             this.label_DataMapper_PreloadedCAFNumber = new System.Windows.Forms.Label();
             this.comboBox_DataMapper_GiftAid = new System.Windows.Forms.ComboBox();
@@ -181,6 +180,16 @@ namespace TbManagementTool
             this.button_DataMapper_FileSearch = new System.Windows.Forms.Button();
             this.button_DataMapper_Import = new System.Windows.Forms.Button();
             this.label_DataMapper_FileName = new System.Windows.Forms.Label();
+            this.comboBox_DataMapper_MembershipStartDate = new System.Windows.Forms.ComboBox();
+            this.label_DataMapper_MembershipStartDate = new System.Windows.Forms.Label();
+            this.comboBox_DataMapper_MembershipEndDate = new System.Windows.Forms.ComboBox();
+            this.label_DataMapper_MembershipEndDate = new System.Windows.Forms.Label();
+            this.comboBox_DataMapper_MembershipStatus = new System.Windows.Forms.ComboBox();
+            this.label_DataMapper_MembershipStatus = new System.Windows.Forms.Label();
+            this.comboBox_DataMapper_MembershipType = new System.Windows.Forms.ComboBox();
+            this.label_DataMapper_MembershipType = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_DataMapper.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -219,6 +228,8 @@ namespace TbManagementTool
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.comboBox1);
             this.groupBox5.Controls.Add(this.numericUpDown_DataMapper_RowLimit);
             this.groupBox5.Controls.Add(this.checkBox_DataMapper_RowLimit);
             this.groupBox5.Controls.Add(this.button_DataMapper_FileSaveCsv);
@@ -580,7 +591,14 @@ namespace TbManagementTool
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label1_DataMapper_Divider);
+            this.groupBox3.Controls.Add(this.comboBox_DataMapper_MembershipType);
+            this.groupBox3.Controls.Add(this.label_DataMapper_MembershipType);
+            this.groupBox3.Controls.Add(this.comboBox_DataMapper_MembershipStatus);
+            this.groupBox3.Controls.Add(this.label_DataMapper_MembershipStatus);
+            this.groupBox3.Controls.Add(this.comboBox_DataMapper_MembershipEndDate);
+            this.groupBox3.Controls.Add(this.label_DataMapper_MembershipEndDate);
+            this.groupBox3.Controls.Add(this.comboBox_DataMapper_MembershipStartDate);
+            this.groupBox3.Controls.Add(this.label_DataMapper_MembershipStartDate);
             this.groupBox3.Controls.Add(this.label_DataMapper_ThirdPartyPreference);
             this.groupBox3.Controls.Add(this.label_DataMapper_PreloadedCAFNumber);
             this.groupBox3.Controls.Add(this.comboBox_DataMapper_GiftAid);
@@ -615,15 +633,6 @@ namespace TbManagementTool
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
-            // 
-            // label1_DataMapper_Divider
-            // 
-            this.label1_DataMapper_Divider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1_DataMapper_Divider.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1_DataMapper_Divider.Location = new System.Drawing.Point(6, 442);
-            this.label1_DataMapper_Divider.Name = "label1_DataMapper_Divider";
-            this.label1_DataMapper_Divider.Size = new System.Drawing.Size(323, 1);
-            this.label1_DataMapper_Divider.TabIndex = 52;
             // 
             // label_DataMapper_ThirdPartyPreference
             // 
@@ -719,7 +728,7 @@ namespace TbManagementTool
             // 
             this.label_DataMapper_NoFurtherCommunication.AutoSize = true;
             this.label_DataMapper_NoFurtherCommunication.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_DataMapper_NoFurtherCommunication.Location = new System.Drawing.Point(11, 414);
+            this.label_DataMapper_NoFurtherCommunication.Location = new System.Drawing.Point(11, 412);
             this.label_DataMapper_NoFurtherCommunication.Name = "label_DataMapper_NoFurtherCommunication";
             this.label_DataMapper_NoFurtherCommunication.Size = new System.Drawing.Size(137, 19);
             this.label_DataMapper_NoFurtherCommunication.TabIndex = 38;
@@ -1820,6 +1829,106 @@ namespace TbManagementTool
             this.label_DataMapper_FileName.TabIndex = 18;
             this.label_DataMapper_FileName.Text = "File Name:";
             // 
+            // comboBox_DataMapper_MembershipStartDate
+            // 
+            this.comboBox_DataMapper_MembershipStartDate.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_MembershipStartDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_MembershipStartDate.FormattingEnabled = true;
+            this.comboBox_DataMapper_MembershipStartDate.Location = new System.Drawing.Point(170, 441);
+            this.comboBox_DataMapper_MembershipStartDate.Name = "comboBox_DataMapper_MembershipStartDate";
+            this.comboBox_DataMapper_MembershipStartDate.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_MembershipStartDate.TabIndex = 54;
+            // 
+            // label_DataMapper_MembershipStartDate
+            // 
+            this.label_DataMapper_MembershipStartDate.AutoSize = true;
+            this.label_DataMapper_MembershipStartDate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_DataMapper_MembershipStartDate.Location = new System.Drawing.Point(11, 441);
+            this.label_DataMapper_MembershipStartDate.Name = "label_DataMapper_MembershipStartDate";
+            this.label_DataMapper_MembershipStartDate.Size = new System.Drawing.Size(156, 19);
+            this.label_DataMapper_MembershipStartDate.TabIndex = 53;
+            this.label_DataMapper_MembershipStartDate.Text = "MembershipStartDate";
+            // 
+            // comboBox_DataMapper_MembershipEndDate
+            // 
+            this.comboBox_DataMapper_MembershipEndDate.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_MembershipEndDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_MembershipEndDate.FormattingEnabled = true;
+            this.comboBox_DataMapper_MembershipEndDate.Location = new System.Drawing.Point(170, 470);
+            this.comboBox_DataMapper_MembershipEndDate.Name = "comboBox_DataMapper_MembershipEndDate";
+            this.comboBox_DataMapper_MembershipEndDate.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_MembershipEndDate.TabIndex = 56;
+            // 
+            // label_DataMapper_MembershipEndDate
+            // 
+            this.label_DataMapper_MembershipEndDate.AutoSize = true;
+            this.label_DataMapper_MembershipEndDate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_DataMapper_MembershipEndDate.Location = new System.Drawing.Point(11, 470);
+            this.label_DataMapper_MembershipEndDate.Name = "label_DataMapper_MembershipEndDate";
+            this.label_DataMapper_MembershipEndDate.Size = new System.Drawing.Size(148, 19);
+            this.label_DataMapper_MembershipEndDate.TabIndex = 55;
+            this.label_DataMapper_MembershipEndDate.Text = "MembershipEndDate";
+            // 
+            // comboBox_DataMapper_MembershipStatus
+            // 
+            this.comboBox_DataMapper_MembershipStatus.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_MembershipStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_MembershipStatus.FormattingEnabled = true;
+            this.comboBox_DataMapper_MembershipStatus.Location = new System.Drawing.Point(170, 499);
+            this.comboBox_DataMapper_MembershipStatus.Name = "comboBox_DataMapper_MembershipStatus";
+            this.comboBox_DataMapper_MembershipStatus.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_MembershipStatus.TabIndex = 58;
+            // 
+            // label_DataMapper_MembershipStatus
+            // 
+            this.label_DataMapper_MembershipStatus.AutoSize = true;
+            this.label_DataMapper_MembershipStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_DataMapper_MembershipStatus.Location = new System.Drawing.Point(11, 499);
+            this.label_DataMapper_MembershipStatus.Name = "label_DataMapper_MembershipStatus";
+            this.label_DataMapper_MembershipStatus.Size = new System.Drawing.Size(133, 19);
+            this.label_DataMapper_MembershipStatus.TabIndex = 57;
+            this.label_DataMapper_MembershipStatus.Text = "MembershipStatus";
+            // 
+            // comboBox_DataMapper_MembershipType
+            // 
+            this.comboBox_DataMapper_MembershipType.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox_DataMapper_MembershipType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_DataMapper_MembershipType.FormattingEnabled = true;
+            this.comboBox_DataMapper_MembershipType.Location = new System.Drawing.Point(170, 528);
+            this.comboBox_DataMapper_MembershipType.Name = "comboBox_DataMapper_MembershipType";
+            this.comboBox_DataMapper_MembershipType.Size = new System.Drawing.Size(130, 23);
+            this.comboBox_DataMapper_MembershipType.TabIndex = 60;
+            // 
+            // label_DataMapper_MembershipType
+            // 
+            this.label_DataMapper_MembershipType.AutoSize = true;
+            this.label_DataMapper_MembershipType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_DataMapper_MembershipType.Location = new System.Drawing.Point(11, 528);
+            this.label_DataMapper_MembershipType.Name = "label_DataMapper_MembershipType";
+            this.label_DataMapper_MembershipType.Size = new System.Drawing.Size(125, 19);
+            this.label_DataMapper_MembershipType.TabIndex = 59;
+            this.label_DataMapper_MembershipType.Text = "MembershipType";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(9, 41);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(130, 23);
+            this.comboBox1.TabIndex = 62;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(9, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 19);
+            this.label4.TabIndex = 64;
+            this.label4.Text = "Profiles";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1988,7 +2097,6 @@ namespace TbManagementTool
         private System.Windows.Forms.TextBox textBox_DataMapper_UniquePackageCode;
         private System.Windows.Forms.Label label2_DataMapper_Divider;
         private System.Windows.Forms.CheckBox checkBox_DataMapper_UniquePackageCode;
-        private System.Windows.Forms.Label label1_DataMapper_Divider;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox_DataMapper_RaffleQuantity;
         private System.Windows.Forms.Label label_DataMapper_QuantityOr;
@@ -2006,6 +2114,16 @@ namespace TbManagementTool
         private System.Windows.Forms.Label label_DataMapper_ClientName;
         private System.Windows.Forms.CheckBox checkBox_DataMapper_RowLimit;
         private System.Windows.Forms.NumericUpDown numericUpDown_DataMapper_RowLimit;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_MembershipType;
+        private System.Windows.Forms.Label label_DataMapper_MembershipType;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_MembershipStatus;
+        private System.Windows.Forms.Label label_DataMapper_MembershipStatus;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_MembershipEndDate;
+        private System.Windows.Forms.Label label_DataMapper_MembershipEndDate;
+        private System.Windows.Forms.ComboBox comboBox_DataMapper_MembershipStartDate;
+        private System.Windows.Forms.Label label_DataMapper_MembershipStartDate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

@@ -63,6 +63,10 @@ namespace TbManagementTool
             dt.Columns.Add("ClientData8", typeof(String));
             dt.Columns.Add("ClientData9", typeof(String));
             dt.Columns.Add("ClientData10", typeof(String));
+            dt.Columns.Add("MembershipStartDate", typeof(String));
+            dt.Columns.Add("MembershipEndDate", typeof(String));
+            dt.Columns.Add("MembershipStatus", typeof(String));
+            dt.Columns.Add("MembershipType", typeof(String));
 
             return dt;
         }
