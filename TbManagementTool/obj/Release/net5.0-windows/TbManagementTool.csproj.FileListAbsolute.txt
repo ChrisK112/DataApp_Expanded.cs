@@ -21,3 +21,27 @@ C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-wi
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\ref\TbManagementTool_NiggiVersion.dll
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool_NiggiVersion.pdb
 C:\Users\Gregory\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.genruntimeconfig.cache
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\TbManagementTool_NiggiVersion.exe
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\TbManagementTool_NiggiVersion.dll.config
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\TbManagementTool_NiggiVersion.deps.json
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\TbManagementTool_NiggiVersion.runtimeconfig.json
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\TbManagementTool_NiggiVersion.runtimeconfig.dev.json
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\TbManagementTool_NiggiVersion.dll
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\ref\TbManagementTool_NiggiVersion.dll
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\TbManagementTool_NiggiVersion.pdb
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\GenericParsing.dll
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\bin\Release\net5.0-windows\GenericParsing.xml
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\Interop.Microsoft.Office.Interop.Word.dll
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.csproj.ResolveComReference.cache
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.Form1.resources
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.csproj.GenerateResource.cache
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.AssemblyInfoInputs.cache
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.AssemblyInfo.cs
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.csproj.CoreCompileInputs.cache
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool_NiggiVersion.dll
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\ref\TbManagementTool_NiggiVersion.dll
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool_NiggiVersion.pdb
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.genruntimeconfig.cache
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.csproj.CopyComplete
+C:\Users\Gregory Vasquez\Desktop\TbManagementTool\TbManagementTool\obj\Release\net5.0-windows\TbManagementTool.csproj.AssemblyReference.cache

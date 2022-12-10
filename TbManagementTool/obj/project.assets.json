@@ -8,19 +8,19 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Gregory\\.nuget\\packages\\": {}
+    "C:\\Users\\Gregory Vasquez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gregory\\Desktop\\TbManagementTool\\TbManagementTool\\TbManagementTool.csproj",
+      "projectUniqueName": "C:\\Users\\Gregory Vasquez\\Desktop\\TbManagementTool\\TbManagementTool\\TbManagementTool.csproj",
       "projectName": "TbManagementTool_NiggiVersion",
-      "projectPath": "C:\\Users\\Gregory\\Desktop\\TbManagementTool\\TbManagementTool\\TbManagementTool.csproj",
-      "packagesPath": "C:\\Users\\Gregory\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gregory\\Desktop\\TbManagementTool\\TbManagementTool\\obj\\",
+      "projectPath": "C:\\Users\\Gregory Vasquez\\Desktop\\TbManagementTool\\TbManagementTool\\TbManagementTool.csproj",
+      "packagesPath": "C:\\Users\\Gregory Vasquez\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gregory Vasquez\\Desktop\\TbManagementTool\\TbManagementTool\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Gregory\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gregory Vasquez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

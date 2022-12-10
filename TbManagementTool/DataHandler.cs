@@ -98,13 +98,13 @@ namespace TbManagementTool
             }
             else
             {
-                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace(qualifier, "").Replace("\t", "").Replace("\r", "").Replace("\n", "").Replace("|","")}{qualifier}"));
+                strColNames = string.Join(delimiter.ToString(), arrayColNames.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace(qualifier, "").Replace("\t", "").Replace("\r", "").Replace("\n", "")}{qualifier}"));
 
             }
 
             lines.Add(strColNames);
 
-            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace("\t", "").Replace("\r", "").Replace("\n", "")}{qualifier}")));
+            EnumerableRowCollection<string> strData = dt.AsEnumerable().Select(row => string.Join(delimiter.ToString(), row.ItemArray.Select(val => $"{qualifier}{val.ToString().TrimStart().TrimEnd().Replace("\t", "").Replace("\r", "").Replace("\n", "").Replace("|", "")}{qualifier}")));
             lines.AddRange(strData);
 
             return lines;
