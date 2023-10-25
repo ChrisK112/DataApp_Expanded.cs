@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<profile>
+  <column name="PersonRef" value="Segment Code" />
+  <column name="PackageCode" value="Segment Code" />
+  <column name="OrganisationName" value="ConstituentNumber" />
+  <column name="BarcodeDelimiter" value="" />
+</profile>

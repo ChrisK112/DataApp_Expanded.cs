@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<profile>
+  <column name="PersonRef" value="AppealCode" />
+  <column name="MiddleName" value="AppealCode" />
+  <column name="BarcodeDelimiter" value="4" />
+</profile>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<profile>
+  <column name="PackageCode" value="PackageCode" />
+  <column name="OrganisationName" value="ClientName" />
+  <column name="BarcodeDelimiter" value="5" />
+</profile>

@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "DataApp/1.0.0": {
+        "dependencies": {
+          "GenericParsing": "1.1.5.29274"
+        },
+        "runtime": {
+          "DataApp.dll": {}
+        }
+      },
+      "GenericParsing/1.1.5.29274": {
+        "runtime": {
+          "GenericParsing.dll": {
+            "assemblyVersion": "1.1.5.29274",
+            "fileVersion": "1.1.5.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DataApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GenericParsing/1.1.5.29274": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
